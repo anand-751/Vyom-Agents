@@ -36,6 +36,9 @@ export const metadata: Metadata = {
     description:
       "Unlocking infinite possibilities in autonomous technology. We architect intelligent agentic ecosystems that transform raw complexity into seamless execution.",
   },
+  verification: {
+    google: "oChfHC8LnNKHtdaeCKPA-qEz6odSltvpK3hiz1qR0Oo",
+  },
 };
 
 const jsonLd = {
