@@ -109,7 +109,7 @@ export function TechStackShowcase() {
     : TECH_ITEMS.filter((item) => item.category === activeFilter);
 
   return (
-    <section className="py-20 relative bg-slate-50/70 border-t border-slate-200/80 overflow-hidden">
+    <section id="tech-stack" className="py-20 relative bg-slate-50/70 border-t border-slate-200/80 overflow-hidden">
       {/* Subtle Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-sky-100/40 via-purple-100/30 to-transparent rounded-full blur-3xl pointer-events-none" />
 

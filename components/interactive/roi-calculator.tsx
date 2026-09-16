@@ -200,7 +200,7 @@ export function RoiCalculator() {
   };
 
   return (
-    <section className="py-24 relative bg-white border-t border-slate-200/80">
+    <section id="roi" className="py-24 relative bg-white border-t border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

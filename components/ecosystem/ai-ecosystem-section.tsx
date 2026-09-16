@@ -13,104 +13,117 @@ import {
   TrendingUp, 
   Zap, 
   CheckCircle2, 
-  Layers, 
   Cpu, 
-  ShieldCheck,
-  RefreshCw,
-  MessageSquare,
-  Globe2
+  Activity
 } from "lucide-react";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
+
+export interface EcosystemNode {
+  id: string;
+  step: string;
+  title: string;
+  subtitle: string;
+  positionLabel: string;
+  positionClasses: string;
+  icon: React.ComponentType<{ className?: string }>;
+  color: string;
+  lightBg: string;
+  accentGlow: string;
+  revenueImpact: string;
+  description: string;
+  feedsInto: string;
+  keyMetrics: string[];
+}
+
+export const ECOSYSTEM_NODES: EcosystemNode[] = [
+  {
+    id: "voice-agent",
+    step: "01",
+    title: "AI Voice Agent",
+    subtitle: "Inbound & Outbound Voice Intelligence",
+    positionLabel: "Top Node",
+    positionClasses: "top-1 left-1/2 -translate-x-1/2",
+    icon: PhoneCall,
+    color: "from-sky-500 to-blue-600",
+    lightBg: "bg-sky-50 border-sky-200 text-sky-700",
+    accentGlow: "rgba(14, 165, 233, 0.25)",
+    revenueImpact: "+42% Conversion & Zero Missed Calls",
+    description:
+      "Converses natively with 24/7 inbound callers with sub-400ms latency. Qualifies leads, books calendar slots, and talks directly to your Custom CRM, Web, and Desktop Apps in real time.",
+    feedsInto: "Talks directly to your Custom CRM, Web, and Desktop Apps to log customer context & transaction parameters instantly.",
+    keyMetrics: ["320ms Latency", "15+ Concurrent Calls", "Direct App Sync"],
+  },
+  {
+    id: "enterprise-software",
+    step: "02",
+    title: "Custom CRM / Web / Desktop Apps",
+    subtitle: "Self-Healing RPA & Workflow Engine",
+    positionLabel: "Right Node",
+    positionClasses: "right-1 top-1/2 -translate-y-1/2",
+    icon: Workflow,
+    color: "from-purple-500 to-indigo-600",
+    lightBg: "bg-purple-50 border-purple-200 text-purple-700",
+    accentGlow: "rgba(168, 85, 247, 0.25)",
+    revenueImpact: "100% Hands-Free Operational Scale",
+    description:
+      "Processes caller requests, updates internal CRM & ERP databases, auto-remediates UI shifts, and hands off completed service records directly to the Google Review AI Agent.",
+    feedsInto: "Hands off completed transaction & client details directly to the Google Review AI Agent for customized follow-ups.",
+    keyMetrics: ["99.8% Auto-Healed DOM", "Zero Script Fragility", "Auto CRM Mutation"],
+  },
+  {
+    id: "review-agent",
+    step: "03",
+    title: "Google Review AI Agent",
+    subtitle: "Compelling WhatsApp & SMS 5-Star Follow-ups",
+    positionLabel: "Bottom Node",
+    positionClasses: "bottom-1 left-1/2 -translate-x-1/2",
+    icon: Star,
+    color: "from-emerald-500 to-teal-600",
+    lightBg: "bg-emerald-50 border-emerald-200 text-emerald-700",
+    accentGlow: "rgba(16, 185, 129, 0.25)",
+    revenueImpact: "+300% 5-Star Google Reviews",
+    description:
+      "Fetches completed client & service details from your CRM/apps to generate compelling, personalized WhatsApp/SMS follow-ups that harvest 5-star Google Reviews while intercepting complaints.",
+    feedsInto: "Surging 5-star Google Reviews and positive rating schemas feed directly into your brand's AIEO domain authority.",
+    keyMetrics: ["+300% 5-Star Reviews", "WhatsApp Follow-ups", "Complaint Remediation"],
+  },
+  {
+    id: "aieo",
+    step: "04",
+    title: "AIEO (AI Engine Optimization)",
+    subtitle: "#1 LLM Search & Inbound Growth",
+    positionLabel: "Left Node",
+    positionClasses: "left-1 top-1/2 -translate-y-1/2",
+    icon: Search,
+    color: "from-indigo-500 to-sky-600",
+    lightBg: "bg-indigo-50 border-indigo-200 text-indigo-700",
+    accentGlow: "rgba(99, 102, 241, 0.25)",
+    revenueImpact: "#1 Recommended Choice on ChatGPT & Perplexity",
+    description:
+      "Surging 5-star Google reviews and Knowledge Graph schemas rank your brand as the #1 recommended answer on ChatGPT Search, Perplexity, and Gemini — driving fresh buyer calls back to your AI Voice Agent!",
+    feedsInto: "Funnels high-intent buyer calls directly back to your 24/7 AI Voice Agent — completing the infinite growth flywheel!",
+    keyMetrics: ["+310% Brand Citations", "Knowledge Graph Structuring", "Perplexity & Gemini Rank"],
+  },
+];
 
 export function AiEcosystemSection() {
   const [activeNodeId, setActiveNodeId] = useState<string>("voice-agent");
   const [autoRotate, setAutoRotate] = useState(true);
-
-  const ecosystemNodes = [
-    {
-      id: "voice-agent",
-      step: "01",
-      title: "AI Voice Agent",
-      subtitle: "Inbound & Outbound Voice Intelligence",
-      positionLabel: "Top Node",
-      positionClasses: "top-1 left-1/2 -translate-x-1/2",
-      icon: PhoneCall,
-      color: "from-sky-500 to-blue-600",
-      lightBg: "bg-sky-50 border-sky-200 text-sky-700",
-      accentGlow: "rgba(14, 165, 233, 0.25)",
-      revenueImpact: "+42% Conversion & Zero Missed Calls",
-      description:
-        "Converses natively with 24/7 inbound callers with sub-400ms latency. Qualifies leads, books calendar slots, and talks directly to your Custom CRM, Web, and Desktop Apps in real time.",
-      feedsInto: "Talks directly to your Custom CRM, Web, and Desktop Apps to log customer context & transaction parameters instantly.",
-      keyMetrics: ["320ms Latency", "15+ Concurrent Calls", "Direct App Sync"],
-    },
-    {
-      id: "enterprise-software",
-      step: "02",
-      title: "Custom CRM / Web / Desktop Apps",
-      subtitle: "Self-Healing RPA & Workflow Engine",
-      positionLabel: "Right Node",
-      positionClasses: "right-1 top-1/2 -translate-y-1/2",
-      icon: Workflow,
-      color: "from-purple-500 to-indigo-600",
-      lightBg: "bg-purple-50 border-purple-200 text-purple-700",
-      accentGlow: "rgba(168, 85, 247, 0.25)",
-      revenueImpact: "100% Hands-Free Operational Scale",
-      description:
-        "Processes caller requests, updates internal CRM & ERP databases, auto-remediates UI shifts, and hands off completed service records directly to the Google Review AI Agent.",
-      feedsInto: "Hands off completed transaction & client details directly to the Google Review AI Agent for customized follow-ups.",
-      keyMetrics: ["99.8% Auto-Healed DOM", "Zero Script Fragility", "Auto CRM Mutation"],
-    },
-    {
-      id: "review-agent",
-      step: "03",
-      title: "Google Review AI Agent",
-      subtitle: "Compelling WhatsApp & SMS 5-Star Follow-ups",
-      positionLabel: "Bottom Node",
-      positionClasses: "bottom-1 left-1/2 -translate-x-1/2",
-      icon: Star,
-      color: "from-emerald-500 to-teal-600",
-      lightBg: "bg-emerald-50 border-emerald-200 text-emerald-700",
-      accentGlow: "rgba(16, 185, 129, 0.25)",
-      revenueImpact: "+300% 5-Star Google Reviews",
-      description:
-        "Fetches completed client & service details from your CRM/apps to generate compelling, personalized WhatsApp/SMS follow-ups that harvest 5-star Google Reviews while intercepting complaints.",
-      feedsInto: "Surging 5-star Google Reviews and positive rating schemas feed directly into your brand's AIEO domain authority.",
-      keyMetrics: ["+300% 5-Star Reviews", "WhatsApp Follow-ups", "Complaint Remediation"],
-    },
-    {
-      id: "aieo",
-      step: "04",
-      title: "AIEO (AI Engine Optimization)",
-      subtitle: "#1 LLM Search & Inbound Growth",
-      positionLabel: "Left Node",
-      positionClasses: "left-1 top-1/2 -translate-y-1/2",
-      icon: Search,
-      color: "from-indigo-500 to-sky-600",
-      lightBg: "bg-indigo-50 border-indigo-200 text-indigo-700",
-      accentGlow: "rgba(99, 102, 241, 0.25)",
-      revenueImpact: "#1 Recommended Choice on ChatGPT & Perplexity",
-      description:
-        "Surging 5-star Google reviews and Knowledge Graph schemas rank your brand as the #1 recommended answer on ChatGPT Search, Perplexity, and Gemini — driving fresh buyer calls back to your AI Voice Agent!",
-      feedsInto: "Funnels high-intent buyer calls directly back to your 24/7 AI Voice Agent — completing the infinite growth flywheel!",
-      keyMetrics: ["+310% Brand Citations", "Knowledge Graph Structuring", "Perplexity & Gemini Rank"],
-    },
-  ];
 
   // Auto-rotate cycle through nodes every 4.5 seconds unless hovered
   useEffect(() => {
     if (!autoRotate) return;
     const interval = setInterval(() => {
       setActiveNodeId((prev) => {
-        const idx = ecosystemNodes.findIndex((n) => n.id === prev);
-        const nextIdx = (idx + 1) % ecosystemNodes.length;
-        return ecosystemNodes[nextIdx].id;
+        const idx = ECOSYSTEM_NODES.findIndex((n) => n.id === prev);
+        const nextIdx = (idx + 1) % ECOSYSTEM_NODES.length;
+        return ECOSYSTEM_NODES[nextIdx].id;
       });
     }, 4500);
     return () => clearInterval(interval);
   }, [autoRotate]);
 
-  const activeNode = ecosystemNodes.find((n) => n.id === activeNodeId)!;
+  const activeNode = ECOSYSTEM_NODES.find((n) => n.id === activeNodeId) || ECOSYSTEM_NODES[0];
 
   return (
     <section id="ecosystem" className="py-20 relative bg-gradient-to-b from-white via-slate-50/60 to-white border-t border-slate-200/80 overflow-hidden">
@@ -122,7 +135,7 @@ export function AiEcosystemSection() {
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-100/80 text-indigo-900 text-xs font-semibold uppercase tracking-wider mb-3 shadow-sm border border-indigo-200">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-100/80 text-indigo-900 text-xs font-semibold uppercase tracking-wider mb-3 shadow-xs border border-indigo-200">
             <RotateCw className="w-3.5 h-3.5 text-indigo-600 animate-spin-slow" />
             <span>Autonomous Revenue Flywheel</span>
           </div>
@@ -142,35 +155,51 @@ export function AiEcosystemSection() {
           onMouseEnter={() => setAutoRotate(false)}
           onMouseLeave={() => setAutoRotate(true)}
         >
-          {/* Left Column: Perfectly Symmetrical Cardinal Circular Node Ecosystem (Lg: 6 cols) */}
+          {/* Left Column: Animated Cardinal Circular Node Ecosystem (Lg: 6 cols) */}
           <div className="lg:col-span-6 relative flex flex-col items-center justify-center min-h-[460px] sm:min-h-[500px] p-2">
             
             {/* Center Core Pulsing Hub */}
-            <div className="absolute z-20 w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-slate-950 text-white flex flex-col items-center justify-center p-3 text-center shadow-2xl border border-slate-800 group cursor-pointer">
-              <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 opacity-30 group-hover:opacity-60 blur-md transition-opacity animate-pulse" />
-              <div className="relative z-10 flex flex-col items-center">
-                <RefreshCw className="w-5 h-5 text-sky-400 mb-1 animate-spin-slow" />
-                <span className="text-[10px] font-mono font-extrabold uppercase tracking-wider text-sky-300">
-                  Vyom Engine
-                </span>
-                <span className="text-[8px] text-slate-400 font-mono mt-0.5">
-                  Infinite Revenue Loop
-                </span>
+            <div 
+              onClick={() => {
+                const idx = ECOSYSTEM_NODES.findIndex((n) => n.id === activeNodeId);
+                const nextIdx = (idx + 1) % ECOSYSTEM_NODES.length;
+                setActiveNodeId(ECOSYSTEM_NODES[nextIdx].id);
+              }}
+              className="absolute z-20 w-32 h-32 sm:w-36 sm:h-36 rounded-full flex items-center justify-center cursor-pointer group"
+            >
+              {/* Pulsing Luminous Halo */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-sky-500/25 via-indigo-500/25 to-purple-500/25 blur-xl group-hover:scale-110 transition-transform duration-500" />
+
+              {/* Outer Rotating Dashed Orbital Ring */}
+              <div className="absolute inset-1 rounded-full border-2 border-dashed border-sky-400/50 animate-spin-slow pointer-events-none" />
+
+              {/* Counter-Rotating Inner Dotted Ring */}
+              <div className="absolute inset-3 rounded-full border border-dotted border-indigo-400/40 animate-spin-reverse-slow pointer-events-none" />
+
+              {/* Center Core Sphere */}
+              <div className="relative z-10 w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-slate-950 text-white flex flex-col items-center justify-center p-3 text-center shadow-2xl border border-indigo-500/40 group-hover:border-sky-400/70 transition-all duration-300">
+                <div className="absolute inset-0 rounded-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/60 via-slate-950 to-slate-950 pointer-events-none" />
+
+                <div className="relative z-10 flex flex-col items-center">
+                  <div className="w-7 h-7 rounded-lg bg-sky-500/20 border border-sky-400/40 flex items-center justify-center mb-1 text-sky-400 group-hover:scale-110 group-hover:bg-sky-500 group-hover:text-white transition-all shadow-glow">
+                    <Cpu className="w-4 h-4" />
+                  </div>
+                  <span className="text-[10px] font-mono font-extrabold uppercase tracking-wider text-sky-300 leading-tight">
+                    Vyom Engine
+                  </span>
+                  <span className="text-[8px] text-slate-400 font-mono mt-0.5 flex items-center gap-1">
+                    <span className="w-1 h-1 rounded-full bg-emerald-400 animate-ping" />
+                    Infinite Loop
+                  </span>
+                </div>
               </div>
             </div>
 
-            {/* Circular Connecting SVG Orbit Line */}
-            <svg className="absolute w-[320px] h-[320px] sm:w-[400px] sm:h-[400px] pointer-events-none z-0" viewBox="0 0 400 400">
-              <circle
-                cx="200"
-                cy="200"
-                r="150"
-                fill="none"
-                stroke="url(#flywheel-gradient)"
-                strokeWidth="2.5"
-                strokeDasharray="6 6"
-                className="opacity-60"
-              />
+            {/* High-Quality Animated SVG Orbital System */}
+            <svg 
+              className="absolute w-[320px] h-[320px] sm:w-[400px] sm:h-[400px] pointer-events-none z-0" 
+              viewBox="0 0 400 400"
+            >
               <defs>
                 <linearGradient id="flywheel-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stopColor="#0ea5e9" />
@@ -178,12 +207,151 @@ export function AiEcosystemSection() {
                   <stop offset="66%" stopColor="#10b981" />
                   <stop offset="100%" stopColor="#6366f1" />
                 </linearGradient>
+
+                {/* Glow Filter for Particles */}
+                <filter id="particle-glow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
               </defs>
+
+              {/* Sonar Radar Pulse Waves expanding from Center Hub */}
+              <motion.circle
+                cx="200"
+                cy="200"
+                r="50"
+                fill="none"
+                stroke="#38bdf8"
+                strokeWidth="1.5"
+                animate={{
+                  r: [48, 150],
+                  opacity: [0.65, 0],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeOut",
+                }}
+              />
+              <motion.circle
+                cx="200"
+                cy="200"
+                r="50"
+                fill="none"
+                stroke="#a855f7"
+                strokeWidth="1.5"
+                animate={{
+                  r: [48, 150],
+                  opacity: [0.65, 0],
+                }}
+                transition={{
+                  duration: 3,
+                  delay: 1.5,
+                  repeat: Infinity,
+                  ease: "easeOut",
+                }}
+              />
+
+              {/* Cardinal Radial Laser Beams to each Node */}
+              {/* Core to Node 01 (Top) */}
+              <line
+                x1="200" y1="200" x2="200" y2="55"
+                stroke={activeNodeId === "voice-agent" ? "#0ea5e9" : "#cbd5e1"}
+                strokeWidth={activeNodeId === "voice-agent" ? "2" : "1"}
+                strokeDasharray="4 4"
+                className={activeNodeId === "voice-agent" ? "animate-dash-flow opacity-90" : "opacity-30"}
+              />
+              {/* Core to Node 02 (Right) */}
+              <line
+                x1="200" y1="200" x2="345" y2="200"
+                stroke={activeNodeId === "enterprise-software" ? "#a855f7" : "#cbd5e1"}
+                strokeWidth={activeNodeId === "enterprise-software" ? "2" : "1"}
+                strokeDasharray="4 4"
+                className={activeNodeId === "enterprise-software" ? "animate-dash-flow opacity-90" : "opacity-30"}
+              />
+              {/* Core to Node 03 (Bottom) */}
+              <line
+                x1="200" y1="200" x2="200" y2="345"
+                stroke={activeNodeId === "review-agent" ? "#10b981" : "#cbd5e1"}
+                strokeWidth={activeNodeId === "review-agent" ? "2" : "1"}
+                strokeDasharray="4 4"
+                className={activeNodeId === "review-agent" ? "animate-dash-flow opacity-90" : "opacity-30"}
+              />
+              {/* Core to Node 04 (Left) */}
+              <line
+                x1="200" y1="200" x2="55" y2="200"
+                stroke={activeNodeId === "aieo" ? "#6366f1" : "#cbd5e1"}
+                strokeWidth={activeNodeId === "aieo" ? "2" : "1"}
+                strokeDasharray="4 4"
+                className={activeNodeId === "aieo" ? "animate-dash-flow opacity-90" : "opacity-30"}
+              />
+
+              {/* Main Connecting SVG Orbit Line with Flowing Dash Animation */}
+              <circle
+                cx="200"
+                cy="200"
+                r="150"
+                fill="none"
+                stroke="url(#flywheel-gradient)"
+                strokeWidth="2.5"
+                strokeDasharray="8 8"
+                className="animate-dash-flow opacity-70"
+              />
+
+              {/* Secondary Concentric Orbital Track with Reverse Dash Flow */}
+              <circle
+                cx="200"
+                cy="200"
+                r="115"
+                fill="none"
+                stroke="url(#flywheel-gradient)"
+                strokeWidth="1.5"
+                strokeDasharray="4 6"
+                className="animate-dash-flow-reverse opacity-40"
+              />
+
+              {/* 4 Continuous Orbiting Data Photons traveling around perimeter */}
+              <motion.g
+                animate={{ rotate: 360 }}
+                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                style={{ transformOrigin: "200px 200px" }}
+              >
+                {/* Photon 1: Sky Blue */}
+                <circle cx="200" cy="50" r="5" fill="#0ea5e9" filter="url(#particle-glow)" />
+                <circle cx="200" cy="50" r="2" fill="#ffffff" />
+
+                {/* Photon 2: Purple */}
+                <circle cx="350" cy="200" r="5" fill="#a855f7" filter="url(#particle-glow)" />
+                <circle cx="350" cy="200" r="2" fill="#ffffff" />
+
+                {/* Photon 3: Emerald */}
+                <circle cx="200" cy="350" r="5" fill="#10b981" filter="url(#particle-glow)" />
+                <circle cx="200" cy="350" r="2" fill="#ffffff" />
+
+                {/* Photon 4: Indigo */}
+                <circle cx="50" cy="200" r="5" fill="#6366f1" filter="url(#particle-glow)" />
+                <circle cx="50" cy="200" r="2" fill="#ffffff" />
+              </motion.g>
+
+              {/* Secondary Counter-Orbiting Micro-Particles */}
+              <motion.g
+                animate={{ rotate: -360 }}
+                transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
+                style={{ transformOrigin: "200px 200px" }}
+              >
+                <circle cx="200" cy="85" r="3" fill="#38bdf8" opacity="0.7" filter="url(#particle-glow)" />
+                <circle cx="315" cy="200" r="3" fill="#c084fc" opacity="0.7" filter="url(#particle-glow)" />
+                <circle cx="200" cy="315" r="3" fill="#34d399" opacity="0.7" filter="url(#particle-glow)" />
+                <circle cx="85" cy="200" r="3" fill="#818cf8" opacity="0.7" filter="url(#particle-glow)" />
+              </motion.g>
             </svg>
 
-            {/* 4 Perfectly Symmetrical Cardinal Nodes (Top, Right, Bottom, Left - ZERO Overlap) */}
+            {/* 4 Perfectly Symmetrical Cardinal Nodes */}
             <div className="relative w-full max-w-[460px] sm:max-w-[540px] h-[360px] sm:h-[420px] flex items-center justify-center">
-              {ecosystemNodes.map((node) => {
+              {ECOSYSTEM_NODES.map((node) => {
                 const IconComp = node.icon;
                 const isActive = node.id === activeNodeId;
 
@@ -191,12 +359,25 @@ export function AiEcosystemSection() {
                   <motion.div
                     key={node.id}
                     onClick={() => setActiveNodeId(node.id)}
-                    whileHover={{ scale: 1.06 }}
+                    whileHover={{ scale: 1.08 }}
                     whileTap={{ scale: 0.96 }}
+                    animate={{
+                      y: isActive ? [0, -4, 0] : [0, -2, 0],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
                     className={`absolute ${node.positionClasses} z-30 cursor-pointer transition-all duration-300`}
                   >
+                    {/* Active Pulsing Halo Ring */}
+                    {isActive && (
+                      <span className="absolute -inset-1.5 rounded-2xl bg-gradient-to-r from-sky-400 to-indigo-500 opacity-40 blur-sm animate-pulse pointer-events-none" />
+                    )}
+
                     <div
-                      className={`relative flex items-center gap-2 px-2.5 py-1.5 rounded-xl border shadow-md backdrop-blur-md transition-all duration-300 ${
+                      className={`relative flex items-center gap-2 px-3 py-2 rounded-xl border shadow-md backdrop-blur-md transition-all duration-300 ${
                         isActive
                           ? "bg-slate-900 text-white border-sky-400 shadow-xl ring-2 ring-sky-400/30 scale-105"
                           : "bg-white/95 text-slate-900 border-slate-200/90 hover:border-slate-300 hover:shadow-lg"
@@ -217,11 +398,11 @@ export function AiEcosystemSection() {
                       </div>
                     </div>
 
-                    {/* Compact Step Pill Badge */}
+                    {/* Step Pill Badge */}
                     <span
                       className={`absolute -top-1.5 -right-1.5 px-1.5 py-0.2 rounded-full text-[9px] font-mono font-extrabold shadow-sm ${
                         isActive
-                          ? "bg-sky-400 text-slate-950"
+                          ? "bg-sky-400 text-slate-950 font-bold"
                           : "bg-slate-100 text-slate-700 border border-slate-300"
                       }`}
                     >
@@ -272,9 +453,10 @@ export function AiEcosystemSection() {
                   </div>
 
                   {/* Interconnection Handoff Banner */}
-                  <div className="p-3 rounded-xl bg-slate-950 text-white border border-slate-800 shadow-sm space-y-1 font-mono text-xs">
+                  <div className="p-3.5 rounded-2xl bg-slate-950 text-white border border-slate-800 shadow-sm space-y-1 font-mono text-xs relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-sky-500/10 rounded-full blur-2xl pointer-events-none" />
                     <div className="flex items-center gap-1.5 text-sky-400 font-bold text-[11px]">
-                      <Zap className="w-3.5 h-3.5 text-sky-400" />
+                      <Zap className="w-3.5 h-3.5 text-sky-400 animate-pulse" />
                       <span>Interconnected Ecosystem Handoff:</span>
                     </div>
                     <p className="text-[11px] text-slate-300 font-sans leading-relaxed">
@@ -285,7 +467,7 @@ export function AiEcosystemSection() {
                   {/* Key Metrics Chips */}
                   <div className="grid grid-cols-3 gap-2 text-center">
                     {activeNode.keyMetrics.map((metric, i) => (
-                      <div key={i} className="p-2 rounded-xl bg-slate-50 border border-slate-200/80">
+                      <div key={i} className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-sky-300 transition-colors">
                         <span className="text-[10px] sm:text-[11px] font-bold text-slate-900 block truncate">
                           {metric}
                         </span>
@@ -293,18 +475,19 @@ export function AiEcosystemSection() {
                     ))}
                   </div>
 
-                  {/* Select Nodes Navigation Controls */}
+                  {/* Navigation & Live Cycle Indicator */}
                   <div className="pt-3 border-t border-slate-200 flex items-center justify-between">
-                    <span className="text-[11px] font-mono text-slate-400">
-                      Click any node around circle to inspect
-                    </span>
-                    <div className="flex gap-1.5">
-                      {ecosystemNodes.map((n) => (
+                    <div className="flex items-center gap-1.5 text-[11px] font-mono text-slate-400">
+                      <Activity className="w-3.5 h-3.5 text-emerald-500 animate-pulse" />
+                      <span>{autoRotate ? "Auto-cycling flywheel (hover to pause)" : "Paused on active node"}</span>
+                    </div>
+                    <div className="flex gap-1.5 items-center">
+                      {ECOSYSTEM_NODES.map((n) => (
                         <button
                           key={n.id}
                           onClick={() => setActiveNodeId(n.id)}
-                          className={`w-2.5 h-2.5 rounded-full transition-all ${
-                            n.id === activeNodeId ? "bg-sky-600 w-5" : "bg-slate-300 hover:bg-slate-400"
+                          className={`h-2 rounded-full transition-all duration-300 ${
+                            n.id === activeNodeId ? "bg-sky-600 w-5" : "bg-slate-300 hover:bg-slate-400 w-2"
                           }`}
                           aria-label={`Select node ${n.step}`}
                         />
@@ -317,50 +500,6 @@ export function AiEcosystemSection() {
           </div>
         </div>
 
-        {/* 4 Sequential Ecosystem Handoff Cards */}
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {ecosystemNodes.map((node) => {
-            const IconComponent = node.icon;
-
-            return (
-              <div
-                key={node.id}
-                onClick={() => setActiveNodeId(node.id)}
-                className={`p-3.5 rounded-2xl border transition-all duration-300 cursor-pointer ${
-                  activeNodeId === node.id
-                    ? "bg-slate-900 text-white border-sky-400 shadow-md scale-[1.02]"
-                    : "bg-white text-slate-900 border-slate-200/80 hover:border-slate-300 hover:shadow-sm"
-                }`}
-              >
-                <div className="flex items-center justify-between mb-2.5">
-                  <div
-                    className={`w-7 h-7 rounded-lg flex items-center justify-center text-white bg-gradient-to-r ${node.color}`}
-                  >
-                    <IconComponent className="w-3.5 h-3.5" />
-                  </div>
-                  <span
-                    className={`text-[9px] font-mono font-bold px-2 py-0.5 rounded-full ${
-                      activeNodeId === node.id ? "bg-sky-950 text-sky-300 border border-sky-800" : "bg-slate-100 text-slate-600"
-                    }`}
-                  >
-                    STEP {node.step}
-                  </span>
-                </div>
-
-                <h4 className="text-xs font-bold leading-tight mb-1">
-                  {node.title}
-                </h4>
-                <p
-                  className={`text-[10px] leading-relaxed line-clamp-2 ${
-                    activeNodeId === node.id ? "text-slate-300" : "text-slate-600"
-                  }`}
-                >
-                  {node.subtitle}
-                </p>
-              </div>
-            );
-          })}
-        </div>
       </div>
     </section>
   );

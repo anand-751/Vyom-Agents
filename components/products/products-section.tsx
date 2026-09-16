@@ -17,11 +17,42 @@ import {
   Layers,
   ShieldCheck,
   Zap,
-  Eye
+  Eye,
+  Lock,
+  FileText,
+  Landmark
 } from "lucide-react";
 import { PRODUCTS } from "@/lib/constants";
 import { VoiceDemoPlayer } from "./voice-demo-player";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
+
+const UPCOMING_PRODUCTS = [
+  {
+    id: "finance-agent",
+    name: "Vyom Finance Agent",
+    category: "Accounts Payable",
+    icon: FileText,
+  },
+  {
+    id: "finance-workforce",
+    name: "Vyom Finance Workforce",
+    category: "Finance AI",
+    icon: Landmark,
+  },
+  {
+    id: "policylens",
+    name: "Vyom PolicyLens",
+    category: "Browser Intel",
+    icon: Eye,
+  },
+  {
+    id: "safebrowse",
+    name: "Vyom SafeBrowse",
+    category: "Browser Intel",
+    icon: ShieldCheck,
+  },
+];
+
 
 export function ProductsSection() {
   const router = useRouter();
@@ -244,6 +275,95 @@ export function ProductsSection() {
               </div>
             </SpotlightCard>
           </motion.div>
+        </div>
+
+        {/* Upcoming Products Pipeline — Titles Marked as Upcoming with Grey Smoke Effect */}
+        <div className="mt-16 pt-12 border-t border-slate-200/80">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3">
+            <div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-[11px] font-mono font-bold uppercase tracking-wider mb-2 border border-slate-200">
+                <Clock className="w-3.5 h-3.5 text-slate-500" />
+                <span>R&D Pipeline</span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">
+                Upcoming Products
+              </h3>
+            </div>
+            <span className="text-xs font-mono text-slate-400">
+              Stealth Engineering &bull; In Active Development
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {UPCOMING_PRODUCTS.map((prod, index) => {
+              const IconComp = prod.icon;
+              return (
+                <motion.div
+                  key={prod.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.08 }}
+                  className="rounded-3xl border border-slate-200/90 bg-white/90 p-5 shadow-xs relative overflow-hidden flex flex-col justify-between group hover:border-slate-300 hover:shadow-md transition-all"
+                >
+                  {/* Top: Category Tag & Upcoming Badge */}
+                  <div>
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wide bg-amber-50 text-amber-800 border border-amber-200/80 flex items-center gap-1">
+                        <Clock className="w-2.5 h-2.5" />
+                        UPCOMING
+                      </span>
+                      <span className="text-[10px] font-mono font-bold text-slate-400">
+                        {prod.category}
+                      </span>
+                    </div>
+
+                    {/* Icon & Title ONLY */}
+                    <div className="flex items-start gap-3 mt-2 mb-2">
+                      <div className="w-10 h-10 rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700 shrink-0 group-hover:scale-105 transition-transform shadow-xs">
+                        <IconComp className="w-5 h-5" />
+                      </div>
+                      <h4 className="text-base font-bold text-slate-900 leading-snug pt-0.5">
+                        {prod.name}
+                      </h4>
+                    </div>
+                  </div>
+
+                  {/* Lower Card: Shrouded with Grey Smoke Effect */}
+                  <div className="relative h-28 rounded-2xl overflow-hidden mt-4 border border-slate-200/70 bg-gradient-to-b from-slate-100/70 via-slate-200/60 to-slate-300/80 shadow-inner">
+                    {/* Layer 1: Base Fog Mist Gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-400/50 via-slate-300/30 to-transparent backdrop-blur-[6px]" />
+
+                    {/* Layer 2: Drifting Atmospheric Smoke Waves */}
+                    <motion.div
+                      animate={{
+                        x: ["-15%", "15%", "-15%"],
+                        opacity: [0.6, 0.85, 0.6],
+                      }}
+                      transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                      className="absolute -inset-x-12 bottom-0 h-24 bg-gradient-to-t from-slate-500/40 via-slate-400/25 to-transparent blur-md pointer-events-none"
+                    />
+
+                    {/* Layer 3: Radial Smoke Cloud */}
+                    <div className="absolute inset-0 opacity-40 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-slate-700 via-slate-400 to-transparent pointer-events-none" />
+
+                    {/* Layer 4: Shrouded Stealth Indicator in Center of Smoke */}
+                    <div className="relative z-10 h-full flex flex-col items-center justify-center gap-1.5 text-center p-3">
+                      <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/75 backdrop-blur-md border border-slate-300/90 shadow-xs">
+                        <Lock className="w-3 h-3 text-slate-600" />
+                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-700">
+                          In Stealth Development
+                        </span>
+                      </div>
+                      <span className="text-[9px] font-mono text-slate-500">
+                        Architecture Sealed &bull; Waitlist Only
+                      </span>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

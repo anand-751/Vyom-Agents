@@ -39,8 +39,6 @@ export function ServicesSection() {
 
   return (
     <section id="services" className="py-24 relative bg-white border-t border-slate-200/80 overflow-hidden">
-      {/* Subtle Background Accent */}
-      <div className="absolute inset-0 bg-dot-subtle pointer-events-none opacity-50" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
@@ -57,8 +55,8 @@ export function ServicesSection() {
           </p>
         </div>
 
-        {/* Services Grid (4 Compact Cards in a balanced 2x2 grid with Vengeance UI Spotlight Cards) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {/* Services Grid (4 Cards in a clean 2x2 grid) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {SERVICES.map((service, index) => {
             const IconComponent = serviceIcons[service.id] || Cpu;
 
@@ -71,67 +69,56 @@ export function ServicesSection() {
                 transition={{ duration: 0.4, delay: index * 0.08 }}
               >
                 <SpotlightCard
-                  spotlightColor="rgba(99, 102, 241, 0.12)"
-                  className="rounded-2xl hover:border-indigo-400 hover:shadow-xl transition-all duration-300 group border border-slate-200/90 relative bg-white h-full"
+                  spotlightColor="rgba(99, 102, 241, 0.10)"
+                  className="rounded-3xl hover:border-indigo-400 hover:shadow-xl transition-all duration-300 group border border-slate-200/90 relative bg-white h-full"
                 >
-                  <div className="p-5 sm:p-6 flex flex-col justify-between h-full relative z-10">
+                  <div className="p-6 sm:p-8 flex flex-col justify-between h-full relative z-10">
                     {/* Top Badge & Header */}
                     <div>
-                      <div className="flex items-center justify-between mb-3">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-50 to-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 group-hover:scale-105 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300 shadow-sm">
-                          <IconComponent className="w-5 h-5" />
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-50 to-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 group-hover:scale-105 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                          <IconComponent className="w-6 h-6" />
                         </div>
-                        <span className="text-[11px] font-mono font-bold text-slate-400">
+                        <span className="text-xs font-mono font-bold text-slate-400 px-2.5 py-1 rounded-full bg-slate-50 border border-slate-200/70">
                           SERVICE {service.shortCode}
                         </span>
                       </div>
 
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-600 block mb-0.5">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-indigo-600 block mb-1">
                         {service.category}
                       </span>
-                      <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors leading-snug">
+                      <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2.5 group-hover:text-indigo-600 transition-colors leading-snug">
                         {service.title}
                       </h3>
-                      <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5">
                         {service.description}
                       </p>
 
                       {/* Deliverables Bullet List */}
-                      <div className="space-y-1.5 mb-4">
-                        {service.deliverables.map((item, idx) => (
-                          <div key={idx} className="flex items-start gap-2 text-[11px] sm:text-xs text-slate-700">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-indigo-500 shrink-0 mt-0.5" />
-                            <span className="line-clamp-2">{item}</span>
+                      <div className="space-y-2 mb-6">
+                        {service.deliverables.slice(0, 3).map((item, idx) => (
+                          <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-700">
+                            <CheckCircle2 className="w-4 h-4 text-indigo-500 shrink-0 mt-0.5" />
+                            <span className="leading-snug">{item}</span>
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    {/* Tech Badges & CTA */}
-                    <div>
-                      <div className="flex flex-wrap gap-1 mb-4">
-                        {service.techStack.map((tech) => (
-                          <span
-                            key={tech}
-                            className="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[9px] font-mono border border-slate-200 font-medium"
-                          >
-                            {tech}
-                          </span>
-                        ))}
+                    {/* Bottom ROI & Action */}
+                    <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                      <div className="flex items-center gap-1.5 text-emerald-700 bg-emerald-50/80 border border-emerald-200/60 px-3 py-1 rounded-full text-[11px] font-medium">
+                        <TrendingUp className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                        <span className="line-clamp-1">{service.roiMetric}</span>
                       </div>
 
-                      <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                        <span className="text-[11px] font-medium text-emerald-600 font-mono truncate max-w-[220px]">
-                          {service.roiMetric.slice(0, 38)}...
-                        </span>
-                        <button
-                          onClick={() => handleOpenServiceModal(service.queryParam)}
-                          className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 flex items-center gap-1 transition-colors shrink-0"
-                        >
-                          <span>Explore Scope</span>
-                          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                        </button>
-                      </div>
+                      <button
+                        onClick={() => handleOpenServiceModal(service.queryParam)}
+                        className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 flex items-center gap-1.5 transition-colors shrink-0 self-end sm:self-auto py-1"
+                      >
+                        <span>Explore Scope</span>
+                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                      </button>
                     </div>
                   </div>
                 </SpotlightCard>

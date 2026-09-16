@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { 
   ArrowRight, 
@@ -20,6 +22,7 @@ import {
 } from "lucide-react";
 import { BRAND_CONFIG } from "@/lib/constants";
 import { submitLeadAction } from "@/app/actions/contact";
+
 
 export function FooterSection() {
   const [email, setEmail] = useState("");
@@ -49,9 +52,12 @@ export function FooterSection() {
 
   return (
     <footer id="contact" className="bg-slate-950 text-white relative overflow-hidden pt-20 pb-12 border-t border-slate-800">
-      {/* Ambient background glows */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-sky-900/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-900/20 rounded-full blur-3xl pointer-events-none" />
+      {/* Top subtle radiant border */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-sky-500/40 to-transparent" />
+
+      {/* Atmospheric enterprise ambient glows */}
+      <div className="absolute top-0 left-1/4 w-[500px] h-[300px] bg-sky-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[500px] h-[300px] bg-indigo-600/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Enterprise Quick-Contact Banner */}
@@ -120,9 +126,11 @@ export function FooterSection() {
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="flex items-center gap-3 group">
               <div className="h-9 w-14 rounded-xl bg-white p-1 flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform">
-                <img
+                <Image
                   src="/logo.png"
                   alt="Vyom Agents Logo"
+                  width={56}
+                  height={36}
                   className="h-full w-auto object-contain mix-blend-multiply"
                 />
               </div>

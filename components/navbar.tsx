@@ -2,17 +2,15 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  Sparkles, 
   Menu, 
   X, 
-  ArrowRight, 
-  Activity,
-  Cpu,
-  Layers,
-  PhoneCall
+  ArrowRight,
+  PhoneCall,
+  Sparkles
 } from "lucide-react";
 import { BRAND_CONFIG } from "@/lib/constants";
 
@@ -24,7 +22,7 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 15);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -37,77 +35,87 @@ export function Navbar() {
     setMobileMenuOpen(false);
   };
 
+  const openVoiceProduct = () => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("product", "voice-agent");
+    router.push(`?${params.toString()}`, { scroll: false });
+    setMobileMenuOpen(false);
+  };
+
   const navLinks = [
     { name: "Products", href: "#products" },
     { name: "AI Ecosystem", href: "#ecosystem" },
+    { name: "Pricing & ROI", href: "#roi" },
     { name: "Services", href: "#services" },
+    { name: "Tech Stack", href: "#tech-stack" },
     { name: "Why Us", href: "#why-us" },
-    { name: "Contact", href: "#contact" },
   ];
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/80 backdrop-blur-md border-b border-slate-200/80 shadow-sm py-3"
-          : "bg-transparent py-5"
+          ? "bg-white/80 backdrop-blur-xl border-b border-slate-200/70 shadow-xs py-2.5"
+          : "bg-transparent py-4 sm:py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Official Logo with Infinite Loop */}
+          {/* Logo & Brand Identity */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative h-10 w-14 rounded-xl bg-white border border-slate-200/90 p-1 flex items-center justify-center shadow-sm group-hover:border-sky-400 group-hover:shadow-glow transition-all duration-300 overflow-hidden">
-              <img
+            <div className="relative h-10 w-13 rounded-xl bg-white border border-slate-200/80 p-1 flex items-center justify-center shadow-xs group-hover:border-sky-400 group-hover:shadow-glow transition-all duration-300 overflow-hidden">
+              <Image
                 src="/logo.png"
                 alt="Vyom Agents Logo"
-                className="h-full w-auto object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-300"
+                width={52}
+                height={40}
+                className="h-full w-auto object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"
+                priority
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-extrabold text-lg tracking-tight bg-gradient-to-r from-slate-950 via-slate-800 to-indigo-950 bg-clip-text text-transparent">
+              <span className="font-extrabold text-lg tracking-tight text-slate-900 group-hover:text-sky-700 transition-colors">
                 {BRAND_CONFIG.name}
               </span>
-              <span className="text-[10px] font-semibold tracking-wider uppercase text-sky-600 -mt-0.5 flex items-center gap-1.5">
+              <span className="text-[10px] font-semibold tracking-wider uppercase text-sky-600 -mt-0.5 flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                Agentic AI & Automation
+                Autonomous AI
               </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 bg-slate-100/70 p-1 rounded-full border border-slate-200/80 backdrop-blur-sm shadow-inner">
+          {/* Desktop Navigation Links — iPhone Glass Segmented Bar */}
+          <nav className="hidden lg:flex items-center gap-1 bg-slate-900/[0.04] backdrop-blur-2xl p-1.5 rounded-full border border-black/[0.08] shadow-[0_8px_32px_0_rgba(15,23,42,0.06),inset_0_1px_1px_0_rgba(255,255,255,0.95)] ring-1 ring-black/[0.03] relative">
+            {/* Apple Specular Top Reflection */}
+            <div className="absolute inset-x-4 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/90 to-transparent pointer-events-none" />
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="px-4 py-1.5 text-xs font-semibold text-slate-600 hover:text-slate-950 hover:bg-white rounded-full transition-all duration-200 shadow-none hover:shadow-sm"
+                className="relative px-4 py-1.5 text-xs font-semibold text-slate-700 hover:text-slate-950 rounded-full transition-all duration-150 hover:bg-slate-900/[0.09] active:bg-slate-900/[0.18] active:scale-[0.95] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.12)] group"
               >
-                {link.name}
+                <span className="relative z-10">{link.name}</span>
+                <span className="absolute inset-x-2 top-0.5 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
             ))}
           </nav>
 
           {/* Right Action CTAs */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2.5">
             <button
-              onClick={() => {
-                const params = new URLSearchParams(searchParams.toString());
-                params.set("product", "voice-agent");
-                router.push(`?${params.toString()}`, { scroll: false });
-              }}
-              className="flex items-center gap-1.5 text-xs font-medium text-slate-600 hover:text-sky-600 px-3 py-2 rounded-lg hover:bg-sky-50/60 transition-colors"
+              onClick={openVoiceProduct}
+              className="flex items-center gap-1.5 text-xs font-semibold text-slate-700 hover:text-slate-950 px-3.5 py-2 rounded-full bg-slate-900/[0.05] hover:bg-slate-900/[0.10] active:bg-slate-900/[0.20] border border-black/[0.08] hover:border-black/[0.14] backdrop-blur-2xl shadow-[0_2px_8px_rgba(0,0,0,0.03),inset_0_1px_1px_rgba(255,255,255,0.9)] transition-all active:scale-[0.95] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.12)]"
             >
-              <PhoneCall className="w-3.5 h-3.5 text-sky-500" />
-              <span>Voice Agent Demo</span>
+              <PhoneCall className="w-3.5 h-3.5 text-sky-600" />
+              <span>Voice Demo</span>
             </button>
 
             <button
               onClick={openContactModal}
-              className="relative group overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-sky-500"
+              className="relative group overflow-hidden rounded-full p-[1px] focus:outline-none active:scale-[0.96] transition-transform"
             >
-              <span className="absolute inset-0 bg-gradient-to-r from-sky-600 via-indigo-600 to-purple-600 rounded-full transition-all group-hover:scale-105" />
-              <span className="relative flex items-center gap-2 px-5 py-2 rounded-full bg-slate-900 text-white text-xs font-semibold transition-all group-hover:bg-slate-800 shadow-sm">
+              <span className="absolute inset-0 bg-gradient-to-r from-sky-500 via-indigo-600 to-purple-600 rounded-full transition-all group-hover:scale-105" />
+              <span className="relative flex items-center gap-1.5 px-4.5 py-2 rounded-full bg-slate-900 text-white text-xs font-semibold transition-all group-hover:bg-slate-800 active:bg-slate-950 shadow-xs">
                 <span>Book Discovery Call</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
               </span>
@@ -118,56 +126,53 @@ export function Navbar() {
           <div className="md:hidden flex items-center gap-2">
             <button
               onClick={openContactModal}
-              className="px-3 py-1.5 bg-slate-900 text-white rounded-full text-xs font-medium"
+              className="px-3 py-1.5 bg-slate-900 text-white rounded-full text-xs font-semibold shadow-xs hover:bg-slate-800 active:bg-slate-950 active:scale-95 transition-all"
             >
               Book Call
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-slate-700 hover:text-slate-950 rounded-lg hover:bg-slate-100"
+              className="p-2 text-slate-700 hover:text-slate-950 rounded-xl bg-slate-900/[0.05] hover:bg-slate-900/[0.10] active:bg-slate-900/[0.20] border border-black/[0.08] active:scale-90 transition-all backdrop-blur-xl"
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white/95 backdrop-blur-xl border-b border-slate-200 px-4 pt-2 pb-6 space-y-2 shadow-xl"
+            className="md:hidden bg-white/95 backdrop-blur-2xl border-b border-slate-200/80 px-4 pt-2 pb-6 space-y-1 shadow-xl"
           >
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 text-sm font-semibold text-slate-700 hover:text-sky-600 hover:bg-sky-50/50 rounded-lg"
+                className="block px-3.5 py-2.5 text-sm font-medium text-slate-700 hover:text-slate-950 hover:bg-slate-900/[0.07] active:bg-slate-900/[0.15] active:scale-[0.98] rounded-xl transition-all"
               >
                 {link.name}
               </a>
             ))}
+
+
             <div className="pt-3 border-t border-slate-100 flex flex-col gap-2">
               <button
-                onClick={() => {
-                  const params = new URLSearchParams(searchParams.toString());
-                  params.set("product", "voice-agent");
-                  router.push(`?${params.toString()}`, { scroll: false });
-                  setMobileMenuOpen(false);
-                }}
-                className="w-full py-2 text-xs font-semibold text-sky-700 bg-sky-50 rounded-lg flex items-center justify-center gap-2"
+                onClick={openVoiceProduct}
+                className="w-full py-2.5 text-xs font-semibold text-sky-700 bg-sky-50 rounded-xl flex items-center justify-center gap-2 border border-sky-200"
               >
                 <PhoneCall className="w-4 h-4 text-sky-600" />
                 <span>Test Live Voice Agent</span>
               </button>
               <button
                 onClick={openContactModal}
-                className="w-full py-2.5 text-xs font-semibold text-white bg-slate-900 rounded-lg flex items-center justify-center gap-2 shadow-md"
+                className="w-full py-2.5 text-xs font-semibold text-white bg-slate-900 rounded-xl flex items-center justify-center gap-2 shadow-md"
               >
                 <span>Book Discovery Call</span>
                 <ArrowRight className="w-4 h-4" />

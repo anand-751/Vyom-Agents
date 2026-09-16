@@ -29,7 +29,7 @@ export function TabModalController() {
   const isAnyModalOpen = Boolean(selectedProduct || selectedService || isContactModal);
 
   // Close helper
-  const closeModal = () => {
+  const closeModal = React.useCallback(() => {
     const params = new URLSearchParams(searchParams.toString());
     params.delete("product");
     params.delete("tab");
@@ -37,7 +37,7 @@ export function TabModalController() {
     params.delete("view");
     const newUrl = params.toString() ? `?${params.toString()}` : window.location.pathname;
     router.push(newUrl, { scroll: false });
-  };
+  }, [searchParams, router]);
 
   const openContactFromModal = () => {
     const params = new URLSearchParams(searchParams.toString());
@@ -56,7 +56,8 @@ export function TabModalController() {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isAnyModalOpen]);
+  }, [isAnyModalOpen, closeModal]);
+
 
   // Lock body scroll when modal is active
   useEffect(() => {
