@@ -334,23 +334,6 @@ export const SERVICES: Service[] = [
     roiMetric: "+300% 5-star review acquisition rate & rapid escalation handling",
     queryParam: "reputation",
   },
-  {
-    id: "rag",
-    title: "Self-Correcting RAG Systems",
-    shortCode: "08",
-    category: "Knowledge Intelligence",
-    description:
-      "Enterprise hybrid vector search with reflection critique loops that audit retrieved citations and self-correct queries before answers are generated to eliminate hallucinations.",
-    deliverables: [
-      "Self-correcting reflection loops: Critique agent audits retrieved documents and rewrites queries automatically",
-      "Dense semantic vector search + BM25 sparse keyword hybrid retrieval with Cohere reranking",
-      "Document ingestion pipelines for unstructured PDFs, contracts, manuals, and internal wikis",
-      "Verifiable citation highlighting with page & paragraph precision",
-    ],
-    techStack: ["Pinecone / Qdrant", "LlamaIndex", "LangGraph", "Cohere Rerank"],
-    roiMetric: "Zero hallucination guarantee backed by self-evaluating critique loops",
-    queryParam: "rag",
-  },
 ];
 
 export const COMPARISON_ITEMS = [

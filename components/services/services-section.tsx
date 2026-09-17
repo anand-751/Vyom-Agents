@@ -102,21 +102,9 @@ export function ServicesSection() {
                         </h3>
 
                         {/* Concise One-Liner / Showcase Description */}
-                        <p className="text-xs text-slate-600 leading-relaxed mb-3 line-clamp-2">
+                        <p className="text-xs text-slate-600 leading-relaxed mb-4 line-clamp-3">
                           {service.description}
                         </p>
-
-                        {/* Tech Stack Pills */}
-                        <div className="flex flex-wrap gap-1.5 mb-3">
-                          {service.techStack.slice(0, 3).map((tech, i) => (
-                            <span
-                              key={i}
-                              className="text-[10px] font-mono font-medium px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 border border-slate-200/60"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
                       </div>
 
                       {/* Bottom: ROI Snippet & Action Arrow */}

@@ -185,6 +185,12 @@ export function FooterSection() {
               </li>
               <li>
                 <a href="#products" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
+                  <span>Vyom Lawsuit</span>
+                  <span className="text-[9px] bg-amber-950 text-amber-300 px-1.5 py-0.2 rounded font-mono">SOON</span>
+                </a>
+              </li>
+              <li>
+                <a href="#products" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
                   <span>PolicyLens & SafeBrowse</span>
                   <span className="text-[9px] bg-amber-950 text-amber-300 px-1.5 py-0.2 rounded font-mono">SOON</span>
                 </a>

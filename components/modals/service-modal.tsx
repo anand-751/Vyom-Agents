@@ -3,17 +3,10 @@
 import React, { useState } from "react";
 import { 
   X, 
-  CheckCircle2, 
-  Cpu, 
-  Layers, 
   ArrowRight, 
-  Clock, 
-  Zap, 
-  ShieldCheck, 
-  TrendingUp,
-  Code
+  TrendingUp 
 } from "lucide-react";
-import { Service, SERVICES } from "@/lib/constants";
+import { Service } from "@/lib/constants";
 
 interface ServiceModalProps {
   service: Service;
@@ -22,7 +15,7 @@ interface ServiceModalProps {
 }
 
 export function ServiceModal({ service, onClose, onBookCall }: ServiceModalProps) {
-  const [activeTab, setActiveTab] = useState<"scope" | "stack" | "roi">("scope");
+  const [activeTab, setActiveTab] = useState<"scope" | "roi">("scope");
 
   return (
     <div className="flex flex-col max-h-[85vh] bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
@@ -58,16 +51,6 @@ export function ServiceModal({ service, onClose, onBookCall }: ServiceModalProps
           }`}
         >
           Scope & Deliverables
-        </button>
-        <button
-          onClick={() => setActiveTab("stack")}
-          className={`pb-3 border-b-2 px-3 transition-colors ${
-            activeTab === "stack"
-              ? "border-indigo-600 text-indigo-700 font-bold"
-              : "border-transparent hover:text-slate-900"
-          }`}
-        >
-          Tech Stack & Architecture
         </button>
         <button
           onClick={() => setActiveTab("roi")}
@@ -109,37 +92,6 @@ export function ServiceModal({ service, onClose, onBookCall }: ServiceModalProps
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
-        )}
-
-        {activeTab === "stack" && (
-          <div className="space-y-6">
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
-                Supported Technologies & Frameworks
-              </h4>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                {service.techStack.map((tech, idx) => (
-                  <div
-                    key={idx}
-                    className="p-3 rounded-xl bg-slate-900 text-white font-mono text-xs flex items-center gap-2 border border-slate-800"
-                  >
-                    <Code className="w-3.5 h-3.5 text-sky-400 shrink-0" />
-                    <span className="truncate">{tech}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
-              <span className="text-xs font-bold text-slate-900 block flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                Deterministic Verification Protocol
-              </span>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                All workflows built by Vyom implement strict schema validation (Pydantic/Zod), retry backoffs, dead-letter routing, and full observability telemetry (OpenTelemetry/Langfuse).
-              </p>
             </div>
           </div>
         )}

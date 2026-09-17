@@ -14,7 +14,8 @@ import {
   Eye, 
   Lock, 
   FileText, 
-  Landmark 
+  Landmark,
+  Scale 
 } from "lucide-react";
 import { PRODUCTS } from "@/lib/constants";
 import { VoiceDemoPlayer } from "./voice-demo-player";
@@ -32,6 +33,12 @@ const UPCOMING_PRODUCTS = [
     name: "Vyom Finance Workforce",
     category: "Finance AI",
     icon: Landmark,
+  },
+  {
+    id: "lawsuit",
+    name: "Vyom Lawsuit",
+    category: "Legal AI",
+    icon: Scale,
   },
   {
     id: "policylens",
@@ -210,7 +217,7 @@ export function ProductsSection() {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
             {UPCOMING_PRODUCTS.map((prod, index) => {
               const IconComp = prod.icon;
               return (
