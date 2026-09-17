@@ -9,6 +9,7 @@ import { TechStackShowcase } from "@/components/techstack/tech-stack-showcase";
 import { WhyUsSection } from "@/components/comparison/why-us-section";
 import { FooterSection } from "@/components/footer/footer-section";
 import { TabModalController } from "@/components/modals/tab-modal-controller";
+import { FloatingChatWidget } from "@/components/chat/floating-chat-widget";
 
 export default function HomePage() {
   return (
@@ -69,6 +70,11 @@ export default function HomePage() {
       {/* Deep-Linked Multi-Tab Modal & Lead Drawer Controller */}
       <Suspense fallback={null}>
         <TabModalController />
+      </Suspense>
+
+      {/* Floating AI Chat Bot Assistant Dialog */}
+      <Suspense fallback={null}>
+        <FloatingChatWidget />
       </Suspense>
     </main>
   );
