@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { 
@@ -10,13 +10,14 @@ import {
   Workflow, 
   ArrowRight, 
   Sparkles, 
-  CheckCircle2, 
   Layers, 
-  ChevronRight,
   TrendingUp,
-  Cpu
+  Cpu,
+  Network,
+  ArrowLeftRight,
+  Globe2
 } from "lucide-react";
-import { SERVICES, Service } from "@/lib/constants";
+import { SERVICES } from "@/lib/constants";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 
@@ -24,11 +25,15 @@ export function ServicesSection() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const serviceIcons: Record<string, any> = {
-    aieo: Search,
-    reputation: Star,
-    rag: Database,
-    autopilot: Workflow,
+  const serviceIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+    "rpa-automation": Workflow,
+    "multiagent-systems": Network,
+    "agent-to-agent": ArrowLeftRight,
+    "crm-erp": Layers,
+    "websites": Globe2,
+    "aieo": Search,
+    "reputation": Star,
+    "rag": Database,
   };
 
   const handleOpenServiceModal = (queryParam: string) => {
@@ -51,12 +56,12 @@ export function ServicesSection() {
             Enterprise Agentic Capabilities
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
-            From algorithmic LLM visibility (AIEO) and autonomous reputation management to self-correcting RAG infrastructure and end-to-end multi-agent business autopilots.
+            Specialized engineering across self-healing visual automation, multi-agent swarms, custom enterprise ERP/CRM systems, and AI search engine optimization.
           </p>
         </div>
 
-        {/* Services Grid (4 Cards in a clean 2x2 grid) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Compact Services Showcase Grid (8 Cards in a balanced 4-col responsive grid) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
           {SERVICES.map((service, index) => {
             const IconComponent = serviceIcons[service.id] || Cpu;
 
@@ -66,62 +71,69 @@ export function ServicesSection() {
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.08 }}
+                transition={{ duration: 0.35, delay: index * 0.05 }}
               >
-                <SpotlightCard
-                  spotlightColor="rgba(99, 102, 241, 0.10)"
-                  className="rounded-3xl hover:border-indigo-400 hover:shadow-xl transition-all duration-300 group border border-slate-200/90 relative bg-white h-full"
+                <div
+                  onClick={() => handleOpenServiceModal(service.queryParam)}
+                  className="cursor-pointer h-full"
                 >
-                  <div className="p-6 sm:p-8 flex flex-col justify-between h-full relative z-10">
-                    {/* Top Badge & Header */}
-                    <div>
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-50 to-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 group-hover:scale-105 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300 shadow-sm">
-                          <IconComponent className="w-6 h-6" />
+                  <SpotlightCard
+                    spotlightColor="rgba(99, 102, 241, 0.12)"
+                    className="rounded-2xl hover:border-indigo-400 hover:shadow-lg transition-all duration-300 group border border-slate-200/90 relative bg-white h-full"
+                  >
+                    <div className="p-5 flex flex-col justify-between h-full relative z-10">
+                      <div>
+                        {/* Top: Icon & Service Code Badge */}
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-50 to-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 group-hover:scale-105 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300 shadow-xs">
+                            <IconComponent className="w-5 h-5" />
+                          </div>
+                          <span className="text-[10px] font-mono font-bold text-slate-400 px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200/70">
+                            SERVICE {service.shortCode}
+                          </span>
                         </div>
-                        <span className="text-xs font-mono font-bold text-slate-400 px-2.5 py-1 rounded-full bg-slate-50 border border-slate-200/70">
-                          SERVICE {service.shortCode}
+
+                        {/* Category & Title */}
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-600 block mb-1">
+                          {service.category}
+                        </span>
+                        <h3 className="text-base font-bold text-slate-900 mb-1.5 group-hover:text-indigo-600 transition-colors leading-snug line-clamp-1">
+                          {service.title}
+                        </h3>
+
+                        {/* Concise One-Liner / Showcase Description */}
+                        <p className="text-xs text-slate-600 leading-relaxed mb-3 line-clamp-2">
+                          {service.description}
+                        </p>
+
+                        {/* Tech Stack Pills */}
+                        <div className="flex flex-wrap gap-1.5 mb-3">
+                          {service.techStack.slice(0, 3).map((tech, i) => (
+                            <span
+                              key={i}
+                              className="text-[10px] font-mono font-medium px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 border border-slate-200/60"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Bottom: ROI Snippet & Action Arrow */}
+                      <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-1 text-emerald-700 text-[10px] font-medium truncate max-w-[135px]">
+                          <TrendingUp className="w-3 h-3 text-emerald-600 shrink-0" />
+                          <span className="truncate">{service.roiMetric}</span>
+                        </div>
+
+                        <span className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 flex items-center gap-1 transition-colors shrink-0">
+                          <span>Scope</span>
+                          <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                         </span>
                       </div>
-
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-indigo-600 block mb-1">
-                        {service.category}
-                      </span>
-                      <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2.5 group-hover:text-indigo-600 transition-colors leading-snug">
-                        {service.title}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5">
-                        {service.description}
-                      </p>
-
-                      {/* Deliverables Bullet List */}
-                      <div className="space-y-2 mb-6">
-                        {service.deliverables.slice(0, 3).map((item, idx) => (
-                          <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-700">
-                            <CheckCircle2 className="w-4 h-4 text-indigo-500 shrink-0 mt-0.5" />
-                            <span className="leading-snug">{item}</span>
-                          </div>
-                        ))}
-                      </div>
                     </div>
-
-                    {/* Bottom ROI & Action */}
-                    <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                      <div className="flex items-center gap-1.5 text-emerald-700 bg-emerald-50/80 border border-emerald-200/60 px-3 py-1 rounded-full text-[11px] font-medium">
-                        <TrendingUp className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                        <span className="line-clamp-1">{service.roiMetric}</span>
-                      </div>
-
-                      <button
-                        onClick={() => handleOpenServiceModal(service.queryParam)}
-                        className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 flex items-center gap-1.5 transition-colors shrink-0 self-end sm:self-auto py-1"
-                      >
-                        <span>Explore Scope</span>
-                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                      </button>
-                    </div>
-                  </div>
-                </SpotlightCard>
+                  </SpotlightCard>
+                </div>
               </motion.div>
             );
           })}

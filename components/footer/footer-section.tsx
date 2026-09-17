@@ -172,13 +172,23 @@ export function FooterSection() {
                 </a>
               </li>
               <li>
-                <a href="?product=orchestrator-waitlist" className="hover:text-purple-400 transition-colors flex items-center gap-1.5">
-                  <span>Workflow Orchestrator</span>
-                  <span className="text-[9px] bg-amber-950 text-amber-300 px-1.5 py-0.2 rounded font-mono">BETA</span>
+                <a href="#products" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
+                  <span>Vyom Finance Agent</span>
+                  <span className="text-[9px] bg-amber-950 text-amber-300 px-1.5 py-0.2 rounded font-mono">SOON</span>
                 </a>
               </li>
-              <li><a href="#products" className="hover:text-white transition-colors">SIP Trunk Connectors</a></li>
-              <li><a href="#products" className="hover:text-white transition-colors">Voice Synthesis Engine</a></li>
+              <li>
+                <a href="#products" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
+                  <span>Vyom Finance Workforce</span>
+                  <span className="text-[9px] bg-amber-950 text-amber-300 px-1.5 py-0.2 rounded font-mono">SOON</span>
+                </a>
+              </li>
+              <li>
+                <a href="#products" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
+                  <span>PolicyLens & SafeBrowse</span>
+                  <span className="text-[9px] bg-amber-950 text-amber-300 px-1.5 py-0.2 rounded font-mono">SOON</span>
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -188,11 +198,12 @@ export function FooterSection() {
               Services
             </span>
             <ul className="space-y-2 text-slate-400">
+              <li><a href="?tab=rpa-automation" className="hover:text-white transition-colors">Self-Healing RPA & UI</a></li>
+              <li><a href="?tab=multiagent-systems" className="hover:text-white transition-colors">Multiagent Systems</a></li>
+              <li><a href="?tab=agent-to-agent" className="hover:text-white transition-colors">Agent to Agent (A2A)</a></li>
+              <li><a href="?tab=crm-erp" className="hover:text-white transition-colors">Custom CRM / ERP Softwares</a></li>
+              <li><a href="?tab=websites" className="hover:text-white transition-colors">Websites & Web Apps</a></li>
               <li><a href="?tab=aieo" className="hover:text-white transition-colors">AIEO Optimization</a></li>
-              <li><a href="?tab=workforce" className="hover:text-white transition-colors">Custom Agentic Workforce</a></li>
-              <li><a href="?tab=automations" className="hover:text-white transition-colors">Enterprise AI Integrations</a></li>
-              <li><a href="?tab=apps" className="hover:text-white transition-colors">Native Desktop & Web Apps</a></li>
-              <li><a href="?tab=rag" className="hover:text-white transition-colors">Custom RAG Chatbots</a></li>
             </ul>
           </div>
 

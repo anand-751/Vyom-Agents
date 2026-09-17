@@ -23,7 +23,10 @@ export function TabModalController() {
 
   // Determine active item
   const selectedProduct = PRODUCTS.find((p) => p.queryParam === productParam || p.id === productParam);
-  const selectedService = SERVICES.find((s) => s.queryParam === tabParam || s.id === tabParam);
+  const selectedService = SERVICES.find((s) => s.queryParam === tabParam || s.id === tabParam)
+    || (tabParam === "workforce" ? SERVICES.find((s) => s.id === "multiagent-systems") : undefined)
+    || (tabParam === "automations" || tabParam === "autopilot" || tabParam === "orchestrator" ? SERVICES.find((s) => s.id === "rpa-automation") : undefined)
+    || (tabParam === "apps" ? SERVICES.find((s) => s.id === "websites") : undefined);
   const isContactModal = modalParam === "contact";
 
   const isAnyModalOpen = Boolean(selectedProduct || selectedService || isContactModal);
