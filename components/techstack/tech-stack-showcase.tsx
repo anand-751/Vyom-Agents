@@ -65,13 +65,13 @@ const TECH_ITEMS: TechItem[] = [
   { 
     name: "Tracing & Observability Tools", 
     category: "ai", 
-    role: "LangSmith, Langfuse, Phoenix (Arize), and Weights & Biases Weave logging LLM prompts, function inputs, tool outputs, and step execution timelines.", 
+    role: "LangSmith and Langfuse logging LLM prompts, function inputs, tool outputs, and step execution timelines.", 
     tag: "Telemetry & Logs" 
   },
   { 
     name: "Evals & Trajectory Frameworks", 
     category: "ai", 
-    role: "Ragas, DeepEval, and DSPy automated scoring suites testing agent trajectory accuracy and tool-calling success rates over benchmark datasets.", 
+    role: "Ragas and DeepEval automated scoring suites testing agent trajectory accuracy and tool-calling success rates over benchmark datasets.", 
     tag: "Automated Evals" 
   },
   { 
@@ -85,7 +85,6 @@ const TECH_ITEMS: TechItem[] = [
   { name: "Next.js & React Framework", category: "all-only", role: "Server-side rendering, API route orchestration, and real-time interactive user interfaces.", tag: "Frontend Runtime" },
   { name: "TypeScript Type Mesh", category: "all-only", role: "End-to-end type safety, strict interface contracts, and schema validation across microservices.", tag: "Language" },
   { name: "Python Multi-Agent Engine", category: "all-only", role: "Asynchronous multi-agent execution runtime, numerical compute, and LLM reasoning mesh.", tag: "AI Engine" },
-  { name: "Rust High-Speed Core", category: "all-only", role: "Ultra-low-latency native desktop automation, memory-safe execution, and system IPC.", tag: "Performance" },
   { name: "Salesforce & HubSpot CRM", category: "enterprise", role: "Autonomous lead qualification, opportunity logging, and contact sync with zero human friction.", tag: "CRM Connector" },
   { name: "SAP S/4HANA & QuickBooks", category: "enterprise", role: "Self-healing invoice reconciliation, ledger updates, and automated inventory tracking.", tag: "ERP Connector" },
   { name: "Google Workspace & EHR", category: "enterprise", role: "Bidirectional Google Calendar scheduling, Gmail sync, and healthcare EHR interoperability.", tag: "Productivity" },
@@ -97,8 +96,6 @@ const TECH_ITEMS: TechItem[] = [
   { name: "AWS & Cloud Infrastructure", category: "all-only", role: "Dedicated VPCs, EC2 GPU clusters, S3 object storage, and sovereign cloud deployments.", tag: "Cloud Infrastructure" },
   { name: "LangSmith & Langfuse", category: "evals", role: "Real-time prompt tracing, step latency tracking, token cost attribution, and execution graph visualization.", tag: "Tracing & Telemetry" },
   { name: "Ragas & DeepEval Suite", category: "evals", role: "Automated LLM-as-a-judge scoring frameworks testing agent trajectory accuracy, context precision, and safety.", tag: "Automated Evals" },
-  { name: "Arize Phoenix & W&B Weave", category: "evals", role: "Open-source telemetry tracing, evaluation datasets, and real-time production performance monitoring.", tag: "Observability Mesh" },
-  { name: "DSPy Optimization Engine", category: "evals", role: "Declarative prompt compilation and automated self-correcting prompt tuning loops based on trajectory metrics.", tag: "Prompt Compiler" },
 ];
 
 export function TechStackShowcase() {
