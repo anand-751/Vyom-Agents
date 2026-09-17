@@ -30,7 +30,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative pt-[166px] sm:pt-[198px] pb-24 sm:pb-30 overflow-hidden bg-white min-h-[85vh] flex flex-col justify-center">
+    <section className="relative pt-[116px] sm:pt-[148px] pb-24 sm:pb-30 overflow-hidden bg-white min-h-[85vh] flex flex-col justify-center">
       {/* Subtle Background Grid and Dynamic Animated Ambient Glow Overlays */}
       <div className="absolute inset-0 bg-grid-subtle pointer-events-none opacity-80" />
       <motion.div
