@@ -55,87 +55,87 @@ export function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/85 backdrop-blur-2xl border-b border-slate-200/70 shadow-sm py-3.5 sm:py-4"
-          : "bg-transparent py-5 sm:py-7"
+          ? "bg-white/85 backdrop-blur-2xl border-b border-slate-200/70 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] py-2 sm:py-2.5"
+          : "bg-transparent py-3 sm:py-3.5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo & Brand Identity */}
-          <Link href="/" className="flex items-center gap-3.5 group">
-            <div className="relative h-12 sm:h-13 w-15 sm:w-16 rounded-2xl bg-white border border-slate-200/80 p-1.5 flex items-center justify-center shadow-xs group-hover:border-sky-400 group-hover:shadow-glow transition-all duration-300 overflow-hidden shrink-0">
+          <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">
+            <div className="relative h-9 sm:h-10 w-11 sm:w-12 rounded-xl bg-white border border-slate-200/80 p-1 flex items-center justify-center shadow-xs group-hover:border-sky-400 group-hover:shadow-glow transition-all duration-300 overflow-hidden shrink-0">
               <Image
                 src="/logo.png"
                 alt="Vyom Agents Logo"
-                width={68}
-                height={52}
+                width={48}
+                height={36}
                 className="h-full w-auto object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"
                 priority
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-black text-xl sm:text-2xl tracking-tight text-slate-900 group-hover:text-sky-700 transition-colors">
+              <span className="font-extrabold text-base sm:text-lg tracking-tight text-slate-900 group-hover:text-sky-700 transition-colors leading-none">
                 {BRAND_CONFIG.name}
               </span>
-              <span className="text-xs font-semibold tracking-wider uppercase text-sky-600 -mt-0.5 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="text-[10px] font-semibold tracking-wider uppercase text-sky-600 mt-1 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 Autonomous AI
               </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation Links — iPhone Glass Segmented Bar */}
-          <nav className="hidden lg:flex items-center gap-1.5 bg-slate-900/[0.04] backdrop-blur-2xl p-2 rounded-full border border-black/[0.08] shadow-[0_8px_32px_0_rgba(15,23,42,0.06),inset_0_1px_1px_0_rgba(255,255,255,0.95)] ring-1 ring-black/[0.03] relative">
+          {/* Desktop Navigation Links — Sleek Single-Line iPhone Glass Segmented Bar */}
+          <nav className="hidden lg:flex items-center gap-0.5 bg-slate-900/[0.04] backdrop-blur-2xl p-1 px-1.5 rounded-full border border-black/[0.07] shadow-[0_2px_14px_0_rgba(15,23,42,0.04),inset_0_1px_1px_0_rgba(255,255,255,0.95)] ring-1 ring-black/[0.02] relative shrink-0">
             {/* Apple Specular Top Reflection */}
-            <div className="absolute inset-x-5 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/95 to-transparent pointer-events-none" />
+            <div className="absolute inset-x-4 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/95 to-transparent pointer-events-none" />
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="relative px-5 py-2 text-sm font-semibold text-slate-700 hover:text-slate-950 rounded-full transition-all duration-150 hover:bg-slate-900/[0.09] active:bg-slate-900/[0.18] active:scale-[0.95] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.12)] group"
+                className="relative px-3.5 py-1.5 text-xs font-semibold text-slate-700 hover:text-slate-950 rounded-full transition-all duration-150 hover:bg-slate-900/[0.08] active:bg-slate-900/[0.16] active:scale-[0.96] whitespace-nowrap group"
               >
                 <span className="relative z-10">{link.name}</span>
-                <span className="absolute inset-x-3 top-0.5 h-[1px] bg-gradient-to-r from-transparent via-white/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <span className="absolute inset-x-2.5 top-0.5 h-[1px] bg-gradient-to-r from-transparent via-white/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
             ))}
           </nav>
 
           {/* Right Action CTAs */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2.5 shrink-0">
             <button
               onClick={openVoiceProduct}
-              className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-slate-950 px-4.5 py-2.5 rounded-full bg-slate-900/[0.05] hover:bg-slate-900/[0.10] active:bg-slate-900/[0.20] border border-black/[0.08] hover:border-black/[0.14] backdrop-blur-2xl shadow-[0_2px_8px_rgba(0,0,0,0.03),inset_0_1px_1px_rgba(255,255,255,0.9)] transition-all active:scale-[0.95] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.12)]"
+              className="flex items-center gap-1.5 text-xs font-semibold text-slate-700 hover:text-slate-950 px-3.5 py-1.5 rounded-full bg-slate-900/[0.04] hover:bg-slate-900/[0.09] active:bg-slate-900/[0.18] border border-black/[0.07] hover:border-black/[0.13] backdrop-blur-2xl shadow-[0_2px_6px_rgba(0,0,0,0.02),inset_0_1px_1px_rgba(255,255,255,0.9)] transition-all active:scale-[0.96] whitespace-nowrap"
             >
-              <PhoneCall className="w-4 h-4 text-sky-600" />
+              <PhoneCall className="w-3.5 h-3.5 text-sky-600" />
               <span>Voice Demo</span>
             </button>
 
             <button
               onClick={openContactModal}
-              className="relative group overflow-hidden rounded-full p-[1px] focus:outline-none active:scale-[0.96] transition-transform"
+              className="relative group overflow-hidden rounded-full p-[1px] focus:outline-none active:scale-[0.96] transition-transform shrink-0"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-sky-500 via-indigo-600 to-purple-600 rounded-full transition-all group-hover:scale-105" />
-              <span className="relative flex items-center gap-2 px-5.5 py-2.5 rounded-full bg-slate-900 text-white text-sm font-semibold transition-all group-hover:bg-slate-800 active:bg-slate-950 shadow-md">
+              <span className="relative flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-slate-900 text-white text-xs font-semibold transition-all group-hover:bg-slate-800 active:bg-slate-950 shadow-sm whitespace-nowrap">
                 <span>Book Discovery Call</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
               </span>
             </button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center gap-2.5">
+          <div className="md:hidden flex items-center gap-2">
             <button
               onClick={openContactModal}
-              className="px-3.5 py-2 bg-slate-900 text-white rounded-full text-xs font-semibold shadow-xs hover:bg-slate-800 active:bg-slate-950 active:scale-95 transition-all"
+              className="px-3 py-1.5 bg-slate-900 text-white rounded-full text-xs font-semibold shadow-xs hover:bg-slate-800 active:bg-slate-950 active:scale-95 transition-all whitespace-nowrap"
             >
               Book Call
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 text-slate-700 hover:text-slate-950 rounded-xl bg-slate-900/[0.05] hover:bg-slate-900/[0.10] active:bg-slate-900/[0.20] border border-black/[0.08] active:scale-90 transition-all backdrop-blur-xl"
+              className="p-2 text-slate-700 hover:text-slate-950 rounded-xl bg-slate-900/[0.05] hover:bg-slate-900/[0.10] active:bg-slate-900/[0.20] border border-black/[0.08] active:scale-90 transition-all backdrop-blur-xl"
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>
           </div>
         </div>
