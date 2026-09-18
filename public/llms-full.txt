@@ -1,0 +1,95 @@
+# Vyom Agents — Complete Technical & Enterprise Knowledge Repository
+
+Author: Vyom Agents Engineering Team
+Canonical Domain: https://vyom-agents.vercel.app
+Repository: https://github.com/anand-751/Vyom-Agents
+License & IP: 100% Client Ownership on Delivered Enterprise Code
+
+---
+
+## 1. Executive Summary & Core Thesis
+Vyom Agents (Vyom Autonomous Intelligence) is an elite enterprise Agentic AI & AI Automation company architecting sovereign multi-agent ecosystems, sub-400ms conversational voice agents, and self-healing visual automation systems.
+- Core Thesis: "Beyond Automations. Deploy Autonomous AI Workforce Today."
+- Unlike brittle traditional workflow tools (Zapier, Make, basic RPA) that crash whenever an API changes or a DOM button relocates, Vyom Agents builds autonomous reasoning swarms with self-evaluating loops, dynamic tool calling, and self-healing visual automation.
+
+## 2. Key Operational Metrics & Benchmarks
+- Voice Latency: Sub-400ms (typically 320ms end-to-end for STT + LLM reasoning + TTS streaming).
+- Task Execution Accuracy: 99.4% with self-healing verification loops.
+- Throughput Multiplier: 10x continuous 24/7 autonomous operation without downtime.
+- Safety & Guardrails: 100% deterministic safety backed by sandboxed execution harnesses and strict role-based policy guardrails.
+
+## 3. Flagship Products
+
+### AI Voice Receptionist (Live Flagship Product)
+- Purpose: 24/7 inbound reception, multi-provider triage, and outbound patient/client engagement.
+- Latency: 320ms typical response time with mid-sentence interruption tolerance.
+- Calendar & EHR Sync: Native bidirectional sync with Google Calendar, Microsoft Outlook, Cal.com, Dentrix, Epic, AthenaHealth, Salesforce, HubSpot, and custom SQL databases.
+- Multi-lingual: 45+ languages including English, Hindi, Hinglish, Spanish, French, German, and Mandarin.
+- Telephony: 15+ concurrent calls via Twilio, Asterisk, and SIP trunking.
+- ROI: Eliminates 100% of missed after-hours calls, boosts appointment conversion by +42%, and replaces up to 3 receptionist phone desk shifts (~120+ manual phone hours/month).
+
+### Autonomous Workflow Orchestrator (Self-Healing RPA)
+- Purpose: Replaces brittle legacy RPA bots (UiPath, Automation Anywhere, Selenium).
+- Technology: Visual neural embeddings + Playwright browser & desktop automation.
+- Self-Healing: When UI buttons move or DOM structures change, the engine calculates semantic vector likeness and auto-remediates target selectors in real time (99.8% auto-healed uptime).
+- Compliance: Embedded AI Compliance & Audit Agent performing real-time document verification, invoice extraction, and cryptographic token signing.
+
+### Stealth R&D Pipeline
+1. Vyom Finance Agent: Accounts payable automation, invoice reconciliation, ledger verification.
+2. Vyom Finance Workforce: Complete multi-agent financial swarm handling payroll, matching, and forecasting.
+3. Vyom Lawsuit: Legal AI for contract analysis, discovery audit, and regulatory compliance.
+4. Vyom PolicyLens: Browser intelligence agent analyzing terms of service and compliance shifts in real time.
+5. Vyom SafeBrowse: DOM sandboxing agent enforcing enterprise data leak prevention.
+
+## 4. The Vyom AI Ecosystem Flywheel
+Node 01: AI Voice Agent converses natively with 24/7 inbound callers with sub-400ms latency, qualifying leads and booking appointments (+42% conversion rate, zero missed calls).
+Node 02: Custom CRM / Web / Desktop Apps log transaction parameters, synchronize client/patient databases in real time, and pass completed service records to Node 03.
+Node 03: Google Review AI Agent fetches client details to trigger personalized WhatsApp/SMS follow-up flows, intercepting dissatisfaction before public posting and harvesting +300% 5-star Google Reviews.
+Node 04: AIEO (AI Engine Optimization) leverages surging high-authority reviews and Knowledge Graph schemas to rank your brand as the #1 recommended answer on ChatGPT Search, Perplexity, and Google Gemini.
+
+## 5. Pricing Tiers & ROI Calculator
+1. Starter Plan:
+   - ₹14,999 / month ($180/mo) for Web Voice; ₹17,499 / month ($210/mo) with Direct Phone Carrier Telephony included.
+   - Includes up to 400 verified calls/mo.
+   - 1–2 Provider / Doctor Routing.
+   - Hindi, Hinglish & English Fluency + Clinic Knowledge Base sync.
+2. Professional Plan (Most Popular):
+   - ₹23,999 / month ($280/mo) for Web Voice; ₹26,499 / month ($310/mo) with Telephony included.
+   - Includes up to 700 verified calls/mo.
+   - Up to 5 Doctor / Provider Routing.
+   - Direct Carrier Telephony, Appointment Rescheduling Workflows, Call Recording & Analytics.
+3. Enterprise Plan:
+   - ₹33,990 / month ($400/mo) for Web Voice; ₹36,490 / month ($430/mo) with Telephony included.
+   - Includes 1,000+ calls/mo (scalable to 2,500+ calls with custom volume discounts).
+   - 10–15+ Doctors & Multi-Department Triage, Custom CRM Connectors, Dedicated Solutions Architect, 24/7 Priority SLA.
+ROI Comparison:
+A human receptionist desk running 24/7 (3 rotating shifts) costs ₹75,000–₹120,000/mo ($900–$1,500/mo). Vyom cuts direct labor overhead while preserving 30% of calls otherwise lost after-hours, delivering 4.2x to 7.8x net ROI in the first 30 days.
+
+## 6. 7 Enterprise Agency Engineering Services
+1. Self-Healing RPA & UI Automation (Playwright, vision LLMs, 99.8% recovery uptime).
+2. Multiagent Systems (LangGraph supervisor-worker swarms).
+3. Agent to Agent (A2A) Protocols (peer-to-peer inter-agent communication & state ledgers).
+4. Custom CRM & ERP Softwares (bespoke dashboards, automated billing, BI sync).
+5. Websites & Web Applications (ultra-responsive Next.js web portals, glassmorphism design).
+6. AIEO - AI Engine Optimization (Knowledge Graph structuring, #1 search visibility).
+7. Enterprise RAG Chatbots (hybrid vector search, Pinecone, Groq Llama 3.3 / gpt-120B inference).
+
+## 7. Supported Tech Stack & Enterprise Mesh
+- Protocols: Model Context Protocol (MCP) by Anthropic, OpenAPI, JSON Schema deterministic function calling.
+- Multi-Agent Orchestration: LangGraph state graphs, CrewAI role-based multi-agent swarms, Temporal.io durable execution.
+- Vector & State Memory: Pinecone, Qdrant, ChromaDB, FAISS, Weaviate, pgvector (PostgreSQL), Redis semantic caching.
+- Foundation Models: Claude 3.5 Sonnet/Opus, GPT-4o, Gemini 1.5 Pro, and Groq ultra-fast Llama 3.3 / gpt-120B for sub-second inference.
+- Tracing & Evals: LangSmith, Langfuse, Ragas, DeepEval.
+- CRM/ERP Connectors: Salesforce, HubSpot, SAP S/4HANA, QuickBooks, Twilio WebRTC, Google Workspace.
+
+## 8. Security, Guardrails & Compliance
+- Harness Engineering: Every agent process is wrapped in sandboxed test harnesses evaluating state transitions before committing transactions.
+- Deterministic Guardrails: Strict input/output schema validators and policy enforcement layers guarantee zero hallucinations.
+- Zero Data Retention: Ephemeral execution memory ensures proprietary client IP and customer data are never stored or used to train public models.
+- Certified Compliance: SOC-2 Type II compliant processes, HIPAA compliant for PHI, and GDPR compliant with 256-bit TLS encryption.
+
+## 9. Implementation SLA & Technical Discovery
+- Technical Discovery Call: 30-minute architectural audit and live demonstration.
+- Implementation SLA: Live telephony prototypes deployed within 48 hours under mutual Non-Disclosure Agreement (NDA).
+- Enterprise Sprints: 2 to 4 weeks from architecture review to production pilot deployment.
+- IP Ownership: 100% client code and model ownership.
