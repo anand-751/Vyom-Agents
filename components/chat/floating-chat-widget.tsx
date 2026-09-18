@@ -317,17 +317,20 @@ export function FloatingChatWidget() {
                     <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-slate-950" />
                   </div>
                   <div>
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-1.5 flex-wrap">
                       <span className="font-extrabold text-sm text-white leading-tight">
                         {BRAND_CONFIG.name} AI
                       </span>
-                      <span className="text-[9px] sm:text-[10px] font-mono px-1.5 py-0.2 rounded bg-sky-950/80 text-sky-300 border border-sky-800/80">
-                        RAG + Groq
+                      <span className="text-[9px] sm:text-[10px] font-mono px-1.5 py-0.5 rounded bg-sky-950/90 text-sky-300 border border-sky-800/80">
+                        Groq gpt-120B
+                      </span>
+                      <span className="text-[9px] sm:text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-800/80 hidden xs:inline-flex">
+                        250/50 RAG
                       </span>
                     </div>
                     <span className="text-[10px] text-slate-400 flex items-center gap-1 mt-0.5 font-mono">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                      Live Verified Knowledge Engine
+                      Hard Guardrails & Grounding Active
                     </span>
                   </div>
                 </div>
@@ -471,8 +474,8 @@ export function FloatingChatWidget() {
                 </form>
                 <div className="flex items-center justify-between mt-2 px-1 text-[9px] sm:text-[10px] text-slate-500 font-mono">
                   <span className="flex items-center gap-1">
-                    <ShieldCheck className="w-3 h-3 text-emerald-500" />
-                    <span>RAG Knowledge Grounding</span>
+                    <ShieldCheck className="w-3 h-3 text-emerald-400" />
+                    <span>Hard Guardrails • 250/50 RAG Harness</span>
                   </span>
                   <span>Press Enter ↵</span>
                 </div>
