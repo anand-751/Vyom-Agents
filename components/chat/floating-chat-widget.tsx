@@ -37,12 +37,6 @@ const INITIAL_MESSAGES: ChatMessage[] = [
   },
 ];
 
-const SUGGESTED_QUERIES = [
-  "How does the Voice Agent work?",
-  "What is Self-Healing RPA?",
-  "Calculate ROI & pricing",
-  "Schedule Architecture Call",
-];
 
 export function FloatingChatWidget() {
   const router = useRouter();
@@ -356,7 +350,7 @@ export function FloatingChatWidget() {
               </div>
 
               {/* Chat Messages Body */}
-              <div className="flex-1 p-3.5 sm:p-4 overflow-y-auto space-y-3.5 scrollbar-thin scrollbar-thumb-slate-800 text-xs sm:text-sm">
+              <div className="flex-1 p-3.5 sm:p-4 overflow-y-auto space-y-3.5 scrollbar-none text-xs sm:text-sm">
                 {messages.map((msg) => (
                   <motion.div
                     key={msg.id}
@@ -424,20 +418,6 @@ export function FloatingChatWidget() {
                 <div ref={messagesEndRef} />
               </div>
 
-              {/* Quick Suggestion Chips */}
-              {messages.length <= 3 && (
-                <div className="px-3.5 sm:px-4 py-2 bg-slate-900/60 border-t border-slate-800/70 overflow-x-auto scrollbar-none flex items-center gap-1.5 shrink-0">
-                  {SUGGESTED_QUERIES.map((query) => (
-                    <button
-                      key={query}
-                      onClick={() => handleSendMessage(query)}
-                      className="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-[11px] font-medium border border-slate-700/80 transition-all shrink-0 active:scale-95"
-                    >
-                      {query}
-                    </button>
-                  ))}
-                </div>
-              )}
 
               {/* Input Footer Bar */}
               <div className="p-3 bg-slate-900 border-t border-slate-800 shrink-0">
