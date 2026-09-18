@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   PhoneCall, 
-  Workflow, 
+  Database, 
   Star, 
   Search, 
   Sparkles, 
@@ -57,18 +57,18 @@ export const ECOSYSTEM_NODES: EcosystemNode[] = [
     id: "enterprise-software",
     step: "02",
     title: "Custom CRM / Web / Desktop Apps",
-    subtitle: "Self-Healing RPA & Workflow Engine",
+    subtitle: "Custom CRM / Web / Desktop Apps",
     positionLabel: "Right Node",
     positionClasses: "right-1 top-1/2 -translate-y-1/2",
-    icon: Workflow,
+    icon: Database,
     color: "from-purple-500 to-indigo-600",
     lightBg: "bg-purple-50 border-purple-200 text-purple-700",
     accentGlow: "rgba(168, 85, 247, 0.25)",
-    revenueImpact: "100% Hands-Free Operational Scale",
+    revenueImpact: "100% Operational Visibility & Sync",
     description:
-      "Processes caller requests, updates internal CRM & ERP databases, auto-remediates UI shifts, and hands off completed service records directly to the Google Review AI Agent.",
+      "Processes caller requests, updates internal CRM & ERP databases, synchronizes customer and patient records, and hands off completed service records directly to the Google Review AI Agent.",
     feedsInto: "Hands off completed transaction & client details directly to the Google Review AI Agent for customized follow-ups.",
-    keyMetrics: ["99.8% Auto-Healed DOM", "Zero Script Fragility", "Auto CRM Mutation"],
+    keyMetrics: ["Unified CRM Hub", "Web & Desktop Portals", "Real-Time DB Sync"],
   },
   {
     id: "review-agent",

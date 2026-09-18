@@ -122,7 +122,7 @@ All upcoming products are currently waitlist-only and undergoing SOC-2 complianc
     suggestedAction: { label: "Explore Ecosystem", action: "services" },
     fullText: `The Vyom AI Ecosystem is a continuous, self-reinforcing 4-node autonomous revenue flywheel:
 Node 01: AI Voice Agent converses natively with 24/7 inbound callers with sub-400ms latency, qualifying leads and booking appointments (+42% conversion rate, zero missed calls).
-Node 02: Custom CRM / Web / Desktop Apps log transaction parameters, auto-remediate UI shifts with self-healing RPA, and pass completed service records to Node 03.
+Node 02: Custom CRM / Web / Desktop Apps log transaction parameters, synchronize client/patient databases in real time, and pass completed service records to Node 03.
 Node 03: Google Review AI Agent fetches client details to trigger personalized WhatsApp/SMS follow-up flows, intercepting dissatisfaction before public posting and harvesting +300% 5-star Google Reviews.
 Node 04: AIEO (AI Engine Optimization) leverages surging high-authority reviews and Knowledge Graph schemas to rank your brand as the #1 recommended answer on ChatGPT Search, Perplexity, and Google Gemini.
 This funnel directs high-intent buyer inquiries straight back to Node 01, completing an infinite autonomous growth loop with zero incremental ad spend!`,
