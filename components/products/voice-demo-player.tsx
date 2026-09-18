@@ -120,22 +120,22 @@ export function VoiceDemoPlayer() {
   };
 
   return (
-    <div className="bg-slate-900 rounded-xl p-4 text-white border border-slate-800 shadow-md">
+    <div className="bg-slate-900 rounded-xl p-3.5 sm:p-4 text-white border border-slate-800 shadow-md">
       {/* Top bar with industry switcher */}
       <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-slate-800 text-xs">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="font-mono text-slate-300 font-semibold text-[11px]">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+          <span className="font-mono text-slate-300 font-semibold text-[10px] sm:text-[11px]">
             Live Voice Simulator ({activeCall.latency})
           </span>
         </div>
 
-        <div className="flex items-center gap-1 bg-slate-800/80 p-0.5 rounded-lg">
+        <div className="flex flex-wrap items-center gap-1 bg-slate-800/80 p-0.5 rounded-lg">
           {SAMPLE_CALLS.map((call) => (
             <button
               key={call.id}
               onClick={() => handleSelectTab(call.id)}
-              className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition-all ${
+              className={`px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md text-[10px] sm:text-[11px] font-medium transition-all ${
                 selectedCallId === call.id
                   ? "bg-sky-600 text-white shadow-sm"
                   : "text-slate-400 hover:text-white"

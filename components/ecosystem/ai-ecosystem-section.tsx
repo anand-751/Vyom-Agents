@@ -156,7 +156,7 @@ export function AiEcosystemSection() {
           onMouseLeave={() => setAutoRotate(true)}
         >
           {/* Left Column: Animated Cardinal Circular Node Ecosystem (Lg: 6 cols) */}
-          <div className="lg:col-span-6 relative flex flex-col items-center justify-center min-h-[460px] sm:min-h-[500px] p-2">
+          <div className="lg:col-span-6 relative flex flex-col items-center justify-center min-h-[380px] sm:min-h-[500px] p-2 overflow-hidden sm:overflow-visible">
             
             {/* Center Core Pulsing Hub */}
             <div 
@@ -165,7 +165,7 @@ export function AiEcosystemSection() {
                 const nextIdx = (idx + 1) % ECOSYSTEM_NODES.length;
                 setActiveNodeId(ECOSYSTEM_NODES[nextIdx].id);
               }}
-              className="absolute z-20 w-32 h-32 sm:w-36 sm:h-36 rounded-full flex items-center justify-center cursor-pointer group"
+              className="absolute z-20 w-28 h-28 sm:w-36 sm:h-36 rounded-full flex items-center justify-center cursor-pointer group"
             >
               {/* Pulsing Luminous Halo */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-sky-500/25 via-indigo-500/25 to-purple-500/25 blur-xl group-hover:scale-110 transition-transform duration-500" />
@@ -177,17 +177,17 @@ export function AiEcosystemSection() {
               <div className="absolute inset-3 rounded-full border border-dotted border-indigo-400/40 animate-spin-reverse-slow pointer-events-none" />
 
               {/* Center Core Sphere */}
-              <div className="relative z-10 w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-slate-950 text-white flex flex-col items-center justify-center p-3 text-center shadow-2xl border border-indigo-500/40 group-hover:border-sky-400/70 transition-all duration-300">
+              <div className="relative z-10 w-20 h-20 sm:w-28 sm:h-28 rounded-full bg-slate-950 text-white flex flex-col items-center justify-center p-2 sm:p-3 text-center shadow-2xl border border-indigo-500/40 group-hover:border-sky-400/70 transition-all duration-300">
                 <div className="absolute inset-0 rounded-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/60 via-slate-950 to-slate-950 pointer-events-none" />
 
                 <div className="relative z-10 flex flex-col items-center">
-                  <div className="w-7 h-7 rounded-lg bg-sky-500/20 border border-sky-400/40 flex items-center justify-center mb-1 text-sky-400 group-hover:scale-110 group-hover:bg-sky-500 group-hover:text-white transition-all shadow-glow">
-                    <Cpu className="w-4 h-4" />
+                  <div className="w-5 h-5 sm:w-7 sm:h-7 rounded-lg bg-sky-500/20 border border-sky-400/40 flex items-center justify-center mb-0.5 sm:mb-1 text-sky-400 group-hover:scale-110 group-hover:bg-sky-500 group-hover:text-white transition-all shadow-glow">
+                    <Cpu className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </div>
-                  <span className="text-[10px] font-mono font-extrabold uppercase tracking-wider text-sky-300 leading-tight">
+                  <span className="text-[9px] sm:text-[10px] font-mono font-extrabold uppercase tracking-wider text-sky-300 leading-tight">
                     Vyom Engine
                   </span>
-                  <span className="text-[8px] text-slate-400 font-mono mt-0.5 flex items-center gap-1">
+                  <span className="text-[7px] sm:text-[8px] text-slate-400 font-mono mt-0.5 flex items-center gap-1">
                     <span className="w-1 h-1 rounded-full bg-emerald-400 animate-ping" />
                     Infinite Loop
                   </span>
@@ -350,7 +350,7 @@ export function AiEcosystemSection() {
             </svg>
 
             {/* 4 Perfectly Symmetrical Cardinal Nodes */}
-            <div className="relative w-full max-w-[460px] sm:max-w-[540px] h-[360px] sm:h-[420px] flex items-center justify-center">
+            <div className="relative w-full max-w-[340px] sm:max-w-[540px] h-[340px] sm:h-[420px] flex items-center justify-center">
               {ECOSYSTEM_NODES.map((node) => {
                 const IconComp = node.icon;
                 const isActive = node.id === activeNodeId;
@@ -377,22 +377,22 @@ export function AiEcosystemSection() {
                     )}
 
                     <div
-                      className={`relative flex items-center gap-2 px-3 py-2 rounded-xl border shadow-md backdrop-blur-md transition-all duration-300 ${
+                      className={`relative flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl border shadow-md backdrop-blur-md transition-all duration-300 ${
                         isActive
                           ? "bg-slate-900 text-white border-sky-400 shadow-xl ring-2 ring-sky-400/30 scale-105"
                           : "bg-white/95 text-slate-900 border-slate-200/90 hover:border-slate-300 hover:shadow-lg"
                       }`}
                     >
                       <div
-                        className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 bg-gradient-to-r ${node.color} text-white shadow-sm`}
+                        className={`w-6 h-6 sm:w-7 sm:h-7 rounded-lg flex items-center justify-center shrink-0 bg-gradient-to-r ${node.color} text-white shadow-sm`}
                       >
-                        <IconComp className="w-3.5 h-3.5" />
+                        <IconComp className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                       </div>
                       <div className="text-left pr-0.5">
-                        <span className="text-[9px] font-mono font-bold block text-sky-400 leading-none mb-0.5">
+                        <span className="text-[8px] sm:text-[9px] font-mono font-bold block text-sky-400 leading-none mb-0.5">
                           NODE {node.step}
                         </span>
-                        <span className="text-[11px] sm:text-xs font-bold block leading-tight truncate max-w-[100px] sm:max-w-[130px]">
+                        <span className="text-[10px] sm:text-xs font-bold block leading-tight truncate max-w-[70px] sm:max-w-[130px]">
                           {node.title}
                         </span>
                       </div>
@@ -400,7 +400,7 @@ export function AiEcosystemSection() {
 
                     {/* Step Pill Badge */}
                     <span
-                      className={`absolute -top-1.5 -right-1.5 px-1.5 py-0.2 rounded-full text-[9px] font-mono font-extrabold shadow-sm ${
+                      className={`absolute -top-1.5 -right-1.5 px-1.5 py-0.2 rounded-full text-[8px] sm:text-[9px] font-mono font-extrabold shadow-sm ${
                         isActive
                           ? "bg-sky-400 text-slate-950 font-bold"
                           : "bg-slate-100 text-slate-700 border border-slate-300"
@@ -418,7 +418,7 @@ export function AiEcosystemSection() {
           <div className="lg:col-span-6">
             <SpotlightCard
               spotlightColor={activeNode.accentGlow}
-              className="rounded-3xl p-5 sm:p-6 border border-slate-200/90 bg-white shadow-xl relative overflow-hidden"
+              className="rounded-3xl p-4 sm:p-6 border border-slate-200/90 bg-white shadow-xl relative overflow-hidden"
             >
               <AnimatePresence mode="wait">
                 <motion.div
@@ -465,10 +465,10 @@ export function AiEcosystemSection() {
                   </div>
 
                   {/* Key Metrics Chips */}
-                  <div className="grid grid-cols-3 gap-2 text-center">
+                  <div className="grid grid-cols-3 gap-1.5 sm:gap-2 text-center">
                     {activeNode.keyMetrics.map((metric, i) => (
-                      <div key={i} className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-sky-300 transition-colors">
-                        <span className="text-[10px] sm:text-[11px] font-bold text-slate-900 block truncate">
+                      <div key={i} className="p-2 sm:p-2.5 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-sky-300 transition-colors">
+                        <span className="text-[9px] sm:text-[11px] font-bold text-slate-900 block truncate">
                           {metric}
                         </span>
                       </div>

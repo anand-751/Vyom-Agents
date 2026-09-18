@@ -241,13 +241,13 @@ export function RoiCalculator() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-5xl mx-auto rounded-3xl bg-slate-950 text-white p-6 sm:p-10 shadow-2xl border border-slate-800 relative overflow-hidden group"
+          className="max-w-5xl mx-auto rounded-3xl bg-slate-950 text-white p-4 sm:p-8 md:p-10 shadow-2xl border border-slate-800 relative overflow-hidden group"
         >
           {/* Subtle Background Glow Accent */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-sky-500/15 via-indigo-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
           {/* Card Header Controls: Plan Tiers Selector + Currency & Telephony Switchers */}
-          <div className="pb-8 mb-8 border-b border-slate-800 space-y-6">
+          <div className="pb-6 sm:pb-8 mb-6 sm:mb-8 border-b border-slate-800 space-y-5 sm:space-y-6">
             
             {/* Top Bar: Tier Selector Tabs */}
             <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
@@ -262,14 +262,14 @@ export function RoiCalculator() {
               </div>
 
               {/* Tier Pill Switcher */}
-              <div className="flex bg-slate-900 p-1.5 rounded-2xl border border-slate-800/90 shadow-inner w-full lg:w-auto">
+              <div className="flex bg-slate-900 p-1 sm:p-1.5 rounded-2xl border border-slate-800/90 shadow-inner w-full lg:w-auto">
                 {TIERS.map((tier) => {
                   const isSelected = selectedTierId === tier.id;
                   return (
                     <button
                       key={tier.id}
                       onClick={() => handleSelectTier(tier.id)}
-                      className={`flex-1 lg:flex-none px-4 py-2 rounded-xl text-xs font-bold transition-all relative ${
+                      className={`flex-1 lg:flex-none px-2.5 sm:px-4 py-2 rounded-xl text-[11px] sm:text-xs font-bold transition-all relative ${
                         isSelected
                           ? "bg-gradient-to-r from-sky-600 to-indigo-600 text-white shadow-md"
                           : "text-slate-400 hover:text-white hover:bg-slate-800/60"
@@ -277,7 +277,7 @@ export function RoiCalculator() {
                     >
                       <span>{tier.name}</span>
                       {tier.badge && isSelected && (
-                        <span className="ml-1.5 px-1.5 py-0.5 rounded text-[9px] bg-white/20 font-mono">
+                        <span className="ml-1 sm:ml-1.5 px-1 py-0.2 rounded text-[8px] sm:text-[9px] bg-white/20 font-mono">
                           ★
                         </span>
                       )}
@@ -288,7 +288,7 @@ export function RoiCalculator() {
             </div>
 
             {/* Currency & Telephony Switch Bar */}
-            <div className="flex flex-wrap items-center justify-between gap-4 bg-slate-900/80 p-3.5 rounded-2xl border border-slate-800/80 text-xs">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-900/80 p-3 sm:p-3.5 rounded-2xl border border-slate-800/80 text-xs">
               
               {/* Currency Selector */}
               <div className="flex items-center gap-2">
@@ -314,18 +314,18 @@ export function RoiCalculator() {
               </div>
 
               {/* Telephony Channel Option */}
-              <div className="flex items-center gap-3">
-                <span className="text-slate-400 font-semibold">Telephony Channel:</span>
+              <div className="flex items-center gap-2 sm:gap-3">
+                <span className="text-slate-400 font-semibold">Channel:</span>
                 <button
                   onClick={() => setIncludeTelephony(!includeTelephony)}
-                  className={`px-3.5 py-1.5 rounded-xl font-bold flex items-center gap-2 border transition-all ${
+                  className={`px-3 py-1.5 rounded-xl font-bold flex items-center gap-2 border transition-all text-xs ${
                     includeTelephony
                       ? "bg-sky-950/80 border-sky-500 text-sky-300 shadow-sm"
                       : "bg-slate-950 border-slate-800 text-slate-400"
                   }`}
                 >
                   <PhoneCall className={`w-3.5 h-3.5 ${includeTelephony ? "text-sky-400" : "text-slate-500"}`} />
-                  <span>{includeTelephony ? "Direct Phone Carrier Included" : "Web Voice Only"}</span>
+                  <span>{includeTelephony ? "Carrier Phone Included" : "Web Voice Only"}</span>
                 </button>
               </div>
 
@@ -458,7 +458,7 @@ export function RoiCalculator() {
             </div>
 
             {/* Right Financial Projections Column */}
-            <div className="lg:col-span-6 bg-slate-900/90 rounded-2xl p-6 border border-slate-800 space-y-5">
+            <div className="lg:col-span-6 bg-slate-900/90 rounded-2xl p-4 sm:p-6 border border-slate-800 space-y-4 sm:space-y-5">
               
               <div className="flex items-center justify-between pb-3 border-b border-slate-800">
                 <div className="flex items-center gap-2">
@@ -473,22 +473,22 @@ export function RoiCalculator() {
               </div>
 
               {/* 2 Key Result Metric Cards */}
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-2 sm:gap-3">
                 
-                <div className="p-4 rounded-xl bg-slate-950 border border-slate-800">
-                  <span className="text-[11px] text-slate-400 font-mono block">Direct Labor Savings</span>
-                  <span className="text-xl sm:text-2xl font-extrabold text-emerald-400 font-mono mt-1 block">
+                <div className="p-3 sm:p-4 rounded-xl bg-slate-950 border border-slate-800">
+                  <span className="text-[10px] sm:text-[11px] text-slate-400 font-mono block">Direct Labor Savings</span>
+                  <span className="text-lg sm:text-2xl font-extrabold text-emerald-400 font-mono mt-1 block truncate">
                     {currency === "INR" ? `₹${directMonthlySavings.toLocaleString()}` : `$${directMonthlySavings.toLocaleString()}`}
                   </span>
-                  <span className="text-[10px] text-slate-500 block mt-1">vs 24/7 human desk</span>
+                  <span className="text-[9px] sm:text-[10px] text-slate-500 block mt-1">vs 24/7 human desk</span>
                 </div>
 
-                <div className="p-4 rounded-xl bg-slate-950 border border-slate-800">
-                  <span className="text-[11px] text-slate-400 font-mono block">Preserved Revenue</span>
-                  <span className="text-xl sm:text-2xl font-extrabold text-sky-400 font-mono mt-1 block">
+                <div className="p-3 sm:p-4 rounded-xl bg-slate-950 border border-slate-800">
+                  <span className="text-[10px] sm:text-[11px] text-slate-400 font-mono block">Preserved Revenue</span>
+                  <span className="text-lg sm:text-2xl font-extrabold text-sky-400 font-mono mt-1 block truncate">
                     {currency === "INR" ? `₹${recoveredRevenue.toLocaleString()}` : `$${recoveredRevenue.toLocaleString()}`}
                   </span>
-                  <span className="text-[10px] text-slate-500 block mt-1">~{savedBookings} saved calls @ {currency === "INR" ? "₹500" : "$6"} fee</span>
+                  <span className="text-[9px] sm:text-[10px] text-slate-500 block mt-1">~{savedBookings} saved calls @ {currency === "INR" ? "₹500" : "$6"} fee</span>
                 </div>
 
               </div>

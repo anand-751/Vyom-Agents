@@ -287,7 +287,7 @@ export function FloatingChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.94 }}
             transition={{ type: "spring", stiffness: 320, damping: 28 }}
-            className="fixed inset-x-3 bottom-22 sm:inset-auto sm:bottom-24 sm:right-6 z-50 w-auto sm:w-[420px] h-[550px] max-h-[82vh] bg-slate-950/95 backdrop-blur-2xl rounded-3xl border border-slate-800 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] flex flex-col overflow-hidden text-white"
+            className="fixed inset-x-3 bottom-[84px] sm:inset-auto sm:bottom-24 sm:right-6 z-50 w-auto sm:w-[420px] h-[550px] max-h-[76vh] sm:max-h-[82vh] bg-slate-950/95 backdrop-blur-2xl rounded-3xl border border-slate-800 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] flex flex-col overflow-hidden text-white"
           >
             {/* Dialog Header */}
             <div className="px-5 py-3.5 bg-gradient-to-r from-slate-900 via-slate-900 to-indigo-950 border-b border-slate-800 flex items-center justify-between shrink-0">

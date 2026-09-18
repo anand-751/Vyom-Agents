@@ -99,17 +99,17 @@ export function ProductsSection() {
               {/* Top Accent Gradient Border */}
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-sky-500 via-indigo-500 to-emerald-500 z-20" />
 
-              <div className="p-6 sm:p-8 pt-7 sm:pt-9 relative z-10">
+              <div className="p-4 sm:p-8 pt-6 sm:pt-9 relative z-10">
                 {/* Badge Header Row */}
-                <div className="flex items-center justify-between mb-5">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-emerald-100 text-emerald-800 border border-emerald-300">
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-5">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-emerald-100 text-emerald-800 border border-emerald-300 shrink-0">
                     <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                     {voiceProduct.badge}
                   </span>
-                  <span className="text-xs font-mono text-slate-400 font-semibold tracking-wider">PRODUCT 01 &bull; LIVE DEPLOYMENT</span>
+                  <span className="text-[11px] sm:text-xs font-mono text-slate-400 font-semibold tracking-wider">PRODUCT 01 &bull; LIVE DEPLOYMENT</span>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
                   {/* Left Column (7 cols): Info & Features */}
                   <div className="lg:col-span-7 space-y-4">
                     <div className="flex items-start gap-3.5">
@@ -144,7 +144,7 @@ export function ProductsSection() {
                   </div>
 
                   {/* Right Column (5 cols): Audio Player Widget & Action Panel */}
-                  <div className="lg:col-span-5 flex flex-col justify-between h-full bg-slate-50/70 p-5 rounded-2xl border border-slate-200/80">
+                  <div className="lg:col-span-5 flex flex-col justify-between h-full bg-slate-50/70 p-4 sm:p-5 rounded-2xl border border-slate-200/80">
                     <div>
                       <div className="flex items-center justify-between mb-3 text-xs font-mono text-slate-500 font-bold uppercase tracking-wider">
                         <span>Interactive Voice Preview</span>
@@ -157,18 +157,18 @@ export function ProductsSection() {
                       </div>
 
                       {/* Live Specs Grid */}
-                      <div className="grid grid-cols-3 gap-2 text-center text-xs font-mono mb-4">
-                        <div className="bg-white p-2 rounded-xl border border-slate-200 shadow-xs">
-                          <span className="text-slate-900 font-bold block text-sm">320ms</span>
-                          <span className="text-[10px] text-slate-500">Latency</span>
+                      <div className="grid grid-cols-3 gap-1.5 sm:gap-2 text-center text-xs font-mono mb-4">
+                        <div className="bg-white p-1.5 sm:p-2 rounded-xl border border-slate-200 shadow-xs">
+                          <span className="text-slate-900 font-bold block text-xs sm:text-sm">320ms</span>
+                          <span className="text-[9px] sm:text-[10px] text-slate-500">Latency</span>
                         </div>
-                        <div className="bg-white p-2 rounded-xl border border-slate-200 shadow-xs">
-                          <span className="text-slate-900 font-bold block text-sm">45+</span>
-                          <span className="text-[10px] text-slate-500">Languages</span>
+                        <div className="bg-white p-1.5 sm:p-2 rounded-xl border border-slate-200 shadow-xs">
+                          <span className="text-slate-900 font-bold block text-xs sm:text-sm">45+</span>
+                          <span className="text-[9px] sm:text-[10px] text-slate-500">Languages</span>
                         </div>
-                        <div className="bg-white p-2 rounded-xl border border-slate-200 shadow-xs">
-                          <span className="text-slate-900 font-bold block text-sm">15+</span>
-                          <span className="text-[10px] text-slate-500">Concurrent</span>
+                        <div className="bg-white p-1.5 sm:p-2 rounded-xl border border-slate-200 shadow-xs">
+                          <span className="text-slate-900 font-bold block text-xs sm:text-sm">15+</span>
+                          <span className="text-[9px] sm:text-[10px] text-slate-500">Concurrent</span>
                         </div>
                       </div>
                     </div>

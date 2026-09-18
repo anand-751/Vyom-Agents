@@ -61,24 +61,24 @@ export function FooterSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Enterprise Quick-Contact Banner */}
-        <div className="rounded-3xl bg-gradient-to-r from-slate-900 via-indigo-950/60 to-slate-900 border border-slate-800 p-8 sm:p-12 mb-16 shadow-2xl relative overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-7 space-y-4 text-left">
+        <div className="rounded-3xl bg-gradient-to-r from-slate-900 via-indigo-950/60 to-slate-900 border border-slate-800 p-5 sm:p-10 lg:p-12 mb-12 sm:mb-16 shadow-2xl relative overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
+            <div className="lg:col-span-7 space-y-3 sm:space-y-4 text-left">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-950 text-sky-400 border border-sky-800 text-xs font-mono">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 <span>Enterprise Access Portal</span>
               </div>
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight">
+              <h3 className="text-xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight">
                 Ready to Automate with Autonomous Agents?
               </h3>
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl">
+              <p className="text-xs sm:text-base text-slate-300 leading-relaxed max-w-xl">
                 Get priority access to our engineering sandbox, live telemetry dashboards, and proprietary voice models.
               </p>
             </div>
 
             <div className="lg:col-span-5">
               {submitted ? (
-                <div className="p-5 rounded-2xl bg-emerald-950/60 border border-emerald-700/80 text-emerald-300 flex items-center gap-3">
+                <div className="p-4 sm:p-5 rounded-2xl bg-emerald-950/60 border border-emerald-700/80 text-emerald-300 flex items-center gap-3">
                   <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0" />
                   <div>
                     <span className="font-bold text-sm block">Whitepaper & Sandboxes Dispatched</span>
@@ -94,12 +94,12 @@ export function FooterSection() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter corporate email..."
-                      className="px-4 py-3 rounded-full bg-slate-900/90 border border-slate-700 text-white placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 flex-1"
+                      className="px-4 py-2.5 sm:py-3 rounded-full bg-slate-900/90 border border-slate-700 text-white placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 flex-1"
                     />
                     <button
                       type="submit"
                       disabled={loading}
-                      className="px-6 py-3 rounded-full bg-gradient-to-r from-sky-500 to-indigo-600 hover:brightness-110 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all shadow-md shrink-0"
+                      className="px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-sky-500 to-indigo-600 hover:brightness-110 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all shadow-md shrink-0"
                     >
                       {loading ? (
                         <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
