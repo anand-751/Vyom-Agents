@@ -40,8 +40,9 @@ export async function POST(req: NextRequest) {
 
     const cleanQuery = inputCheck.sanitizedQuery;
 
-    // 2. RETRIEVE RAG CONTEXT (Sliding Window Chunks: Size 250, Overlap 50)
-    const { chunks, combinedContext, bestAction, totalIndexedChunks } = retrieveRagContext(cleanQuery, 4);
+    // 2. RETRIEVE RAG CONTEXT (Sliding Window Chunks: Size 250, Overlap 50 from assets/company-embeddings.json)
+    const { chunks, combinedContext, bestAction, totalIndexedChunks, embeddingsSource } =
+      retrieveRagContext(cleanQuery, 4);
     const ragSources = chunks.map((c) => c.title);
 
     // 3. GROQ MODEL EXECUTION (gpt120B: openai/gpt-oss-120b)
@@ -119,6 +120,7 @@ STRICT GUARDRAILS & INSTRUCTIONS:
             audit: {
               ...outputHarness.audit,
               totalIndexedChunks,
+              embeddingsSource,
               ragChunkConfig: {
                 chunkSize: RAG_CHUNK_SIZE,
                 chunkOverlap: RAG_CHUNK_OVERLAP,
@@ -188,6 +190,7 @@ STRICT GUARDRAILS & INSTRUCTIONS:
       audit: {
         ...outputHarness.audit,
         totalIndexedChunks,
+        embeddingsSource,
         ragChunkConfig: {
           chunkSize: RAG_CHUNK_SIZE,
           chunkOverlap: RAG_CHUNK_OVERLAP,
