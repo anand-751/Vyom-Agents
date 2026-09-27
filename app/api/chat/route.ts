@@ -107,17 +107,22 @@ MANDATORY GUARDRAILS & INSTRUCTIONS:
    Offerings like our AI Voice Receptionist, Self-Healing RPA Orchestrator, Multi-Agent Swarms, Custom CRM/ERP, and AIEO are supporting products in our broader platform. Do NOT present Vyom as solely a voice receptionist or RPA company.
 
 2. COLLABORATIVE DOMAIN DISCOVERY + TECHNICAL RAG:
-   When a user mentions their industry, domain, or asks how Vyom helps (e.g. Healthcare/Dental, Legal, Real Estate, Finance, Logistics, E-commerce, SaaS, or general enterprise):
+   When a user mentions their industry, domain, or asks how Vyom helps (e.g. Restaurants/Food/Hospitality, Healthcare/Dental, Legal, Real Estate, Finance, Logistics, E-commerce, SaaS, or general enterprise):
    • Briefly diagnose their operational friction (e.g., manual bottlenecks, data silos, missed leads, legacy processes).
-   • Explain how Vyom's autonomous agentic workflows solve their problem.
-   • Suggest 2 to 3 relevant products/services from our portfolio as supporting solutions:
+   • Explain how Vyom's autonomous agentic workflows solve their problem with zero human overhead.
+   • For Restaurants & Food Businesses specifically:
+     1) AI Voice Agent: Handles 24/7 inbound phone orders, table reservations, and menu/dietary FAQs with sub-400ms latency — eliminating missed calls during peak dining rush with zero human overhead.
+     2) Google Review & Reputation Agent: Automatically sends post-dining WhatsApp/SMS review requests to harvest +300% 5-star Google Reviews and catch negative feedback before public posting.
+     3) Autonomous RPA: Streamlines supplier invoices and daily POS reconciliation.
+     Always advise: "For proper consultation around your business, kindly contact us for a free consultation!"
+   • For other domains, suggest 2 to 3 relevant products/services from our portfolio as supporting solutions:
      1) AI Voice Receptionist (Live: Sub-400ms latency, 45+ languages, 24/7 calendar/EHR booking, +42% conversion)
      2) Self-Healing RPA Orchestrator (Playwright + vision LLM, 99.8% recovery uptime vs legacy UiPath)
      3) Multiagent Systems (LangGraph supervisor-worker swarms)
      4) Custom CRM & ERP Softwares (Bespoke workflows, automated ledger & BI sync)
      5) AIEO - AI Engine Optimization (Ranking #1 on ChatGPT, Perplexity, Gemini)
      6) Reputation & Review Automation (+300% 5-star Google review acquisition)
-   • Conclude with a clear next step (explore our agentic workflows, test a live demo, or book a 30-min discovery call).
+   • Conclude with a clear next step (e.g., test a live demo or contact us for a free consultation).
 
 3. MAX WORD COUNT (CRITICAL HARD CONSTRAINT):
    Your total response MUST NOT EXCEED 150 WORDS AT ALL. Keep it dense, punchy, executive, and structured.
@@ -331,45 +336,85 @@ MANDATORY GUARDRAILS & INSTRUCTIONS:
         { label: "Book Discovery Call", action: "contact" },
       ];
     } else if (
+      lower.includes("restaurant") ||
+      lower.includes("food") ||
+      lower.includes("dining") ||
+      lower.includes("cafe") ||
+      lower.includes("bistro") ||
+      lower.includes("catering") ||
+      lower.includes("bakery") ||
+      lower.includes("pizzeria") ||
+      lower.includes("bar")
+    ) {
+      synthesizedReply =
+        "For Restaurants & Food Businesses, Vyom automates high-friction front-desk and growth operations with zero human overhead:\n\n1. AI Voice Agent: Handles 24/7 inbound phone orders, table reservations, and menu/dietary FAQs with sub-400ms latency — eliminating missed calls during peak dining rush.\n2. Google Review & Reputation Agent: Automatically sends post-dining WhatsApp/SMS review requests to harvest +300% 5-star Google Reviews and intercept negative feedback before public posting.\n3. Autonomous RPA: Automates supplier invoice reconciliation and daily sales reporting.\n\nFor proper consultation around your business, kindly contact us for a free consultation!";
+      fallbackButtons = [
+        { label: "AI Voice Demo", action: "voice" },
+        { label: "Book Free Consultation", action: "contact" },
+        { label: "Explore Services", action: "services" },
+      ];
+    } else if (
       lower.includes("saas") ||
       lower.includes("tech") ||
       lower.includes("startup") ||
       lower.includes("software")
     ) {
       synthesizedReply =
-        "For B2B SaaS & Tech Enterprises, Vyom scales pipeline and autonomous engineering with 3 core solutions:\n\n1. AI Voice Receptionist (Live): Qualifies inbound enterprise demo leads 24/7 and books directly into AE calendars with sub-400ms latency.\n2. AIEO (AI Engine Optimization): Semantic Knowledge Graph structuring positioning your product as the #1 recommended answer on ChatGPT and Perplexity Search.\n3. Multiagent Systems: Autonomous supervisor-worker swarms for automated customer onboarding.\n\nWould you like to book a 30-minute roadmap discovery session?";
+        "For B2B SaaS & Tech Enterprises, Vyom scales pipeline and autonomous engineering with 3 core solutions:\n\n1. AI Voice Receptionist (Live): Qualifies inbound enterprise demo leads 24/7 and books directly into AE calendars with sub-400ms latency.\n2. AIEO (AI Engine Optimization): Semantic Knowledge Graph structuring positioning your product as the #1 recommended answer on ChatGPT and Perplexity Search.\n3. Multiagent Systems: Autonomous supervisor-worker swarms for automated customer onboarding.\n\nFor proper consultation around your business, kindly contact us for a free consultation!";
       fallbackButtons = [
         { label: "Test Voice Demo", action: "voice" },
         { label: "Explore AIEO", action: "services" },
-        { label: "Book Discovery Call", action: "contact" },
+        { label: "Book Free Consultation", action: "contact" },
       ];
-    } else if (intentResult.detectedDomain) {
-      synthesizedReply = `For ${intentResult.detectedDomain}, Vyom Agents deploys autonomous AI agents and intelligent workflows to transform operational bottlenecks and scale efficiency. Supporting solutions include:\n\n1. AI Voice Receptionist: 24/7 conversational reception (sub-400ms latency) syncing with your CRM/calendar.\n2. Self-Healing RPA & Multiagent Swarms: Automates back-office data entry and document processing with 99.8% recovery uptime.\n\nWould you like to explore our agentic workflows or book a 30-minute discovery call?`;
+    } else if (
+      lower.includes("about your company") ||
+      lower.includes("about vyom") ||
+      lower.includes("what is vyom") ||
+      lower.includes("what is your company") ||
+      lower.includes("what do you do")
+    ) {
+      synthesizedReply =
+        "Vyom Agents (Vyom Autonomous Intelligence) is an enterprise Agentic AI SaaS company engineering autonomous AI agents and intelligent workflows to transform modern businesses from front-desk to back-office.\n\nWe build custom conversational AI voice agents, self-healing RPA bots, multi-agent swarms, and AI reputation systems.\n\nFor proper consultation around your business, kindly contact us for a free consultation!";
       fallbackButtons = [
         { label: "Explore AI Agents", action: "services" },
-        { label: "Test Voice Demo", action: "voice" },
-        { label: "Book a Call", action: "contact" },
+        { label: "AI Voice Demo", action: "voice" },
+        { label: "Book Free Consultation", action: "contact" },
+      ];
+    } else if (intentResult.detectedDomain) {
+      synthesizedReply = `For ${intentResult.detectedDomain}, Vyom Agents deploys autonomous AI agents and intelligent workflows to eliminate operational friction with zero human overhead:\n\n1. AI Voice Agent: Handles 24/7 customer calls, inquiries, and bookings with sub-400ms latency.\n2. Google Review & Reputation Agent: Automates post-service customer feedback to harvest 5-star Google reviews and resolve complaints.\n3. Self-Healing RPA & Multiagent Swarms: Automates back-office data entry and document processing with 99.8% recovery uptime.\n\nFor proper consultation around your business, kindly contact us for a free consultation!`;
+      fallbackButtons = [
+        { label: "Explore AI Agents", action: "services" },
+        { label: "AI Voice Demo", action: "voice" },
+        { label: "Book Free Consultation", action: "contact" },
       ];
     } else if (topChunk) {
-      // Cleanly extract narrative paragraph rather than document section titles
+      // Cleanly extract narrative paragraph rather than document section titles or stealth notes
       const cleanParagraph =
         topChunk.content
           .split("\n")
           .map((l) => l.trim())
-          .find((l) => l.length > 25 && !l.startsWith("#") && !/^\d+\.\s+[A-Z\s,&-]+$/.test(l)) ||
+          .find(
+            (l) =>
+              l.length > 25 &&
+              !l.startsWith("#") &&
+              !/^\d+\.\s+[A-Z\s,&-]+$/.test(l) &&
+              !l.toLowerCase().includes("stealth development") &&
+              !l.toLowerCase().includes("r&d lab")
+          ) ||
         "Vyom Agents is an enterprise Agentic AI SaaS company engineering autonomous AI agents and intelligent workflows to transform business operations.";
-      synthesizedReply = `${cleanParagraph}\n\nWould you like to explore our agentic solutions or discuss how we can automate your business workflows?`;
+      synthesizedReply = `${cleanParagraph}\n\nFor proper consultation around your business, kindly contact us for a free consultation!`;
       fallbackButtons = [
         { label: "Explore AI Agents", action: "services" },
-        { label: "Book a Call", action: "contact" },
+        { label: "AI Voice Demo", action: "voice" },
+        { label: "Book Free Consultation", action: "contact" },
       ];
     } else {
       synthesizedReply =
-        "Vyom Agents is an enterprise Agentic AI SaaS company engineering autonomous AI agents and intelligent workflows to transform modern businesses. How can I assist your team today?";
+        "Vyom Agents is an enterprise Agentic AI SaaS company engineering autonomous AI agents and intelligent workflows to transform modern businesses. For proper consultation around your business, kindly contact us for a free consultation!";
       fallbackButtons = [
         { label: "Explore AI Agents", action: "services" },
-        { label: "Test Voice Demo", action: "voice" },
-        { label: "Book a Call", action: "contact" },
+        { label: "AI Voice Demo", action: "voice" },
+        { label: "Book Free Consultation", action: "contact" },
       ];
     }
 

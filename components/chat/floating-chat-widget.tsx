@@ -144,13 +144,16 @@ export function FloatingChatWidget() {
       };
     }
 
-    // 1c. "Who are you"
-    if (/^(who\s+are\s+you|what\s+is\s+vyom|what\s+is\s+vyom\s+agents|what\s+do\s+you\s+do|what\s+can\s+you\s+do|introduce\s+yourself|tell\s+me\s+about\s+(yourself|vyom))$/i.test(clean)) {
+    // 1c. "Who are you" / "Tell me about your company"
+    if (
+      /\b(tell\s+me\s+about\s+(your\s+company|the\s+company|vyom|vyom\s+agents|yourself)|what\s+is\s+(your\s+company|the\s+company|vyom|vyom\s+agents|this\s+company|it)|who\s+are\s+you|what\s+do\s+you\s+do|what\s+can\s+you\s+do|introduce\s+yourself)\b/i.test(clean) ||
+      /^(who\s+are\s+you|what\s+is\s+vyom|what\s+is\s+vyom\s+agents|what\s+do\s+you\s+do|what\s+can\s+you\s+do|introduce\s+yourself|tell\s+me\s+about\s+(yourself|vyom|vyom\s+agents))$/i.test(clean)
+    ) {
       return {
-        reply: "I'm Vyom AI! We help businesses automate front-desk and back-office operations with 24/7 conversational voice receptionists, self-healing RPA bots, and custom multi-agent workflows.\n\nWhat kind of business or workflow would you like to automate?",
+        reply: "Vyom Agents (Vyom Autonomous Intelligence) is an enterprise Agentic AI SaaS company engineering autonomous AI agents and intelligent workflows that transform business operations from front-desk to back-office.\n\nWe build custom conversational AI voice agents, self-healing RPA bots, multi-agent swarms, and AI reputation systems.\n\nWhat kind of business or workflows are you looking to automate?",
         actionButtons: [
+          { label: "Explore AI Agents", action: "services" },
           { label: "AI Voice Demo", action: "voice" },
-          { label: "Explore Services", action: "services" },
           { label: "Book a Call", action: "contact" },
         ],
       };
@@ -188,8 +191,9 @@ export function FloatingChatWidget() {
       };
     }
 
-    // 2. Out-of-Scope Check
-    if (/\b(recipe|cook|bake|weather|cricket|football|nba|movie|song|joke|homework)\b/i.test(lower)) {
+    // 2. Out-of-Scope Check (Exempt business contexts)
+    const hasBusinessTerms = /\b(restaurant|dining|cafe|food|business|voice|receptionist|call|phone|leads|review|booking|automation)\b/i.test(lower);
+    if (!hasBusinessTerms && /\b(recipe|cook|bake|weather|cricket|football|nba|movie|song|joke|homework)\b/i.test(lower)) {
       return {
         reply: "I apologize, but as Vyom AI, I specialize exclusively in enterprise Agentic AI, autonomous workflows, and custom AI agents. I cannot assist with topics outside of technology and business automation.\n\nWould you like to explore how Vyom Agents can transform operations for your business?",
         actionButtons: [
@@ -199,13 +203,36 @@ export function FloatingChatWidget() {
       };
     }
 
-    // 3. Domain: Healthcare & Clinic
+    // 3. Domain: Restaurant & Food Hospitality
+    if (
+      lower.includes("restaurant") ||
+      lower.includes("food") ||
+      lower.includes("dining") ||
+      lower.includes("cafe") ||
+      lower.includes("bistro") ||
+      lower.includes("catering") ||
+      lower.includes("bakery") ||
+      lower.includes("bar") ||
+      lower.includes("pizzeria")
+    ) {
+      return {
+        reply:
+          "For Restaurants & Food Businesses, Vyom automates high-friction front-desk and growth operations with zero human overhead:\n\n1. AI Voice Agent: Handles 24/7 inbound phone orders, table reservations, and menu/dietary FAQs with sub-400ms latency — eliminating missed calls during peak dining rush.\n2. Google Review & Reputation Agent: Automatically sends post-dining WhatsApp/SMS review requests to harvest +300% 5-star Google Reviews and catch negative feedback early.\n3. Autonomous RPA: Automates supplier invoice reconciliation and daily sales reporting.\n\nFor proper consultation around your business, kindly contact us for a free consultation!",
+        actionButtons: [
+          { label: "AI Voice Demo", action: "voice" },
+          { label: "Book Free Consultation", action: "contact" },
+          { label: "Explore Services", action: "services" },
+        ],
+      };
+    }
+
+    // 4. Domain: Healthcare & Clinic
     if (lower.includes("dental") || lower.includes("clinic") || lower.includes("health") || lower.includes("doctor") || lower.includes("patient")) {
       return {
-        reply: "For Healthcare & Clinics, Vyom provides 2 core solutions:\n\n1. AI Voice Receptionist (Live): 24/7 patient booking with sub-400ms latency, syncing natively with Google Calendar, Dentrix & Epic (+42% conversion, zero missed calls).\n2. Self-Healing RPA & Review Agent: Automates patient intake and harvests +300% 5-star patient reviews on Google.\n\nWould you like to test our live voice demo or schedule a 30-minute discovery call?",
+        reply: "For Healthcare & Clinics, Vyom provides 2 core solutions:\n\n1. AI Voice Receptionist (Live): 24/7 patient booking with sub-400ms latency, syncing natively with Google Calendar, Dentrix & Epic (+42% conversion, zero missed calls).\n2. Self-Healing RPA & Review Agent: Automates patient intake and harvests +300% 5-star patient reviews on Google.\n\nFor proper consultation around your business, kindly contact us for a free consultation!",
         actionButtons: [
           { label: "Test Live Voice Demo", action: "voice" },
-          { label: "Book Discovery Call", action: "contact" },
+          { label: "Book Free Consultation", action: "contact" },
         ],
       };
     }

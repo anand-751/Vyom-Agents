@@ -161,6 +161,17 @@ export function evaluateInputGuardrails(rawQuery: string): InputGuardrailResult 
 
 // Domain recognition dictionary for collaborative discovery
 const DOMAIN_KEYWORDS: Record<string, string> = {
+  restaurant: "Restaurant, Food & Hospitality",
+  restaurants: "Restaurant, Food & Hospitality",
+  food: "Restaurant, Food & Hospitality",
+  dining: "Restaurant, Food & Hospitality",
+  cafe: "Restaurant, Food & Hospitality",
+  cafes: "Restaurant, Food & Hospitality",
+  bistro: "Restaurant, Food & Hospitality",
+  bakery: "Restaurant, Food & Hospitality",
+  catering: "Restaurant, Food & Hospitality",
+  bar: "Restaurant, Food & Hospitality",
+  pizzeria: "Restaurant, Food & Hospitality",
   dental: "Healthcare & Dental Practices",
   clinic: "Healthcare & Medical Clinics",
   doctor: "Healthcare & Medical Practices",
@@ -216,11 +227,12 @@ const OUT_OF_SCOPE_PATTERNS = [
 ];
 
 const BUSINESS_TECH_EXEMPTIONS = [
+  /\b(restaurant|dining|cafe|food|hospitality|store|retail|business|operations|agency|clinic|firm)\b/i,
   /\b(voice|receptionist|phone|call|calls|telephony)\b/i,
   /\b(rpa|uipath|playwright|selenium|automation|workflow|swarms|multiagent)\b/i,
   /\b(pricing|price|cost|rate|fee|tier|starter|enterprise)\b/i,
   /\b(hipaa|soc-2|security|privacy|compliance)\b/i,
-  /\b(crm|erp|aieo|api|software|portal|schedule|demo|roi|leads)\b/i,
+  /\b(crm|erp|aieo|api|software|portal|schedule|demo|roi|leads|reviews|google\s+reviews)\b/i,
 ];
 
 /**
@@ -239,6 +251,31 @@ export function classifyQueryIntent(query: string): IntentClassificationResult {
     if (lower.includes(key)) {
       detectedDomain = domainName;
       break;
+    }
+  }
+
+  // Dynamic business domain extractor (e.g., "i have restaurant business", "for my dental clinic", "in real estate business")
+  if (!detectedDomain) {
+    const businessMatch = lower.match(
+      /(?:have|run|own|manage|in|for|operate)\s+(?:a|an|the|my|our|basically)?\s*([a-z\s]{3,25})\s+(?:business|company|shop|store|agency|firm|practice|clinic|restaurant|service)/i
+    );
+    if (businessMatch && businessMatch[1]) {
+      const rawExtracted = businessMatch[1].replace(/\bbasically\b/gi, "").trim();
+      if (rawExtracted.length >= 3 && !["small", "big", "new", "this", "my", "our"].includes(rawExtracted)) {
+        for (const [k, d] of Object.entries(DOMAIN_KEYWORDS)) {
+          if (rawExtracted.includes(k)) {
+            detectedDomain = d;
+            break;
+          }
+        }
+        if (!detectedDomain) {
+          detectedDomain =
+            rawExtracted
+              .split(/\s+/)
+              .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+              .join(" ") + " Operations";
+        }
+      }
     }
   }
 
@@ -284,13 +321,16 @@ export function classifyQueryIntent(query: string): IntentClassificationResult {
       };
     }
 
-    // 3c. "Who are you" / "What do you do" / "What is Vyom"
-    if (/^(who\s+are\s+you|what\s+is\s+vyom|what\s+is\s+vyom\s+agents|what\s+do\s+you\s+do|what\s+can\s+you\s+do|introduce\s+yourself|tell\s+me\s+about\s+(yourself|vyom|vyom\s+agents))$/i.test(clean)) {
+    // 3c. "Who are you" / "What do you do" / "What is your company" / "Tell me about your company"
+    if (
+      /\b(tell\s+me\s+about\s+(your\s+company|the\s+company|vyom|vyom\s+agents|yourself)|what\s+is\s+(your\s+company|the\s+company|vyom|vyom\s+agents|this\s+company|it)|who\s+are\s+you|what\s+do\s+you\s+do|what\s+can\s+you\s+do|introduce\s+yourself|introduce\s+your\s+company)\b/i.test(clean) ||
+      /^(who\s+are\s+you|what\s+is\s+vyom|what\s+is\s+vyom\s+agents|what\s+do\s+you\s+do|what\s+can\s+you\s+do|introduce\s+yourself|about\s+(your\s+company|vyom|the\s+company))$/i.test(clean)
+    ) {
       return {
         intent: "GREETING",
-        reason: "Introduction inquiry.",
+        reason: "Introduction & company inquiry.",
         bypassReply:
-          "I'm Vyom AI! We are an enterprise Agentic AI SaaS company engineering autonomous AI agents and intelligent workflows that transform business operations from end to end.\n\nWhat kind of business or workflows are you looking to automate?",
+          "Vyom Agents (Vyom Autonomous Intelligence) is an enterprise Agentic AI SaaS company engineering autonomous AI agents and intelligent workflows that transform business operations from end to end.\n\nWe build custom conversational AI voice agents, self-healing RPA bots, multi-agent swarms, and AI reputation systems.\n\nWhat kind of business or workflows are you looking to automate?",
         suggestedActions: [
           { label: "Explore AI Agents", action: "services" },
           { label: "Test Voice Demo", action: "voice" },
