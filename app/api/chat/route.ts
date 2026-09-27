@@ -344,10 +344,16 @@ MANDATORY GUARDRAILS & INSTRUCTIONS:
         { label: "Book Discovery Call", action: "contact" },
       ];
     } else if (topChunk) {
-      const summarySentence = topChunk.content.split("\n\n")[0].slice(0, 300);
-      synthesizedReply = `${summarySentence}\n\nWe provide live AI Voice Receptionists (sub-400ms latency) and Self-Healing RPA. Would you like to test our live audio demo or schedule a 30-minute discovery consultation?`;
+      // Cleanly extract narrative paragraph rather than document section titles
+      const cleanParagraph =
+        topChunk.content
+          .split("\n")
+          .map((l) => l.trim())
+          .find((l) => l.length > 25 && !l.startsWith("#") && !/^\d+\.\s+[A-Z\s,&-]+$/.test(l)) ||
+        "Vyom Agents engineers sovereign autonomous AI workforces, sub-400ms conversational voice receptionists, and self-healing RPA systems.";
+      synthesizedReply = `${cleanParagraph}\n\nWould you like to test our live voice demo or discuss how we can automate your business workflows?`;
       fallbackButtons = [
-        { label: "Test Voice Demo", action: "voice" },
+        { label: "AI Voice Demo", action: "voice" },
         { label: "Book Discovery Call", action: "contact" },
       ];
     } else {

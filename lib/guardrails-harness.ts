@@ -230,6 +230,8 @@ const BUSINESS_TECH_EXEMPTIONS = [
  */
 export function classifyQueryIntent(query: string): IntentClassificationResult {
   const lower = query.toLowerCase().trim();
+  const clean = lower.replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
+  const oneWord = clean.replace(/\s+/g, "");
 
   // 1. Check for domain match first
   let detectedDomain: string | undefined;
@@ -246,25 +248,100 @@ export function classifyQueryIntent(query: string): IntentClassificationResult {
     BUSINESS_TECH_EXEMPTIONS.some((regex) => regex.test(lower))
   );
 
-  // 3. Greeting / Chit-Chat Check (Only if no specific domain or product question is asked)
-  const isGreetingMatch = GREETING_PATTERNS.some((pattern) => pattern.test(lower));
-  const isShortIntro = lower.split(/\s+/).length <= 8;
+  // 3. Conversational Chit-Chat & Greeting Check (when no specific business/domain task is queried)
+  if (!hasBusinessContext) {
+    // 3a. Simple Greetings (hi, hii, hiii, hey, heyy, hello, namaste, sup, yo, good morning, etc.)
+    const isSingleGreetingWord = /^(h+i+|h+e+y+|h+e+l+l+o+|h+o+l+a+|howdy|yo+|hiya|sup|namaste|greetings)$/i.test(oneWord);
+    const isGreetingPhrase = /^((h+i+|h+e+y+|h+e+l+l+o+|h+o+l+a+)\s+(there|friend|bro|buddy|team|all|vyom|ai))$/i.test(clean);
+    const isTimeGreeting = /^(good\s+(morning|afternoon|evening|day|night))$/i.test(clean);
+    const isShortHi = (clean.startsWith("hi ") || clean.startsWith("hello ") || clean.startsWith("hey ")) && clean.split(" ").length <= 3;
 
-  if (isGreetingMatch && isShortIntro && !hasBusinessContext) {
-    return {
-      intent: "GREETING",
-      reason: "Standard greeting / introduction query without domain or product parameters.",
-      bypassReply:
-        "Hello! 👋 I'm Vyom AI, your Autonomous Solutions Architect. We build sub-400ms conversational AI Voice Receptionists, Self-Healing RPA bots, and enterprise multi-agent swarms.\n\nTell me about your business or industry (e.g., healthcare, legal, real estate, logistics, SaaS), and I'll recommend the ideal 2–3 autonomous products tailored for your workflows.",
-      suggestedActions: [
-        { label: "Test Voice Demo", action: "voice" },
-        { label: "Explore Services", action: "services" },
-        { label: "Book Discovery Call", action: "contact" },
-      ],
-    };
+    if (isSingleGreetingWord || isGreetingPhrase || isTimeGreeting || isShortHi) {
+      return {
+        intent: "GREETING",
+        reason: "Conversational greeting.",
+        bypassReply:
+          "Hi there! 👋 How can I help you today? Feel free to ask about our AI voice receptionist, self-healing RPA, or tell me about your business.",
+        suggestedActions: [
+          { label: "AI Voice Demo", action: "voice" },
+          { label: "Explore Services", action: "services" },
+          { label: "Book a Call", action: "contact" },
+        ],
+      };
+    }
+
+    // 3b. "How are you" / "How's it going"
+    if (/^(how\s+are\s+you|how\s+r\s+u|how\s+are\s+u|hows\s+it\s+going|how\s+do\s+you\s+do|how\s+are\s+things|hows\s+everything)$/i.test(clean)) {
+      return {
+        intent: "GREETING",
+        reason: "Conversational check-in.",
+        bypassReply:
+          "I'm doing great, thanks for asking! 😊 How are you doing today? How can I assist you or your business with Vyom Agents?",
+        suggestedActions: [
+          { label: "AI Voice Demo", action: "voice" },
+          { label: "Book a Call", action: "contact" },
+        ],
+      };
+    }
+
+    // 3c. "Who are you" / "What do you do" / "What is Vyom"
+    if (/^(who\s+are\s+you|what\s+is\s+vyom|what\s+is\s+vyom\s+agents|what\s+do\s+you\s+do|what\s+can\s+you\s+do|introduce\s+yourself|tell\s+me\s+about\s+(yourself|vyom|vyom\s+agents))$/i.test(clean)) {
+      return {
+        intent: "GREETING",
+        reason: "Introduction inquiry.",
+        bypassReply:
+          "I'm Vyom AI! We help businesses automate front-desk and back-office operations with 24/7 conversational voice receptionists, self-healing RPA, and custom multi-agent workflows.\n\nWhat kind of business or workflow would you like to automate?",
+        suggestedActions: [
+          { label: "AI Voice Demo", action: "voice" },
+          { label: "Explore Services", action: "services" },
+          { label: "Book a Call", action: "contact" },
+        ],
+      };
+    }
+
+    // 3d. Gratitude (thank you, thanks, thx, thank you so much, thanks a lot)
+    if (/\b(thank\s+you|thanks|thx|thank\s+u|many\s+thanks|appreciate\s+it)\b/i.test(clean) && clean.split(" ").length <= 6) {
+      return {
+        intent: "GREETING",
+        reason: "Conversational gratitude.",
+        bypassReply:
+          "You're very welcome! 😊 Let me know if you need anything else or if you'd like to test our live voice demo or discuss an automation.",
+        suggestedActions: [
+          { label: "AI Voice Demo", action: "voice" },
+          { label: "Book a Call", action: "contact" },
+        ],
+      };
+    }
+
+    // 3e. Affirmations (ok, cool, great, awesome, perfect)
+    if (/^(ok|okay|cool|great|awesome|perfect|nice|got\s+it|understood|sure|alright)$/i.test(clean)) {
+      return {
+        intent: "GREETING",
+        reason: "Conversational acknowledgement.",
+        bypassReply:
+          "Sounds great! Feel free to ask any questions or let me know whenever you'd like to see a demo or discuss your use case.",
+        suggestedActions: [
+          { label: "AI Voice Demo", action: "voice" },
+          { label: "Explore Services", action: "services" },
+        ],
+      };
+    }
+
+    // 3f. Farewell (bye, goodbye, see you)
+    if (/^(bye|goodbye|see\s+you|see\s+ya|have\s+a\s+good\s+day|cya|take\s+care)$/i.test(clean)) {
+      return {
+        intent: "GREETING",
+        reason: "Conversational farewell.",
+        bypassReply:
+          "Goodbye! Have a great day ahead! 👋 Feel free to reach back out anytime you have questions about Vyom Agents.",
+        suggestedActions: [
+          { label: "Book a Call", action: "contact" },
+        ],
+      };
+    }
   }
 
-  // 3. Out-of-Scope Check
+  // 4. Out-of-Scope Check
   // Only if no business or technical exemption terms are present
   const isOutOfScope = OUT_OF_SCOPE_PATTERNS.some((pattern) => pattern.test(lower));
   if (isOutOfScope && !hasBusinessContext) {
@@ -280,7 +357,7 @@ export function classifyQueryIntent(query: string): IntentClassificationResult {
     };
   }
 
-  // 4. Default: Collaborative Domain Discovery + Technical RAG
+  // 5. Default: Collaborative Domain Discovery + Technical RAG
   return {
     intent: "COLLABORATIVE_DISCOVERY_RAG",
     reason: detectedDomain

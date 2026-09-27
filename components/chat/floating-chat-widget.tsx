@@ -37,12 +37,12 @@ const INITIAL_MESSAGES: ChatMessage[] = [
   {
     id: "welcome-1",
     sender: "bot",
-    text: "Hello! 👋 I'm Vyom AI, your Autonomous Solutions Architect & Discovery Agent. Tell me your industry or operational challenge, and I'll recommend the ideal 2–3 autonomous products tailored for your business.",
+    text: "Hi! 👋 Welcome to Vyom Agents. How can I help you today?",
     timestamp: "Just now",
     actionButtons: [
-      { label: "Test Voice Demo", action: "voice" },
+      { label: "AI Voice Demo", action: "voice" },
       { label: "Explore Services", action: "services" },
-      { label: "Book Discovery Call", action: "contact" },
+      { label: "Book a Call", action: "contact" },
     ],
   },
 ];
@@ -113,15 +113,77 @@ export function FloatingChatWidget() {
   // Local fallback reply generator if network request fails (Strictly under 150 words)
   const generateFallbackReply = (userText: string): { reply: string; actionButtons: ChatMessage["actionButtons"] } => {
     const lower = userText.toLowerCase().trim();
+    const clean = lower.replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
+    const oneWord = clean.replace(/\s+/g, "");
 
-    // 1. Greeting Check
-    if (/^(hi|hello|hey|good morning|good afternoon|good evening|who are you|what is vyom)/i.test(lower) && lower.split(/\s+/).length <= 4) {
+    // 1a. Greetings (hi, hii, hiii, hey, heyy, hello, namaste, etc.)
+    const isSingleGreetingWord = /^(h+i+|h+e+y+|h+e+l+l+o+|h+o+l+a+|howdy|yo+|hiya|sup|namaste|greetings)$/i.test(oneWord);
+    const isGreetingPhrase = /^((h+i+|h+e+y+|h+e+l+l+o+|h+o+l+a+)\s+(there|friend|bro|buddy|team|all|vyom|ai))$/i.test(clean);
+    const isTimeGreeting = /^(good\s+(morning|afternoon|evening|day|night))$/i.test(clean);
+    const isShortHi = (clean.startsWith("hi ") || clean.startsWith("hello ") || clean.startsWith("hey ")) && clean.split(" ").length <= 3;
+
+    if (isSingleGreetingWord || isGreetingPhrase || isTimeGreeting || isShortHi) {
       return {
-        reply: "Hello! 👋 I'm Vyom AI, your Autonomous Solutions Architect. We build sub-400ms conversational AI Voice Receptionists, Self-Healing RPA bots, and enterprise multi-agent swarms.\n\nTell me your industry or operational challenge, and I'll tailor the right 2–3 autonomous products for your workflows.",
+        reply: "Hi there! 👋 How can I help you today? Feel free to ask about our AI voice receptionist, self-healing RPA, or tell me about your business.",
         actionButtons: [
-          { label: "Test Voice Demo", action: "voice" },
+          { label: "AI Voice Demo", action: "voice" },
           { label: "Explore Services", action: "services" },
-          { label: "Book Discovery Call", action: "contact" },
+          { label: "Book a Call", action: "contact" },
+        ],
+      };
+    }
+
+    // 1b. "How are you"
+    if (/^(how\s+are\s+you|how\s+r\s+u|how\s+are\s+u|hows\s+it\s+going|how\s+do\s+you\s+do|how\s+are\s+things|hows\s+everything)$/i.test(clean)) {
+      return {
+        reply: "I'm doing great, thanks for asking! 😊 How are you doing today? How can I assist you with Vyom Agents?",
+        actionButtons: [
+          { label: "AI Voice Demo", action: "voice" },
+          { label: "Book a Call", action: "contact" },
+        ],
+      };
+    }
+
+    // 1c. "Who are you"
+    if (/^(who\s+are\s+you|what\s+is\s+vyom|what\s+is\s+vyom\s+agents|what\s+do\s+you\s+do|what\s+can\s+you\s+do|introduce\s+yourself|tell\s+me\s+about\s+(yourself|vyom))$/i.test(clean)) {
+      return {
+        reply: "I'm Vyom AI! We help businesses automate front-desk and back-office operations with 24/7 conversational voice receptionists, self-healing RPA bots, and custom multi-agent workflows.\n\nWhat kind of business or workflow would you like to automate?",
+        actionButtons: [
+          { label: "AI Voice Demo", action: "voice" },
+          { label: "Explore Services", action: "services" },
+          { label: "Book a Call", action: "contact" },
+        ],
+      };
+    }
+
+    // 1d. Gratitude
+    if (/\b(thank\s+you|thanks|thx|thank\s+u|many\s+thanks|appreciate\s+it)\b/i.test(clean) && clean.split(" ").length <= 6) {
+      return {
+        reply: "You're very welcome! 😊 Let me know if you need anything else or if you'd like to test our live voice demo or discuss an automation.",
+        actionButtons: [
+          { label: "AI Voice Demo", action: "voice" },
+          { label: "Book a Call", action: "contact" },
+        ],
+      };
+    }
+
+    // 1e. Affirmation
+    if (/^(ok|okay|cool|great|awesome|perfect|nice|got\s+it|understood|sure|alright)$/i.test(clean)) {
+      return {
+        reply: "Sounds great! Feel free to ask any questions or let me know whenever you'd like to see a demo or discuss your use case.",
+        actionButtons: [
+          { label: "AI Voice Demo", action: "voice" },
+          { label: "Explore Services", action: "services" },
+        ],
+      };
+    }
+
+    // 1f. Farewell
+    if (/^(bye|goodbye|see\s+you|see\s+ya|have\s+a\s+good\s+day|cya|take\s+care)$/i.test(clean)) {
+      return {
+        reply: "Goodbye! Have a great day ahead! 👋 Feel free to reach back out anytime you have questions about Vyom Agents.",
+        actionButtons: [
+          { label: "Book a Call", action: "contact" },
         ],
       };
     }
@@ -131,7 +193,7 @@ export function FloatingChatWidget() {
       return {
         reply: "I apologize, but as Vyom AI, I specialize exclusively in enterprise AI agents, voice receptionists, self-healing RPA, and autonomous workflows. I cannot assist with topics outside of technology and business automation.\n\nWould you like to explore how Vyom can automate your business operations?",
         actionButtons: [
-          { label: "Book Discovery Call", action: "contact" },
+          { label: "Book a Call", action: "contact" },
           { label: "Explore Solutions", action: "services" },
         ],
       };
