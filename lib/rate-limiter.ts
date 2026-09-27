@@ -1,7 +1,7 @@
 /**
  * In-Memory Rate Limiter for Groq Model
- * Rule: If 10 requests are sent to the Groq model by a client,
- * stop taking requests for the next 15 minutes.
+ * Rule: If continuous 20 requests are sent within 2 minutes by a client,
+ * the Groq model is locked for 15 seconds without showing any error or warning on the UI.
  */
 
 interface RateLimitRecord {
@@ -12,20 +12,19 @@ interface RateLimitRecord {
 
 const rateLimitStore = new Map<string, RateLimitRecord>();
 
-const MAX_REQUESTS = 10;
-const LOCKOUT_MS = 15 * 60 * 1000; // 15 minutes in milliseconds
-const WINDOW_MS = 15 * 60 * 1000;  // 15 minutes rolling window
+const MAX_REQUESTS = 20;
+const WINDOW_MS = 2 * 60 * 1000; // 2 minutes rolling window
+const LOCKOUT_MS = 15 * 1000;     // 15 seconds lockout
 
 export interface RateLimitStatus {
   isLimited: boolean;
-  remainingMinutes?: number;
+  remainingSeconds?: number;
   remainingRequests?: number;
-  message?: string;
 }
 
 /**
  * Checks and records a request for the given client identifier (e.g. IP address).
- * Returns whether the request is rate-limited and the remaining lockout minutes.
+ * Returns whether the Groq model is currently locked out for this client.
  */
 export function checkGroqRateLimit(clientId: string): RateLimitStatus {
   const now = Date.now();
@@ -48,14 +47,13 @@ export function checkGroqRateLimit(clientId: string): RateLimitStatus {
   // 1. Check if currently locked out
   if (record.lockedUntil !== null) {
     if (now < record.lockedUntil) {
-      const remainingMinutes = Math.max(1, Math.ceil((record.lockedUntil - now) / 60000));
+      const remainingSeconds = Math.max(1, Math.ceil((record.lockedUntil - now) / 1000));
       return {
         isLimited: true,
-        remainingMinutes,
-        message: `You've reached the message limit (10 requests). Our AI assistant is taking a short breather to ensure fast and fair access for everyone. Please try again in about ${remainingMinutes} minute${remainingMinutes === 1 ? "" : "s"}, or feel free to book a direct consultation with our team!`,
+        remainingSeconds,
       };
     } else {
-      // Lockout period has expired; reset record
+      // 15-second lockout has expired; reset count and timestamps
       record.count = 1;
       record.firstRequestTime = now;
       record.lockedUntil = null;
@@ -66,7 +64,7 @@ export function checkGroqRateLimit(clientId: string): RateLimitStatus {
     }
   }
 
-  // 2. Check if rolling window expired
+  // 2. Check if the 2-minute rolling window expired
   if (now - record.firstRequestTime > WINDOW_MS) {
     record.count = 1;
     record.firstRequestTime = now;
@@ -76,17 +74,24 @@ export function checkGroqRateLimit(clientId: string): RateLimitStatus {
     };
   }
 
-  // 3. Increment request count
+  // 3. Increment request count within the 2-minute window
   record.count++;
 
-  // 4. If limit exceeded (more than 10 continuous requests), activate 15-minute lockout
-  if (record.count > MAX_REQUESTS) {
+  // 4. If continuous requests reach 20 within 2 minutes:
+  // Engage the 15-second lockout
+  if (record.count >= MAX_REQUESTS) {
     record.lockedUntil = now + LOCKOUT_MS;
-    const remainingMinutes = 15;
+    // Allow the 20th request through, then lock the subsequent requests for 15s
+    if (record.count === MAX_REQUESTS) {
+      return {
+        isLimited: false,
+        remainingRequests: 0,
+      };
+    }
+    const remainingSeconds = Math.max(1, Math.ceil((record.lockedUntil - now) / 1000));
     return {
       isLimited: true,
-      remainingMinutes,
-      message: `You've reached the message limit (10 requests). Our AI assistant is taking a short breather to ensure fast and fair access for everyone. Please try again in about ${remainingMinutes} minutes, or feel free to book a direct consultation with our team!`,
+      remainingSeconds,
     };
   }
 
@@ -97,7 +102,7 @@ export function checkGroqRateLimit(clientId: string): RateLimitStatus {
 }
 
 /**
- * Helper to reset a client (useful for unit testing)
+ * Helper to reset a client (useful for testing)
  */
 export function resetRateLimit(clientId: string) {
   rateLimitStore.delete(clientId);

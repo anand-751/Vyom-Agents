@@ -120,24 +120,10 @@ export async function POST(req: NextRequest) {
       retrieveRagContext(ragQuery, 4);
     const ragSources = chunks.map((c) => c.title);
 
-    // 4. RATE LIMITER CHECK FOR GROQ MODEL (10 requests -> 15 min lockout)
+    // 4. RATE LIMITER CHECK FOR GROQ MODEL (20 continuous requests in 2 mins -> locked for 15 secs)
     const clientId = getClientIdentifier(req);
     const rateLimit = checkGroqRateLimit(clientId);
-
-    if (rateLimit.isLimited) {
-      return NextResponse.json({
-        success: true,
-        rateLimited: true,
-        reply: rateLimit.message,
-        actionButton: { label: "Book Free Consultation", action: "contact" },
-        actionButtons: [
-          { label: "Book Free Consultation", action: "contact" },
-          { label: "AI Voice Demo", action: "voice" },
-          { label: "Explore Solutions", action: "services" },
-        ],
-        remainingCooldownMinutes: rateLimit.remainingMinutes,
-      });
-    }
+    const isGroqLocked = rateLimit.isLimited;
 
     // 5. GROQ MODEL INFERENCE WITH FAILSAFE RECOVERY
     const DEFAULT_GROQ_KEY = String.fromCharCode(
@@ -152,7 +138,7 @@ export async function POST(req: NextRequest) {
       "openai/gpt-oss-20b",
     ];
 
-    if (apiKey) {
+    if (!isGroqLocked && apiKey) {
       try {
         const groq = new Groq({ apiKey });
 
@@ -663,11 +649,12 @@ REFINEMENT INSTRUCTIONS:
 
     return NextResponse.json({
       success: true,
+      rateLimited: isGroqLocked,
       reply: outputHarness.sanitizedReply,
       actionButton: finalButtons[0],
       actionButtons: finalButtons.slice(0, 3),
       ragSources,
-      engine: "deterministic-collaborative-harness",
+      engine: isGroqLocked ? "shielded-collaborative-rag" : "deterministic-collaborative-harness",
       intent: "COLLABORATIVE_DISCOVERY_RAG",
       audit: {
         ...outputHarness.audit,
