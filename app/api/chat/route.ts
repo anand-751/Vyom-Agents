@@ -5,7 +5,24 @@ import {
   evaluateOutputHarness,
   classifyQueryIntent,
 } from "@/lib/guardrails-harness";
+import { checkGroqRateLimit } from "@/lib/rate-limiter";
 import Groq from "groq-sdk";
+
+function getClientIdentifier(req: NextRequest): string {
+  const forwarded = req.headers.get("x-forwarded-for");
+  if (forwarded) {
+    return forwarded.split(",")[0].trim();
+  }
+  const realIp = req.headers.get("x-real-ip");
+  if (realIp) {
+    return realIp.trim();
+  }
+  const cfIp = req.headers.get("cf-connecting-ip");
+  if (cfIp) {
+    return cfIp.trim();
+  }
+  return "global-client-session";
+}
 
 export async function POST(req: NextRequest) {
   const startTime = performance.now();
@@ -103,7 +120,26 @@ export async function POST(req: NextRequest) {
       retrieveRagContext(ragQuery, 4);
     const ragSources = chunks.map((c) => c.title);
 
-    // 4. GROQ MODEL INFERENCE WITH FAILSAFE RECOVERY
+    // 4. RATE LIMITER CHECK FOR GROQ MODEL (10 requests -> 15 min lockout)
+    const clientId = getClientIdentifier(req);
+    const rateLimit = checkGroqRateLimit(clientId);
+
+    if (rateLimit.isLimited) {
+      return NextResponse.json({
+        success: true,
+        rateLimited: true,
+        reply: rateLimit.message,
+        actionButton: { label: "Book Free Consultation", action: "contact" },
+        actionButtons: [
+          { label: "Book Free Consultation", action: "contact" },
+          { label: "AI Voice Demo", action: "voice" },
+          { label: "Explore Solutions", action: "services" },
+        ],
+        remainingCooldownMinutes: rateLimit.remainingMinutes,
+      });
+    }
+
+    // 5. GROQ MODEL INFERENCE WITH FAILSAFE RECOVERY
     const DEFAULT_GROQ_KEY = String.fromCharCode(
       103, 115, 107, 95, 48, 111, 98, 68, 77, 98, 81, 114, 105, 102, 79, 81, 57, 114, 117, 77,
       65, 120, 66, 52, 87, 71, 100, 121, 98, 51, 70, 89, 66, 121, 112, 65, 119, 115, 114, 113,

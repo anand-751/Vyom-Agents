@@ -20,7 +20,7 @@ Vyom's Paradigm Shift:
 Vyom Agents engineers sovereign, multi-agent systems with self-evaluating reasoning loops, dynamic tool calling, and self-healing visual automation. When interfaces relocate, the systems dynamically re-plan and auto-remediate without human babysitting.
 
 Key Operational Metrics:
-• Sub-400ms Voice Latency (typically 320ms end-to-end for STT, LLM reasoning, and TTS streaming).
+• Sub-900ms Voice Latency (typically 320ms end-to-end for STT, LLM reasoning, and TTS streaming).
 • 99.4% Multi-Step Task Accuracy with automated self-healing verification loops.
 • 10x Operational Throughput Multiplier: continuous 24/7 autonomous execution capacity.
 • 100% Deterministic Tool Safety guaranteed by sandboxed execution harnesses and strict role-based policy guardrails.
