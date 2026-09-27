@@ -212,6 +212,12 @@ const DOMAIN_KEYWORDS: Record<string, string> = {
   spa: "Spa & Wellness Services",
   auto: "Automotive & Repair Services",
   mechanic: "Automotive & Repair Services",
+  dealership: "Automotive & Dealership Operations",
+  dealerships: "Automotive & Dealership Operations",
+  dealer: "Automotive & Dealership Operations",
+  dealers: "Automotive & Dealership Operations",
+  "car dealership": "Automotive & Dealership Operations",
+  automotive: "Automotive & Dealership Operations",
   plumbing: "Home Services & Contracting",
   hvac: "Home Services & Contracting",
   contractor: "Construction & Contracting",
@@ -241,8 +247,9 @@ const OUT_OF_SCOPE_PATTERNS = [
 ];
 
 const BUSINESS_TECH_EXEMPTIONS = [
-  /\b(restaurant|dining|cafe|food|hospitality|store|retail|business|operations|agency|clinic|firm)\b/i,
-  /\b(website|websites|web\s+app|web\s+portal|portal|app|software|dashboard|landing\s+page)\b/i,
+  /\b(restaurant|dining|cafe|food|hospitality|store|retail|business|operations|agency|clinic|firm|dealership|auto|dealer)\b/i,
+  /\b(website|websites|web\s+app|web\s+portal|portal|app|software|dashboard|landing\s+page|desktop|desktop\s+app)\b/i,
+  /\b(invoice|invoices|order|orders|billing|inventory|pos)\b/i,
   /\b(voice|receptionist|phone|call|calls|telephony)\b/i,
   /\b(rpa|uipath|playwright|selenium|automation|workflow|swarms|multiagent)\b/i,
   /\b(pricing|price|cost|rate|fee|tier|starter|enterprise)\b/i,
@@ -260,24 +267,25 @@ export function classifyQueryIntent(query: string): IntentClassificationResult {
   const clean = lower.replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
   const oneWord = clean.replace(/\s+/g, "");
 
-  // 1. Check for domain match first
+  // 1. Check for domain match first (longest match first to prevent substrings matching first)
   let detectedDomain: string | undefined;
-  for (const [key, domainName] of Object.entries(DOMAIN_KEYWORDS)) {
+  const sortedDomainEntries = Object.entries(DOMAIN_KEYWORDS).sort((a, b) => b[0].length - a[0].length);
+  for (const [key, domainName] of sortedDomainEntries) {
     if (lower.includes(key)) {
       detectedDomain = domainName;
       break;
     }
   }
 
-  // Dynamic business domain extractor (e.g., "i have restaurant business", "for my dental clinic", "in real estate business")
+  // Dynamic business domain extractor (e.g., "i have a car dealership shop", "run an dental clinic", "for my real estate business")
   if (!detectedDomain) {
     const businessMatch = lower.match(
-      /(?:have|run|own|manage|in|for|operate)\s+(?:a|an|the|my|our|basically)?\s*([a-z\s]{3,25})\s+(?:business|company|shop|store|agency|firm|practice|clinic|restaurant|service|studio|center|brand|startup)/i
+      /(?:have|run|own|manage|in|for|operate)\s+(?:\b(?:an|a|the|my|our|basically|some)\b\s+)?([a-z\s]{2,25})\s+(?:business|company|shop|store|agency|firm|practice|clinic|restaurant|service|studio|center|brand|startup)/i
     );
     if (businessMatch && businessMatch[1]) {
-      const rawExtracted = businessMatch[1].replace(/\bbasically\b/gi, "").trim();
+      let rawExtracted = businessMatch[1].replace(/\b(a|an|the|my|our|basically|some|any)\b/gi, "").trim();
       if (rawExtracted.length >= 3 && !["small", "big", "new", "this", "my", "our"].includes(rawExtracted)) {
-        for (const [k, d] of Object.entries(DOMAIN_KEYWORDS)) {
+        for (const [k, d] of sortedDomainEntries) {
           if (rawExtracted.includes(k)) {
             detectedDomain = d;
             break;
@@ -302,6 +310,12 @@ export function classifyQueryIntent(query: string): IntentClassificationResult {
     )
   ) {
     detectedService = "Websites & Web Applications";
+  } else if (
+    /\b(desktop\s+app|desktop\s+application|desktop\s+software|cross-platform\s+app|electron|tauri|offline\s+app|invoices?\s+(and|&)\s+orders?|manage\s+(?:my\s+)?(?:invoices|orders))\b/i.test(
+      lower
+    )
+  ) {
+    detectedService = "Desktop Applications & Custom Software";
   } else if (/\b(crm|erp|dashboard|billing\s+software|management\s+software)\b/i.test(lower)) {
     detectedService = "Custom CRM & ERP Softwares";
   } else if (/\b(rpa|uipath|playwright|scrape|scraping|browser\s+automation|ui\s+automation)\b/i.test(lower)) {

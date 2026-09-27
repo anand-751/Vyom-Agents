@@ -247,6 +247,38 @@ export function FloatingChatWidget() {
       }
     }
 
+    // Desktop Applications & Invoicing/Orders
+    if (
+      lower.includes("desktop") ||
+      lower.includes("invoice") ||
+      lower.includes("invoices") ||
+      lower.includes("order") ||
+      lower.includes("orders")
+    ) {
+      return {
+        reply:
+          "Vyom engineers custom, high-performance desktop applications (built with Tauri and Electron) for offline-capable operations and automated workflows:\n\n1. Automated Invoicing & Orders: Real-time invoice parsing, order tracking, and supplier PO reconciliation with zero manual entry.\n2. Hardware & ERP Integration: Syncs directly with local printers, scanners, and accounting software (QuickBooks, SAP).\n3. Autonomous AI Copilots: Flags pending payments, audits billing discrepancies, and auto-drafts dispatch updates.\n\nFor proper consultation around building your custom desktop software, kindly contact us for a free consultation!",
+        actionButtons: [
+          { label: "Book Free Consultation", action: "contact" },
+          { label: "Explore Services", action: "services" },
+          { label: "AI Voice Demo", action: "voice" },
+        ],
+      };
+    }
+
+    // Automotive & Car Dealerships
+    if (lower.includes("dealership") || lower.includes("dealer") || lower.includes("car dealer") || lower.includes("automotive")) {
+      return {
+        reply:
+          "For Automotive & Car Dealerships, Vyom automates your end-to-end sales and service operations to capture revenue 24/7:\n\n1. AI Voice Receptionist: Captures weekend and after-hours buyer inquiries, schedules test drives, and qualifies trade-ins with sub-400ms latency.\n2. Digital Showroom & Web Platform: High-performance Next.js dealership platform with live inventory, finance calculators, and instant AI chat.\n3. Desktop Invoicing & DMS RPA: Dedicated desktop software for parts/vehicle invoicing, while RPA automates DMS entry and title paperwork.\n\nFor proper consultation around your dealership operations, kindly contact us for a free consultation!",
+        actionButtons: [
+          { label: "Book Free Consultation", action: "contact" },
+          { label: "AI Voice Demo", action: "voice" },
+          { label: "Explore Services", action: "services" },
+        ],
+      };
+    }
+
     // 4. Domain: Restaurant & Food Hospitality
     if (
       lower.includes("restaurant") ||

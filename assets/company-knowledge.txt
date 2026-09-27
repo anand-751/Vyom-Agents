@@ -115,6 +115,7 @@ A human receptionist desk running 24/7 (requiring 3 rotating shifts) costs ₹75
    • Business ROI: Up to 3.5x higher visitor-to-lead conversion rates, sub-second mobile page loads, zero third-party marketplace commissions, and complete IP code ownership.
 6. AIEO (AI Engine Optimization): Knowledge Graph structuring and schema injection ensuring your brand ranks #1 on ChatGPT, Claude, and Perplexity search.
 7. Enterprise RAG Chatbots: Hybrid vector search (Pinecone, pgvector) with cross-encoder rerankers and contextual memory for zero-hallucination internal knowledge retrieval.
+8. Desktop Applications & Custom Software: High-performance native and cross-platform desktop software (Tauri, Electron, Python Qt) for offline-capable operations, order management, automated invoice extraction, supplier PO matching, and local hardware/POS integration.
 
 --------------------------------------------------------------------------------
 8. TECHNOLOGY STACK & ENTERPRISE INTEGRATION MESH
@@ -186,6 +187,15 @@ Vyom Agents delivers end-to-end bespoke autonomous solutions tailored to specifi
 • Self-Healing RPA: Automates daily POS sales reconciliation, vendor grocery/ingredient invoice matching, and inventory re-ordering.
 • AIEO: Local SEO and Knowledge Graph optimization making your restaurant rank #1 on ChatGPT, Perplexity, and Google Maps.
 • Next Step: For proper consultation around your restaurant business or website, contact Vyom for a free consultation!
+
+8. Automotive & Car Dealership Operations:
+• Live Flagship Products: AI Voice Receptionist handling 24/7 buyer inquiries, test drive scheduling, and trade-in valuation requests with sub-400ms latency — capturing every weekend and after-hours lead.
+• Core Services:
+  - Custom Desktop & Web Software: Dedicated desktop and web applications to manage vehicle orders, supplier parts invoicing, inventory tracking, and financing calculations.
+  - Digital Showrooms & Web Platforms: High-performance Next.js dealership websites with searchable vehicle inventory, finance pre-approval, and test drive booking.
+  - Self-Healing RPA: Automates Dealer Management System (DMS) updates, auction bid tracking, and DMV title/registration documentation with 99.8% uptime.
+  - Google Review AI Agent: Post-sale & service feedback sequences harvesting +300% 5-star Google Reviews and resolving service complaints privately.
+• Next Step: For proper consultation around automating your dealership operations, contact Vyom for a free consultation!
 
 ================================================================================
 
