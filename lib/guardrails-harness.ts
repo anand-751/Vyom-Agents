@@ -206,6 +206,19 @@ const DOMAIN_KEYWORDS: Record<string, string> = {
   startup: "Tech Startups & High-Growth Ventures",
   hotel: "Hospitality & Hotel Operations",
   hospitality: "Hospitality & Guest Services",
+  gym: "Fitness & Wellness Centers",
+  fitness: "Fitness & Wellness Centers",
+  salon: "Salon & Personal Care Services",
+  spa: "Spa & Wellness Services",
+  auto: "Automotive & Repair Services",
+  mechanic: "Automotive & Repair Services",
+  plumbing: "Home Services & Contracting",
+  hvac: "Home Services & Contracting",
+  contractor: "Construction & Contracting",
+  cleaning: "Commercial & Residential Cleaning",
+  insurance: "Insurance Agencies & Brokerages",
+  consulting: "Professional Consulting & Advisory",
+  agency: "Agencies & Professional Services",
   manufacturing: "Manufacturing & Industrial Operations",
   education: "Education & EdTech Institutions",
 };
@@ -259,7 +272,7 @@ export function classifyQueryIntent(query: string): IntentClassificationResult {
   // Dynamic business domain extractor (e.g., "i have restaurant business", "for my dental clinic", "in real estate business")
   if (!detectedDomain) {
     const businessMatch = lower.match(
-      /(?:have|run|own|manage|in|for|operate)\s+(?:a|an|the|my|our|basically)?\s*([a-z\s]{3,25})\s+(?:business|company|shop|store|agency|firm|practice|clinic|restaurant|service)/i
+      /(?:have|run|own|manage|in|for|operate)\s+(?:a|an|the|my|our|basically)?\s*([a-z\s]{3,25})\s+(?:business|company|shop|store|agency|firm|practice|clinic|restaurant|service|studio|center|brand|startup)/i
     );
     if (businessMatch && businessMatch[1]) {
       const rawExtracted = businessMatch[1].replace(/\bbasically\b/gi, "").trim();

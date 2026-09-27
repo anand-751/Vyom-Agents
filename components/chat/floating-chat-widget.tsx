@@ -327,11 +327,12 @@ export function FloatingChatWidget() {
 
     // Default Collaborative Discovery Fallback
     return {
-      reply: "Vyom Agents is an enterprise Agentic AI SaaS company engineering autonomous AI agents and intelligent workflows to transform modern businesses. Tell me about your industry or use case to explore tailored solutions.",
+      reply:
+        "Vyom automates your business operational journey to eliminate human overhead, avoid confusion, and generate 24/7 revenue even when you are off:\n\n1. Inbound & Front-Desk: AI Voice Agent handles 24/7 customer calls & bookings with sub-400ms latency.\n2. Digital Storefront & Reputation: Custom AI-native Next.js website and Google Review AI harvesting +300% 5-star reviews.\n3. Back-Office Execution: Self-Healing RPA and Custom CRM/ERP automating data entry and reconciliation.\n\nFor proper consultation around your business, kindly contact us for a free consultation!",
       actionButtons: [
-        { label: "Explore AI Agents", action: "services" },
-        { label: "Test Voice Demo", action: "voice" },
-        { label: "Book a Call", action: "contact" },
+        { label: "Book Free Consultation", action: "contact" },
+        { label: "AI Voice Demo", action: "voice" },
+        { label: "Explore Services", action: "services" },
       ],
     };
   };

@@ -106,18 +106,22 @@ MANDATORY GUARDRAILS & INSTRUCTIONS:
    Vyom Agents is an enterprise Agentic AI SaaS company building autonomous AI agents, multi-agent workflows, and custom enterprise web applications to transform operations.
    Offerings like our AI Voice Receptionist, Websites & Web Apps, Self-Healing RPA Orchestrator, Multi-Agent Swarms, Custom CRM/ERP, and AIEO are core capabilities in our platform.
 
-2. COLLABORATIVE DOMAIN DISCOVERY + TECHNICAL RAG:
-   When a user mentions their industry, asks a question, or requests a specific capability (e.g. Website development, Voice Agent, RPA, CRM):
-   • If the user specifically asks to build a website, web app, or portal (e.g., "i want to build website for my restaurant"):
-     - Directly confirm: Yes, Vyom engineers custom AI-native websites and digital platforms built on Next.js!
-     - For restaurants: highlight mobile-first digital menus, commission-free direct online food ordering, table reservations, embedded conversational AI voice receptionist, and automated Google reviews.
-     - For other businesses: highlight sub-second Next.js page loads, custom client portals, embedded AI assistants, and high-converting glassmorphic UX/UI.
-     - Conclude: "For proper consultation around your business or website, kindly contact us for a free consultation!"
-   • If the user asks general automation for their domain (e.g. Restaurants, Clinics, Legal, Logistics, SaaS):
-     - Briefly diagnose their operational friction.
-     - Present 2 to 3 tailored solutions from our portfolio (AI Voice Agent for orders/calls, Google Review Agent for reputation, Autonomous RPA for back-office).
-     - Conclude with an invitation for a free consultation.
-   • For other inquiries, stay technically grounded in our 7 Enterprise Services and Flagship Products.
+2. COLLABORATIVE DOMAIN DISCOVERY & OPERATIONAL LIFECYCLE MAPPING:
+   When any user describes their business (any domain: restaurant, healthcare/dental, legal, real estate, gym, salon, e-commerce, logistics, finance, etc.):
+   • Step 1: Diagnose the business's general operational lifecycle:
+     - Front-Desk & Inbound (handling calls, orders, table/appointment bookings, FAQs, eliminating missed after-hours leads).
+     - Digital Presence & Reputation (high-converting modern website/portal, online ordering, Google reviews).
+     - Back-Office Operations (manual data entry, scheduling, invoice reconciliation, CRM/ERP updates).
+   • Step 2: Map Vyom's specific services and agents to automate those steps:
+     - AI Voice Agent: 24/7 conversational reception (sub-400ms latency) working 24/7 when you are off so you never miss revenue with zero human overhead.
+     - Web & Digital Apps: High-performance Next.js websites, mobile-friendly interactive menus/portals, and commission-free online ordering.
+     - Google Review AI: Automated WhatsApp/SMS feedback loops to harvest +300% 5-star Google reviews and intercept negative feedback.
+     - Self-Healing RPA & Custom CRM/ERP: Automates back-office billing, scheduling, and invoice reconciliation with 99.8% recovery uptime.
+   • Step 3: Highlight the Tangible Business Value:
+     - Eliminates human overhead & operational confusion, cuts payroll costs, and generates 24/7 revenue automatically when you are off.
+   • Step 4: Conclude: "For proper consultation around your business, kindly contact us for a free consultation!"
+   • If the user specifically asks to build a website, web app, or portal:
+     - Directly confirm and explain how Vyom builds high-performance Next.js websites tailored to their domain with embedded conversational agents.
 
 3. MAX WORD COUNT (CRITICAL HARD CONSTRAINT):
    Your total response MUST NOT EXCEED 150 WORDS AT ALL. Keep it dense, punchy, executive, and structured.
@@ -486,11 +490,11 @@ REFINEMENT INSTRUCTIONS:
         { label: "Book Free Consultation", action: "contact" },
       ];
     } else if (intentResult.detectedDomain) {
-      synthesizedReply = `For ${intentResult.detectedDomain}, Vyom Agents deploys autonomous AI agents and intelligent workflows to eliminate operational friction with zero human overhead:\n\n1. AI Voice Agent: Handles 24/7 customer calls, inquiries, and bookings with sub-400ms latency.\n2. Google Review & Reputation Agent: Automates post-service customer feedback to harvest 5-star Google reviews and resolve complaints.\n3. Self-Healing RPA & Multiagent Swarms: Automates back-office data entry and document processing with 99.8% recovery uptime.\n\nFor proper consultation around your business, kindly contact us for a free consultation!`;
+      synthesizedReply = `For ${intentResult.detectedDomain}, Vyom automates your end-to-end operational journey to eliminate human overhead, avoid confusion, and generate revenue 24/7 even when you are off:\n\n1. Front-Desk & Inbound: AI Voice Agent handles 24/7 customer calls, bookings, and inquiries with sub-400ms latency — never missing after-hours leads.\n2. Digital Storefront & Reputation: Custom AI-native Next.js website and Google Review AI harvesting +300% 5-star Google reviews via WhatsApp/SMS.\n3. Back-Office Execution: Self-Healing RPA and Custom CRM/ERP automating invoice reconciliation, scheduling, and data entry with zero manual fatigue.\n\nFor proper consultation around your business, kindly contact us for a free consultation!`;
       fallbackButtons = [
-        { label: "Explore AI Agents", action: "services" },
-        { label: "AI Voice Demo", action: "voice" },
         { label: "Book Free Consultation", action: "contact" },
+        { label: "AI Voice Demo", action: "voice" },
+        { label: "Explore Services", action: "services" },
       ];
     } else if (topChunk) {
       // Cleanly extract narrative paragraph rather than document section titles or stealth notes
