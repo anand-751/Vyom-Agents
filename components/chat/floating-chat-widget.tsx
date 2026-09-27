@@ -226,20 +226,20 @@ export function FloatingChatWidget() {
       ) {
         return {
           reply:
-            "Yes, absolutely! Vyom designs and develops high-performance, AI-native websites specifically tailored for restaurants:\n\n1. Interactive Menus & Online Ordering: Mobile-first Next.js web storefronts with commission-free direct online food ordering.\n2. Table Reservations & Embedded AI Voice: Direct table booking synced with our embedded conversational voice widget for instant guest FAQs.\n3. Automated Google Reviews: WhatsApp/SMS post-dining sequences to harvest +300% 5-star Google reviews.\n\nFor proper consultation around building your restaurant website, kindly contact us for a free consultation!",
+            "Yes, absolutely! We build modern digital storefronts and websites designed specifically for cafes and restaurants:\n\n1. Digital Menu & Online Ordering: Customers can browse your menu, customize items, and pay straight from their phones without third-party commission fees.\n2. Instant Kitchen & Staff Alerts: New orders ping your team immediately so food is prepared without delay.\n3. Automatic Digital Receipts & Reviews: Sends bills directly via WhatsApp or SMS, and helps collect 5-star Google reviews from happy diners.\n\nWould you like to schedule a free consultation to see how this fits your cafe?",
           actionButtons: [
             { label: "Book Free Consultation", action: "contact" },
-            { label: "Explore Services", action: "services" },
+            { label: "Explore Solutions", action: "services" },
             { label: "AI Voice Demo", action: "voice" },
           ],
         };
       } else {
         return {
           reply:
-            "Yes, absolutely! Vyom engineers high-performance, AI-native websites, client portals, and SaaS dashboards tailored for modern enterprises:\n\n1. Next.js Full-Stack Architecture: Sub-second page loads, SEO optimization, and Apple OS glassmorphic visual UI.\n2. Embedded AI Capabilities: Native conversational voice widgets, automated booking, and client self-service portals.\n3. Conversion-Driven UX: Mobile-first responsive design engineered for maximum visitor-to-customer conversion.\n\nFor proper consultation around your website or portal, kindly contact us for a free consultation!",
+            "Yes, absolutely! We design and build fast, modern websites and client portals tailored for your business:\n\n1. Built For Growth: Clean mobile-friendly design that makes it effortless for visitors to become paying customers.\n2. Built-In 24/7 Assistant: Online booking, interactive inquiries, and customer self-service built right in.\n3. Complete Ownership: You own 100% of your website and customer data with zero recurring marketplace fees.\n\nWould you like to schedule a free consultation to chat about your website?",
           actionButtons: [
             { label: "Book Free Consultation", action: "contact" },
-            { label: "Explore Services", action: "services" },
+            { label: "Explore Solutions", action: "services" },
             { label: "AI Voice Demo", action: "voice" },
           ],
         };
@@ -256,10 +256,10 @@ export function FloatingChatWidget() {
     ) {
       return {
         reply:
-          "Vyom engineers custom, high-performance desktop applications (built with Tauri and Electron) for offline-capable operations and automated workflows:\n\n1. Automated Invoicing & Orders: Real-time invoice parsing, order tracking, and supplier PO reconciliation with zero manual entry.\n2. Hardware & ERP Integration: Syncs directly with local printers, scanners, and accounting software (QuickBooks, SAP).\n3. Autonomous AI Copilots: Flags pending payments, audits billing discrepancies, and auto-drafts dispatch updates.\n\nFor proper consultation around building your custom desktop software, kindly contact us for a free consultation!",
+          "We build custom software designed to keep your daily operations fast, organized, and error-free:\n\n1. Fast Invoicing & Order Tracking: Create and send bills in seconds, match supplier orders, and track customer payments without messy paper trails.\n2. Works Offline & Connects Locally: Syncs smoothly with your receipt printers, barcode scanners, and accounting tools.\n3. Automatic Reminders: Flags unpaid bills and sends status updates to your customers automatically.\n\nWould you like to schedule a free consultation to discuss your specific software needs?",
         actionButtons: [
           { label: "Book Free Consultation", action: "contact" },
-          { label: "Explore Services", action: "services" },
+          { label: "Explore Solutions", action: "services" },
           { label: "AI Voice Demo", action: "voice" },
         ],
       };
@@ -269,11 +269,11 @@ export function FloatingChatWidget() {
     if (lower.includes("dealership") || lower.includes("dealer") || lower.includes("car dealer") || lower.includes("automotive")) {
       return {
         reply:
-          "For Automotive & Car Dealerships, Vyom automates your end-to-end sales and service operations to capture revenue 24/7:\n\n1. AI Voice Receptionist: Captures weekend and after-hours buyer inquiries, schedules test drives, and qualifies trade-ins with sub-400ms latency.\n2. Digital Showroom & Web Platform: High-performance Next.js dealership platform with live inventory, finance calculators, and instant AI chat.\n3. Desktop Invoicing & DMS RPA: Dedicated desktop software for parts/vehicle invoicing, while RPA automates DMS entry and title paperwork.\n\nFor proper consultation around your dealership operations, kindly contact us for a free consultation!",
+          "For car dealerships, we help you capture every buyer lead and cut down on paperwork:\n\n1. 24/7 Phone Lead Capture: Answers buyer inquiries, books test drives, and qualifies trade-in leads instantly, even on weekends and evenings when you're off the lot.\n2. Digital Showroom: A clean website showcasing your live inventory with online financing requests and booking.\n3. Fast Invoicing & Paperwork Automation: Software that handles parts and vehicle invoices, tracks customer orders, and cuts hours of manual paperwork.\n\nWould you like to schedule a free consultation to see this in action?",
         actionButtons: [
           { label: "Book Free Consultation", action: "contact" },
           { label: "AI Voice Demo", action: "voice" },
-          { label: "Explore Services", action: "services" },
+          { label: "Explore Solutions", action: "services" },
         ],
       };
     }
@@ -292,11 +292,11 @@ export function FloatingChatWidget() {
     ) {
       return {
         reply:
-          "For Restaurants & Food Businesses, Vyom automates high-friction front-desk and growth operations with zero human overhead:\n\n1. AI Voice Agent: Handles 24/7 inbound phone orders, table reservations, and menu/dietary FAQs with sub-400ms latency — eliminating missed calls during peak dining rush.\n2. Google Review & Reputation Agent: Automatically sends post-dining WhatsApp/SMS review requests to harvest +300% 5-star Google Reviews and catch negative feedback early.\n3. Autonomous RPA: Automates supplier invoice reconciliation and daily sales reporting.\n\nFor proper consultation around your business, kindly contact us for a free consultation!",
+          "For cafes and food businesses, we help streamline your rush hours from order taking to billing:\n\n1. 24/7 Phone & Digital Ordering: Takes customer phone orders and provides a mobile menu so guests can order and pay with zero wait times.\n2. Kitchen & Staff Alerts: Instantly notifies your kitchen and team whenever an order or table booking comes in.\n3. Automatic Digital Receipts & Reviews: Sends bills directly via WhatsApp or SMS, and helps you collect 5-star Google reviews from satisfied guests.\n\nWould you like to schedule a free consultation to see how this works for your cafe?",
         actionButtons: [
           { label: "AI Voice Demo", action: "voice" },
           { label: "Book Free Consultation", action: "contact" },
-          { label: "Explore Services", action: "services" },
+          { label: "Explore Solutions", action: "services" },
         ],
       };
     }
@@ -304,7 +304,8 @@ export function FloatingChatWidget() {
     // 4. Domain: Healthcare & Clinic
     if (lower.includes("dental") || lower.includes("clinic") || lower.includes("health") || lower.includes("doctor") || lower.includes("patient")) {
       return {
-        reply: "For Healthcare & Clinics, Vyom provides 2 core solutions:\n\n1. AI Voice Receptionist (Live): 24/7 patient booking with sub-400ms latency, syncing natively with Google Calendar, Dentrix & Epic (+42% conversion, zero missed calls).\n2. Self-Healing RPA & Review Agent: Automates patient intake and harvests +300% 5-star patient reviews on Google.\n\nFor proper consultation around your business, kindly contact us for a free consultation!",
+        reply:
+          "For clinics and healthcare practices, we eliminate phone tag and paperwork headaches:\n\n1. 24/7 Appointment Scheduling: An AI phone assistant answers patient calls and books directly onto your doctor's calendar so no patient call is missed.\n2. Automated Intake & Reminders: Sends digital intake forms and SMS reminders to reduce no-shows.\n3. 5-Star Reviews: Automatically invites satisfied patients to leave positive Google reviews.\n\nWould you like to try our live voice demo or book a quick consultation?",
         actionButtons: [
           { label: "Test Live Voice Demo", action: "voice" },
           { label: "Book Free Consultation", action: "contact" },
@@ -315,7 +316,8 @@ export function FloatingChatWidget() {
     // 4. Domain: Legal
     if (lower.includes("legal") || lower.includes("law") || lower.includes("attorney")) {
       return {
-        reply: "For Legal Practices, Vyom automates client intake and document extraction with 2 targeted solutions:\n\n1. AI Voice Receptionist (Live): Sub-400ms 24/7 intake triage, conflict screening, and consultation scheduling.\n2. Self-Healing RPA & Multiagent Systems: Extracts court filings, contracts, and evidence without script breakage (99.8% recovery uptime).\n\nWould you like to schedule an architectural consultation?",
+        reply:
+          "For law practices, we streamline client intake and document handling:\n\n1. 24/7 Phone Triage: An AI phone assistant screens caller inquiries, checks basic details, and schedules consultations around the clock.\n2. Document & Record Automation: Automatically organizes case files, contracts, and forms without manual data entry.\n\nWould you like to schedule a free consultation to explore how this works?",
         actionButtons: [
           { label: "Test Voice Demo", action: "voice" },
           { label: "Schedule Consultation", action: "contact" },
@@ -326,21 +328,23 @@ export function FloatingChatWidget() {
     // 5. Product: Voice Receptionist
     if (lower.includes("voice") || lower.includes("receptionist") || lower.includes("phone") || lower.includes("call")) {
       return {
-        reply: "Our flagship AI Voice Receptionist operates with sub-400ms latency (320ms typical), native Google Calendar & EHR/CRM sync, and human-like interruption handling across 45+ languages. It boosts appointment conversion by +42%.\n\nWould you like to test the live voice demo?",
+        reply:
+          "Our AI phone assistant answers customer calls 24/7 without keeping anyone waiting on hold. It speaks naturally, answers questions, takes orders, and books appointments directly onto your calendar in real time. This means you never miss a customer or new inquiry, even during peak rush hours or when your doors are closed.\n\nWould you like to test our live voice demo?",
         actionButtons: [
           { label: "Test Live Voice Demo", action: "voice" },
-          { label: "Book Discovery Call", action: "contact" },
+          { label: "Book a Call", action: "contact" },
         ],
       };
     }
 
     // 6. Product: RPA & UI Automation
-    if (lower.includes("rpa") || lower.includes("self-healing") || lower.includes("automation") || lower.includes("orchestrator") || lower.includes("uipath")) {
+    if (lower.includes("rpa") || lower.includes("self-healing") || lower.includes("automation") || lower.includes("orchestrator") || lower.includes("uipath") || lower.includes("workflow")) {
       return {
-        reply: "Vyom's Self-Healing RPA engine beats legacy bots (UiPath, Selenium) using visual neural embeddings with Playwright. When target interfaces shift, it auto-remediates target selectors in real time with 99.8% recovery uptime.\n\nWould you like to explore our automation deliverables or schedule an audit?",
+        reply:
+          "We replace tedious manual computer tasks with smart automated software workflows. Whether it's pulling invoice details, updating customer records, or syncing orders across your tools, our software handles it automatically in the background with zero manual data entry mistakes.\n\nWould you like to schedule a quick chat to discuss automating your workflows?",
         actionButtons: [
-          { label: "View Enterprise Services", action: "services" },
-          { label: "Schedule Audit Call", action: "contact" },
+          { label: "Explore Solutions", action: "services" },
+          { label: "Schedule a Chat", action: "contact" },
         ],
       };
     }
@@ -348,10 +352,11 @@ export function FloatingChatWidget() {
     // 7. Product: Pricing & ROI
     if (lower.includes("pricing") || lower.includes("roi") || lower.includes("cost") || lower.includes("save") || lower.includes("rate")) {
       return {
-        reply: "Our AI Receptionist offers 3 transparent tiers: Starter at ₹14,999/mo ($180) for 400 calls, Professional at ₹23,999/mo ($280) for 700 calls, and Enterprise at ₹33,990/mo ($400) for 1,000+ calls with custom CRM.\n\nWould you like to open our interactive ROI calculator?",
+        reply:
+          "We keep our pricing simple and transparent with three flexible plans: Starter (around ₹14,999/mo), Professional (₹23,999/mo), and Enterprise (₹33,990/mo) depending on your volume and custom setup. Most businesses easily earn back their investment by capturing after-hours leads and orders that would have otherwise slipped away. Would you like to check out our savings calculator?",
         actionButtons: [
-          { label: "Open ROI Calculator", action: "roi" },
-          { label: "Book Discovery Call", action: "contact" },
+          { label: "Open Savings Calculator", action: "roi" },
+          { label: "Book a Call", action: "contact" },
         ],
       };
     }
@@ -359,11 +364,11 @@ export function FloatingChatWidget() {
     // Default Collaborative Discovery Fallback
     return {
       reply:
-        "Vyom automates your business operational journey to eliminate human overhead, avoid confusion, and generate 24/7 revenue even when you are off:\n\n1. Inbound & Front-Desk: AI Voice Agent handles 24/7 customer calls & bookings with sub-400ms latency.\n2. Digital Storefront & Reputation: Custom AI-native Next.js website and Google Review AI harvesting +300% 5-star reviews.\n3. Back-Office Execution: Self-Healing RPA and Custom CRM/ERP automating data entry and reconciliation.\n\nFor proper consultation around your business, kindly contact us for a free consultation!",
+        "Vyom takes care of repetitive daily tasks so you and your team can focus on serving customers and growing:\n\n1. 24/7 Inbound Phone Assistant: Answers questions, takes orders, and books appointments around the clock so you never lose a customer.\n2. Digital Storefront & Reputation: A clean, modern website with automated WhatsApp review requests to build your 5-star reputation.\n3. Paperwork & Billing Automation: Automatically creates invoices, tracks orders, and updates your records without manual data entry.\n\nLet's schedule a free consultation to see how we can help your business!",
       actionButtons: [
         { label: "Book Free Consultation", action: "contact" },
         { label: "AI Voice Demo", action: "voice" },
-        { label: "Explore Services", action: "services" },
+        { label: "Explore Solutions", action: "services" },
       ],
     };
   };

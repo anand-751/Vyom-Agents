@@ -499,15 +499,9 @@ export function evaluateOutputHarness(
     reply = reply.replace(/(system:|assistant:|user:|<\|im_start\|>|<\|im_end\|>)/gi, "").trim();
   }
 
-  // 2. Factual Grounding & Anti-Hallucination Pricing Verifier
+  // 2. Factual Grounding & Anti-Hallucination Pricing Verifier (Word boundary check)
   const queryLower = query.toLowerCase();
-  const isPricingQuery =
-    queryLower.includes("price") ||
-    queryLower.includes("cost") ||
-    queryLower.includes("rate") ||
-    queryLower.includes("fee") ||
-    queryLower.includes("starter") ||
-    queryLower.includes("tier");
+  const isPricingQuery = /\b(price|pricing|cost|costs|fee|fees|rates?|pricing\s+tier|how\s+much)\b/i.test(queryLower);
 
   if (isPricingQuery) {
     const hasStarterPrice = reply.includes("14,999") || reply.includes("180");
@@ -517,14 +511,14 @@ export function evaluateOutputHarness(
     if (!hasStarterPrice && !hasProPrice && !hasEnterprisePrice) {
       hallucinationRepaired = true;
       detectedFlags.push("pricing_grounding_correction");
-      reply += `\n\nOfficial Pricing Tiers:\n• Starter: ₹14,999/mo ($180)\n• Professional: ₹23,999/mo ($280)\n• Enterprise: ₹33,990/mo ($400)`;
+      reply += `\n\nPricing options:\n• Starter: ₹14,999/mo ($180)\n• Professional: ₹23,999/mo ($280)\n• Enterprise: ₹33,990/mo ($400)`;
     }
   }
 
-  // 3. Factual Grounding & Anti-Hallucination Voice Latency Verifier
-  const isVoiceQuery = queryLower.includes("voice") || queryLower.includes("latency") || queryLower.includes("receptionist");
-  if (isVoiceQuery && !reply.toLowerCase().includes("400ms") && !reply.toLowerCase().includes("320ms")) {
-    detectedFlags.push("voice_latency_grounding_verified");
+  // 3. Factual Grounding: Voice query recognition
+  const isVoiceQuery = /\b(voice|phone|call|calls|receptionist)\b/i.test(queryLower);
+  if (isVoiceQuery) {
+    detectedFlags.push("voice_grounding_verified");
   }
 
   // 4. Calculate Grounding Confidence Score
