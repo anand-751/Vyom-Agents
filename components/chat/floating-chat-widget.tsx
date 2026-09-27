@@ -203,7 +203,51 @@ export function FloatingChatWidget() {
       };
     }
 
-    // 3. Domain: Restaurant & Food Hospitality
+    // 3. Service: Websites & Web Applications
+    if (
+      lower.includes("website") ||
+      lower.includes("web app") ||
+      lower.includes("portal") ||
+      lower.includes("landing page") ||
+      lower.includes("web design") ||
+      lower.includes("build site") ||
+      lower.includes("build website") ||
+      lower.includes("create website") ||
+      lower.includes("develop website")
+    ) {
+      if (
+        lower.includes("restaurant") ||
+        lower.includes("food") ||
+        lower.includes("dining") ||
+        lower.includes("cafe") ||
+        lower.includes("bistro") ||
+        lower.includes("bakery") ||
+        lower.includes("bar") ||
+        lower.includes("pizzeria")
+      ) {
+        return {
+          reply:
+            "Yes, absolutely! Vyom designs and develops high-performance, AI-native websites specifically tailored for restaurants:\n\n1. Interactive Menus & Online Ordering: Mobile-first Next.js web storefronts with commission-free direct online food ordering.\n2. Table Reservations & Embedded AI Voice: Direct table booking synced with our embedded conversational voice widget for instant guest FAQs.\n3. Automated Google Reviews: WhatsApp/SMS post-dining sequences to harvest +300% 5-star Google reviews.\n\nFor proper consultation around building your restaurant website, kindly contact us for a free consultation!",
+          actionButtons: [
+            { label: "Book Free Consultation", action: "contact" },
+            { label: "Explore Services", action: "services" },
+            { label: "AI Voice Demo", action: "voice" },
+          ],
+        };
+      } else {
+        return {
+          reply:
+            "Yes, absolutely! Vyom engineers high-performance, AI-native websites, client portals, and SaaS dashboards tailored for modern enterprises:\n\n1. Next.js Full-Stack Architecture: Sub-second page loads, SEO optimization, and Apple OS glassmorphic visual UI.\n2. Embedded AI Capabilities: Native conversational voice widgets, automated booking, and client self-service portals.\n3. Conversion-Driven UX: Mobile-first responsive design engineered for maximum visitor-to-customer conversion.\n\nFor proper consultation around your website or portal, kindly contact us for a free consultation!",
+          actionButtons: [
+            { label: "Book Free Consultation", action: "contact" },
+            { label: "Explore Services", action: "services" },
+            { label: "AI Voice Demo", action: "voice" },
+          ],
+        };
+      }
+    }
+
+    // 4. Domain: Restaurant & Food Hospitality
     if (
       lower.includes("restaurant") ||
       lower.includes("food") ||

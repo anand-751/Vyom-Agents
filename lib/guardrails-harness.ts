@@ -12,6 +12,7 @@ export interface IntentClassificationResult {
   intent: QueryIntent;
   reason: string;
   detectedDomain?: string;
+  detectedService?: string;
   bypassReply?: string;
   suggestedActions?: Array<{
     label: string;
@@ -228,6 +229,7 @@ const OUT_OF_SCOPE_PATTERNS = [
 
 const BUSINESS_TECH_EXEMPTIONS = [
   /\b(restaurant|dining|cafe|food|hospitality|store|retail|business|operations|agency|clinic|firm)\b/i,
+  /\b(website|websites|web\s+app|web\s+portal|portal|app|software|dashboard|landing\s+page)\b/i,
   /\b(voice|receptionist|phone|call|calls|telephony)\b/i,
   /\b(rpa|uipath|playwright|selenium|automation|workflow|swarms|multiagent)\b/i,
   /\b(pricing|price|cost|rate|fee|tier|starter|enterprise)\b/i,
@@ -279,9 +281,32 @@ export function classifyQueryIntent(query: string): IntentClassificationResult {
     }
   }
 
-  // 2. Business & Technical Context Check
+  // 2. Check for specific service match
+  let detectedService: string | undefined;
+  if (
+    /\b(website|websites|web\s+app|web\s+applications|portal|landing\s+page|web\s+design|build\s+website|create\s+website|design\s+website|develop\s+website)\b/i.test(
+      lower
+    )
+  ) {
+    detectedService = "Websites & Web Applications";
+  } else if (/\b(crm|erp|dashboard|billing\s+software|management\s+software)\b/i.test(lower)) {
+    detectedService = "Custom CRM & ERP Softwares";
+  } else if (/\b(rpa|uipath|playwright|scrape|scraping|browser\s+automation|ui\s+automation)\b/i.test(lower)) {
+    detectedService = "Self-Healing RPA & UI Automation";
+  } else if (/\b(voice|receptionist|telephony|phone\s+agent|call\s+handling|inbound\s+calls)\b/i.test(lower)) {
+    detectedService = "AI Voice Receptionist";
+  } else if (/\b(review|reviews|google\s+review|google\s+reviews|reputation)\b/i.test(lower)) {
+    detectedService = "Reputation & Review Automation";
+  } else if (/\b(aieo|chatgpt\s+ranking|perplexity\s+ranking|ai\s+seo)\b/i.test(lower)) {
+    detectedService = "AIEO (AI Engine Optimization)";
+  } else if (/\b(swarm|swarms|multiagent|multi-agent|langgraph)\b/i.test(lower)) {
+    detectedService = "Multiagent Systems";
+  }
+
+  // 3. Business & Technical Context Check
   const hasBusinessContext = Boolean(
     detectedDomain ||
+    detectedService ||
     BUSINESS_TECH_EXEMPTIONS.some((regex) => regex.test(lower))
   );
 
@@ -398,12 +423,20 @@ export function classifyQueryIntent(query: string): IntentClassificationResult {
   }
 
   // 5. Default: Collaborative Domain Discovery + Technical RAG
+  const reason =
+    detectedService && detectedDomain
+      ? `Specific service (${detectedService}) requested for domain (${detectedDomain}).`
+      : detectedService
+      ? `Service identified (${detectedService}). Collaborating with Technical RAG.`
+      : detectedDomain
+      ? `Domain identified (${detectedDomain}). Collaborating with Technical RAG.`
+      : "Technical / Product RAG inquiry. Collaborating with Domain Discovery.";
+
   return {
     intent: "COLLABORATIVE_DISCOVERY_RAG",
-    reason: detectedDomain
-      ? `Domain identified (${detectedDomain}). Collaborating with Technical RAG.`
-      : "Technical / Product RAG inquiry. Collaborating with Domain Discovery.",
+    reason,
     detectedDomain,
+    detectedService,
   };
 }
 

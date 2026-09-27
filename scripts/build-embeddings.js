@@ -81,19 +81,19 @@ function chunkTextSlidingWindow(text, chunkSize = RAG_CHUNK_SIZE, chunkOverlap =
 // Source sections from company-knowledge.txt
 const rawText = fs.readFileSync(path.join(__dirname, "../assets/company-knowledge.txt"), "utf8");
 
-// Parse sections separated by dashes
-const sections = rawText.split(/--------------------------------------------------------------------------------/);
+// Parse sections using structured regex matching section headers
+const sectionRegex =
+  /--------------------------------------------------------------------------------\r?\n([0-9]+\.\s+[^\r\n]+)\r?\n--------------------------------------------------------------------------------\r?\n([\s\S]*?)(?=(?:--------------------------------------------------------------------------------\r?\n[0-9]+\.|$))/g;
+
 const chunks = [];
-
 let chunkCounter = 0;
+let match;
 
-for (const sec of sections) {
-  const cleanSec = sec.trim();
-  if (cleanSec.length < 50 || cleanSec.startsWith("===")) continue;
-
-  const lines = cleanSec.split("\n");
-  const titleLine = lines[0] || "Vyom Agents Company Overview";
-  const title = titleLine.replace(/^[0-9.]+\s*/, "").trim();
+while ((match = sectionRegex.exec(rawText)) !== null) {
+  const fullTitle = match[1].trim();
+  const title = fullTitle.replace(/^[0-9.]+\s*/, "").trim();
+  const contentBody = match[2].trim();
+  if (contentBody.length < 20) continue;
 
   let category = "Company Overview";
   if (/voice/i.test(title)) category = "Proprietary Products";
@@ -101,12 +101,13 @@ for (const sec of sections) {
   else if (/stealth|pipeline/i.test(title)) category = "R&D Pipeline";
   else if (/ecosystem|flywheel/i.test(title)) category = "Architecture & Ecosystem";
   else if (/pricing|roi/i.test(title)) category = "Pricing & Plans";
-  else if (/services/i.test(title)) category = "Services";
+  else if (/services/i.test(title)) category = "Enterprise Services";
   else if (/tech stack|mesh/i.test(title)) category = "Engineering & Tech Stack";
   else if (/security|guardrails/i.test(title)) category = "Security & Compliance";
   else if (/discovery|sla/i.test(title)) category = "Contact & Implementation";
+  else if (/niche|industry|tailored|solutions blueprint/i.test(title)) category = "Industry Solutions";
 
-  const windowedTexts = chunkTextSlidingWindow(cleanSec, RAG_CHUNK_SIZE, RAG_CHUNK_OVERLAP);
+  const windowedTexts = chunkTextSlidingWindow(contentBody, RAG_CHUNK_SIZE, RAG_CHUNK_OVERLAP);
 
   windowedTexts.forEach((content, idx) => {
     chunkCounter++;
@@ -117,6 +118,7 @@ for (const sec of sections) {
     if (category === "Pricing & Plans") suggestedAction = { label: "Open ROI Calculator", action: "roi" };
     else if (/voice/i.test(title)) suggestedAction = { label: "Test Live Voice Demo", action: "voice" };
     else if (/services/i.test(category)) suggestedAction = { label: "View Enterprise Services", action: "services" };
+    else if (/industry/i.test(category)) suggestedAction = { label: "Book Free Consultation", action: "contact" };
     else suggestedAction = { label: "Book Discovery Call", action: "contact" };
 
     chunks.push({
@@ -128,7 +130,7 @@ for (const sec of sections) {
       wordCount: words.length,
       content,
       embedding,
-      suggestedAction
+      suggestedAction,
     });
   });
 }

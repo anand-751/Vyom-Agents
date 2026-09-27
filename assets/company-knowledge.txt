@@ -103,7 +103,16 @@ A human receptionist desk running 24/7 (requiring 3 rotating shifts) costs ₹75
 2. Multiagent Systems: Collaborative agent swarms with supervisor-worker topologies (LangGraph / State Machines) for complex multi-step enterprise workflows.
 3. Agent to Agent (A2A) Protocols: Peer-to-peer inter-agent communication meshes and standardized JSON-RPC protocols enabling autonomous inter-agent coordination without human intervention.
 4. Custom CRM & ERP Softwares: Bespoke operational dashboards, database mutation pipelines, and native agent connectors for Salesforce, SAP, and HubSpot.
-5. Websites & Web Applications: High-performance, reactive web platforms with embedded conversational voice widgets and real-time telemetry.
+5. Websites & Web Applications (Digital Platforms & AI-Native Portals):
+   • Architecture & Technologies: Next.js (App Router), React, TypeScript, Tailwind CSS, Vercel edge deployment, sub-second TTFB load times, Apple OS glassmorphic visual aesthetics.
+   • Core Capabilities: Full-stack responsive web development, custom client/admin dashboards, interactive booking & reservation engines, digital product/service menus, secure auth (OAuth/JWT), payment gateways (Stripe, Razorpay), headless CMS, and real-time webhook infrastructure.
+   • Embedded Agentic Features: Native integration of Vyom's AI Voice Receptionist widget, live conversational chat, autonomous appointment scheduling, and automated WhatsApp/SMS review triggers.
+   • Industry Applications:
+     - Restaurants & Food: Custom restaurant websites featuring interactive mobile menus, direct online food ordering, table reservation systems, embedded voice receptionist, and Google review collection.
+     - Clinics & Healthcare: Patient intake portals, HIPAA-compliant telehealth dashboards, online booking with doctor calendar sync.
+     - Legal & Professional Services: Client onboarding intake funnels, case evaluation forms, and document upload portals.
+     - E-Commerce & SaaS: High-converting landing pages, customer subscription portals, and product analytics dashboards.
+   • Business ROI: Up to 3.5x higher visitor-to-lead conversion rates, sub-second mobile page loads, zero third-party marketplace commissions, and complete IP code ownership.
 6. AIEO (AI Engine Optimization): Knowledge Graph structuring and schema injection ensuring your brand ranks #1 on ChatGPT, Claude, and Perplexity search.
 7. Enterprise RAG Chatbots: Hybrid vector search (Pinecone, pgvector) with cross-encoder rerankers and contextual memory for zero-hallucination internal knowledge retrieval.
 
@@ -169,4 +178,14 @@ Vyom Agents delivers end-to-end bespoke autonomous solutions tailored to specifi
 • Core Services: Agent to Agent (A2A) protocols for machine-to-machine transactions, LangGraph supervisor-worker collaborative swarms, custom reactive web applications, and AIEO for #1 brand citation rank on ChatGPT, Perplexity, and Gemini.
 • Upcoming R&D: Vyom SafeBrowse for enterprise DLP DOM sandboxing and PolicyLens for vendor terms auditing.
 
+7. Restaurants, Cafes, Food & Hospitality Businesses:
+• Websites & Digital Platforms: Custom responsive restaurant websites built on Next.js, featuring interactive digital menus, commission-free online food ordering, table reservation systems, and mobile-first glassmorphic UI.
+• Live Flagship Products: AI Voice Receptionist handling 24/7 inbound phone orders, table reservations, and menu/dietary FAQs with sub-400ms latency — eliminating missed calls during peak dining rush with zero human overhead.
+• Google Review AI Agent: Post-dining WhatsApp/SMS review sequences harvesting +300% 5-star Google Reviews and routing complaints privately to management.
+• Custom Back-Office CRM & ERP: Real-time kitchen display sync, daily sales reporting, and customer loyalty management.
+• Self-Healing RPA: Automates daily POS sales reconciliation, vendor grocery/ingredient invoice matching, and inventory re-ordering.
+• AIEO: Local SEO and Knowledge Graph optimization making your restaurant rank #1 on ChatGPT, Perplexity, and Google Maps.
+• Next Step: For proper consultation around your restaurant business or website, contact Vyom for a free consultation!
+
 ================================================================================
+
