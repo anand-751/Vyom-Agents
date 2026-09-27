@@ -10,7 +10,6 @@ import {
   Sparkles, 
   RotateCcw, 
   ArrowRight,
-  Zap,
   ShieldCheck
 } from "lucide-react";
 import { BRAND_CONFIG } from "@/lib/constants";
@@ -545,20 +544,17 @@ export function FloatingChatWidget() {
                     <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-slate-950" />
                   </div>
                   <div>
-                    <div className="flex items-center gap-1.5 flex-wrap">
+                    <div className="flex items-center gap-2">
                       <span className="font-extrabold text-sm text-white leading-tight">
                         {BRAND_CONFIG.name} AI
                       </span>
-                      <span className="text-[9px] sm:text-[10px] font-mono px-1.5 py-0.5 rounded bg-sky-950/90 text-sky-300 border border-sky-800/80">
-                        Groq gpt-120B
-                      </span>
-                      <span className="text-[9px] sm:text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-800/80 hidden xs:inline-flex">
-                        250/50 RAG
+                      <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                        Online
                       </span>
                     </div>
-                    <span className="text-[10px] text-slate-400 flex items-center gap-1 mt-0.5 font-mono">
+                    <span className="text-[11px] text-slate-400 flex items-center gap-1.5 mt-0.5 font-medium">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                      Hard Guardrails & Grounding Active
+                      Autonomous Solutions Architect
                     </span>
                   </div>
                 </div>
@@ -601,19 +597,6 @@ export function FloatingChatWidget() {
                       }`}
                     >
                       <p className="whitespace-pre-line text-xs sm:text-[13px]">{msg.text}</p>
-
-                      {/* RAG Source Indicator */}
-                      {msg.ragSources && msg.ragSources.length > 0 && (
-                        <div className="mt-2 pt-2 border-t border-slate-800/70 flex flex-wrap items-center gap-1.5">
-                          <span className="text-[9px] font-mono text-sky-400 flex items-center gap-1">
-                            <Zap className="w-2.5 h-2.5 text-sky-400" />
-                            <span>RAG Grounded:</span>
-                          </span>
-                          <span className="text-[9px] font-mono text-slate-400 truncate max-w-[200px]">
-                            {msg.ragSources[0]}
-                          </span>
-                        </div>
-                      )}
 
                       {/* Interactive CTA Buttons (2 to 3 Recommended Products/Services) */}
                       {(() => {
