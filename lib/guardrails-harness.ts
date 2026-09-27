@@ -6,6 +6,19 @@
 
 import { RagChunk, RAG_CHUNK_SIZE, RAG_CHUNK_OVERLAP } from "./rag-knowledge";
 
+export type QueryIntent = "GREETING" | "OUT_OF_SCOPE" | "COLLABORATIVE_DISCOVERY_RAG";
+
+export interface IntentClassificationResult {
+  intent: QueryIntent;
+  reason: string;
+  detectedDomain?: string;
+  bypassReply?: string;
+  suggestedActions?: Array<{
+    label: string;
+    action: "contact" | "voice" | "roi" | "services";
+  }>;
+}
+
 export interface InputGuardrailResult {
   isBlocked: boolean;
   blockReason?: "PROMPT_INJECTION" | "MALICIOUS_INTENT" | "INPUT_OVERFLOW" | "UNAUTHORIZED_EXTRACTION";
@@ -35,6 +48,7 @@ export interface HarnessTelemetryAudit {
   detectedFlags: string[];
   latencyMs: number;
   groundingConfidenceScore: number;
+  wordCount: number;
 }
 
 // 1. Adversarial Injection Patterns
@@ -145,6 +159,137 @@ export function evaluateInputGuardrails(rawQuery: string): InputGuardrailResult 
   };
 }
 
+// Domain recognition dictionary for collaborative discovery
+const DOMAIN_KEYWORDS: Record<string, string> = {
+  dental: "Healthcare & Dental Practices",
+  clinic: "Healthcare & Medical Clinics",
+  doctor: "Healthcare & Medical Practices",
+  patient: "Healthcare & Medical Clinics",
+  hospital: "Hospital & Clinical Systems",
+  medical: "Healthcare & Life Sciences",
+  legal: "Legal Practices & Law Firms",
+  law: "Legal Practices & Law Firms",
+  attorney: "Legal & Corporate Counsel",
+  lawsuit: "Legal Litigation & Compliance",
+  "real estate": "Real Estate & Property Management",
+  realtor: "Real Estate & Brokerage",
+  property: "Real Estate & Property Management",
+  tenant: "Property Management & Leasing",
+  finance: "Finance & Accounting",
+  accounting: "Accounting & Tax Practices",
+  cpa: "Accounting & CPA Firms",
+  ledger: "Finance & Ledger Operations",
+  payroll: "Finance & Payroll Operations",
+  tax: "Tax & Accounting Firms",
+  logistics: "Logistics & Supply Chain",
+  trucking: "Freight & Trucking Operations",
+  freight: "Freight & Cargo Logistics",
+  warehouse: "Warehouse & Inventory Operations",
+  ecommerce: "E-Commerce & Retail Brands",
+  "e-commerce": "E-Commerce & Digital Brands",
+  shopify: "E-Commerce & Omnichannel Retail",
+  retail: "Retail & Consumer Goods",
+  saas: "B2B SaaS & Tech Enterprises",
+  software: "Software & Technology Enterprises",
+  startup: "Tech Startups & High-Growth Ventures",
+  hotel: "Hospitality & Hotel Operations",
+  hospitality: "Hospitality & Guest Services",
+  manufacturing: "Manufacturing & Industrial Operations",
+  education: "Education & EdTech Institutions",
+};
+
+const GREETING_PATTERNS = [
+  /^(hi|hello|hey|hola|namaste|greetings|howdy|sup|yo)\b/i,
+  /^(good\s+(morning|afternoon|evening|day))\b/i,
+  /\b(who\s+are\s+you|what\s+is\s+vyom|what\s+do\s+you\s+do|introduce\s+yourself|tell\s+me\s+about\s+vyom)\b/i,
+  /\b(how\s+are\s+you|can\s+you\s+help\s+me|what\s+can\s+you\s+do)\b/i,
+];
+
+const OUT_OF_SCOPE_PATTERNS = [
+  /\b(recipe|cook|baking|bake|ingredients|pasta|pizza|soup|cake|dessert|cocktail)\b/i,
+  /\b(weather|forecast|rain today|temperature in)\b/i,
+  /\b(cricket score|football score|world cup|who won the match|nba finals|ipl score|champions league)\b/i,
+  /\b(movie cast|actor in|actress in|celebrity gossip|lyrics of|box office)\b/i,
+  /\b(cure my|stomach ache|headache remedy|cough syrup|fever medicine)\b/i,
+  /\b(solve (this )?math|integral of|derivative of|solve equation|essay on history|who was napoleon)\b/i,
+  /\b(capital of|distance to the moon|tell me a joke)\b/i,
+];
+
+const BUSINESS_TECH_EXEMPTIONS = [
+  /\b(voice|receptionist|phone|call|calls|telephony)\b/i,
+  /\b(rpa|uipath|playwright|selenium|automation|workflow|swarms|multiagent)\b/i,
+  /\b(pricing|price|cost|rate|fee|tier|starter|enterprise)\b/i,
+  /\b(hipaa|soc-2|security|privacy|compliance)\b/i,
+  /\b(crm|erp|aieo|api|software|portal|schedule|demo|roi|leads)\b/i,
+];
+
+/**
+ * Classify Query Intent
+ * Determines whether to bypass RAG (for pure Greetings or Out-of-Scope),
+ * or activate Collaborative Domain Discovery + Technical RAG.
+ */
+export function classifyQueryIntent(query: string): IntentClassificationResult {
+  const lower = query.toLowerCase().trim();
+
+  // 1. Check for domain match first
+  let detectedDomain: string | undefined;
+  for (const [key, domainName] of Object.entries(DOMAIN_KEYWORDS)) {
+    if (lower.includes(key)) {
+      detectedDomain = domainName;
+      break;
+    }
+  }
+
+  // 2. Business & Technical Context Check
+  const hasBusinessContext = Boolean(
+    detectedDomain ||
+    BUSINESS_TECH_EXEMPTIONS.some((regex) => regex.test(lower))
+  );
+
+  // 3. Greeting / Chit-Chat Check (Only if no specific domain or product question is asked)
+  const isGreetingMatch = GREETING_PATTERNS.some((pattern) => pattern.test(lower));
+  const isShortIntro = lower.split(/\s+/).length <= 8;
+
+  if (isGreetingMatch && isShortIntro && !hasBusinessContext) {
+    return {
+      intent: "GREETING",
+      reason: "Standard greeting / introduction query without domain or product parameters.",
+      bypassReply:
+        "Hello! 👋 I'm Vyom AI, your Autonomous Solutions Architect. We build sub-400ms conversational AI Voice Receptionists, Self-Healing RPA bots, and enterprise multi-agent swarms.\n\nTell me about your business or industry (e.g., healthcare, legal, real estate, logistics, SaaS), and I'll recommend the ideal 2–3 autonomous products tailored for your workflows.",
+      suggestedActions: [
+        { label: "Test Voice Demo", action: "voice" },
+        { label: "Explore Services", action: "services" },
+        { label: "Book Discovery Call", action: "contact" },
+      ],
+    };
+  }
+
+  // 3. Out-of-Scope Check
+  // Only if no business or technical exemption terms are present
+  const isOutOfScope = OUT_OF_SCOPE_PATTERNS.some((pattern) => pattern.test(lower));
+  if (isOutOfScope && !hasBusinessContext) {
+    return {
+      intent: "OUT_OF_SCOPE",
+      reason: "Query is non-technical and unrelated to Vyom enterprise AI or business automation.",
+      bypassReply:
+        "I apologize, but as Vyom AI, I specialize exclusively in enterprise AI agents, voice receptionists, self-healing RPA, and autonomous workflows. I cannot assist with topics outside of technology and business automation.\n\nWould you like to explore how Vyom Agents can automate operations and eliminate bottlenecks for your business?",
+      suggestedActions: [
+        { label: "Book Discovery Call", action: "contact" },
+        { label: "Explore Solutions", action: "services" },
+      ],
+    };
+  }
+
+  // 4. Default: Collaborative Domain Discovery + Technical RAG
+  return {
+    intent: "COLLABORATIVE_DISCOVERY_RAG",
+    reason: detectedDomain
+      ? `Domain identified (${detectedDomain}). Collaborating with Technical RAG.`
+      : "Technical / Product RAG inquiry. Collaborating with Domain Discovery.",
+    detectedDomain,
+  };
+}
+
 /**
  * Hard Output Verification Harness
  * Validates, fact-checks, and sanitizes model outputs before sending to client.
@@ -178,7 +323,6 @@ export function evaluateOutputHarness(
   }
 
   // 2. Factual Grounding & Anti-Hallucination Pricing Verifier
-  // Ensures exact pricing tiers (Starter: ₹14,999 / $180, Pro: ₹23,999 / $280, Enterprise: ₹33,990 / $400)
   const queryLower = query.toLowerCase();
   const isPricingQuery =
     queryLower.includes("price") ||
@@ -189,7 +333,6 @@ export function evaluateOutputHarness(
     queryLower.includes("tier");
 
   if (isPricingQuery) {
-    // Check if the response failed to mention accurate numbers or distorted them
     const hasStarterPrice = reply.includes("14,999") || reply.includes("180");
     const hasProPrice = reply.includes("23,999") || reply.includes("280");
     const hasEnterprisePrice = reply.includes("33,990") || reply.includes("400");
@@ -220,6 +363,28 @@ export function evaluateOutputHarness(
   const groundingConfidenceScore =
     replyWords.length > 0 ? Math.min(1, Math.max(0.6, matchedTokens / (replyWords.length * 0.7))) : 0.9;
 
+  // 5. Hard Word Count Enforcement (Max 150 words limit)
+  const rawWords = reply.trim().split(/\s+/).filter(Boolean);
+  if (rawWords.length > 150) {
+    hallucinationRepaired = true;
+    detectedFlags.push("word_limit_truncated_to_150");
+    const clippedWords = rawWords.slice(0, 150);
+    let clippedText = clippedWords.join(" ");
+
+    // Find the last clean punctuation mark within the clipped text (at least 60% into string)
+    const lastPunctuation = Math.max(
+      clippedText.lastIndexOf("."),
+      clippedText.lastIndexOf("!"),
+      clippedText.lastIndexOf("?"),
+      clippedText.lastIndexOf(":")
+    );
+    if (lastPunctuation > clippedText.length * 0.6) {
+      clippedText = clippedText.slice(0, lastPunctuation + 1);
+    }
+    reply = clippedText.trim();
+  }
+
+  const finalWordCount = reply.trim().split(/\s+/).filter(Boolean).length;
   const latencyMs = Math.round(performance.now() - startTimeMs);
 
   const audit: HarnessTelemetryAudit = {
@@ -233,6 +398,7 @@ export function evaluateOutputHarness(
     detectedFlags,
     latencyMs,
     groundingConfidenceScore: Number(groundingConfidenceScore.toFixed(3)),
+    wordCount: finalWordCount,
   };
 
   return {

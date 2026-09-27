@@ -24,16 +24,26 @@ interface ChatMessage {
     label: string;
     action: "contact" | "voice" | "roi" | "services";
   };
+  actionButtons?: Array<{
+    label: string;
+    action: "contact" | "voice" | "roi" | "services";
+  }>;
   ragSources?: string[];
   engine?: string;
+  intent?: string;
 }
 
 const INITIAL_MESSAGES: ChatMessage[] = [
   {
     id: "welcome-1",
     sender: "bot",
-    text: "Hello! 👋 I'm Vyom's autonomous sales & architecture AI assistant, connected live to our enterprise knowledge base. How can I assist your team with our Voice Agents, Self-Healing RPA, or custom workflows today?",
+    text: "Hello! 👋 I'm Vyom AI, your Autonomous Solutions Architect & Discovery Agent. Tell me your industry or operational challenge, and I'll recommend the ideal 2–3 autonomous products tailored for your business.",
     timestamp: "Just now",
+    actionButtons: [
+      { label: "Test Voice Demo", action: "voice" },
+      { label: "Explore Services", action: "services" },
+      { label: "Book Discovery Call", action: "contact" },
+    ],
   },
 ];
 
@@ -100,41 +110,96 @@ export function FloatingChatWidget() {
     }
   };
 
-  // Local fallback reply generator if network request fails
-  const generateFallbackReply = (userText: string): { reply: string; action?: ChatMessage["actionButton"] } => {
-    const lower = userText.toLowerCase();
+  // Local fallback reply generator if network request fails (Strictly under 150 words)
+  const generateFallbackReply = (userText: string): { reply: string; actionButtons: ChatMessage["actionButtons"] } => {
+    const lower = userText.toLowerCase().trim();
 
+    // 1. Greeting Check
+    if (/^(hi|hello|hey|good morning|good afternoon|good evening|who are you|what is vyom)/i.test(lower) && lower.split(/\s+/).length <= 4) {
+      return {
+        reply: "Hello! 👋 I'm Vyom AI, your Autonomous Solutions Architect. We build sub-400ms conversational AI Voice Receptionists, Self-Healing RPA bots, and enterprise multi-agent swarms.\n\nTell me your industry or operational challenge, and I'll tailor the right 2–3 autonomous products for your workflows.",
+        actionButtons: [
+          { label: "Test Voice Demo", action: "voice" },
+          { label: "Explore Services", action: "services" },
+          { label: "Book Discovery Call", action: "contact" },
+        ],
+      };
+    }
+
+    // 2. Out-of-Scope Check
+    if (/\b(recipe|cook|bake|weather|cricket|football|nba|movie|song|joke|homework)\b/i.test(lower)) {
+      return {
+        reply: "I apologize, but as Vyom AI, I specialize exclusively in enterprise AI agents, voice receptionists, self-healing RPA, and autonomous workflows. I cannot assist with topics outside of technology and business automation.\n\nWould you like to explore how Vyom can automate your business operations?",
+        actionButtons: [
+          { label: "Book Discovery Call", action: "contact" },
+          { label: "Explore Solutions", action: "services" },
+        ],
+      };
+    }
+
+    // 3. Domain: Healthcare & Clinic
+    if (lower.includes("dental") || lower.includes("clinic") || lower.includes("health") || lower.includes("doctor") || lower.includes("patient")) {
+      return {
+        reply: "For Healthcare & Clinics, Vyom provides 2 core solutions:\n\n1. AI Voice Receptionist (Live): 24/7 patient booking with sub-400ms latency, syncing natively with Google Calendar, Dentrix & Epic (+42% conversion, zero missed calls).\n2. Self-Healing RPA & Review Agent: Automates patient intake and harvests +300% 5-star patient reviews on Google.\n\nWould you like to test our live voice demo or schedule a 30-minute discovery call?",
+        actionButtons: [
+          { label: "Test Live Voice Demo", action: "voice" },
+          { label: "Book Discovery Call", action: "contact" },
+        ],
+      };
+    }
+
+    // 4. Domain: Legal
+    if (lower.includes("legal") || lower.includes("law") || lower.includes("attorney")) {
+      return {
+        reply: "For Legal Practices, Vyom automates client intake and document extraction with 2 targeted solutions:\n\n1. AI Voice Receptionist (Live): Sub-400ms 24/7 intake triage, conflict screening, and consultation scheduling.\n2. Self-Healing RPA & Multiagent Systems: Extracts court filings, contracts, and evidence without script breakage (99.8% recovery uptime).\n\nWould you like to schedule an architectural consultation?",
+        actionButtons: [
+          { label: "Test Voice Demo", action: "voice" },
+          { label: "Schedule Consultation", action: "contact" },
+        ],
+      };
+    }
+
+    // 5. Product: Voice Receptionist
     if (lower.includes("voice") || lower.includes("receptionist") || lower.includes("phone") || lower.includes("call")) {
       return {
-        reply: "Our flagship AI Voice Receptionist operates with sub-400ms latency, native Google Calendar & EHR/CRM sync, and human-like interruption handling across 45+ languages. Would you like to test the live audio demo?",
-        action: { label: "Test Live Voice Demo", action: "voice" }
+        reply: "Our flagship AI Voice Receptionist operates with sub-400ms latency (320ms typical), native Google Calendar & EHR/CRM sync, and human-like interruption handling across 45+ languages. It boosts appointment conversion by +42%.\n\nWould you like to test the live voice demo?",
+        actionButtons: [
+          { label: "Test Live Voice Demo", action: "voice" },
+          { label: "Book Discovery Call", action: "contact" },
+        ],
       };
     }
 
-    if (lower.includes("rpa") || lower.includes("self-healing") || lower.includes("automation") || lower.includes("orchestrator")) {
+    // 6. Product: RPA & UI Automation
+    if (lower.includes("rpa") || lower.includes("self-healing") || lower.includes("automation") || lower.includes("orchestrator") || lower.includes("uipath")) {
       return {
-        reply: "Vyom's Self-Healing RPA engine uses visual neural embeddings with Playwright rather than fragile XPath/CSS selectors. When target interfaces shift, it auto-remediates target selectors in real time with 99.8% recovery uptime.",
-        action: { label: "View Enterprise Services", action: "services" }
+        reply: "Vyom's Self-Healing RPA engine beats legacy bots (UiPath, Selenium) using visual neural embeddings with Playwright. When target interfaces shift, it auto-remediates target selectors in real time with 99.8% recovery uptime.\n\nWould you like to explore our automation deliverables or schedule an audit?",
+        actionButtons: [
+          { label: "View Enterprise Services", action: "services" },
+          { label: "Schedule Audit Call", action: "contact" },
+        ],
       };
     }
 
+    // 7. Product: Pricing & ROI
     if (lower.includes("pricing") || lower.includes("roi") || lower.includes("cost") || lower.includes("save") || lower.includes("rate")) {
       return {
-        reply: "Our AI Receptionist starts at ₹14,999/mo ($180) for Starter, ₹23,999/mo ($280) for Professional, and ₹33,990/mo ($400) for Enterprise. Clients typically recoup 4.2x to 7.8x ROI by capturing after-hours missed leads.",
-        action: { label: "Open ROI Calculator", action: "roi" }
+        reply: "Our AI Receptionist offers 3 transparent tiers: Starter at ₹14,999/mo ($180) for 400 calls, Professional at ₹23,999/mo ($280) for 700 calls, and Enterprise at ₹33,990/mo ($400) for 1,000+ calls with custom CRM.\n\nWould you like to open our interactive ROI calculator?",
+        actionButtons: [
+          { label: "Open ROI Calculator", action: "roi" },
+          { label: "Book Discovery Call", action: "contact" },
+        ],
       };
     }
 
-    if (lower.includes("contact") || lower.includes("book") || lower.includes("schedule") || lower.includes("demo") || lower.includes("hire")) {
-      return {
-        reply: "I can connect you directly with our Principal Solutions Architect for a tailored system audit. We deliver live telephony prototypes within 48 hours under mutual NDA!",
-        action: { label: "Book Discovery Call Now", action: "contact" }
-      };
-    }
-
+    // Default Collaborative Discovery Fallback
     return {
-      reply: "Vyom Agents specializes in custom autonomous AI workforces, ultra-fast conversational voice agents, and self-healing automation. Would you like to schedule an architecture call or explore our live voice product?",
-      action: { label: "Book Discovery Call", action: "contact" }
+      reply: "Vyom Agents specializes in custom autonomous AI workforces, sub-400ms voice agents, and self-healing automation. Tell me your industry or use case to receive a tailored recommendation of 2–3 products.",
+      actionButtons: [
+        { label: "Test Voice Demo", action: "voice" },
+        { label: "Explore Services", action: "services" },
+        { label: "Book Discovery Call", action: "contact" },
+      ],
     };
   };
 
@@ -182,22 +247,25 @@ export function FloatingChatWidget() {
           text: data.reply,
           timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
           actionButton: data.actionButton,
+          actionButtons: data.actionButtons || (data.actionButton ? [data.actionButton] : []),
           ragSources: data.ragSources,
           engine: data.engine,
+          intent: data.intent,
         };
         setMessages((prev) => [...prev, botMsg]);
       } else {
         throw new Error("Empty response");
       }
     } catch (error) {
-      console.warn("Live chat API request failed, using local RAG fallback:", error);
-      const { reply, action } = generateFallbackReply(query);
+      console.warn("Live chat API request failed, using local collaborative fallback:", error);
+      const { reply, actionButtons } = generateFallbackReply(query);
       const botMsg: ChatMessage = {
         id: `bot-${Date.now()}`,
         sender: "bot",
         text: reply,
         timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-        actionButton: action,
+        actionButton: actionButtons?.[0],
+        actionButtons,
       };
       setMessages((prev) => [...prev, botMsg]);
     } finally {
@@ -381,16 +449,27 @@ export function FloatingChatWidget() {
                         </div>
                       )}
 
-                      {/* Optional Interactive CTA Button inside Bot Message */}
-                      {msg.actionButton && (
-                        <button
-                          onClick={() => handleActionClick(msg.actionButton?.action)}
-                          className="mt-2.5 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-sky-500/20 hover:bg-sky-500/30 border border-sky-400/40 text-sky-300 hover:text-white text-xs font-semibold transition-all active:scale-95"
-                        >
-                          <span>{msg.actionButton.label}</span>
-                          <ArrowRight className="w-3.5 h-3.5" />
-                        </button>
-                      )}
+                      {/* Interactive CTA Buttons (2 to 3 Recommended Products/Services) */}
+                      {(() => {
+                        const buttons = (msg.actionButtons && msg.actionButtons.length > 0)
+                          ? msg.actionButtons
+                          : (msg.actionButton ? [msg.actionButton] : []);
+                        if (buttons.length === 0) return null;
+                        return (
+                          <div className="mt-2.5 pt-2 border-t border-slate-800/70 flex flex-wrap items-center gap-1.5">
+                            {buttons.map((btn, idx) => (
+                              <button
+                                key={idx}
+                                onClick={() => handleActionClick(btn.action)}
+                                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-sky-500/15 hover:bg-sky-500/25 border border-sky-400/30 text-sky-300 hover:text-white text-[11px] sm:text-xs font-medium transition-all active:scale-95"
+                              >
+                                <span>{btn.label}</span>
+                                <ArrowRight className="w-3 h-3 text-sky-400 shrink-0" />
+                              </button>
+                            ))}
+                          </div>
+                        );
+                      })()}
                     </div>
                     <span className="text-[9px] font-mono text-slate-500 mt-1 px-1">
                       {msg.timestamp}
@@ -398,7 +477,7 @@ export function FloatingChatWidget() {
                   </motion.div>
                 ))}
 
-                {/* Bot Typing Indicator with Live RAG Animation */}
+                {/* Bot Typing Indicator with Collaborative Discovery & RAG Animation */}
                 {isTyping && (
                   <motion.div
                     initial={{ opacity: 0, y: 8 }}
@@ -410,7 +489,7 @@ export function FloatingChatWidget() {
                     <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-bounce [animation-delay:0.3s]" />
                     <span className="text-[10px] sm:text-[11px] text-slate-400 font-mono flex items-center gap-1 ml-1">
                       <Sparkles className="w-3 h-3 text-sky-400 animate-pulse" />
-                      <span>Retrieving RAG embeddings & reasoning...</span>
+                      <span>Collaborative Discovery & RAG reasoning...</span>
                     </span>
                   </motion.div>
                 )}
@@ -455,7 +534,7 @@ export function FloatingChatWidget() {
                 <div className="flex items-center justify-between mt-2 px-1 text-[9px] sm:text-[10px] text-slate-500 font-mono">
                   <span className="flex items-center gap-1">
                     <ShieldCheck className="w-3 h-3 text-emerald-400" />
-                    <span>Hard Guardrails • 250/50 RAG Harness</span>
+                    <span>Discovery Agent • Guardrails & Max 150 Words</span>
                   </span>
                   <span>Press Enter ↵</span>
                 </div>
