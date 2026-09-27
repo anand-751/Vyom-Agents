@@ -457,19 +457,19 @@ export function FloatingChatWidget() {
   return (
     <aside aria-label="Autonomous AI Assistant" className="pointer-events-auto">
       {/* Floating Action Trigger Button — Positioned with Maximum Z-Index */}
-      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[9999] flex items-center gap-3 pointer-events-auto">
-        {/* Helper Notification Tooltip (visible initially) */}
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[9999] flex flex-col items-end gap-2.5 pointer-events-auto">
+        {/* Helper Notification Tooltip (positioned at the top of the chatbot icon) */}
         <AnimatePresence>
           {!isOpen && showTooltip && (
             <motion.div
-              initial={{ opacity: 0, x: 12, scale: 0.92 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              exit={{ opacity: 0, x: 8, scale: 0.9 }}
+              initial={{ opacity: 0, y: 10, scale: 0.92 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 6, scale: 0.9 }}
               onClick={() => {
                 setIsOpen(true);
                 setShowTooltip(false);
               }}
-              className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-lg text-xs font-semibold text-slate-800 cursor-pointer hover:border-sky-400 transition-all hover:scale-105 group"
+              className="flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-xl text-xs font-semibold text-slate-800 dark:text-slate-100 cursor-pointer hover:border-sky-400 transition-all hover:scale-105 group select-none whitespace-nowrap"
             >
               <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span>Chat with Vyom AI Agent</span>
@@ -478,7 +478,7 @@ export function FloatingChatWidget() {
                   e.stopPropagation();
                   setShowTooltip(false);
                 }}
-                className="text-slate-400 hover:text-slate-600 ml-1"
+                className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 ml-1 p-0.5 rounded transition-colors"
                 aria-label="Dismiss tooltip"
               >
                 <X className="w-3 h-3" />
