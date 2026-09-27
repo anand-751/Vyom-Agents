@@ -261,10 +261,10 @@ export function classifyQueryIntent(query: string): IntentClassificationResult {
         intent: "GREETING",
         reason: "Conversational greeting.",
         bypassReply:
-          "Hi there! 👋 How can I help you today? Feel free to ask about our AI voice receptionist, self-healing RPA, or tell me about your business.",
+          "Hi there! 👋 How can I help you today? Feel free to ask how Vyom's autonomous AI agents and workflows can transform your business, or explore our solutions.",
         suggestedActions: [
-          { label: "AI Voice Demo", action: "voice" },
-          { label: "Explore Services", action: "services" },
+          { label: "Explore AI Agents", action: "services" },
+          { label: "Test Voice Demo", action: "voice" },
           { label: "Book a Call", action: "contact" },
         ],
       };
@@ -290,10 +290,10 @@ export function classifyQueryIntent(query: string): IntentClassificationResult {
         intent: "GREETING",
         reason: "Introduction inquiry.",
         bypassReply:
-          "I'm Vyom AI! We help businesses automate front-desk and back-office operations with 24/7 conversational voice receptionists, self-healing RPA, and custom multi-agent workflows.\n\nWhat kind of business or workflow would you like to automate?",
+          "I'm Vyom AI! We are an enterprise Agentic AI SaaS company engineering autonomous AI agents and intelligent workflows that transform business operations from end to end.\n\nWhat kind of business or workflows are you looking to automate?",
         suggestedActions: [
-          { label: "AI Voice Demo", action: "voice" },
-          { label: "Explore Services", action: "services" },
+          { label: "Explore AI Agents", action: "services" },
+          { label: "Test Voice Demo", action: "voice" },
           { label: "Book a Call", action: "contact" },
         ],
       };
@@ -349,10 +349,10 @@ export function classifyQueryIntent(query: string): IntentClassificationResult {
       intent: "OUT_OF_SCOPE",
       reason: "Query is non-technical and unrelated to Vyom enterprise AI or business automation.",
       bypassReply:
-        "I apologize, but as Vyom AI, I specialize exclusively in enterprise AI agents, voice receptionists, self-healing RPA, and autonomous workflows. I cannot assist with topics outside of technology and business automation.\n\nWould you like to explore how Vyom Agents can automate operations and eliminate bottlenecks for your business?",
+        "I apologize, but as Vyom AI, I specialize exclusively in enterprise Agentic AI, autonomous workflows, and custom AI agents. I cannot assist with topics outside of technology and business automation.\n\nWould you like to explore how Vyom Agents can transform operations for your business?",
       suggestedActions: [
-        { label: "Book Discovery Call", action: "contact" },
-        { label: "Explore Solutions", action: "services" },
+        { label: "Explore AI Agents", action: "services" },
+        { label: "Book a Call", action: "contact" },
       ],
     };
   }

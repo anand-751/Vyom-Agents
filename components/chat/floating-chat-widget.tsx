@@ -191,10 +191,10 @@ export function FloatingChatWidget() {
     // 2. Out-of-Scope Check
     if (/\b(recipe|cook|bake|weather|cricket|football|nba|movie|song|joke|homework)\b/i.test(lower)) {
       return {
-        reply: "I apologize, but as Vyom AI, I specialize exclusively in enterprise AI agents, voice receptionists, self-healing RPA, and autonomous workflows. I cannot assist with topics outside of technology and business automation.\n\nWould you like to explore how Vyom can automate your business operations?",
+        reply: "I apologize, but as Vyom AI, I specialize exclusively in enterprise Agentic AI, autonomous workflows, and custom AI agents. I cannot assist with topics outside of technology and business automation.\n\nWould you like to explore how Vyom Agents can transform operations for your business?",
         actionButtons: [
+          { label: "Explore AI Agents", action: "services" },
           { label: "Book a Call", action: "contact" },
-          { label: "Explore Solutions", action: "services" },
         ],
       };
     }
@@ -256,11 +256,11 @@ export function FloatingChatWidget() {
 
     // Default Collaborative Discovery Fallback
     return {
-      reply: "Vyom Agents specializes in custom autonomous AI workforces, sub-400ms voice agents, and self-healing automation. Tell me your industry or use case to receive a tailored recommendation of 2–3 products.",
+      reply: "Vyom Agents is an enterprise Agentic AI SaaS company engineering autonomous AI agents and intelligent workflows to transform modern businesses. Tell me about your industry or use case to explore tailored solutions.",
       actionButtons: [
+        { label: "Explore AI Agents", action: "services" },
         { label: "Test Voice Demo", action: "voice" },
-        { label: "Explore Services", action: "services" },
-        { label: "Book Discovery Call", action: "contact" },
+        { label: "Book a Call", action: "contact" },
       ],
     };
   };
@@ -576,7 +576,7 @@ export function FloatingChatWidget() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={handleKeyDown}
-                    placeholder="Ask Vyom AI about voice models, pricing, RPA..."
+                    placeholder="Ask Vyom AI about autonomous agents, workflows, solutions..."
                     className="flex-1 bg-transparent text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none"
                     aria-label="Ask AI assistant"
                   />
