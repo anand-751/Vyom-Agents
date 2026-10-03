@@ -120,24 +120,24 @@ export function VoiceDemoPlayer() {
   };
 
   return (
-    <div className="bg-slate-900 rounded-xl p-3.5 sm:p-4 text-white border border-slate-800 shadow-md">
+    <div className="bg-slate-900 rounded-xl p-3 text-white border border-slate-800 shadow-md">
       {/* Top bar with industry switcher */}
-      <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-slate-800 text-xs">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-          <span className="font-mono text-slate-300 font-semibold text-[10px] sm:text-[11px]">
-            Live Voice Simulator ({activeCall.latency})
+      <div className="flex flex-wrap items-center justify-between gap-1.5 pb-2 mb-2 border-b border-slate-800 text-xs">
+        <div className="flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+          <span className="font-mono text-slate-300 font-semibold text-[10px]">
+            Live Simulator ({activeCall.latency})
           </span>
         </div>
 
-        <div className="flex flex-wrap items-center gap-1 bg-slate-800/80 p-0.5 rounded-lg">
+        <div className="flex flex-wrap items-center gap-1 bg-slate-800/80 p-0.5 rounded-md">
           {SAMPLE_CALLS.map((call) => (
             <button
               key={call.id}
               onClick={() => handleSelectTab(call.id)}
-              className={`px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md text-[10px] sm:text-[11px] font-medium transition-all ${
+              className={`px-1.5 py-0.5 rounded text-[10px] font-medium transition-all ${
                 selectedCallId === call.id
-                  ? "bg-sky-600 text-white shadow-sm"
+                  ? "bg-sky-600 text-white shadow-xs"
                   : "text-slate-400 hover:text-white"
               }`}
             >
@@ -148,32 +148,32 @@ export function VoiceDemoPlayer() {
       </div>
 
       {/* Waveform & Playback Controls */}
-      <div className="bg-slate-950/80 rounded-lg p-3 border border-slate-800/80 mb-3 flex items-center gap-3">
+      <div className="bg-slate-950/80 rounded-lg p-2 border border-slate-800/80 mb-2 flex items-center gap-2.5">
         <button
           onClick={togglePlay}
-          className={`w-10 h-10 rounded-full flex items-center justify-center transition-transform active:scale-95 shadow-md shrink-0 ${
+          className={`w-8 h-8 rounded-full flex items-center justify-center transition-transform active:scale-95 shadow-xs shrink-0 ${
             isPlaying
               ? "bg-amber-500 text-slate-950 hover:bg-amber-400"
               : "bg-gradient-to-r from-sky-500 to-indigo-500 text-white hover:brightness-110"
           }`}
           aria-label={isPlaying ? "Pause audio preview" : "Play audio preview"}
         >
-          {isPlaying ? <Pause className="w-4 h-4 fill-current" /> : <Play className="w-4 h-4 fill-current ml-0.5" />}
+          {isPlaying ? <Pause className="w-3.5 h-3.5 fill-current" /> : <Play className="w-3.5 h-3.5 fill-current ml-0.5" />}
         </button>
 
         {/* Animated Waveform Visualizer */}
-        <div className="flex-1 flex items-center gap-[3px] h-9 px-2 overflow-hidden">
-          {Array.from({ length: 32 }).map((_, i) => {
+        <div className="flex-1 flex items-center gap-[2.5px] h-7 px-1.5 overflow-hidden">
+          {Array.from({ length: 30 }).map((_, i) => {
             const height = isPlaying
-              ? Math.sin((i + progress / 10) * 0.8) * 14 + 16
-              : (i % 4) * 4 + 6;
+              ? Math.sin((i + progress / 10) * 0.8) * 10 + 12
+              : (i % 4) * 3 + 5;
             return (
               <motion.span
                 key={i}
                 animate={{ height: `${height}px` }}
                 transition={{ duration: 0.15 }}
                 className={`w-1 rounded-full ${
-                  i < (progress / 100) * 32
+                  i < (progress / 100) * 30
                     ? "bg-sky-400"
                     : "bg-slate-700"
                 }`}
@@ -182,35 +182,35 @@ export function VoiceDemoPlayer() {
           })}
         </div>
 
-        <div className="text-right text-[11px] font-mono text-slate-400 shrink-0">
+        <div className="text-right text-[10px] font-mono text-slate-400 shrink-0">
           <span className="text-white font-bold">{isPlaying ? currentTimeFormatted : "0:00"}</span> / {activeCall.duration}
         </div>
       </div>
 
       {/* Transcript Preview */}
-      <div className="space-y-2 text-xs">
-        <div className="flex items-start gap-2 bg-slate-800/40 p-2 rounded-lg border border-slate-800">
-          <div className="w-5 h-5 rounded-full bg-slate-700 text-slate-300 flex items-center justify-center shrink-0 text-[10px] font-bold">
+      <div className="space-y-1.5 text-xs">
+        <div className="flex items-start gap-1.5 bg-slate-800/40 p-1.5 rounded-lg border border-slate-800">
+          <div className="w-4 h-4 rounded-full bg-slate-700 text-slate-300 flex items-center justify-center shrink-0 text-[9px] font-bold">
             C
           </div>
           <div>
-            <span className="text-[10px] font-bold uppercase text-slate-400 block">Inbound Caller</span>
-            <p className="text-slate-300 italic text-[11px]">{activeCall.caller}</p>
+            <span className="text-[9px] font-bold uppercase text-slate-400 block">Inbound Caller</span>
+            <p className="text-slate-300 italic text-[10px] leading-snug">{activeCall.caller}</p>
           </div>
         </div>
 
-        <div className="flex items-start gap-2 bg-sky-950/40 p-2 rounded-lg border border-sky-900/60">
-          <div className="w-5 h-5 rounded-full bg-sky-600 text-white flex items-center justify-center shrink-0 text-[10px] font-bold">
+        <div className="flex items-start gap-1.5 bg-sky-950/40 p-1.5 rounded-lg border border-sky-900/60">
+          <div className="w-4 h-4 rounded-full bg-sky-600 text-white flex items-center justify-center shrink-0 text-[9px] font-bold">
             V
           </div>
           <div>
             <div className="flex items-center gap-1.5">
-              <span className="text-[10px] font-bold uppercase text-sky-400">Vyom Voice Agent</span>
-              <span className="text-[9px] bg-sky-900/80 text-sky-300 px-1.5 py-0.2 rounded font-mono">
+              <span className="text-[9px] font-bold uppercase text-sky-400">Vyom Voice Agent</span>
+              <span className="text-[8.5px] bg-sky-900/80 text-sky-300 px-1 py-0.2 rounded font-mono">
                 {activeCall.latency}
               </span>
             </div>
-            <p className="text-slate-200 text-[11px] font-medium">{activeCall.agentResponse}</p>
+            <p className="text-slate-200 text-[10px] font-medium leading-snug">{activeCall.agentResponse}</p>
           </div>
         </div>
       </div>
