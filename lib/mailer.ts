@@ -12,6 +12,7 @@ export interface DiscoveryLeadData {
 
 const INTEREST_LABELS: Record<string, string> = {
   "voice-agent": "AI Voice Receptionist (Sub-400ms)",
+  "reconciliation-ops": "Agentic AI Multi-Agent Reconciliation & Accounts Operations",
   "orchestrator": "Self-Healing RPA & Workflow Orchestrator",
   "aieo": "AIEO (AI Engine Optimization)",
   "workforce": "Custom Bespoke Agentic Workforce",
@@ -29,6 +30,15 @@ const DISCOVERY_ANALYSIS_MAP: Record<string, { summary: string; auditChecklist: 
       "Analyze current inbound call volume, peak rush periods, and estimated missed call revenue loss",
       "Map target calendar/EHR/CRM systems (e.g. Google Calendar, Outlook, HubSpot, Salesforce)",
       "Prepare customized live voice receptionist prototype in their industry domain",
+    ],
+  },
+  "reconciliation-ops": {
+    summary:
+      "Client seeks an autonomous multi-agent system for financial operations, 3-way invoice matching, variance detection, and automated general ledger reconciliation.",
+    auditChecklist: [
+      "Audit current monthly invoice and transaction volume, PO reconciliation bottlenecks, and payment cycle time",
+      "Map target accounting and ERP infrastructure (SAP, NetSuite, QuickBooks, Xero, banking feeds)",
+      "Establish deterministic policy assertions for variance thresholds and exception approval workflows",
     ],
   },
   "orchestrator": {

@@ -172,6 +172,7 @@ export function ContactDrawer({ onClose }: ContactDrawerProps) {
                   className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-sky-500 focus:outline-none bg-white"
                 >
                   <option value="voice-agent">AI Voice Receptionist</option>
+                  <option value="reconciliation-ops">Reconciliation & Accounts Operations (Multi-Agent)</option>
                   <option value="orchestrator">Workflow Orchestrator</option>
                   <option value="aieo">AIEO (LLM Optimization)</option>
                   <option value="workforce">Custom Agentic Workforce</option>

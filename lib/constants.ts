@@ -183,6 +183,36 @@ export const PRODUCTS: Product[] = [
     },
   },
   {
+    id: "reconciliation-ops",
+    name: "Agentic AI Multi-Agent System for Reconciliation / Accounts Operations",
+    badge: "UPCOMING PRODUCT",
+    badgeType: "upcoming",
+    tagline: "Autonomous collaborative agent swarms for 3-way invoice matching, variance reconciliation, and ERP accounts operations.",
+    description:
+      "Enterprise autonomous multi-agent workforce engineered specifically for financial operations, ledger audits, and accounts reconciliation. Specialized coordinated agents ingest bank statements, purchase orders, and supplier invoices to execute automated 3-way matching, discrepancy resolution, general ledger posting, and end-of-month book closes with deterministic audit trails.",
+    features: [
+      "Autonomous 3-way matching across purchase orders, vendor invoices, and banking feeds",
+      "Multi-agent supervisor-worker architecture: Ingestion, Matching, Audit, and Exception Handlers",
+      "Automated variance detection and intelligent exception routing with full audit trails",
+      "Continuous bidirectional sync with SAP, NetSuite, QuickBooks, Xero, and Microsoft Dynamics",
+      "Deterministic policy guardrails guaranteeing zero AI hallucination and SOC-1/SOC-2 compliance",
+    ],
+    metrics: [
+      { label: "Matching Accuracy", value: "99.9%" },
+      { label: "Reconciliation Speed", value: "95% Faster" },
+      { label: "Manual Effort Cut", value: "80+ hrs/mo" },
+    ],
+    primaryCta: "Request Priority Beta Access",
+    secondaryCta: "Schedule Accounts Operations Discovery",
+    queryParam: "reconciliation-ops",
+    specs: {
+      latency: "Real-time batch ingestion & sub-second document entity extraction",
+      languages: "Python, LangGraph, Multi-Vision LLMs, JSON-RPC, REST, mTLS",
+      integrations: "SAP, Oracle NetSuite, QuickBooks, Xero, Stripe, Plaid, Banking SFTP",
+      compliance: "SOC-1 / SOC-2 Type II, GAAP / IFRS Audit Readiness, Zero Data Training",
+    },
+  },
+  {
     id: "orchestrator",
     name: "Self-Healing RPA Engine & Multi-Agent UI Automation",
     badge: "UPCOMING PRODUCT",

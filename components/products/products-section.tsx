@@ -23,6 +23,12 @@ import { SpotlightCard } from "@/components/ui/spotlight-card";
 
 const UPCOMING_PRODUCTS = [
   {
+    id: "reconciliation-ops",
+    name: "Vyom Reconciliation Swarm",
+    category: "Accounts Operations",
+    icon: Landmark,
+  },
+  {
     id: "finance-agent",
     name: "Vyom Finance Agent",
     category: "Accounts Payable",
@@ -66,6 +72,7 @@ export function ProductsSection() {
   };
 
   const voiceProduct = PRODUCTS.find((p) => p.id === "voice-agent")!;
+  const reconciliationProduct = PRODUCTS.find((p) => p.id === "reconciliation-ops")!;
 
   return (
     <section id="products" className="py-24 relative bg-slate-50/50 border-t border-slate-200/80 overflow-hidden">
@@ -80,12 +87,13 @@ export function ProductsSection() {
             Flagship Autonomous AI Products
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
-            Engineered with ultra-low latency voice models, native calendar booking, and enterprise telephony integration.
+            Engineered with ultra-low latency voice models, multi-agent financial operations swarms, and enterprise telephony integration.
           </p>
         </div>
 
-        {/* Premier Flagship Live Product Card */}
-        <div className="max-w-5xl mx-auto">
+        {/* Flagship Products Showcase */}
+        <div className="max-w-5xl mx-auto space-y-10">
+          {/* Premier Flagship Live Product Card: AI Voice Receptionist */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -185,12 +193,150 @@ export function ProductsSection() {
                         onClick={() => {
                           const params = new URLSearchParams(searchParams.toString());
                           params.set("modal", "contact");
+                          params.set("interest", "voice-agent");
                           router.push(`?${params.toString()}`, { scroll: false });
                         }}
                         className="w-full py-2 px-4 rounded-xl bg-white hover:bg-slate-100 text-slate-700 text-xs font-semibold flex items-center justify-center gap-1.5 border border-slate-300 transition-colors"
                       >
                         <Calendar className="w-3.5 h-3.5 text-sky-600" />
                         <span>Schedule Live Voice Test Call</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </SpotlightCard>
+          </motion.div>
+
+          {/* Upcoming Flagship Product Card: Multi-Agent Reconciliation / Accounts Operations */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
+            <SpotlightCard
+              spotlightColor="rgba(99, 102, 241, 0.12)"
+              className="rounded-3xl hover:border-indigo-400/80 transition-all duration-300 relative overflow-hidden group shadow-lg bg-white"
+            >
+              {/* Top Accent Gradient Border */}
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-amber-500 via-indigo-600 to-purple-600 z-20" />
+
+              <div className="p-4 sm:p-8 pt-6 sm:pt-9 relative z-10">
+                {/* Badge Header Row */}
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-5">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-amber-100 text-amber-900 border border-amber-300 shrink-0">
+                    <Clock className="w-3.5 h-3.5 text-amber-700" />
+                    {reconciliationProduct.badge} &bull; PRIVATE BETA
+                  </span>
+                  <span className="text-[11px] sm:text-xs font-mono text-slate-400 font-semibold tracking-wider">
+                    PRODUCT 02 &bull; AUTONOMOUS RECONCILIATION SWARM
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
+                  {/* Left Column (7 cols): Info & Features */}
+                  <div className="lg:col-span-7 space-y-4">
+                    <div className="flex items-start gap-3.5">
+                      <div className="w-12 h-12 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform shrink-0 mt-0.5">
+                        <Landmark className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 leading-tight">
+                          {reconciliationProduct.name}
+                        </h3>
+                        <p className="text-xs sm:text-sm text-indigo-700 font-medium mt-1">
+                          {reconciliationProduct.tagline}
+                        </p>
+                      </div>
+                    </div>
+
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      {reconciliationProduct.description}
+                    </p>
+
+                    {/* Key Highlights Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
+                      {reconciliationProduct.features.map((feature, i) => (
+                        <div key={i} className="flex items-start gap-2 text-xs text-slate-700 bg-slate-50/80 p-2.5 rounded-xl border border-slate-200/60">
+                          <div className="w-4 h-4 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center shrink-0 mt-0.5">
+                            <Check className="w-3 h-3" />
+                          </div>
+                          <span className="leading-snug">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Right Column (5 cols): Multi-Agent Operational Flow & Action Panel */}
+                  <div className="lg:col-span-5 flex flex-col justify-between h-full bg-slate-50/70 p-4 sm:p-5 rounded-2xl border border-slate-200/80">
+                    <div>
+                      <div className="flex items-center justify-between mb-3 text-xs font-mono text-slate-500 font-bold uppercase tracking-wider">
+                        <span>Multi-Agent Operational Flow</span>
+                        <span className="text-indigo-600 font-semibold">Deterministic Policy</span>
+                      </div>
+
+                      {/* Swarm Loop Execution Preview */}
+                      <div className="bg-slate-900 rounded-xl p-3.5 text-white border border-slate-800 space-y-2.5 mb-4 font-mono text-xs shadow-inner">
+                        <div className="flex items-center justify-between text-[11px] pb-1.5 border-b border-slate-800">
+                          <span className="text-amber-400 font-bold flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                            Swarm Pipeline Active
+                          </span>
+                          <span className="text-slate-400 text-[10px]">Zero Hallucination</span>
+                        </div>
+                        <div className="space-y-1.5 text-[11px]">
+                          <div className="flex items-center justify-between p-1.5 rounded bg-slate-800/70">
+                            <span className="text-slate-300">01 Ingestion Agent</span>
+                            <span className="text-emerald-400 text-[10px]">Bank / Invoices Parsed</span>
+                          </div>
+                          <div className="flex items-center justify-between p-1.5 rounded bg-slate-800/70">
+                            <span className="text-slate-300">02 3-Way Match Agent</span>
+                            <span className="text-sky-400 text-[10px]">PO & Line Items Matched</span>
+                          </div>
+                          <div className="flex items-center justify-between p-1.5 rounded bg-slate-800/70">
+                            <span className="text-slate-300">03 Audit & GL Agent</span>
+                            <span className="text-purple-300 text-[10px]">ERP Ready & Balanced</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Live Specs Grid */}
+                      <div className="grid grid-cols-3 gap-1.5 sm:gap-2 text-center text-xs font-mono mb-4">
+                        <div className="bg-white p-1.5 sm:p-2 rounded-xl border border-slate-200 shadow-xs">
+                          <span className="text-slate-900 font-bold block text-xs sm:text-sm">99.9%</span>
+                          <span className="text-[9px] sm:text-[10px] text-slate-500">Precision</span>
+                        </div>
+                        <div className="bg-white p-1.5 sm:p-2 rounded-xl border border-slate-200 shadow-xs">
+                          <span className="text-slate-900 font-bold block text-xs sm:text-sm">95%</span>
+                          <span className="text-[9px] sm:text-[10px] text-slate-500">Faster Close</span>
+                        </div>
+                        <div className="bg-white p-1.5 sm:p-2 rounded-xl border border-slate-200 shadow-xs">
+                          <span className="text-slate-900 font-bold block text-xs sm:text-sm">80+ hrs</span>
+                          <span className="text-[9px] sm:text-[10px] text-slate-500">Saved/Mo</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-2 pt-2 border-t border-slate-200/60">
+                      <button
+                        onClick={() => handleProductClick(reconciliationProduct.queryParam)}
+                        className="w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold flex items-center justify-center gap-2 shadow-sm transition-all group-hover:shadow-glow"
+                      >
+                        <span>Request Priority Beta Access</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </button>
+                      <button
+                        onClick={() => {
+                          const params = new URLSearchParams(searchParams.toString());
+                          params.set("modal", "contact");
+                          params.set("interest", "reconciliation-ops");
+                          router.push(`?${params.toString()}`, { scroll: false });
+                        }}
+                        className="w-full py-2 px-4 rounded-xl bg-white hover:bg-slate-100 text-slate-700 text-xs font-semibold flex items-center justify-center gap-1.5 border border-slate-300 transition-colors"
+                      >
+                        <Calendar className="w-3.5 h-3.5 text-indigo-600" />
+                        <span>Schedule Accounts Discovery Call</span>
                       </button>
                     </div>
                   </div>
@@ -217,7 +363,7 @@ export function ProductsSection() {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-4">
             {UPCOMING_PRODUCTS.map((prod, index) => {
               const IconComp = prod.icon;
               return (

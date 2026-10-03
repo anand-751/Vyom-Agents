@@ -16,7 +16,8 @@ import {
   FileText, 
   Sparkles,
   ArrowRight,
-  ExternalLink
+  ExternalLink,
+  Landmark
 } from "lucide-react";
 import { Product } from "@/lib/constants";
 import { VoiceDemoPlayer } from "../products/voice-demo-player";
@@ -46,7 +47,13 @@ export function ProductModal({ product, onClose, onBookCall }: ProductModalProps
       <div className="px-6 py-5 bg-gradient-to-r from-slate-900 via-slate-800 to-indigo-950 text-white flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-sky-400">
-            {isVoice ? <PhoneCall className="w-5 h-5" /> : <Workflow className="w-5 h-5" />}
+            {isVoice ? (
+              <PhoneCall className="w-5 h-5" />
+            ) : product.id === "reconciliation-ops" ? (
+              <Landmark className="w-5 h-5 text-amber-400" />
+            ) : (
+              <Workflow className="w-5 h-5" />
+            )}
           </div>
           <div>
             <div className="flex items-center gap-2">
@@ -85,15 +92,19 @@ export function ProductModal({ product, onClose, onBookCall }: ProductModalProps
           ) : (
             <div className="bg-slate-900 rounded-xl p-5 text-white border border-slate-800 space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-mono text-purple-300 font-bold uppercase">
-                  Self-Healing Autonomous RPA Protocol
+                <span className="text-xs font-mono text-amber-300 font-bold uppercase">
+                  {product.id === "reconciliation-ops"
+                    ? "Multi-Agent Accounts & Ledger Reconciliation Protocol"
+                    : "Self-Healing Autonomous RPA Protocol"}
                 </span>
-                <span className="text-[10px] bg-purple-900/60 text-purple-200 px-2 py-0.5 rounded font-mono">
-                  Beta Stage: V0.9.4
+                <span className="text-[10px] bg-indigo-900/60 text-indigo-200 px-2 py-0.5 rounded font-mono">
+                  {product.id === "reconciliation-ops" ? "Beta: Private Enterprise Preview" : "Beta Stage: V0.9.4"}
                 </span>
               </div>
               <p className="text-xs text-slate-300">
-                Unlike traditional brittle bots, our orchestrator deploys visual neural embeddings to identify interface targets even across significant CSS, DOM, or operating system interface changes.
+                {product.id === "reconciliation-ops"
+                  ? "Specialized multi-agent swarm ingesting bank feeds, vendor invoices, and purchase orders to automate 3-way matching and ERP ledger postings with 100% deterministic audit trails."
+                  : "Unlike traditional brittle bots, our orchestrator deploys visual neural embeddings to identify interface targets even across significant CSS, DOM, or operating system interface changes."}
               </p>
               {!waitlistSubmitted ? (
                 <form onSubmit={handleWaitlistSubmit} className="flex gap-2">
