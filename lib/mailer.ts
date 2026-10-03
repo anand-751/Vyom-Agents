@@ -84,10 +84,11 @@ export async function sendDiscoveryNotificationEmails(lead: DiscoveryLeadData): 
     timeStyle: "short",
     timeZone: "UTC",
   });
+  const senderEmail = process.env.SMTP_FROM || "vyomagents@gmail.com";
 
   // 1. Internal notification email (to company/admin)
   const adminMailOptions = {
-    from: `"Vyom Agents Intake" <${gmailUser}>`,
+    from: `"Vyom Agents Intake" <${senderEmail}>`,
     to: adminNotificationEmail,
     replyTo: `${lead.name} <${lead.email}>`,
     subject: `⚡ New Technical Discovery: ${lead.company} (${lead.name}) [Ref: ${lead.referenceId}]`,
@@ -188,7 +189,7 @@ Reply directly to this email to contact ${lead.name}.
 
   // 2. Client confirmation email (to lead)
   const clientMailOptions = {
-    from: `"Vyom Agents Architecture" <${gmailUser}>`,
+    from: `"Vyom Agents Architecture" <${senderEmail}>`,
     to: lead.email,
     subject: `Discovery Request Confirmed: Vyom Agents Architectural Audit (Ref: ${lead.referenceId})`,
     text: `
