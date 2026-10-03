@@ -22,32 +22,28 @@ const INTEREST_LABELS: Record<string, string> = {
 };
 
 /**
- * Creates and returns a nodemailer transporter configured for Gmail SMTP
- * or custom SMTP credentials from environment variables.
+ * Creates and returns a nodemailer transporter configured for Brevo / SMTP relay
  */
 function getTransporter() {
-  const gmailUser = process.env.GMAIL_USER || process.env.SMTP_USER;
-  // Google App Passwords often have spaces when copied from Google Account; strip them
-  const rawPass = process.env.GMAIL_APP_PASSWORD || process.env.SMTP_PASS || process.env.SMTP_PASSWORD;
-  const gmailPass = rawPass ? rawPass.replace(/\s+/g, "") : undefined;
+  const smtpUser = process.env.SMTP_USER;
+  const smtpPass = process.env.SMTP_PASS || process.env.SMTP_PASSWORD;
 
-  if (!gmailUser || !gmailPass) {
+  if (!smtpUser || !smtpPass) {
     return null;
   }
 
-  const host = process.env.SMTP_HOST || "smtp.gmail.com";
-  const port = parseInt(process.env.SMTP_PORT || "465", 10);
-  const secure = process.env.SMTP_SECURE ? process.env.SMTP_SECURE === "true" : port === 465;
+  const host = process.env.SMTP_HOST || "smtp-relay.brevo.com";
+  const port = parseInt(process.env.SMTP_PORT || "587", 10);
+  const secure = process.env.SMTP_SECURE === "true" || port === 465;
 
   return nodemailer.createTransport({
     host,
     port,
     secure,
     auth: {
-      user: gmailUser,
-      pass: gmailPass,
+      user: smtpUser,
+      pass: smtpPass,
     },
-    // Optional timeout safety
     connectionTimeout: 10000,
     greetingTimeout: 10000,
     socketTimeout: 15000,
@@ -55,7 +51,7 @@ function getTransporter() {
 }
 
 /**
- * Sends discovery notification email to the company/admin and a confirmation email to the lead.
+ * Sends discovery notification email to vyomagents@gmail.com and a confirmation email to the lead.
  */
 export async function sendDiscoveryNotificationEmails(lead: DiscoveryLeadData): Promise<{
   adminSent: boolean;
@@ -63,13 +59,13 @@ export async function sendDiscoveryNotificationEmails(lead: DiscoveryLeadData): 
   reason?: string;
 }> {
   const transporter = getTransporter();
-  const gmailUser = process.env.GMAIL_USER || process.env.SMTP_USER;
   const adminNotificationEmail =
-    process.env.CONTACT_NOTIFICATION_EMAIL || process.env.GMAIL_USER || "vyomagents@gmail.com";
+    process.env.CONTACT_NOTIFICATION_EMAIL || "vyomagents@gmail.com";
+  const senderEmail = process.env.SMTP_FROM || "vyomagents@gmail.com";
 
-  if (!transporter || !gmailUser) {
+  if (!transporter) {
     console.log(
-      `[Gmail SMTP] Notice: GMAIL_USER or GMAIL_APP_PASSWORD not configured. Discovery request recorded locally with Ref: ${lead.referenceId}. To enable automatic emails, set GMAIL_USER and GMAIL_APP_PASSWORD in .env.local.`
+      `[SMTP Mailer] Notice: SMTP credentials (SMTP_USER / SMTP_PASS) not configured. Discovery request recorded locally with Ref: ${lead.referenceId}.`
     );
     return {
       adminSent: false,
@@ -84,9 +80,8 @@ export async function sendDiscoveryNotificationEmails(lead: DiscoveryLeadData): 
     timeStyle: "short",
     timeZone: "UTC",
   });
-  const senderEmail = process.env.SMTP_FROM || "vyomagents@gmail.com";
 
-  // 1. Internal notification email (to company/admin)
+  // 1. Internal notification email (to vyomagents@gmail.com)
   const adminMailOptions = {
     from: `"Vyom Agents Intake" <${senderEmail}>`,
     to: adminNotificationEmail,
@@ -316,16 +311,16 @@ https://vyom-agents.vercel.app
 
   if (results[0].status === "fulfilled") {
     adminSent = true;
-    console.log(`[Gmail SMTP] Admin notification sent successfully (MsgID: ${results[0].value.messageId})`);
+    console.log(`[SMTP Mailer] Admin notification sent successfully (MsgID: ${results[0].value.messageId})`);
   } else {
-    console.error("[Gmail SMTP] Failed to send admin notification:", results[0].reason?.message || results[0].reason);
+    console.error("[SMTP Mailer] Failed to send admin notification:", results[0].reason?.message || results[0].reason);
   }
 
   if (results[1].status === "fulfilled") {
     clientSent = true;
-    console.log(`[Gmail SMTP] Client confirmation sent to ${lead.email} (MsgID: ${results[1].value.messageId})`);
+    console.log(`[SMTP Mailer] Client confirmation sent to ${lead.email} (MsgID: ${results[1].value.messageId})`);
   } else {
-    console.error("[Gmail SMTP] Failed to send client confirmation:", results[1].reason?.message || results[1].reason);
+    console.error("[SMTP Mailer] Failed to send client confirmation:", results[1].reason?.message || results[1].reason);
   }
 
   return { adminSent, clientSent };
