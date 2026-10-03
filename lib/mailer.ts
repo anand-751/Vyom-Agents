@@ -21,6 +21,72 @@ const INTEREST_LABELS: Record<string, string> = {
   "general-updates": "Vyom Autonomous Intelligence Whitepapers",
 };
 
+const DISCOVERY_ANALYSIS_MAP: Record<string, { summary: string; auditChecklist: string[] }> = {
+  "voice-agent": {
+    summary:
+      "Client seeks 24/7 conversational voice intelligence to eliminate hold times, capture after-hours inquiries, and automate appointment bookings with sub-400ms human cadence.",
+    auditChecklist: [
+      "Analyze current inbound call volume, peak rush periods, and estimated missed call revenue loss",
+      "Map target calendar/EHR/CRM systems (e.g. Google Calendar, Outlook, HubSpot, Salesforce)",
+      "Prepare customized live voice receptionist prototype in their industry domain",
+    ],
+  },
+  "orchestrator": {
+    summary:
+      "Client seeks self-healing visual UI automation and multi-agent RPA to replace fragile bots, automate cross-platform software workflows, and eliminate manual data entry.",
+    auditChecklist: [
+      "Audit manual desktop and browser GUI tasks causing administrative bottlenecks",
+      "Map out invoice matching, document verification, and ERP reconciliation steps",
+      "Establish self-healing Playwright and multi-vision model fallback topology",
+    ],
+  },
+  "aieo": {
+    summary:
+      "Client aims to dominate brand entity authority and citation frequency as the #1 recommended answer on ChatGPT Search, Perplexity, and Google Gemini.",
+    auditChecklist: [
+      "Benchmark current brand and competitor recommendation frequency across major LLMs",
+      "Audit domain entity authority, Knowledge Graph structure, and JSON-LD synthetic schema",
+      "Formulate prompt-surface optimization and citation displacement strategy",
+    ],
+  },
+  "workforce": {
+    summary:
+      "Client seeks an autonomous multi-agent swarm with hierarchical supervisor-worker coordination across internal databases, microservices, and third-party APIs.",
+    auditChecklist: [
+      "Identify high-friction human handoffs between departments slowing throughput",
+      "Review API endpoints, databases, and microservices for agent tool calling",
+      "Define state machines, memory persistence, and human-in-the-loop escalation bounds",
+    ],
+  },
+  "automations": {
+    summary:
+      "Client seeks custom enterprise workflow automations and API integrations to eliminate data silos and convert manual tasks into 24/7 autonomous pipelines.",
+    auditChecklist: [
+      "Catalog disconnected software systems (CRM, billing, ERP, internal dashboards)",
+      "Design webhook event streams, data validation schemas, and automated rollback logic",
+      "Calculate time savings and throughput velocity ROI",
+    ],
+  },
+  "apps": {
+    summary:
+      "Client requires a modern, high-performance web or desktop application engineered for seamless customer self-service and local operational workflows.",
+    auditChecklist: [
+      "Define core user journeys, data structures, and conversion touchpoints",
+      "Evaluate offline/desktop hardware integrations (scanners, receipt printers, POS)",
+      "Map UI/UX architectural requirements and deployment timeline",
+    ],
+  },
+  "rag": {
+    summary:
+      "Client requires an enterprise RAG knowledge graph and private AI copilot trained securely over internal manuals, contracts, and company documentation.",
+    auditChecklist: [
+      "Inventory unstructured enterprise documents (PDFs, knowledge bases, tickets)",
+      "Design semantic chunking, vector embedding, and hybrid retrieval architecture",
+      "Enforce strict role-based access control (RBAC) and zero data retention compliance",
+    ],
+  },
+};
+
 /**
  * Creates and returns a nodemailer transporter configured for Brevo / SMTP relay
  */
@@ -75,6 +141,16 @@ export async function sendDiscoveryNotificationEmails(lead: DiscoveryLeadData): 
   }
 
   const interestName = INTEREST_LABELS[lead.interest] || lead.interest || "AI Automation";
+  const discoveryAnalysis = DISCOVERY_ANALYSIS_MAP[lead.interest] || {
+    summary:
+      "Client has requested an architectural assessment to modernize business operations using autonomous AI systems.",
+    auditChecklist: [
+      "Review client's specific business workflow and target operational goals",
+      "Identify high-impact automation quick-wins and systems integration points",
+      "Prepare personalized demonstration and ROI projection for discovery call",
+    ],
+  };
+
   const formattedDate = new Date().toLocaleString("en-US", {
     dateStyle: "medium",
     timeStyle: "short",
@@ -83,27 +159,46 @@ export async function sendDiscoveryNotificationEmails(lead: DiscoveryLeadData): 
 
   // 1. Internal notification email (to vyomagents@gmail.com)
   const adminMailOptions = {
-    from: `"Vyom Agents Intake" <${senderEmail}>`,
+    from: `"Vyom Discovery Intake" <${senderEmail}>`,
     to: adminNotificationEmail,
     replyTo: `${lead.name} <${lead.email}>`,
-    subject: `⚡ New Technical Discovery: ${lead.company} (${lead.name}) [Ref: ${lead.referenceId}]`,
+    subject: `💼 Client Business Discovery: ${lead.name} (${lead.company}) — ${interestName}`,
     text: `
-New Technical Discovery Intake Request
+============================================================
+NEW CLIENT BUSINESS PROBLEM & DISCOVERY INTAKE
+============================================================
 
-Reference ID: ${lead.referenceId}
-Submitted At: ${formattedDate} UTC
+A prospective client has submitted an inquiry on the website describing their operational challenge and requested an architectural discovery audit.
 
-Prospect Details:
-- Name: ${lead.name}
-- Work Email: ${lead.email}
-- Company: ${lead.company}
-- Primary Interest: ${interestName}
-- Company Size: ${lead.teamSize || "Not specified"}
+1. CLIENT & BUSINESS PROFILE:
+• Client Name: ${lead.name}
+• Corporate Email: ${lead.email}
+• Company / Business: ${lead.company}
+• Team / Company Scale: ${lead.teamSize ? lead.teamSize + " employees" : "Not specified"}
+• Reference Token: ${lead.referenceId}
+• Submitted At: ${formattedDate} UTC
 
-Project Scope / Requirements:
-${lead.message || "No specific notes provided."}
+2. CLIENT'S SUBMITTED QUERY & PROBLEM STATEMENT (FROM FORM):
+• Target Solution Selected: ${interestName}
+• What the Client Wrote in the Form:
+${
+  lead.message && lead.message.trim().length > 0
+    ? `"${lead.message}"`
+    : `(Client did not write extra scope notes. Primary requested focus is ${interestName}.)`
+}
 
-Reply directly to this email to contact ${lead.name}.
+3. INITIAL BUSINESS PROBLEM DISCOVERY ANALYSIS:
+• Problem Focus:
+  ${discoveryAnalysis.summary}
+
+• Recommended Initial Audit Checklist for Call Preparation:
+  1. ${discoveryAnalysis.auditChecklist[0]}
+  2. ${discoveryAnalysis.auditChecklist[1]}
+  3. ${discoveryAnalysis.auditChecklist[2]}
+
+NEXT STEP:
+Reply directly to ${lead.name} at ${lead.email} to coordinate their 30-minute discovery session and live demonstration.
+============================================================
     `.trim(),
     html: `
 <!DOCTYPE html>
@@ -111,70 +206,131 @@ Reply directly to this email to contact ${lead.name}.
 <head>
   <meta charset="utf-8">
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #0b0f17; color: #f1f5f9; margin: 0; padding: 24px; }
-    .card { background-color: #111827; border: 1px solid #1f2937; border-radius: 14px; max-width: 600px; margin: 0 auto; overflow: hidden; }
-    .header { background: linear-gradient(135deg, #0ea5e9, #38bdf8); padding: 24px; color: #0b0f17; }
-    .header h2 { margin: 0; font-size: 20px; font-weight: 800; letter-spacing: -0.5px; }
-    .header p { margin: 4px 0 0; font-size: 13px; font-weight: 600; opacity: 0.85; }
-    .content { padding: 24px; }
-    .token-badge { display: inline-block; background-color: #1e293b; color: #38bdf8; font-family: monospace; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 6px; margin-bottom: 20px; border: 1px solid #334155; }
-    .info-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-    .info-table td { padding: 10px 12px; font-size: 13px; border-bottom: 1px solid #1f2937; }
-    .info-label { color: #94a3b8; font-weight: 600; width: 35%; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #080c14; color: #f1f5f9; margin: 0; padding: 24px; }
+    .card { background-color: #0f172a; border: 1px solid #1e293b; border-radius: 16px; max-width: 640px; margin: 0 auto; overflow: hidden; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5); }
+    .header { background: linear-gradient(135deg, #0284c7, #38bdf8); padding: 26px 28px; color: #082f49; }
+    .header-badge { display: inline-block; background-color: rgba(8, 47, 73, 0.2); color: #082f49; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 6px; margin-bottom: 6px; }
+    .header h2 { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; color: #082f49; }
+    .header p { margin: 6px 0 0; font-size: 13px; font-weight: 600; color: #0c4a6e; }
+    .content { padding: 28px; }
+    .alert-banner { background-color: #082f49; border-left: 4px solid #38bdf8; padding: 14px 16px; border-radius: 0 10px 10px 0; margin-bottom: 24px; font-size: 13.5px; line-height: 1.5; color: #e0f2fe; }
+    .section-title { font-size: 11px; font-weight: 800; text-transform: uppercase; color: #38bdf8; letter-spacing: 1px; margin-bottom: 12px; }
+    .token-badge { float: right; background-color: #1e293b; color: #38bdf8; font-family: monospace; font-size: 11px; font-weight: bold; padding: 4px 10px; border-radius: 6px; border: 1px solid #334155; }
+    .info-table { width: 100%; border-collapse: collapse; margin-bottom: 24px; background-color: #1e293b; border-radius: 10px; overflow: hidden; border: 1px solid #334155; }
+    .info-table tr:last-child td { border-bottom: none; }
+    .info-table td { padding: 11px 14px; font-size: 13px; border-bottom: 1px solid #334155; }
+    .info-label { color: #94a3b8; font-weight: 600; width: 36%; }
     .info-val { color: #f8fafc; font-weight: 500; }
-    .message-box { background-color: #1e293b; border-left: 4px solid #38bdf8; padding: 14px; border-radius: 0 8px 8px 0; margin: 20px 0; font-size: 13px; line-height: 1.6; color: #e2e8f0; }
-    .cta-button { display: inline-block; background-color: #38bdf8; color: #0b0f17 !important; text-decoration: none; font-weight: 700; font-size: 13px; padding: 12px 24px; border-radius: 9999px; margin-top: 10px; }
-    .footer { padding: 16px 24px; background-color: #0b0f17; border-top: 1px solid #1f2937; font-size: 11px; color: #64748b; text-align: center; }
+    .problem-box { background-color: #131c31; border: 1px solid #223554; border-radius: 12px; padding: 18px; margin-bottom: 24px; }
+    .problem-quote { font-size: 14px; line-height: 1.6; color: #f8fafc; font-style: normal; margin: 0; }
+    .analysis-card { background: linear-gradient(180deg, #131d33, #0f172a); border: 1px solid #1e3a5f; border-radius: 12px; padding: 18px 20px; margin-bottom: 26px; }
+    .analysis-summary { font-size: 13px; line-height: 1.6; color: #cbd5e1; margin-bottom: 14px; }
+    .checklist-item { display: flex; align-items: flex-start; gap: 10px; font-size: 12.5px; line-height: 1.5; color: #94a3b8; margin-bottom: 8px; }
+    .checklist-item:last-child { margin-bottom: 0; }
+    .checklist-dot { width: 6px; height: 6px; background-color: #38bdf8; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+    .cta-container { text-align: center; margin: 28px 0 10px; }
+    .cta-button { display: inline-block; background: linear-gradient(135deg, #0284c7, #38bdf8); color: #082f49 !important; text-decoration: none; font-weight: 800; font-size: 13px; padding: 13px 28px; border-radius: 9999px; box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.3); }
+    .footer { padding: 18px 28px; background-color: #0b1120; border-top: 1px solid #1e293b; font-size: 11px; color: #64748b; text-align: center; line-height: 1.6; }
   </style>
 </head>
 <body>
   <div class="card">
     <div class="header">
-      <h2>🚀 New Technical Discovery Intake</h2>
-      <p>Vyom Agents Enterprise Dispatch Node</p>
+      <span class="header-badge">Client Business Query</span>
+      <h2>💼 New Technical Discovery Request</h2>
+      <p>A client has submitted an operational bottleneck and requested an architectural audit.</p>
     </div>
+    
     <div class="content">
-      <span class="token-badge">TOKEN: ${lead.referenceId}</span>
+      <div class="alert-banner">
+        <strong>${lead.name}</strong> from <strong>${lead.company}</strong> has submitted an intake query for <strong>${interestName}</strong>.
+      </div>
+
+      <!-- 1. Client Profile -->
+      <div class="section-title">
+        <span>1. Client & Organization Profile</span>
+        <span class="token-badge">TOKEN: ${lead.referenceId}</span>
+      </div>
       <table class="info-table">
         <tr>
-          <td class="info-label">Full Name</td>
+          <td class="info-label">Client Name</td>
           <td class="info-val"><strong>${lead.name}</strong></td>
         </tr>
         <tr>
-          <td class="info-label">Work Email</td>
-          <td class="info-val"><a href="mailto:${lead.email}" style="color: #38bdf8; text-decoration: none;">${lead.email}</a></td>
+          <td class="info-label">Corporate Email</td>
+          <td class="info-val"><a href="mailto:${lead.email}" style="color: #38bdf8; text-decoration: none; font-weight: 600;">${lead.email}</a></td>
         </tr>
         <tr>
-          <td class="info-label">Company</td>
+          <td class="info-label">Company / Business</td>
           <td class="info-val"><strong>${lead.company}</strong></td>
         </tr>
         <tr>
-          <td class="info-label">Primary Interest</td>
-          <td class="info-val">${interestName}</td>
+          <td class="info-label">Company Scale</td>
+          <td class="info-val">${lead.teamSize ? lead.teamSize + " employees" : "Not specified"}</td>
         </tr>
         <tr>
-          <td class="info-label">Team Size</td>
-          <td class="info-val">${lead.teamSize || "Not specified"}</td>
-        </tr>
-        <tr>
-          <td class="info-label">Timestamp</td>
+          <td class="info-label">Submitted At</td>
           <td class="info-val">${formattedDate} UTC</td>
         </tr>
       </table>
 
-      <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.5px;">Project Scope / Requirements:</div>
-      <div class="message-box">
-        ${lead.message ? lead.message.replace(/\n/g, "<br/>") : "<em>No additional details provided.</em>"}
+      <!-- 2. Client Business Problem Statement -->
+      <div class="section-title">
+        <span>2. Client's Submitted Business Query & Scope</span>
+      </div>
+      <div class="problem-box">
+        <div style="font-size: 11px; text-transform: uppercase; color: #38bdf8; font-weight: 700; margin-bottom: 8px;">
+          Requested Automation: ${interestName}
+        </div>
+        <div style="font-size: 11px; color: #94a3b8; font-weight: 600; margin-bottom: 6px;">
+          What the client wrote in the form:
+        </div>
+        <p class="problem-quote">
+          ${
+            lead.message && lead.message.trim().length > 0
+              ? `"${lead.message.replace(/\n/g, "<br/>")}"`
+              : `<em style="color: #94a3b8;">Client did not enter additional scope notes in the form. Focus discovery on ${interestName}.</em>`
+          }
+        </p>
       </div>
 
-      <div style="text-align: center; margin-top: 24px;">
+      <!-- 3. Initial Business Problem Discovery Analysis -->
+      <div class="section-title">
+        <span>3. Initial Problem Discovery & Audit Preparation</span>
+      </div>
+      <div class="analysis-card">
+        <div style="font-size: 11px; text-transform: uppercase; color: #94a3b8; font-weight: 700; margin-bottom: 6px;">
+          Strategic Context & Problem Focus:
+        </div>
+        <div class="analysis-summary">
+          ${discoveryAnalysis.summary}
+        </div>
+        <div style="font-size: 11px; text-transform: uppercase; color: #94a3b8; font-weight: 700; margin-bottom: 8px;">
+          Recommended Initial Audit Checklist for Discovery Call:
+        </div>
+        ${discoveryAnalysis.auditChecklist
+          .map(
+            (item) => `
+          <div class="checklist-item">
+            <span class="checklist-dot"></span>
+            <span>${item}</span>
+          </div>
+        `
+          )
+          .join("")}
+      </div>
+
+      <!-- 4. Quick Action Button -->
+      <div class="cta-container">
         <a href="mailto:${lead.email}?subject=Vyom%20Agents%20Discovery%20Session%20-%20${encodeURIComponent(lead.company)}" class="cta-button">
-          Reply Directly to ${lead.name}
+          Reply Directly to ${lead.name} & Schedule Audit
         </a>
       </div>
     </div>
+
     <div class="footer">
-      Vyom Autonomous Intelligence • 256-bit TLS Encrypted Dispatch
+      Vyom Autonomous Intelligence • Client Discovery & Architectural Intake Node<br>
+      Confidential Enterprise Intake • <a href="https://vyom-agents.vercel.app" style="color: #38bdf8; text-decoration: none;">vyom-agents.vercel.app</a>
     </div>
   </div>
 </body>
