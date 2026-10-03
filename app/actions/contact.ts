@@ -1,5 +1,7 @@
 "use server";
 
+import { sendDiscoveryNotificationEmails } from "@/lib/mailer";
+
 export interface LeadSubmission {
   name: string;
   email: string;
@@ -31,6 +33,16 @@ export async function submitLeadAction(data: LeadSubmission): Promise<LeadRespon
       1000 + Math.random() * 9000
     )}`;
 
+    // Dispatch Gmail SMTP notification to company & confirmation to lead
+    try {
+      await sendDiscoveryNotificationEmails({
+        ...data,
+        referenceId,
+      });
+    } catch (mailErr) {
+      console.error("[Vyom Agents] Mail dispatch error:", mailErr);
+    }
+
     // Forwarding to NestJS microservice or CRM webhook if configured
     const nestJsBackendUrl = process.env.NESTJS_BACKEND_URL;
     if (nestJsBackendUrl) {
@@ -45,11 +57,11 @@ export async function submitLeadAction(data: LeadSubmission): Promise<LeadRespon
           referenceId,
           submittedAt: new Date().toISOString(),
         }),
-      });
+      }).catch((e) => console.warn("[Vyom Agents] Webhook dispatch bypassed:", e));
     }
 
     // Emulate low-latency processing
-    await new Promise((resolve) => setTimeout(resolve, 650));
+    await new Promise((resolve) => setTimeout(resolve, 350));
 
     return {
       success: true,
