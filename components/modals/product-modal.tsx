@@ -132,22 +132,50 @@ export function ProductModal({ product, onClose, onBookCall }: ProductModalProps
             </div>
           )}
 
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
-              Core Capabilities & Guardrails
-            </h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              {product.features.map((feat, idx) => (
-                <div
-                  key={idx}
-                  className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 text-xs text-slate-700 flex items-start gap-2"
-                >
-                  <Check className="w-4 h-4 text-sky-600 shrink-0 mt-0.5" />
-                  <span>{feat}</span>
-                </div>
-              ))}
+          {product.modules && product.modules.length > 0 ? (
+            <div>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
+                Full 7-Module Operational Scope & Safeguards
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {product.modules.map((mod) => (
+                  <div
+                    key={mod.id}
+                    className="p-3.5 rounded-2xl bg-slate-50/90 border border-slate-200/90 text-xs text-slate-800 space-y-2 shadow-xs"
+                  >
+                    <div className="font-bold text-slate-900 flex items-center gap-1.5 text-xs">
+                      <span className="w-2 h-2 rounded-full bg-indigo-600 shrink-0" />
+                      <span className="truncate">{mod.title}</span>
+                    </div>
+                    <ul className="space-y-1 pl-3 text-slate-600 text-[11px]">
+                      {mod.bullets.map((b, idx) => (
+                        <li key={idx} className="list-disc leading-snug">
+                          {b}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          ) : (
+            <div>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
+                Core Capabilities & Guardrails
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                {product.features.map((feat, idx) => (
+                  <div
+                    key={idx}
+                    className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 text-xs text-slate-700 flex items-start gap-2"
+                  >
+                    <Check className="w-4 h-4 text-sky-600 shrink-0 mt-0.5" />
+                    <span>{feat}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
 

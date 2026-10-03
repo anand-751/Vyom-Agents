@@ -16,6 +16,11 @@ export interface Product {
     integrations: string;
     compliance: string;
   };
+  modules?: {
+    id: string;
+    title: string;
+    bullets: string[];
+  }[];
 }
 
 export interface Service {
@@ -187,19 +192,91 @@ export const PRODUCTS: Product[] = [
     name: "Agentic AI Multi-Agent System for Reconciliation / Accounts Operations",
     badge: "UPCOMING PRODUCT",
     badgeType: "upcoming",
-    tagline: "Autonomous collaborative agent swarms for 3-way invoice matching, variance reconciliation, and ERP accounts operations.",
+    tagline: "Autonomous multi-agent financial operations workforce for bank reconciliation, AP/AR automation, journal entries, and month-end close with human approval guardrails.",
     description:
-      "Enterprise autonomous multi-agent workforce engineered specifically for financial operations, ledger audits, and accounts reconciliation. Specialized coordinated agents ingest bank statements, purchase orders, and supplier invoices to execute automated 3-way matching, discrepancy resolution, general ledger posting, and end-of-month book closes with deterministic audit trails.",
+      "A purpose-built enterprise AI workforce for accounting and finance teams. Coordinated specialized agents ingest bank transactions, match against general ledgers, automate vendor invoices and customer collections, draft accrual journals, and enforce month-end close checklists while routing low-confidence or anomalous exceptions directly to accountants for approval.",
     features: [
-      "Autonomous 3-way matching across purchase orders, vendor invoices, and banking feeds",
-      "Multi-agent supervisor-worker architecture: Ingestion, Matching, Audit, and Exception Handlers",
-      "Automated variance detection and intelligent exception routing with full audit trails",
-      "Continuous bidirectional sync with SAP, NetSuite, QuickBooks, Xero, and Microsoft Dynamics",
-      "Deterministic policy guardrails guaranteeing zero AI hallucination and SOC-1/SOC-2 compliance",
+      "Bank & Credit-Card Reconciliation: Auto-imports feeds, matches against ledger, detects duplicates/anomalies, and drafts summaries",
+      "Smart Transaction Categorization: Rules & chart-of-accounts classification with confidence score thresholding",
+      "Accounts Payable (AP) Automation: Vendor invoice OCR, 3-way line item PO matching, and automated exception routing",
+      "Accounts Receivable (AR) & Collections: Real-time overdue tracking, automated follow-up cadences, and response tracking",
+      "Journal-Entry Assistance: Drafts recurring, accrual, and prepaid journal vouchers for accountant one-click approval",
+      "Autonomous Month-End Close: Enforces close checklists, reconciles trial balances, and flags unresolved exceptions",
+      "Human-in-the-Loop Exception Management: AI executes routine matches; flags uncertain items for accountant review & approval",
+    ],
+    modules: [
+      {
+        id: "bank-rec",
+        title: "1. Bank & Credit-Card Reconciliation",
+        bullets: [
+          "Import bank and credit card transaction feeds automatically",
+          "Match incoming transactions against general ledger in real time",
+          "Identify and highlight unmatched or open line items",
+          "Detect duplicate charges and financial anomalies instantaneously",
+          "Generate comprehensive reconciliation summaries for controllers",
+        ],
+      },
+      {
+        id: "categorization",
+        title: "2. Transaction Categorization",
+        bullets: [
+          "Categorize transactions based on chart of accounts and historical rules",
+          "Flag low-confidence or ambiguous transactions for human review",
+          "Continuously adapt to organizational expense patterns",
+        ],
+      },
+      {
+        id: "ap-automation",
+        title: "3. AP Automation (Accounts Payable)",
+        bullets: [
+          "Ingest and parse vendor invoices from PDF, email, and portals",
+          "Extract invoice line items, dates, tax, and payment terms via OCR",
+          "Perform 3-way matching between PO, invoice, and payment records",
+          "Identify discrepancies and route exceptions for approval",
+        ],
+      },
+      {
+        id: "ar-collections",
+        title: "4. AR & Collections (Accounts Receivable)",
+        bullets: [
+          "Track outstanding customer invoices in real time",
+          "Identify overdue accounts and calculate aging intervals",
+          "Prepare and dispatch personalized follow-up communications",
+          "Track customer payment responses and promised payment dates",
+        ],
+      },
+      {
+        id: "journal-entries",
+        title: "5. Journal-Entry Assistance",
+        bullets: [
+          "Prepare recurring, accrual, and prepaid journal vouchers",
+          "Calculate amortization and depreciation schedules automatically",
+          "Submit structured draft entries to accountants for one-click approval",
+        ],
+      },
+      {
+        id: "month-end-close",
+        title: "6. Autonomous Month-End Close",
+        bullets: [
+          "Maintain and execute standardized close checklist",
+          "Identify outstanding items across subsidiary ledgers",
+          "Prepare balance sheet & trial balance reconciliation summaries",
+          "Flag unresolved exceptions before closing financial books",
+        ],
+      },
+      {
+        id: "exception-management",
+        title: "7. Human-in-the-Loop Exception Management",
+        bullets: [
+          "AI autonomously handles 100% routine, high-confidence cases",
+          "Anything uncertain or anomalous routed immediately to human review",
+          "Accountant approves, rejects, or corrects with full audit logging",
+        ],
+      },
     ],
     metrics: [
       { label: "Matching Accuracy", value: "99.9%" },
-      { label: "Reconciliation Speed", value: "95% Faster" },
+      { label: "Faster Close Cycle", value: "95%" },
       { label: "Manual Effort Cut", value: "80+ hrs/mo" },
     ],
     primaryCta: "Request Priority Beta Access",

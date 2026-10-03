@@ -34,11 +34,12 @@ const DISCOVERY_ANALYSIS_MAP: Record<string, { summary: string; auditChecklist: 
   },
   "reconciliation-ops": {
     summary:
-      "Client seeks an autonomous multi-agent system for financial operations, 3-way invoice matching, variance detection, and automated general ledger reconciliation.",
+      "Client seeks an autonomous multi-agent workforce for Bank/Credit Card Reconciliation, Smart Transaction Categorization, AP 3-Way Matching, AR & Overdue Collections, Journal Entry Assistance, Month-End Close, and Human-in-the-Loop Exception Approval.",
     auditChecklist: [
-      "Audit current monthly invoice and transaction volume, PO reconciliation bottlenecks, and payment cycle time",
-      "Map target accounting and ERP infrastructure (SAP, NetSuite, QuickBooks, Xero, banking feeds)",
-      "Establish deterministic policy assertions for variance thresholds and exception approval workflows",
+      "Audit current monthly bank/credit-card transaction feeds, import mechanisms, and ledger mismatch rates",
+      "Evaluate AP invoice intake channels, OCR line-item accuracy, 3-way PO matching rules, and exception routing",
+      "Review chart of accounts classification, recurring/accrual journal cadence, and month-end close checklist bottlenecks",
+      "Configure accountant review thresholds (approvals, rejections, corrections) and ERP sync (SAP, NetSuite, QuickBooks)",
     ],
   },
   "orchestrator": {
