@@ -42,7 +42,7 @@ export const KEYWORDS = [
   "Deterministic Safety Guardrails",
   "Autonomous AI Workforce",
   "Self-Healing RPA Engines",
-  "Sub-400ms Voice Agents",
+  "Enterprise Voice Agents",
   "Multi-Agent Swarm Topology",
   "AIEO (AI Engine Optimization)",
   "Enterprise Tool Orchestration",
@@ -74,9 +74,9 @@ export const COMPANY_KNOWLEDGE = [
     title: "What Agentic AI Products Does Vyom Agents Offer?",
     category: "Agentic AI Products",
     summary:
-      "Vyom Agents engineers two flagship autonomous products: 1) The AI Receptionist (Live Product) delivering human-like voice conversations with sub-400ms latency, native calendar booking, and CRM sync. 2) The Autonomous Workflow Orchestrator (Coming Soon) featuring self-healing RPA and cross-platform desktop task execution.",
+      "Vyom Agents engineers two flagship autonomous products: 1) The AI Receptionist (Live Product) delivering human-like voice conversations, native calendar booking, and CRM sync. 2) The Autonomous Workflow Orchestrator (Coming Soon) featuring self-healing RPA and cross-platform desktop task execution.",
     keyPoints: [
-      "AI Receptionist: 45+ languages, sub-400ms latency, multi-tenant telephony",
+      "AI Receptionist: 45+ languages, natural conversational flow, multi-tenant telephony",
       "Workflow Orchestrator: Visual DOM/GUI introspection, self-healing RPA",
       "Zero human babysitting: Auto-remediates UI drift with vector matching",
       "Harness engineering & deterministic guardrail safety checks",
@@ -149,7 +149,7 @@ export const BRAND_CONFIG = {
   ],
   status: "Autonomous Systems Operational",
   metrics: [
-    { value: "<400ms", label: "Voice Agent Response Latency", change: "Zero perceptual delay" },
+    { value: "Real-Time", label: "Voice Agent Response", change: "Natural conversational flow" },
     { value: "99.4%", label: "Multi-Step Task Execution Accuracy", change: "Self-healing verification" },
     { value: "10x", label: "Operational Throughput Multiplier", change: "Continuous 24/7 run-time" },
     { value: "100%", label: "Deterministic Tool Safety", change: "Role-based policy guardrails" },
@@ -162,17 +162,17 @@ export const PRODUCTS: Product[] = [
     name: "AI Receptionist Inbound & Outbound Voice Agent",
     badge: "LIVE PRODUCT",
     badgeType: "live",
-    tagline: "Sub-400ms voice intelligence for 24/7 reception, bookings, and CRM updates.",
+    tagline: "Conversational voice intelligence for 24/7 reception, bookings, and CRM updates.",
     description:
-      "Autonomous voice AI answering calls in <400ms, qualifying leads, scheduling calendar bookings, and updating CRM records 24/7.",
+      "Autonomous voice AI answering calls instantly, qualifying leads, scheduling calendar bookings, and updating CRM records 24/7.",
     features: [
-      "Sub-400ms conversational flow with natural interruption tolerance",
+      "Human-like conversational flow with natural interruption tolerance",
       "Inbound reception & outbound appointment confirmation calls",
       "Bidirectional Google Calendar, Outlook, and CRM sync",
       "Multilingual fluency across 45+ languages and regional accents",
     ],
     metrics: [
-      { label: "Latency", value: "320ms" },
+      { label: "Audio Stream", value: "Real-Time" },
       { label: "Call Capacity", value: "15+ Concurrent Calls" },
       { label: "Booking Conversion", value: "+42%" },
     ],
@@ -180,7 +180,7 @@ export const PRODUCTS: Product[] = [
     secondaryCta: "Schedule Live Test Call",
     queryParam: "voice-agent",
     specs: {
-      latency: "Sub-400ms end-to-end (STT + LLM Reasoning + TTS)",
+      latency: "Real-time streaming pipeline (STT + LLM Reasoning + TTS)",
       languages: "English, Spanish, Hindi, French, German, Japanese, Mandarin (45+ total)",
       integrations: "Twilio, Asterisk, SIP Trunks, Google Calendar, HubSpot, Salesforce",
       compliance: "SOC-2 Type II, HIPAA Compliant, End-to-End TLS 1.3 Audio Streams",

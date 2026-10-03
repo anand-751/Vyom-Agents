@@ -11,7 +11,7 @@ export interface DiscoveryLeadData {
 }
 
 const INTEREST_LABELS: Record<string, string> = {
-  "voice-agent": "AI Voice Receptionist (Sub-400ms)",
+  "voice-agent": "AI Voice Receptionist (Conversational)",
   "reconciliation-ops": "Agentic AI Multi-Agent Reconciliation & Accounts Operations",
   "orchestrator": "Self-Healing RPA & Workflow Orchestrator",
   "aieo": "AIEO (AI Engine Optimization)",
@@ -25,7 +25,7 @@ const INTEREST_LABELS: Record<string, string> = {
 const DISCOVERY_ANALYSIS_MAP: Record<string, { summary: string; auditChecklist: string[] }> = {
   "voice-agent": {
     summary:
-      "Client seeks 24/7 conversational voice intelligence to eliminate hold times, capture after-hours inquiries, and automate appointment bookings with sub-400ms human cadence.",
+      "Client seeks 24/7 conversational voice intelligence to eliminate hold times, capture after-hours inquiries, and automate appointment bookings with natural human cadence.",
     auditChecklist: [
       "Analyze current inbound call volume, peak rush periods, and estimated missed call revenue loss",
       "Map target calendar/EHR/CRM systems (e.g. Google Calendar, Outlook, HubSpot, Salesforce)",

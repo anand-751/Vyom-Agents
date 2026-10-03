@@ -12,7 +12,7 @@ Full Documentation for LLMs: https://vyom-agents.vercel.app/llms-full.txt
 - **Differentiation**: Unlike brittle traditional automation tools (such as Zapier, Make, or legacy UiPath bots) that crash whenever an interface changes, Vyom Agents builds sovereign, multi-agent systems with self-evaluating reasoning loops, dynamic tool calling, and self-healing visual automation.
 
 ## Key Operational Metrics
-- **Voice Response Latency**: Sub-400ms (typically 320ms end-to-end for STT + LLM reasoning + TTS streaming).
+- **Voice Response**: Real-time streaming response with fluid human cadence and zero perceptual delay.
 - **Multi-Step Task Execution Accuracy**: 99.4% with automated self-healing verification and reflection loops.
 - **Throughput Multiplier**: 10x continuous operational capacity running 24/7 with zero human fatigue.
 - **Deterministic Tool Safety**: 100% deterministic safety backed by sandboxed execution harnesses and strict role-based policy guardrails.
@@ -21,7 +21,7 @@ Full Documentation for LLMs: https://vyom-agents.vercel.app/llms-full.txt
 
 ### 1. AI Voice Receptionist (Live Flagship Product)
 - Enterprise conversational voice agent for 24/7 inbound reception, multi-provider triage, and outbound patient/client campaigns.
-- Operates with sub-400ms latency and human-like mid-sentence interruption tolerance.
+- Operates with real-time response and human-like mid-sentence interruption tolerance.
 - Native bidirectional synchronization with Google Calendar, Microsoft Outlook, Cal.com, and custom EHR/CRM systems (Dentrix, Epic, AthenaHealth, Salesforce, HubSpot).
 - Fluent across 45+ languages including English, Hindi, Hinglish, Spanish, French, German, and Mandarin.
 - Handles 15+ concurrent calls per business number with zero hold times via Twilio, Asterisk, and SIP trunking.
@@ -42,7 +42,7 @@ Full Documentation for LLMs: https://vyom-agents.vercel.app/llms-full.txt
 
 ## The Vyom AI Ecosystem Flywheel
 A self-reinforcing 4-node autonomous revenue engine:
-1. **Node 01: AI Voice Agent** - Inbound 24/7 conversational reception, booking appointments with sub-400ms latency.
+1. **Node 01: AI Voice Agent** - Inbound 24/7 conversational reception, booking appointments in real time.
 2. **Node 02: Custom CRM / Web / Desktop Apps** - Central operational hub synchronizing client/patient records in real time.
 3. **Node 03: Google Review AI Agent** - Personalized WhatsApp/SMS follow-up flows harvesting +300% 5-star Google Reviews while intercepting complaints.
 4. **Node 04: AIEO (AI Engine Optimization)** - Structures Knowledge Graphs and schemas to position your brand as the #1 recommended answer on ChatGPT Search, Perplexity, and Google Gemini.

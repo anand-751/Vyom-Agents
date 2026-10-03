@@ -49,9 +49,9 @@ export const ECOSYSTEM_NODES: EcosystemNode[] = [
     accentGlow: "rgba(14, 165, 233, 0.25)",
     revenueImpact: "+42% Conversion & Zero Missed Calls",
     description:
-      "Converses natively with 24/7 inbound callers with sub-400ms latency. Qualifies leads, books calendar slots, and talks directly to your Custom CRM, Web, and Desktop Apps in real time.",
+      "Converses natively with 24/7 inbound callers in real time. Qualifies leads, books calendar slots, and talks directly to your Custom CRM, Web, and Desktop Apps.",
     feedsInto: "Talks directly to your Custom CRM, Web, and Desktop Apps to log customer context & transaction parameters instantly.",
-    keyMetrics: ["320ms Latency", "15+ Concurrent Calls", "Direct App Sync"],
+    keyMetrics: ["Natural Cadence", "15+ Concurrent Calls", "Direct App Sync"],
   },
   {
     id: "enterprise-software",

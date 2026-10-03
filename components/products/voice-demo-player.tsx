@@ -126,7 +126,7 @@ export function VoiceDemoPlayer() {
         <div className="flex items-center gap-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
           <span className="font-mono text-slate-300 font-semibold text-[10px]">
-            Live Simulator ({activeCall.latency})
+            Live Voice Simulator
           </span>
         </div>
 
@@ -206,8 +206,8 @@ export function VoiceDemoPlayer() {
           <div>
             <div className="flex items-center gap-1.5">
               <span className="text-[9px] font-bold uppercase text-sky-400">Vyom Voice Agent</span>
-              <span className="text-[8.5px] bg-sky-900/80 text-sky-300 px-1 py-0.2 rounded font-mono">
-                {activeCall.latency}
+              <span className="text-[8.5px] bg-sky-900/80 text-sky-300 px-1.5 py-0.2 rounded font-mono">
+                Live Audio
               </span>
             </div>
             <p className="text-slate-200 text-[10px] font-medium leading-snug">{activeCall.agentResponse}</p>

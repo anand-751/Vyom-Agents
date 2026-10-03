@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://vyom-agents.vercel.app"),
   title: "Vyom Agents | Deploy Your Next-Gen Autonomous AI Workforce",
   description:
-    "Unlocking infinite possibilities in autonomous technology. We architect intelligent Agentic AI ecosystems, sub-400ms conversational voice agents, and self-healing visual RPA systems that transform complex operations into deterministic, 24/7 self-executing workflows.",
+    "Unlocking infinite possibilities in autonomous technology. We architect intelligent Agentic AI ecosystems, conversational voice agents, and self-healing visual RPA systems that transform complex operations into deterministic, 24/7 self-executing workflows.",
   keywords: [
     "Agentic AI",
     "Autonomous Agents",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Vyom Agents — Beyond Automations. Deploy Autonomous AI Workforce Today.",
     description:
-      "Unlocking infinite possibilities in autonomous technology. We architect intelligent Agentic AI ecosystems, sub-400ms conversational voice agents, and self-healing visual RPA workflows.",
+      "Unlocking infinite possibilities in autonomous technology. We architect intelligent Agentic AI ecosystems, conversational voice agents, and self-healing visual RPA workflows.",
     url: "https://vyom-agents.vercel.app",
     siteName: "Vyom Agents",
     type: "website",
@@ -58,7 +58,7 @@ const jsonLd = {
       "url": "https://vyom-agents.vercel.app",
       "logo": "https://vyom-agents.vercel.app/logo.png",
       "description":
-        "Vyom Agents architects sovereign enterprise Agentic AI ecosystems, sub-400ms conversational voice agents, and self-healing visual RPA systems that transform complex operations into deterministic, 24/7 self-executing workflows.",
+        "Vyom Agents architects sovereign enterprise Agentic AI ecosystems, conversational voice agents, and self-healing visual RPA systems that transform complex operations into deterministic, 24/7 self-executing workflows.",
       "slogan": "Beyond Automations. Deploy Autonomous AI Workforce Today.",
       "sameAs": ["https://github.com/anand-751/Vyom-Agents"],
       "knowsAbout": [
@@ -78,7 +78,7 @@ const jsonLd = {
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Cloud, Telephony (Twilio, Asterisk, SIP, WebRTC)",
       "description":
-        "Flagship 24/7 conversational voice agent with sub-400ms latency, native calendar booking, and 45+ languages for medical clinics, dental practices, and enterprise front desks.",
+        "Flagship 24/7 conversational voice agent with human-like cadence, native calendar booking, and 45+ languages for medical clinics, dental practices, and enterprise front desks.",
       "offers": [
         {
           "@type": "Offer",
@@ -121,7 +121,7 @@ const jsonLd = {
           "name": "What is Vyom Agents?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Vyom Agents is an elite enterprise Agentic AI company that designs autonomous AI workforces, conversational voice receptionists with sub-400ms latency, and self-healing RPA systems for clinics, legal firms, and enterprises."
+            "text": "Vyom Agents is an elite enterprise Agentic AI company that designs autonomous AI workforces, conversational voice receptionists, and self-healing RPA systems for clinics, legal firms, and enterprises."
           }
         },
         {
@@ -134,10 +134,10 @@ const jsonLd = {
         },
         {
           "@type": "Question",
-          "name": "How fast is Vyom's conversational AI Voice Agent?",
+          "name": "How natural is Vyom's conversational AI Voice Agent?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Vyom's AI Voice Receptionist operates with sub-400ms latency (typically 320ms end-to-end), supporting natural interruption handling and fluid conversations across 45+ languages."
+            "text": "Vyom's AI Voice Receptionist operates with real-time response, supporting natural interruption handling and fluid conversations across 45+ languages."
           }
         },
         {
@@ -184,12 +184,12 @@ export default function RootLayout({
           <h1>Vyom Agents — Beyond Automations. Deploy Autonomous AI Workforce Today.</h1>
           <p>
             Vyom Agents (Vyom Autonomous Intelligence) is an elite enterprise Agentic AI &amp; AI Automation company.
-            We architect intelligent Agentic AI ecosystems, sub-400ms conversational voice agents, and self-healing visual RPA systems that transform complex business operations into deterministic, 24/7 self-executing workflows.
+            We architect intelligent Agentic AI ecosystems, conversational voice agents, and self-healing visual RPA systems that transform complex business operations into deterministic, 24/7 self-executing workflows.
           </p>
           <nav aria-label="Core Capabilities">
             <h2>Core Operational Metrics</h2>
             <ul>
-              <li>Sub-400ms Voice Agent Response Latency (typically 320ms end-to-end for STT, LLM reasoning, and TTS streaming).</li>
+              <li>Real-Time Voice Agent Response with fluid human cadence and natural interruption handling.</li>
               <li>99.4% Multi-Step Task Execution Accuracy with automated self-healing verification loops.</li>
               <li>10x Operational Throughput Multiplier running 24/7 with zero human fatigue.</li>
               <li>100% Deterministic Tool Safety backed by sandboxed execution harnesses and strict role-based policy guardrails.</li>
@@ -199,7 +199,7 @@ export default function RootLayout({
             <article>
               <h3>AI Voice Receptionist (Live Flagship Product)</h3>
               <p>
-                Operates with sub-400ms latency and human-like interruption tolerance.
+                Operates with real-time response and human-like interruption tolerance.
                 Features native bidirectional synchronization with Google Calendar, Microsoft Outlook, and custom EHR/CRM databases (Dentrix, Epic, AthenaHealth, Salesforce, HubSpot).
                 Fluent across 45+ languages including English, Hindi, Hinglish, Spanish, French, German, and Mandarin.
                 Handles 15+ concurrent calls per business line with zero hold times via Twilio, Asterisk, and SIP trunking.
@@ -218,7 +218,7 @@ export default function RootLayout({
 
             <h2>The Vyom AI Ecosystem Flywheel</h2>
             <ol>
-              <li><strong>Node 01: AI Voice Agent</strong> — Converses natively with 24/7 inbound callers with sub-400ms latency, qualifying leads and booking appointments (+42% conversion, zero missed calls).</li>
+              <li><strong>Node 01: AI Voice Agent</strong> — Converses natively with 24/7 inbound callers in real time, qualifying leads and booking appointments (+42% conversion, zero missed calls).</li>
               <li><strong>Node 02: Custom CRM / Web / Desktop Apps</strong> — Central operational hub logging transaction parameters, synchronizing client/patient databases in real time, and passing completed service records to Node 03.</li>
               <li><strong>Node 03: Google Review AI Agent</strong> — Triggers personalized WhatsApp/SMS follow-up flows, intercepting complaints and harvesting +300% 5-star Google Reviews.</li>
               <li><strong>Node 04: AIEO (AI Engine Optimization)</strong> — Structures Knowledge Graphs and schemas to position your brand as the #1 recommended answer on ChatGPT Search, Perplexity, and Google Gemini.</li>
@@ -255,7 +255,7 @@ export default function RootLayout({
           <div style={{ padding: "20px", background: "#f8fafc", borderBottom: "1px solid #e2e8f0" }}>
             <h2>Vyom Agents — Autonomous AI Workforce for Enterprise Automation</h2>
             <p>
-              We architect intelligent Agentic AI ecosystems, sub-400ms conversational voice agents, and self-healing visual RPA workflows.
+              We architect intelligent Agentic AI ecosystems, conversational voice agents, and self-healing visual RPA workflows.
               Visit our live site with JavaScript enabled to explore interactive simulators, voice demos, and ROI calculators.
             </p>
           </div>

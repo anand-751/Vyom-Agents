@@ -108,7 +108,7 @@ class PdfDocument:
         self.add_label("Company at a glance")
         self.add_paragraph("Vyom Agents architects intelligent agentic AI ecosystems and enterprise automation products that transform complex operations into deterministic, 24/7 self-executing workflows.", 14, 20, "#172B4D", "F2", gap=16)
         self.add_stat_row([
-            ("<400ms", "Voice response latency"),
+            ("Real-Time", "Voice response flow"),
             ("99.4%", "Multi-step task accuracy"),
             ("10x", "Operational throughput"),
             ("100%", "Deterministic tool safety"),
@@ -154,7 +154,7 @@ class PdfDocument:
         self.add_heading("AI Voice Receptionist")
         self.add_paragraph("Vyom's flagship enterprise product provides 24/7 inbound reception, multi-provider triage, appointment scheduling, lead qualification, and intelligent outbound patient or client campaigns.")
         self.add_stat_row([
-            ("320ms", "Typical end-to-end latency"),
+            ("Real-Time", "Conversational audio stream"),
             ("+42%", "Appointment booking conversion"),
             ("100%", "After-hours calls answered"),
         ])

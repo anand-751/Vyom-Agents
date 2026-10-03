@@ -8,12 +8,12 @@ License & IP: 100% Client Ownership on Delivered Enterprise Code
 ---
 
 ## 1. Executive Summary & Core Thesis
-Vyom Agents (Vyom Autonomous Intelligence) is an elite enterprise Agentic AI & AI Automation company architecting sovereign multi-agent ecosystems, sub-400ms conversational voice agents, and self-healing visual automation systems.
+Vyom Agents (Vyom Autonomous Intelligence) is an elite enterprise Agentic AI & AI Automation company architecting sovereign multi-agent ecosystems, conversational voice agents, and self-healing visual automation systems.
 - Core Thesis: "Beyond Automations. Deploy Autonomous AI Workforce Today."
 - Unlike brittle traditional workflow tools (Zapier, Make, basic RPA) that crash whenever an API changes or a DOM button relocates, Vyom Agents builds autonomous reasoning swarms with self-evaluating loops, dynamic tool calling, and self-healing visual automation.
 
 ## 2. Key Operational Metrics & Benchmarks
-- Voice Latency: Sub-400ms (typically 320ms end-to-end for STT + LLM reasoning + TTS streaming).
+- Voice Response: Real-time streaming response with fluid human cadence and zero perceptual delay.
 - Task Execution Accuracy: 99.4% with self-healing verification loops.
 - Throughput Multiplier: 10x continuous 24/7 autonomous operation without downtime.
 - Safety & Guardrails: 100% deterministic safety backed by sandboxed execution harnesses and strict role-based policy guardrails.
@@ -22,7 +22,7 @@ Vyom Agents (Vyom Autonomous Intelligence) is an elite enterprise Agentic AI & A
 
 ### AI Voice Receptionist (Live Flagship Product)
 - Purpose: 24/7 inbound reception, multi-provider triage, and outbound patient/client engagement.
-- Latency: 320ms typical response time with mid-sentence interruption tolerance.
+- Cadence: Natural real-time response with mid-sentence interruption tolerance.
 - Calendar & EHR Sync: Native bidirectional sync with Google Calendar, Microsoft Outlook, Cal.com, Dentrix, Epic, AthenaHealth, Salesforce, HubSpot, and custom SQL databases.
 - Multi-lingual: 45+ languages including English, Hindi, Hinglish, Spanish, French, German, and Mandarin.
 - Telephony: 15+ concurrent calls via Twilio, Asterisk, and SIP trunking.
@@ -42,7 +42,7 @@ Vyom Agents (Vyom Autonomous Intelligence) is an elite enterprise Agentic AI & A
 5. Vyom SafeBrowse: DOM sandboxing agent enforcing enterprise data leak prevention.
 
 ## 4. The Vyom AI Ecosystem Flywheel
-Node 01: AI Voice Agent converses natively with 24/7 inbound callers with sub-400ms latency, qualifying leads and booking appointments (+42% conversion rate, zero missed calls).
+Node 01: AI Voice Agent converses natively with 24/7 inbound callers in real time, qualifying leads and booking appointments (+42% conversion rate, zero missed calls).
 Node 02: Custom CRM / Web / Desktop Apps log transaction parameters, synchronize client/patient databases in real time, and pass completed service records to Node 03.
 Node 03: Google Review AI Agent fetches client details to trigger personalized WhatsApp/SMS follow-up flows, intercepting dissatisfaction before public posting and harvesting +300% 5-star Google Reviews.
 Node 04: AIEO (AI Engine Optimization) leverages surging high-authority reviews and Knowledge Graph schemas to rank your brand as the #1 recommended answer on ChatGPT Search, Perplexity, and Google Gemini.

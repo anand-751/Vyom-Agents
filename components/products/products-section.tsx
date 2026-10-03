@@ -139,7 +139,7 @@ export function ProductsSection() {
                     <div>
                       <div className="flex items-center justify-between mb-2 text-[10px] font-mono text-slate-500 font-bold uppercase tracking-wider">
                         <span>Interactive Voice Preview</span>
-                        <span className="text-sky-600 font-semibold">Sub-400ms</span>
+                        <span className="text-sky-600 font-semibold">Real-Time Audio</span>
                       </div>
 
                       {/* Interactive Audio Preview Widget */}
@@ -150,8 +150,8 @@ export function ProductsSection() {
                       {/* Live Specs Grid */}
                       <div className="grid grid-cols-3 gap-1.5 text-center text-xs font-mono mb-2.5">
                         <div className="bg-white p-1 rounded-lg border border-slate-200 shadow-2xs">
-                          <span className="text-slate-900 font-bold block text-xs">320ms</span>
-                          <span className="text-[9px] text-slate-500">Latency</span>
+                          <span className="text-slate-900 font-bold block text-xs">Real-Time</span>
+                          <span className="text-[9px] text-slate-500">Audio Stream</span>
                         </div>
                         <div className="bg-white p-1 rounded-lg border border-slate-200 shadow-2xs">
                           <span className="text-slate-900 font-bold block text-xs">45+</span>

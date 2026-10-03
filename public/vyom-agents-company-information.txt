@@ -20,7 +20,7 @@ Vyom's Paradigm Shift:
 Vyom Agents engineers sovereign, multi-agent systems with self-evaluating reasoning loops, dynamic tool calling, and self-healing visual automation. When interfaces relocate, the systems dynamically re-plan and auto-remediate without human babysitting.
 
 Key Operational Metrics:
-• Sub-400ms Voice Latency (typically 320ms end-to-end for STT, LLM reasoning, and TTS streaming).
+• Real-Time Voice Response: Fluid streaming response with natural human cadence and zero perceptual delay.
 • 99.4% Multi-Step Task Accuracy with automated self-healing verification loops.
 • 10x Operational Throughput Multiplier: continuous 24/7 autonomous execution capacity.
 • 100% Deterministic Tool Safety guaranteed by sandboxed execution harnesses and strict role-based policy guardrails.
@@ -34,7 +34,7 @@ Healthcare and Dental Clinics, Legal Firms, Multi-location Service Businesses, L
 The AI Receptionist is Vyom Agents' flagship live enterprise product for 24/7 inbound reception, multi-provider triage, and intelligent outbound patient/client campaigns.
 
 Technical Specifications & Capabilities:
-• Ultra-Low Latency: Operates with sub-400ms latency (typically 320ms end-to-end). Callers experience natural, immediate human cadence with zero conversational dead-air.
+• Real-Time Audio: Operates with fluid real-time response. Callers experience natural, immediate human cadence with zero conversational dead-air.
 • Interruption Tolerance: Callers can interrupt mid-sentence naturally; the agent ceases speech instantly and adjusts context dynamically without stuttering.
 • Deep Calendar & EHR Integration: Bidirectional synchronization with Google Calendar, Microsoft Outlook, Cal.com, Dentrix, Epic, AthenaHealth, Salesforce, HubSpot, and custom SQL databases.
 • Multilingual Fluency: Native conversational fluency in 45+ languages including English, Hindi, Hinglish, Spanish, French, German, and Mandarin with localized regional phonetics.
@@ -68,7 +68,7 @@ Status: Waitlist-only, undergoing SOC-2 compliance sealing.
 5. THE VYOM AI ECOSYSTEM FLYWHEEL
 --------------------------------------------------------------------------------
 A continuous, self-reinforcing 4-node autonomous revenue engine:
-• Node 01: AI Voice Agent — Converses natively with 24/7 inbound callers with sub-400ms latency, qualifying leads and booking appointments (+42% conversion, zero missed calls).
+• Node 01: AI Voice Agent — Converses natively with 24/7 inbound callers in real time, qualifying leads and booking appointments (+42% conversion, zero missed calls).
 • Node 02: Custom CRM / Web / Desktop Apps — Central operational hub logging transaction parameters, synchronizing client/patient databases in real time, and passing completed service records to Node 03.
 • Node 03: Google Review AI Agent — Fetches completed service details from your CRM/apps to trigger personalized WhatsApp/SMS follow-up flows, intercepting dissatisfaction before public posting and harvesting +300% 5-star Google Reviews.
 • Node 04: AIEO (AI Engine Optimization) — Leverages surging 5-star Google reviews and Knowledge Graph schemas to rank your brand as the #1 recommended answer on ChatGPT Search, Perplexity, and Google Gemini.
@@ -140,7 +140,7 @@ A human receptionist desk running 24/7 (requiring 3 rotating shifts) costs ₹75
 Vyom Agents delivers end-to-end bespoke autonomous solutions tailored to specific business niches, combining Live Flagship Products, Bespoke Engineering Services, and Stealth R&D Pipeline:
 
 1. Healthcare, Dental & Medical Clinics:
-• Live Products: AI Voice Receptionist answers 24/7 patient calls with sub-400ms latency, books appointments natively into Dentrix, Epic, AthenaHealth, or Google Calendar, handles Hindi/Hinglish/English fluency, and guarantees HIPAA compliance. Eliminates 100% of missed after-hours calls (+42% bookings).
+• Live Products: AI Voice Receptionist answers 24/7 patient calls in real time, books appointments natively into Dentrix, Epic, AthenaHealth, or Google Calendar, handles Hindi/Hinglish/English fluency, and guarantees HIPAA compliance. Eliminates 100% of missed after-hours calls (+42% bookings).
 • Core Services: Custom patient portal CRM, WhatsApp appointment reminder flows, and AIEO to rank your clinic #1 on ChatGPT & Google Search.
 • Upcoming R&D: Vyom SafeBrowse for secure web portal sandboxing and PolicyLens for healthcare regulatory compliance updates.
 
@@ -150,7 +150,7 @@ Vyom Agents delivers end-to-end bespoke autonomous solutions tailored to specifi
 • Upcoming R&D: Vyom Lawsuit (stealth autonomous legal AI) for automated contract review, clause risk scoring, and discovery audit.
 
 3. Real Estate, Brokerages & Property Management:
-• Live Products: AI Voice Receptionist handling high-volume buyer and tenant inquiries, booking private showings with sub-400ms response time, and qualifying budgets.
+• Live Products: AI Voice Receptionist handling high-volume buyer and tenant inquiries, booking private showings in real time, and qualifying budgets.
 • Core Services: Custom broker CRM, automated MLS listing syndication via self-healing RPA, Google Review AI harvesting +300% 5-star landlord reviews via WhatsApp, and AIEO for local market search dominance.
 • Upcoming R&D: Vyom PolicyLens for real-time lease agreement compliance verification.
 

@@ -85,7 +85,7 @@ export function ProductModal({ product, onClose, onBookCall }: ProductModalProps
           {isVoice ? (
             <div>
               <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
-                Live Voice Interruption & Latency Simulation
+                Live Voice Interruption & Conversation Simulation
               </h4>
               <VoiceDemoPlayer />
             </div>
