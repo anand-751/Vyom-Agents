@@ -65,7 +65,7 @@ export async function sendDiscoveryNotificationEmails(lead: DiscoveryLeadData): 
   const transporter = getTransporter();
   const gmailUser = process.env.GMAIL_USER || process.env.SMTP_USER;
   const adminNotificationEmail =
-    process.env.CONTACT_NOTIFICATION_EMAIL || process.env.GMAIL_USER || process.env.SMTP_USER;
+    process.env.CONTACT_NOTIFICATION_EMAIL || process.env.GMAIL_USER || "vyomagents@gmail.com";
 
   if (!transporter || !gmailUser) {
     console.log(
