@@ -5,10 +5,10 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Sparkles, 
-  ChevronRight 
+  ChevronRight,
+  ArrowRight
 } from "lucide-react";
 import { BRAND_CONFIG } from "@/lib/constants";
-import { AgentSimulator } from "./agent-simulator";
 import { KeywordTicker } from "./keyword-ticker";
 
 export function HeroSection() {
@@ -22,6 +22,12 @@ export function HeroSection() {
     }, 4200);
     return () => clearInterval(timer);
   }, []);
+
+  const openContactModal = () => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("modal", "contact");
+    router.push(`?${params.toString()}`, { scroll: false });
+  };
 
   const openVoiceProduct = () => {
     const params = new URLSearchParams(searchParams.toString());
@@ -88,7 +94,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 25, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.95, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-base sm:text-xl md:text-2xl text-slate-600 font-normal leading-relaxed max-w-4xl mx-auto mb-6 sm:mb-10 px-1 sm:px-0"
+            className="text-base sm:text-xl md:text-2xl text-slate-600 font-normal leading-relaxed max-w-4xl mx-auto mb-6 sm:mb-8 px-1 sm:px-0"
           >
             Unlocking infinite possibilities in autonomous technology. We architect intelligent{" "}
             <span className="font-semibold text-slate-900">Agentic AI</span> ecosystems and enterprise{" "}
@@ -100,7 +106,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.38, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-flex items-center gap-2 sm:gap-3 text-xs sm:text-base font-semibold text-slate-600 bg-white/90 backdrop-blur-xl border border-slate-200/90 px-3.5 sm:px-6 py-2 sm:py-3 rounded-full shadow-sm mb-10 sm:mb-16 max-w-[94vw] overflow-hidden"
+            className="inline-flex items-center gap-2 sm:gap-3 text-xs sm:text-base font-semibold text-slate-600 bg-white/90 backdrop-blur-xl border border-slate-200/90 px-3.5 sm:px-6 py-2 sm:py-3 rounded-full shadow-sm mb-8 sm:mb-10 max-w-[94vw] overflow-hidden"
           >
             <div className="flex items-center gap-1.5 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-indigo-50 border border-indigo-200/80 text-indigo-700 text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider shrink-0">
               <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
@@ -122,17 +128,29 @@ export function HeroSection() {
             </div>
           </motion.div>
 
-        </div>
+          {/* Client-Facing Action CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 w-full sm:w-auto mb-8 sm:mb-12"
+          >
+            <button
+              onClick={openContactModal}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-slate-950 hover:bg-slate-800 text-white font-semibold text-sm sm:text-base shadow-lg shadow-slate-950/20 hover:shadow-xl transition-all cursor-pointer group"
+            >
+              <span>Schedule Business Discovery</span>
+              <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-white group-hover:translate-x-1 transition-all" />
+            </button>
+            <a
+              href="#products"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white hover:bg-slate-50 text-slate-800 font-semibold text-sm sm:text-base border border-slate-200/90 shadow-xs hover:border-slate-300 transition-all cursor-pointer"
+            >
+              <span>Explore AI Solutions</span>
+            </a>
+          </motion.div>
 
-        {/* Live Interactive Agent Simulation Node Engine */}
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-5xl mx-auto"
-        >
-          <AgentSimulator />
-        </motion.div>
+        </div>
 
         {/* 4 Enterprise Metric Counters */}
         <motion.div
