@@ -33,7 +33,6 @@ export function Navbar() {
     { name: "Products", href: "#products" },
     { name: "Ecosystem", href: "#ecosystem" },
     { name: "Use Cases", href: "#use-cases" },
-    { name: "Pricing", href: "#pricing" },
     { name: "About", href: "#about" },
   ];
 

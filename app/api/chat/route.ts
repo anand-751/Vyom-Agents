@@ -393,10 +393,10 @@ REFINEMENT INSTRUCTIONS:
       lower.includes("starter")
     ) {
       synthesizedReply =
-        "We keep our pricing simple and transparent with three flexible plans: Starter (around ₹14,999/mo), Professional (₹23,999/mo), and Enterprise (₹33,990/mo) depending on your volume and custom setup. Most businesses easily earn back their investment by capturing after-hours leads and orders that would have otherwise slipped away. Would you like to check out our savings calculator?";
+        "Our solutions are custom-scoped based on your operational volume, system connectors, and specific business workflows. Every deployment includes dedicated solutions engineering, custom integrations, and enterprise SLA support. Would you like to schedule a discovery call with our engineering team for a tailored quote?";
       fallbackButtons = [
-        { label: "Open Savings Calculator", action: "roi" },
-        { label: "Book a Call", action: "contact" },
+        { label: "Book Discovery Call", action: "contact" },
+        { label: "Explore Products", action: "services" },
       ];
     } else if (lower.includes("voice") || lower.includes("receptionist") || lower.includes("phone")) {
       synthesizedReply =

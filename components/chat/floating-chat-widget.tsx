@@ -206,8 +206,7 @@ export function FloatingChatWidget() {
     if (action === "contact") openContactModal();
     if (action === "voice") openContactModal("voice-agent");
     if (action === "pricing") {
-      const el = document.getElementById("pricing");
-      el?.scrollIntoView({ behavior: "smooth" });
+      openContactModal();
     }
     if (action === "products") {
       const el = document.getElementById("products");
@@ -233,12 +232,12 @@ export function FloatingChatWidget() {
         text: "I can help you book a demo with our team. Please share a few quick details:",
         isDemoForm: true,
       });
-    } else if (actionKey === "pricing-roi") {
-      sendUserMessage("What are your pricing plans and ROI?", {
-        text: "We offer 3 simple, transparent plans in INR:\n\n• **Starter (₹14,999/mo)** — 400 calls, full voice receptionist.\n• **Professional (₹23,999/mo)** — 700 calls, custom CRM sync & calendar bookings.\n• **Enterprise (₹33,990/mo)** — 1,000+ calls, multi-agent workflows, 24/7 SLA.\n\nMost business owners achieve full ROI in under 3 weeks.",
+    } else if (actionKey === "pricing-roi" || actionKey === "custom-quote") {
+      sendUserMessage("Tell me about custom solutions and engagement models.", {
+        text: "Our autonomous AI workforces and solutions are scoped custom to your operational volume, systems integration, and specific business workflows.\n\nEvery engagement includes dedicated solutions engineering, custom integrations, deterministic guardrails, and ongoing enterprise support.\n\nWould you like to schedule a discovery call with our engineering team?",
         actionButtons: [
-          { label: "View Pricing Section", action: "pricing" },
-          { label: "Book a Demo", action: "demo" },
+          { label: "Book Discovery Call", action: "contact" },
+          { label: "View Products Section", action: "products" },
         ],
       });
     } else if (actionKey === "ask-question") {
@@ -699,9 +698,9 @@ export function FloatingChatWidget() {
                       <ChevronRight className="w-3 h-3 text-slate-300 group-hover:text-slate-700 group-hover:translate-x-0.5 transition-all shrink-0 mt-0.5" />
                     </button>
 
-                    {/* 3. Pricing & ROI */}
+                    {/* 3. Custom Quotes / Enterprise Inquiry */}
                     <button
-                      onClick={() => handleQuickAction("pricing-roi")}
+                      onClick={() => handleQuickAction("custom-quote")}
                       className="p-2.5 rounded-xl bg-white border border-stone-200/90 hover:border-stone-300 hover:shadow-xs transition-all text-left flex items-start justify-between group cursor-pointer"
                     >
                       <div>
@@ -709,10 +708,10 @@ export function FloatingChatWidget() {
                           <CreditCard className="w-3 h-3" />
                         </div>
                         <h4 className="font-bold text-[11px] text-slate-900 group-hover:text-emerald-600 transition-colors leading-tight">
-                          Pricing &amp; ROI
+                          Custom Quotes
                         </h4>
                         <p className="text-[9.5px] text-slate-500 mt-0.5 leading-tight">
-                          Get plan details
+                          Tailored project scope
                         </p>
                       </div>
                       <ChevronRight className="w-3 h-3 text-slate-300 group-hover:text-slate-700 group-hover:translate-x-0.5 transition-all shrink-0 mt-0.5" />
@@ -771,7 +770,7 @@ export function FloatingChatWidget() {
                     type="text"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    placeholder="Ask about products, pricing, or demo..."
+                    placeholder="Ask about products, solutions, or demo..."
                     className="flex-1 bg-transparent text-[11.5px] sm:text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none"
                     aria-label="Ask AI assistant"
                   />

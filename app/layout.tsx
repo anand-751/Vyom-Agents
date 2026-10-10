@@ -136,10 +136,10 @@ const jsonLd = {
         },
         {
           "@type": "Question",
-          "name": "What are the pricing plans for the Vyom AI Voice Receptionist?",
+          "name": "How does Vyom Agents engage with enterprise clients?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Vyom AI Receptionist offers three transparent tiers: Starter at ₹14,999/mo ($180/mo) for 400 calls; Professional at ₹23,999/mo ($280/mo) for 700 calls with rescheduling workflows; and Enterprise at ₹33,990/mo ($400/mo) for 1,000+ calls with custom CRM integration and 24/7 SLA."
+            "text": "Vyom Agents provides custom-engineered autonomous AI deployments with dedicated solutions architecture, custom system connectors, deterministic guardrails, and rapid 14-day rollouts tailored to your operational workflows."
           }
         },
         {

@@ -499,20 +499,12 @@ export function evaluateOutputHarness(
     reply = reply.replace(/(system:|assistant:|user:|<\|im_start\|>|<\|im_end\|>)/gi, "").trim();
   }
 
-  // 2. Factual Grounding & Anti-Hallucination Pricing Verifier (Word boundary check)
+  // 2. Factual Grounding for Pricing & Enterprise Quotes
   const queryLower = query.toLowerCase();
   const isPricingQuery = /\b(price|pricing|cost|costs|fee|fees|rates?|pricing\s+tier|how\s+much)\b/i.test(queryLower);
 
   if (isPricingQuery) {
-    const hasStarterPrice = reply.includes("14,999") || reply.includes("180");
-    const hasProPrice = reply.includes("23,999") || reply.includes("280");
-    const hasEnterprisePrice = reply.includes("33,990") || reply.includes("400");
-
-    if (!hasStarterPrice && !hasProPrice && !hasEnterprisePrice) {
-      hallucinationRepaired = true;
-      detectedFlags.push("pricing_grounding_correction");
-      reply += `\n\nPricing options:\n• Starter: ₹14,999/mo ($180)\n• Professional: ₹23,999/mo ($280)\n• Enterprise: ₹33,990/mo ($400)`;
-    }
+    detectedFlags.push("pricing_inquiry_grounded");
   }
 
   // 3. Factual Grounding: Voice query recognition

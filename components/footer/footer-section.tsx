@@ -66,7 +66,6 @@ export function FooterSection() {
             <a href="#products" className="hover:text-white transition-colors">Products</a>
             <a href="#use-cases" className="hover:text-white transition-colors">Use Cases</a>
             <a href="#tech-stack" className="hover:text-white transition-colors">Developers</a>
-            <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
             <a href="#about" className="hover:text-white transition-colors">Company</a>
           </div>
 
