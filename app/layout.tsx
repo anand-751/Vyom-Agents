@@ -29,9 +29,13 @@ export const metadata: Metadata = {
     "Custom CRM",
   ],
   icons: {
-    icon: "/logo-icon.png",
-    shortcut: "/logo-icon.png",
-    apple: "/logo-icon.png",
+    icon: [
+      { url: "/logo-transparent.png" },
+      { url: "/logo-transparent.png", sizes: "32x32", type: "image/png" },
+      { url: "/logo-transparent.png", sizes: "16x16", type: "image/png" },
+    ],
+    shortcut: "/logo-transparent.png",
+    apple: "/logo-transparent.png",
   },
   authors: [{ name: "Vyom Agents Engineering Team" }],
   openGraph: {
@@ -40,6 +44,14 @@ export const metadata: Metadata = {
       "Unlocking infinite possibilities in autonomous technology. We architect intelligent Agentic AI ecosystems, conversational voice agents, and self-healing visual RPA workflows.",
     url: "https://vyom-agents.vercel.app",
     siteName: "Vyom Agents",
+    images: [
+      {
+        url: "https://vyom-agents.vercel.app/logo-transparent.png",
+        width: 1194,
+        height: 656,
+        alt: "Vyom Agents Logo",
+      },
+    ],
     type: "website",
     locale: "en_US",
   },
@@ -48,6 +60,7 @@ export const metadata: Metadata = {
     title: "Vyom Agents: Autonomous AI Workforce",
     description:
       "Unlocking infinite possibilities in autonomous technology. We architect intelligent agentic ecosystems that transform raw complexity into seamless execution.",
+    images: ["https://vyom-agents.vercel.app/logo-transparent.png"],
   },
   verification: {
     google: "oChfHC8LnNKHtdaeCKPA-qEz6odSltvpK3hiz1qR0Oo",
@@ -66,7 +79,8 @@ const jsonLd = {
       "name": "Vyom Agents",
       "alternateName": "Vyom Autonomous Intelligence",
       "url": "https://vyom-agents.vercel.app",
-      "logo": "https://vyom-agents.vercel.app/logo.png",
+      "logo": "https://vyom-agents.vercel.app/logo-transparent.png",
+      "image": "https://vyom-agents.vercel.app/logo-transparent.png",
       "description":
         "Vyom Agents architects sovereign enterprise Agentic AI ecosystems, conversational voice agents, and self-healing visual RPA systems that transform complex operations into deterministic, 24/7 self-executing workflows.",
       "slogan": "Beyond Automations. Deploy Autonomous AI Workforce Today.",
@@ -88,30 +102,7 @@ const jsonLd = {
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Cloud, Telephony (Twilio, Asterisk, SIP, WebRTC)",
       "description":
-        "Flagship 24/7 conversational voice agent with human-like cadence, native calendar booking, and 45+ languages for medical clinics, dental practices, and enterprise front desks.",
-      "offers": [
-        {
-          "@type": "Offer",
-          "name": "Starter Plan",
-          "price": "14999",
-          "priceCurrency": "INR",
-          "description": "Up to 400 verified calls/month, 1-2 provider routing, Hindi/Hinglish/English."
-        },
-        {
-          "@type": "Offer",
-          "name": "Professional Plan",
-          "price": "23999",
-          "priceCurrency": "INR",
-          "description": "Up to 700 verified calls/month, up to 5 provider routing, appointment rescheduling."
-        },
-        {
-          "@type": "Offer",
-          "name": "Enterprise Plan",
-          "price": "33990",
-          "priceCurrency": "INR",
-          "description": "1,000+ verified calls/month, custom CRM connectors, dedicated solutions architect."
-        }
-      ]
+        "Flagship 24/7 conversational voice agent with human-like cadence, native calendar booking, and 45+ languages for medical clinics, dental practices, and enterprise front desks."
     },
     {
       "@type": "SoftwareApplication",
