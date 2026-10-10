@@ -43,19 +43,19 @@ export function ServicesSection() {
   };
 
   return (
-    <section id="services" className="py-24 relative bg-white border-t border-slate-200/80 overflow-hidden">
+    <section id="services" className="py-16 sm:py-20 relative bg-white border-t border-stone-200/80 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-indigo-100/80 text-indigo-800 text-xs font-semibold uppercase tracking-wider mb-3 shadow-sm border border-indigo-200">
-            <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
-            <span>Enterprise Agency Services</span>
+        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-50 text-orange-800 text-xs font-semibold uppercase tracking-wider mb-2.5 border border-orange-200">
+            <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
+            <span>Enterprise Engineering Services</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-950">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-950">
             Enterprise Agentic Capabilities
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
+          <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
             Specialized engineering across self-healing visual automation, multi-agent swarms, custom enterprise ERP/CRM systems, and AI search engine optimization.
           </p>
         </div>

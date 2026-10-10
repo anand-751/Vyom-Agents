@@ -3,76 +3,61 @@ import { Navbar } from "@/components/navbar";
 import { HeroSection } from "@/components/hero/hero-section";
 import { ProductsSection } from "@/components/products/products-section";
 import { AiEcosystemSection } from "@/components/ecosystem/ai-ecosystem-section";
-import { RoiCalculator } from "@/components/interactive/roi-calculator";
-import { ServicesSection } from "@/components/services/services-section";
-import { TechStackShowcase } from "@/components/techstack/tech-stack-showcase";
-import { WhyUsSection } from "@/components/comparison/why-us-section";
+import { UseCasesSection } from "@/components/usecases/use-cases-section";
+import { PricingSection } from "@/components/pricing/pricing-section";
+import { AboutSection } from "@/components/about/about-section";
 import { FooterSection } from "@/components/footer/footer-section";
 import { TabModalController } from "@/components/modals/tab-modal-controller";
 import { FloatingChatWidget } from "@/components/chat/floating-chat-widget";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-white relative selection:bg-sky-500 selection:text-white">
-      {/* Universal Frosted Navbar */}
+    <main className="min-h-screen bg-white relative selection:bg-orange-500 selection:text-white">
+      {/* Universal Clean Navbar */}
       <Suspense fallback={<div className="h-16 w-full" />}>
         <Navbar />
       </Suspense>
 
-      {/* Hero Section with Atmospheric Lighting, Agent Simulator & Marquee */}
+      {/* 1. Hero Section (Earth Dawn Space Horizon) */}
       <Suspense fallback={null}>
         <HeroSection />
       </Suspense>
 
-      <div className="section-divider" />
-
-      {/* Flagship Proprietary Autonomous Products & Live Audio Player */}
+      {/* 2. Products Section (Our Products 3 Cards) */}
       <Suspense fallback={null}>
         <ProductsSection />
       </Suspense>
 
-      <div className="section-divider" />
-
-      {/* Autonomous AI Ecosystem Flywheel & Interactive Node Inspector */}
+      {/* 3. The Vyom AI Ecosystem (Autonomous Revenue Flywheel) */}
       <Suspense fallback={null}>
         <AiEcosystemSection />
       </Suspense>
 
-      <div className="section-divider" />
-
-      {/* Interactive Business ROI & Volume Configurator */}
+      {/* 4. Use Cases Section (Built for people who build the future) */}
       <Suspense fallback={null}>
-        <RoiCalculator />
+        <UseCasesSection />
       </Suspense>
 
-      <div className="section-divider" />
-
-      {/* Core Enterprise Engineering Services Grid */}
+      {/* 4. Pricing Section (Simple, transparent pricing) */}
       <Suspense fallback={null}>
-        <ServicesSection />
+        <PricingSection />
       </Suspense>
 
-      <div className="section-divider" />
-
-      {/* Enterprise Integration Mesh & Tech Stack Showcase */}
+      {/* 5. About Us Section (Human Potential Amplified) */}
       <Suspense fallback={null}>
-        <TechStackShowcase />
+        <AboutSection />
       </Suspense>
 
-      <div className="section-divider" />
+      {/* 6. Dark Footer Section (Ready to build with Vyom Agents?) */}
+      <Suspense fallback={null}>
+        <FooterSection />
+      </Suspense>
 
-      {/* Why Choose Vyom: Comparison Matrix & Trust Pillars */}
-      <WhyUsSection />
-
-      {/* Enterprise Access Portal & Footer */}
-      <FooterSection />
-
-      {/* Deep-Linked Multi-Tab Modal & Lead Drawer Controller */}
+      {/* Minimal Modals & Assistant */}
       <Suspense fallback={null}>
         <TabModalController />
       </Suspense>
 
-      {/* Floating AI Chat Bot Assistant Dialog */}
       <Suspense fallback={null}>
         <FloatingChatWidget />
       </Suspense>

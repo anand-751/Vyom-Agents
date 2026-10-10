@@ -43,7 +43,7 @@ export function WhyUsSection() {
             <div className="hidden md:block col-span-4 text-rose-300 font-semibold">
               Traditional Rigid Scripts & Legacy Bots
             </div>
-            <div className="hidden md:block col-span-4 text-sky-400 font-bold flex items-center gap-1.5">
+            <div className="hidden md:block col-span-4 text-orange-400 font-bold flex items-center gap-1.5">
               <Zap className="w-3.5 h-3.5" />
               Vyom Autonomous AI Workforce & Self-Healing RPA Engines
             </div>
@@ -78,10 +78,10 @@ export function WhyUsSection() {
                 </div>
 
                 {/* Vyom Agents */}
-                <div className="col-span-12 md:col-span-4 flex items-start gap-2.5 text-xs sm:text-sm text-slate-900 bg-sky-50/70 md:bg-transparent p-3 md:p-0 rounded-xl font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-sky-600 shrink-0 mt-0.5" />
+                <div className="col-span-12 md:col-span-4 flex items-start gap-2.5 text-xs sm:text-sm text-slate-900 bg-orange-50/60 md:bg-transparent p-3 md:p-0 rounded-xl font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0 mt-0.5" />
                   <div>
-                    <span className="md:hidden text-[10px] font-bold text-sky-700 uppercase block mb-1">
+                    <span className="md:hidden text-[10px] font-bold text-orange-700 uppercase block mb-1">
                       Vyom Autonomous Engine:
                     </span>
                     <span>{item.vyom}</span>
@@ -95,7 +95,7 @@ export function WhyUsSection() {
         {/* Enterprise Harness Engineering & Safety Badges */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           <div className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm flex items-start gap-3.5">
-            <div className="w-9 h-9 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center shrink-0">
+            <div className="w-9 h-9 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center shrink-0">
               <Cpu className="w-4 h-4" />
             </div>
             <div>
@@ -107,7 +107,7 @@ export function WhyUsSection() {
           </div>
 
           <div className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm flex items-start gap-3.5">
-            <div className="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
+            <div className="w-9 h-9 rounded-xl bg-stone-100 text-stone-800 flex items-center justify-center shrink-0">
               <ShieldCheck className="w-4 h-4" />
             </div>
             <div>

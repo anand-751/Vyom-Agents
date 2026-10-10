@@ -154,6 +154,10 @@ export const BRAND_CONFIG = {
     { value: "10x", label: "Operational Throughput Multiplier", change: "Continuous 24/7 run-time" },
     { value: "100%", label: "Deterministic Tool Safety", change: "Role-based policy guardrails" },
   ],
+  socials: {
+    instagram: "https://www.instagram.com/vyom_agents",
+    instagramHandle: "@vyom_agents",
+  },
 };
 
 export const PRODUCTS: Product[] = [

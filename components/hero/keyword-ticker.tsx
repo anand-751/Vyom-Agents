@@ -14,8 +14,8 @@ export function KeywordTicker() {
       <div className="flex items-center">
         {/* Static Left Label */}
         <div className="hidden md:flex items-center gap-2 pl-6 pr-4 border-r border-slate-800 shrink-0 z-10 bg-slate-900">
-          <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
-          <span className="text-[11px] font-mono uppercase tracking-widest text-sky-400 font-bold">
+          <span className="w-2 h-2 rounded-full bg-orange-500" />
+          <span className="text-[11px] font-mono uppercase tracking-widest text-orange-400 font-bold">
             Core Competencies
           </span>
         </div>
@@ -31,7 +31,7 @@ export function KeywordTicker() {
           className="flex items-center gap-6 whitespace-nowrap will-change-transform"
         >
           {duplicatedKeywords.map((keyword, index) => {
-            const isHighlight = keyword === "Agentic AI" || keyword === "AI Automation Products";
+            const isHighlight = keyword === "Agentic AI Products" || keyword === "Deterministic Safety Guardrails";
 
             return (
               <div
@@ -39,13 +39,13 @@ export function KeywordTicker() {
                 className="flex items-center gap-3 text-xs font-semibold tracking-wide"
               >
                 <span
-                  className={`flex items-center gap-1.5 px-3 py-1 rounded-full transition-all ${
+                  className={`flex items-center gap-1.5 px-3 py-1 rounded-md transition-all ${
                     isHighlight
-                      ? "bg-gradient-to-r from-sky-600 to-indigo-600 text-white shadow-sm font-bold scale-105"
+                      ? "bg-orange-600 text-white shadow-sm font-bold"
                       : "text-slate-300 hover:text-white"
                   }`}
                 >
-                  {isHighlight && <Sparkles className="w-3 h-3 text-sky-200" />}
+                  {isHighlight && <Zap className="w-3 h-3 text-orange-200" />}
                   <span>{keyword}</span>
                 </span>
                 <span className="text-slate-700 select-none">•</span>

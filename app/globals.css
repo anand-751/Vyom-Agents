@@ -31,6 +31,19 @@
     overflow-x: hidden;
   }
 
+  /* Lock website scale for laptop screens (1024px to 1440px / 125% DPI displays) */
+  @media screen and (min-width: 1024px) and (max-width: 1440px) {
+    html {
+      font-size: 14.5px;
+    }
+  }
+
+  @media screen and (max-height: 760px) and (min-width: 1024px) {
+    html {
+      font-size: 14px;
+    }
+  }
+
   body {
     background-color: #ffffff;
     color: #0f172a;
@@ -79,7 +92,7 @@
   inset: -1px;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(2, 132, 199, 0.3), rgba(124, 58, 237, 0.3));
+  background: linear-gradient(135deg, rgba(234, 88, 12, 0.35), rgba(245, 158, 11, 0.25));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;

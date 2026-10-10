@@ -1,27 +1,15 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
+import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
-import { 
-  Sparkles, 
-  ChevronRight,
-  ArrowRight
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowRight, Play, Check } from "lucide-react";
 import { BRAND_CONFIG } from "@/lib/constants";
-import { KeywordTicker } from "./keyword-ticker";
 
 export function HeroSection() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [activeTaglineIndex, setActiveTaglineIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveTaglineIndex((prev) => (prev + 1) % BRAND_CONFIG.taglines.length);
-    }, 4200);
-    return () => clearInterval(timer);
-  }, []);
 
   const openContactModal = () => {
     const params = new URLSearchParams(searchParams.toString());
@@ -35,153 +23,158 @@ export function HeroSection() {
     router.push(`?${params.toString()}`, { scroll: false });
   };
 
+  const capabilityCards = [
+    { 
+      number: "01",
+      label: "AI Consulting & Assessment",
+      desc: "Readiness audit & strategic ROI roadmap"
+    },
+    { 
+      number: "02",
+      label: "Transformative Agent Engineering",
+      desc: "Domain-specific autonomous agent architectures"
+    },
+    { 
+      number: "03",
+      label: "Agentic Workflow Design",
+      desc: "Self-healing deterministic task execution"
+    },
+    { 
+      number: "04",
+      label: "Deploy Solution in 14 Days",
+      desc: "Rapid enterprise production rollout"
+    },
+  ];
+
   return (
-    <section className="relative pt-24 sm:pt-32 pb-24 sm:pb-30 overflow-hidden bg-white min-h-[85vh] flex flex-col justify-center">
-      {/* Subtle Background Grid and Dynamic Animated Ambient Glow Overlays */}
-      <div className="absolute inset-0 bg-grid-subtle pointer-events-none opacity-80" />
-      <motion.div
-        animate={{
-          scale: [1, 1.15, 1],
-          opacity: [0.35, 0.6, 0.35],
-          x: [0, 25, 0],
-          y: [0, -20, 0],
-        }}
-        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[450px] bg-gradient-to-tr from-sky-200/50 via-purple-200/40 to-transparent rounded-full blur-3xl pointer-events-none"
-      />
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.25, 0.5, 0.25],
-          x: [0, -30, 0],
-          y: [0, 25, 0],
-        }}
-        transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-28 right-10 w-[500px] h-[500px] bg-gradient-to-bl from-indigo-200/40 via-sky-100/50 to-transparent rounded-full blur-3xl pointer-events-none"
-      />
+    <section className="relative pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 overflow-hidden bg-[#070A10] text-white min-h-screen min-h-[100dvh] flex flex-col justify-center">
+      {/* Background: Earth Sunrise Space Curve Backdrop */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        <Image
+          src="/images/hero_space_dawn.jpg"
+          alt="Earth dawn space curve"
+          fill
+          priority
+          className="object-cover object-center opacity-65 mix-blend-screen scale-105"
+        />
+        {/* Minimalist subtle dot matrix grid overlay */}
+        <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:28px_28px] opacity-75" />
+        
+        {/* Soft dark vignette gradients for maximum text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#070A10]/95 via-[#070A10]/75 to-[#070A10]/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#070A10]/80 via-transparent to-[#070A10]" />
+      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto py-8 sm:py-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
           
-          {/* Live Enterprise Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            onClick={openVoiceProduct}
-            className="inline-flex items-center gap-2 px-3.5 sm:px-4.5 py-1.5 rounded-full bg-slate-50/90 border border-slate-200/90 text-slate-700 text-xs sm:text-sm font-semibold shadow-xs hover:border-sky-300 hover:bg-sky-50/50 transition-all cursor-pointer mb-6 sm:mb-8 group max-w-[95vw] overflow-hidden"
-          >
-            <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-            <span className="tracking-wide truncate sm:overflow-visible">Enterprise Agentic AI & Autonomous Workforce</span>
-            <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-sky-600 group-hover:translate-x-0.5 transition-all shrink-0" />
-          </motion.div>
-
-          {/* Master Headline — Scaled Perfectly for Mobile & Desktop with Smooth Fade-in */}
-          <motion.h1
-            initial={{ opacity: 0, y: 35, filter: "blur(10px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.25rem] font-black tracking-tight text-slate-950 leading-[1.08] mb-5 sm:mb-8 max-w-6xl mx-auto break-words"
-          >
-            Deploy Your Next-Gen{" "}
-            <span className="bg-gradient-to-r from-sky-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-              Autonomous AI Workforce
-            </span>
-          </motion.h1>
-
-          {/* Sub-headline with Core Value Proposition & Smooth Fade-in */}
-          <motion.p
-            initial={{ opacity: 0, y: 25, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.95, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-base sm:text-xl md:text-2xl text-slate-600 font-normal leading-relaxed max-w-4xl mx-auto mb-6 sm:mb-8 px-1 sm:px-0"
-          >
-            Unlocking infinite possibilities in autonomous technology. We architect intelligent{" "}
-            <span className="font-semibold text-slate-900">Agentic AI</span> ecosystems and enterprise{" "}
-            <span className="font-semibold text-slate-900">AI automation products</span> that transform complex operations into deterministic, 24/7 self-executing workflows.
-          </motion.p>
-
-          {/* Dynamic Rotating Core Thesis Pill - Constrained on Mobile */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.38, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-flex items-center gap-2 sm:gap-3 text-xs sm:text-base font-semibold text-slate-600 bg-white/90 backdrop-blur-xl border border-slate-200/90 px-3.5 sm:px-6 py-2 sm:py-3 rounded-full shadow-sm mb-8 sm:mb-10 max-w-[94vw] overflow-hidden"
-          >
-            <div className="flex items-center gap-1.5 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-indigo-50 border border-indigo-200/80 text-indigo-700 text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider shrink-0">
-              <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
-              <span>Core Thesis</span>
-            </div>
-            <div className="relative h-6 sm:h-7 overflow-hidden flex-1 min-w-0 max-w-[200px] sm:max-w-none sm:min-w-[340px] md:min-w-[420px] text-left">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={activeTaglineIndex}
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -20, opacity: 0 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="absolute inset-0 text-slate-900 font-semibold truncate text-xs sm:text-base pt-0.5"
-                >
-                  &ldquo;{BRAND_CONFIG.taglines[activeTaglineIndex]}&rdquo;
-                </motion.span>
-              </AnimatePresence>
-            </div>
-          </motion.div>
-
-          {/* Client-Facing Action CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 w-full sm:w-auto mb-8 sm:mb-12"
-          >
-            <button
-              onClick={openContactModal}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-slate-950 hover:bg-slate-800 text-white font-semibold text-sm sm:text-base shadow-lg shadow-slate-950/20 hover:shadow-xl transition-all cursor-pointer group"
-            >
-              <span>Schedule Business Discovery</span>
-              <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-white group-hover:translate-x-1 transition-all" />
-            </button>
-            <a
-              href="#products"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white hover:bg-slate-50 text-slate-800 font-semibold text-sm sm:text-base border border-slate-200/90 shadow-xs hover:border-slate-300 transition-all cursor-pointer"
-            >
-              <span>Explore AI Solutions</span>
-            </a>
-          </motion.div>
-
-        </div>
-
-        {/* 4 Enterprise Metric Counters */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.55 }}
-          className="mt-8 sm:mt-14 max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4"
-        >
-          {BRAND_CONFIG.metrics.map((metric, idx) => (
+          {/* Left Column: Hero Content & Action CTAs */}
+          <div className="lg:col-span-7 flex flex-col items-start text-left">
+            
+            {/* Top Category Tag - Lifted upwards with increased bottom spacing */}
             <motion.div
-              key={idx}
-              whileHover={{ y: -3, scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="p-3 sm:p-4 rounded-2xl bg-white/80 backdrop-blur-md border border-slate-200/90 shadow-xs flex flex-col justify-center text-center hover:border-sky-300 hover:shadow-md transition-all cursor-default group"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/15 hover:border-white/30 text-stone-300 hover:text-white text-[10.5px] sm:text-[11.5px] font-mono tracking-widest uppercase mb-5 sm:mb-7 transition-all duration-200 cursor-default select-none shadow-[inset_0_1px_1px_rgba(255,255,255,0.06)]"
             >
-              <span className="text-xl sm:text-3xl font-extrabold bg-gradient-to-r from-sky-600 to-indigo-600 bg-clip-text text-transparent group-hover:scale-105 transition-transform">
-                {metric.value}
-              </span>
-              <span className="text-xs font-semibold text-slate-800 mt-1">
-                {metric.label}
-              </span>
-              <span className="text-[11px] text-slate-500 mt-0.5 font-mono">
-                {metric.change}
-              </span>
+              <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
+              <span>AI AGENTS FOR WHAT&apos;S NEXT</span>
             </motion.div>
-          ))}
-        </motion.div>
 
-        {/* Continuous Keywords Marquee */}
-        <div className="mt-8 sm:mt-14 -mx-4 sm:-mx-6 lg:-mx-8">
-          <KeywordTicker />
+            {/* Master Headline - Even Bigger & Bold (3-Line Layout Matching Request) */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.65rem] xl:text-[5.35rem] font-black tracking-tight text-white leading-[1.01] mb-5 sm:mb-6"
+            >
+              Intelligent <br />
+              Agents for a{" "}
+              <span className="bg-gradient-to-r from-orange-400 via-amber-300 to-orange-500 bg-clip-text text-transparent">
+                Bigger <br className="hidden sm:inline" />
+                Tomorrow.
+              </span>
+            </motion.h1>
+
+            {/* Sub-headline: Client-facing vision copy */}
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="text-xs sm:text-sm md:text-base lg:text-[16.5px] text-stone-300 font-normal leading-relaxed max-w-xl mb-8 sm:mb-10 lg:mb-12"
+            >
+              Vyom Agents is an enterprise Agentic AI SaaS company engineering domain-specific autonomous agents that augment human potential and solve real operational bottlenecks.
+            </motion.p>
+
+            {/* Action CTAs: Shifted further downside with mt-2 sm:mt-4 */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mt-2 sm:mt-3"
+            >
+              {/* Primary CTA: Premium "Get Started" Button */}
+              <button
+                onClick={openContactModal}
+                className="relative inline-flex items-center justify-center gap-3 px-7 sm:px-8 py-3.5 sm:py-4 rounded-full bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 hover:from-orange-400 hover:via-amber-400 hover:to-orange-500 text-white font-semibold text-xs sm:text-sm tracking-wide transition-all duration-300 active:scale-[0.98] shadow-[0_0_32px_rgba(249,115,22,0.5)] hover:shadow-[0_0_46px_rgba(249,115,22,0.75)] hover:scale-[1.02] border border-orange-300/40 overflow-hidden group"
+              >
+                <span className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-[350%] transition-transform duration-1000 ease-out pointer-events-none" />
+                <span className="relative z-10 font-semibold tracking-wide">Get Started</span>
+                <span className="relative z-10 w-5 h-5 rounded-full bg-white/25 border border-white/30 flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1 group-hover:bg-white/40">
+                  <ArrowRight className="w-3 h-3 text-white stroke-[2.5]" />
+                </span>
+              </button>
+
+              {/* Secondary CTA: Watch Video / View Demos */}
+              <button
+                onClick={openVoiceProduct}
+                className="inline-flex items-center justify-center gap-2.5 px-5 sm:px-6 py-3.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-white font-medium text-xs sm:text-sm border border-white/20 hover:border-white/35 backdrop-blur-md transition-all duration-200 active:scale-[0.98] shadow-[inset_0_1px_1px_rgba(255,255,255,0.08)] hover:shadow-[0_0_20px_rgba(255,255,255,0.08)]"
+              >
+                <div className="w-5 h-5 rounded-full border border-white/60 bg-white/10 flex items-center justify-center">
+                  <Play className="w-2.5 h-2.5 fill-current ml-0.5 text-white" />
+                </div>
+                <span>Watch Video</span>
+              </button>
+            </motion.div>
+
+          </div>
+
+          {/* Right Column: 4 Stacked Premium Capability Cards - Expanded Vertically */}
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.25 }}
+            className="lg:col-span-5 flex flex-col gap-4 sm:gap-4.5 w-full max-w-lg lg:ml-auto"
+          >
+            {capabilityCards.map((item, idx) => (
+              <div
+                key={idx}
+                className="relative group flex items-center gap-4 p-4 sm:py-4.5 sm:px-5 rounded-2xl bg-white/[0.04] hover:bg-white/[0.07] border border-white/[0.09] hover:border-orange-500/40 backdrop-blur-xl transition-all duration-300 shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_32px_rgba(249,115,22,0.16)] hover:translate-x-1"
+              >
+                {/* Glowing checkmark badge */}
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500/20 to-amber-500/10 border border-orange-500/30 group-hover:border-orange-500/60 flex items-center justify-center shrink-0 text-orange-400 group-hover:bg-orange-500/25 transition-all">
+                  <Check className="w-4.5 h-4.5 stroke-[2.5]" />
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between gap-2">
+                    <h3 className="text-xs sm:text-[14px] font-semibold text-stone-200 group-hover:text-white transition-colors truncate">
+                      {item.label}
+                    </h3>
+                    <span className="text-[10px] font-mono text-stone-500 group-hover:text-orange-400 transition-colors shrink-0">
+                      {item.number}
+                    </span>
+                  </div>
+                  <p className="text-[11px] sm:text-xs text-stone-400 font-normal leading-relaxed mt-0.5 group-hover:text-stone-300 transition-colors">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+
         </div>
       </div>
     </section>
