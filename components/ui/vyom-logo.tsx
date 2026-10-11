@@ -1,7 +1,4 @@
-"use client";
-
 import React from "react";
-import Image from "next/image";
 
 interface VyomLogoProps {
   className?: string;
@@ -43,8 +40,11 @@ export function VyomLogoIcon({
   );
 }
 
+import Image from "next/image";
+
 /**
- * Full Brand Logo Component using animated video from assets/download.mp4
+ * Full Brand Logo Component using direct assets/logo.png with no background
+ * And "Autonomous AI" text removed as requested
  */
 export function VyomBrandLogo({
   isScrolled = false,
@@ -54,21 +54,20 @@ export function VyomBrandLogo({
   className?: string;
 }) {
   return (
-    <div className={`flex items-center gap-2.5 sm:gap-3 group select-none ${className}`}>
-      {/* Animated Video Logo from assets/download.mp4 */}
-      <div className="relative w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 shrink-0 flex items-center justify-center transition-transform group-hover:scale-105 rounded-xl overflow-hidden shadow-xs border border-white/20 bg-white">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover"
-        >
-          <source src="/logo-animated.mp4" type="video/mp4" />
-        </video>
+    <div className={`flex items-center gap-3 group select-none ${className}`}>
+      {/* Direct Logo Image from assets/logo.png (No background container) */}
+      <div className="relative w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 shrink-0 flex items-center justify-center transition-transform group-hover:scale-105">
+        <Image
+          src="/images/logo.png"
+          alt="Vyom Agents Logo"
+          width={40}
+          height={40}
+          className="w-full h-auto object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.35)]"
+          priority
+        />
       </div>
 
-      {/* Brand Title */}
+      {/* Brand Title (Autonomous AI removed) */}
       <span
         className={`font-bold text-[16px] sm:text-[17px] tracking-tight leading-none transition-colors ${
           isScrolled ? "text-slate-950" : "text-white"
