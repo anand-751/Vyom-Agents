@@ -204,15 +204,12 @@ export function UseCasesSection() {
         {/* Section Header */}
         <div className="max-w-3xl mb-3 sm:mb-4">
           <span className="text-[10px] font-mono font-bold tracking-widest text-orange-600 uppercase block mb-0.5">
-            — INDUSTRY DOMAINS &amp; REAL-WORLD USE CASES
+            — INDUSTRY DOMAINS WE SERVE
           </span>
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-slate-950 leading-tight mb-1">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-slate-950 leading-tight">
             Engineered for real businesses.{" "}
             <span className="text-orange-600">Delivering measurable ROI.</span>
           </h2>
-          <p className="text-[11.5px] sm:text-xs text-slate-600 leading-normal max-w-2xl">
-            Vyom Agents eliminates manual busywork across hospitality, healthcare, finance, and dealership operations with deterministic 24/7 frontline execution.
-          </p>
         </div>
 
         {/* Domain Switcher Tabs */}
@@ -246,25 +243,10 @@ export function UseCasesSection() {
                 transition={{ duration: 0.2 }}
                 className="w-full"
               >
-                {/* Domain Badge & ROI Metric */}
-                <div className="flex items-center gap-2 mb-1.5">
-                  <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold tracking-wider uppercase bg-orange-50 text-orange-700 border border-orange-200/80">
-                    {activeUseCase.badge}
-                  </span>
-                  <span className="text-[9.5px] font-mono font-extrabold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-2 py-0.5 rounded-full flex items-center gap-1">
-                    <TrendingUp className="w-3 h-3 text-emerald-600" />
-                    <span>{activeUseCase.metricBadge}</span>
-                  </span>
-                </div>
-
                 {/* Domain Headline */}
-                <h3 className="text-base sm:text-lg font-bold text-slate-950 leading-snug mb-1">
+                <h3 className="text-base sm:text-lg font-bold text-slate-950 leading-snug mb-3">
                   {activeUseCase.headline}
                 </h3>
-                
-                <p className="text-[11.5px] sm:text-xs text-slate-600 leading-relaxed mb-3">
-                  {activeUseCase.description}
-                </p>
 
                 {/* 3 Domain Capabilities */}
                 <div className="space-y-1.5 sm:space-y-2 mb-4 w-full">

@@ -30,12 +30,12 @@ export const metadata: Metadata = {
   ],
   icons: {
     icon: [
-      { url: "/logo-transparent.png" },
-      { url: "/logo-transparent.png", sizes: "32x32", type: "image/png" },
-      { url: "/logo-transparent.png", sizes: "16x16", type: "image/png" },
+      { url: "/logo-icon.png" },
+      { url: "/logo-icon.png", sizes: "32x32", type: "image/png" },
+      { url: "/logo-icon.png", sizes: "16x16", type: "image/png" },
     ],
-    shortcut: "/logo-transparent.png",
-    apple: "/logo-transparent.png",
+    shortcut: "/logo-icon.png",
+    apple: "/logo-icon.png",
   },
   authors: [{ name: "Vyom Agents Engineering Team" }],
   openGraph: {
