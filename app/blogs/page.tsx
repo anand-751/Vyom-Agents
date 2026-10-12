@@ -68,9 +68,40 @@ export default function BlogsPage() {
             <span>Home</span>
           </Link>
           <span>/</span>
-          <span className="text-orange-400 font-semibold">Blogs & Video Walkthroughs</span>
+          <span className="text-orange-400 font-semibold">Blogs & Intelligence</span>
           <span>/</span>
           <span className="text-stone-300">AI Concierge App</span>
+        </div>
+
+        {/* Article Selector Switcher */}
+        <div className="p-1.5 rounded-2xl bg-stone-900/90 border border-stone-800 flex flex-col sm:flex-row items-center gap-2">
+          <div className="w-full sm:w-1/2 p-3 rounded-xl bg-orange-500/15 border border-orange-500/40 text-left flex items-center justify-between">
+            <div className="flex items-center gap-2.5">
+              <span className="w-2 h-2 rounded-full bg-orange-400" />
+              <div>
+                <span className="text-[10px] font-mono text-orange-400 uppercase tracking-wider block font-bold">Featured Video Showcase</span>
+                <span className="text-xs sm:text-sm font-bold text-white">AI Concierge App (Live Demos)</span>
+              </div>
+            </div>
+            <span className="text-[11px] font-mono bg-orange-500/20 text-orange-300 px-2 py-0.5 rounded">Active</span>
+          </div>
+
+          <Link
+            href="/blogs/ai-receptionist"
+            className="w-full sm:w-1/2 p-3 rounded-xl bg-stone-950/50 hover:bg-stone-800/80 border border-stone-800 hover:border-stone-700 text-left flex items-center justify-between transition-all group"
+          >
+            <div className="flex items-center gap-2.5">
+              <span className="w-2 h-2 rounded-full bg-stone-600 group-hover:bg-amber-400 transition-colors" />
+              <div>
+                <span className="text-[10px] font-mono text-stone-400 group-hover:text-amber-400 uppercase tracking-wider block transition-colors">Executive Playbook</span>
+                <span className="text-xs sm:text-sm font-semibold text-stone-300 group-hover:text-white transition-colors">AI Receptionist Business Guide</span>
+              </div>
+            </div>
+            <span className="text-xs font-semibold text-stone-400 group-hover:text-amber-400 flex items-center gap-1 transition-colors">
+              <span>Read</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            </span>
+          </Link>
         </div>
 
         {/* Article Header & Title */}
@@ -311,25 +342,25 @@ export default function BlogsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Card 1: AI Receptionist */}
             <Link
-              href="/?product=voice-agent"
+              href="/blogs/ai-receptionist"
               className="group p-6 rounded-3xl bg-stone-900/60 hover:bg-stone-900 border border-stone-800 hover:border-orange-500/40 transition-all duration-300 space-y-4 block"
             >
               <div className="flex items-center justify-between">
                 <div className="w-10 h-10 rounded-2xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 group-hover:bg-orange-500 group-hover:text-white transition-all">
                   <PhoneCall className="w-5 h-5" />
                 </div>
-                <span className="text-[10px] font-mono uppercase bg-emerald-950/80 text-emerald-400 border border-emerald-800/80 px-2 py-0.5 rounded">
-                  Live Product
+                <span className="text-[10px] font-mono uppercase bg-orange-950/80 text-orange-400 border border-orange-800/80 px-2 py-0.5 rounded font-bold">
+                  Complete Business Guide
                 </span>
               </div>
               <h4 className="text-lg font-bold text-white group-hover:text-orange-400 transition-colors">
-                AI Receptionist (AI Voice Agent)
+                The Non-Technical Business Guide to AI Receptionists
               </h4>
               <p className="text-xs text-stone-400 leading-relaxed">
-                Answers phone calls 24/7 with zero lag, books appointments directly into your calendar, and syncs caller data to your CRM.
+                Read our honest competitor breakdown, revenue math on missed calls, and industry-by-industry playbook for healthcare, law, home trades, auto, and more.
               </p>
               <div className="text-xs font-semibold text-orange-400 flex items-center gap-1">
-                <span>Listen to Voice Simulation</span>
+                <span>Read Full Industry Playbook</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </div>
             </Link>
