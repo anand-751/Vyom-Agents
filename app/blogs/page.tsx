@@ -93,8 +93,8 @@ export default function BlogsPage() {
             <div className="flex items-center gap-2.5">
               <span className="w-2 h-2 rounded-full bg-stone-600 group-hover:bg-amber-400 transition-colors" />
               <div>
-                <span className="text-[10px] font-mono text-stone-400 group-hover:text-amber-400 uppercase tracking-wider block transition-colors">Executive Playbook</span>
-                <span className="text-xs sm:text-sm font-semibold text-stone-300 group-hover:text-white transition-colors">AI Receptionist Business Guide</span>
+                <span className="text-[10px] font-mono text-stone-400 group-hover:text-amber-400 uppercase tracking-wider block transition-colors">Enterprise Solution</span>
+                <span className="text-xs sm:text-sm font-bold text-stone-300 group-hover:text-white transition-colors">AI Receptionist (Voice Agents)</span>
               </div>
             </div>
             <span className="text-xs font-semibold text-stone-400 group-hover:text-amber-400 flex items-center gap-1 transition-colors">
@@ -340,7 +340,7 @@ export default function BlogsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Card 1: AI Receptionist */}
+            {/* Card 1: AI Receptionist (Voice Agents) */}
             <Link
               href="/blogs/ai-receptionist"
               className="group p-6 rounded-3xl bg-stone-900/60 hover:bg-stone-900 border border-stone-800 hover:border-orange-500/40 transition-all duration-300 space-y-4 block"
@@ -349,18 +349,18 @@ export default function BlogsPage() {
                 <div className="w-10 h-10 rounded-2xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 group-hover:bg-orange-500 group-hover:text-white transition-all">
                   <PhoneCall className="w-5 h-5" />
                 </div>
-                <span className="text-[10px] font-mono uppercase bg-orange-950/80 text-orange-400 border border-orange-800/80 px-2 py-0.5 rounded font-bold">
-                  Complete Business Guide
+                <span className="text-[10px] font-mono uppercase bg-emerald-950/80 text-emerald-400 border border-emerald-800/80 px-2 py-0.5 rounded font-bold">
+                  Enterprise Flagship
                 </span>
               </div>
               <h4 className="text-lg font-bold text-white group-hover:text-orange-400 transition-colors">
-                The Non-Technical Business Guide to AI Receptionists
+                AI Receptionist (Voice Agents)
               </h4>
               <p className="text-xs text-stone-400 leading-relaxed">
-                Read our honest competitor breakdown, revenue math on missed calls, and industry-by-industry playbook for healthcare, law, home trades, auto, and more.
+                Autonomous voice intelligence answering calls 24/7 on ring one. Features real-time calendar booking, CRM integration, competitor benchmark, and industry-by-industry rollout blueprints.
               </p>
               <div className="text-xs font-semibold text-orange-400 flex items-center gap-1">
-                <span>Read Full Industry Playbook</span>
+                <span>Explore Enterprise Architecture &amp; Playbook</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </div>
             </Link>
