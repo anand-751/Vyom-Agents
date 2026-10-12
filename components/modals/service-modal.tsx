@@ -65,7 +65,7 @@ export function ServiceModal({ service, onClose, onBookCall }: ServiceModalProps
       </div>
 
       {/* Body Content */}
-      <div className="p-6 overflow-y-auto space-y-6 text-sm">
+      <div data-lenis-prevent="true" className="p-6 overflow-y-auto space-y-6 text-sm overscroll-contain">
         {activeTab === "scope" && (
           <div className="space-y-6">
             <p className="text-slate-600 leading-relaxed">

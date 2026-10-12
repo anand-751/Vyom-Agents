@@ -75,7 +75,7 @@ export function ContactDrawer({ onClose }: ContactDrawerProps) {
       </div>
 
       {/* Drawer Body */}
-      <div className="p-6 overflow-y-auto flex-1">
+      <div data-lenis-prevent="true" className="p-6 overflow-y-auto flex-1 overscroll-contain">
         {isSuccess ? (
           <div className="py-12 flex flex-col items-center text-center space-y-4">
             <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shadow-inner">

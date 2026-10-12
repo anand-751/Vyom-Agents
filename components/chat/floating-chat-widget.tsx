@@ -542,7 +542,10 @@ export function FloatingChatWidget() {
               </div>
 
               {/* Chat Messages Body */}
-              <div className="flex-1 p-3 sm:p-3.5 overflow-y-auto space-y-3 scrollbar-none text-xs relative z-10">
+              <div 
+                data-lenis-prevent="true"
+                className="flex-1 p-3 sm:p-3.5 overflow-y-auto space-y-3 scrollbar-none text-xs relative z-10 overscroll-contain"
+              >
                 {messages.map((msg) => (
                   <motion.div
                     key={msg.id}

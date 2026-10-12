@@ -76,7 +76,7 @@ export function ProductModal({ product, onClose, onBookCall }: ProductModalProps
       </div>
 
       {/* Content Body */}
-      <div className="p-6 overflow-y-auto space-y-6 text-sm">
+      <div data-lenis-prevent="true" className="p-6 overflow-y-auto space-y-6 text-sm overscroll-contain">
         <div className="space-y-6">
           <p className="text-slate-600 leading-relaxed">
             {product.description}
