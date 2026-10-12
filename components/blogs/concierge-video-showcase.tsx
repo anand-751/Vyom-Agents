@@ -22,7 +22,7 @@ export function ConciergeVideoShowcase() {
   const desktopVideoRef = useRef<HTMLVideoElement>(null);
   const mobileVideoRef = useRef<HTMLVideoElement>(null);
 
-  // States - initially PAUSED as requested
+  // States - initially PAUSED
   const [desktopPlaying, setDesktopPlaying] = useState(false);
   const [desktopMuted, setDesktopMuted] = useState(true);
   
@@ -82,24 +82,25 @@ export function ConciergeVideoShowcase() {
   };
 
   return (
-    <div id="concierge-videos" className="w-full space-y-8">
-      {/* Device Mode Selector Bar (Dual View Removed) */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-2 sm:p-2.5 rounded-2xl bg-stone-900/90 border border-stone-800 backdrop-blur-xl shadow-xl">
-        <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-xs font-mono text-stone-300 font-semibold tracking-wide">
-            INTERACTIVE VIDEO DEMO • TAP SCREEN TO PLAY / PAUSE
+    <div id="concierge-videos" className="w-full max-w-4xl mx-auto space-y-6">
+      
+      {/* Apple-Style Segmented Control Header */}
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-2 sm:p-2.5 rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-xl shadow-lg">
+        <div className="flex items-center gap-2.5 px-2">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="text-xs font-mono tracking-wider text-stone-300 uppercase">
+            Interactive Video Showcase
           </span>
         </div>
 
-        {/* View Switcher Tabs (Desktop & Mobile) */}
-        <div className="flex items-center gap-1.5 p-1 bg-stone-950/80 rounded-xl border border-stone-800/80">
+        {/* Segmented Control Pill */}
+        <div className="flex items-center p-1 rounded-xl bg-black/40 border border-white/[0.06] backdrop-blur-md">
           <button
             onClick={() => setActiveTab("desktop")}
-            className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
+            className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 cursor-pointer ${
               activeTab === "desktop"
-                ? "bg-orange-500 text-white shadow-sm shadow-orange-500/20 font-semibold"
-                : "text-stone-400 hover:text-white hover:bg-stone-850"
+                ? "bg-white/[0.14] text-white shadow-sm border border-white/[0.12] font-semibold"
+                : "text-stone-400 hover:text-white hover:bg-white/[0.05]"
             }`}
           >
             <Monitor className="w-3.5 h-3.5" />
@@ -108,10 +109,10 @@ export function ConciergeVideoShowcase() {
 
           <button
             onClick={() => setActiveTab("mobile")}
-            className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
+            className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 cursor-pointer ${
               activeTab === "mobile"
-                ? "bg-orange-500 text-white shadow-sm shadow-orange-500/20 font-semibold"
-                : "text-stone-400 hover:text-white hover:bg-stone-850"
+                ? "bg-white/[0.14] text-white shadow-sm border border-white/[0.12] font-semibold"
+                : "text-stone-400 hover:text-white hover:bg-white/[0.05]"
             }`}
           >
             <Smartphone className="w-3.5 h-3.5" />
@@ -120,35 +121,42 @@ export function ConciergeVideoShowcase() {
         </div>
       </div>
 
-      {/* Videos Layout Container */}
-      <div className="w-full max-w-4xl mx-auto">
+      {/* Unified Studio Stage: Fixed stable height ensures ZERO layout shifts or jumps */}
+      <div className="w-full rounded-3xl bg-gradient-to-b from-stone-900/90 to-black/95 border border-white/[0.08] shadow-2xl overflow-hidden">
+        
+        {/* Studio Viewport Area with Consistent Fixed Height to Guarantee Zero Layout Shifts */}
+        <div className="relative w-full h-[440px] sm:h-[500px] md:h-[540px] flex items-center justify-center p-4 sm:p-6 bg-[#030508] overflow-hidden">
+          
+          {/* Subtle Ambient Studio Backlight */}
+          <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+            <div className="w-[450px] h-[300px] bg-orange-500/10 rounded-full blur-[100px]" />
+          </div>
 
-        {/* View 1: Desktop / Tablet Web Experience */}
-        {activeTab === "desktop" && (
-          <div className="w-full flex flex-col gap-4 animate-in fade-in duration-300">
-            {/* Window Container */}
-            <div className="relative rounded-2xl sm:rounded-3xl bg-stone-900/90 border border-stone-800 shadow-2xl overflow-hidden group">
-              {/* Fake Mac Window Bar */}
-              <div className="px-4 py-3 bg-stone-950/80 border-b border-stone-800 flex items-center justify-between select-none">
+          {/* TAB 1: Desktop Experience (16:9 Window Frame) */}
+          {activeTab === "desktop" && (
+            <div className="w-full max-w-3xl rounded-2xl bg-stone-900/95 border border-white/[0.12] shadow-2xl overflow-hidden relative transition-all duration-300">
+              
+              {/* Studio Window Bar */}
+              <div className="px-4 py-2.5 bg-stone-950/90 border-b border-white/[0.08] flex items-center justify-between select-none">
                 <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
-                  <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
-                  <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
-                  <span className="ml-2 text-[11px] font-mono text-stone-400 truncate max-w-[160px] sm:max-w-none">
-                    concierge.vyomagents.ai — Desktop Experience
+                  <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80 inline-block" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block" />
+                  <span className="ml-2 text-[11px] font-mono text-stone-400">
+                    concierge.vyomagents.ai
                   </span>
                 </div>
-                <div className="flex items-center gap-2 text-[10px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-800/60 px-2 py-0.5 rounded-md">
+                <div className="flex items-center gap-1.5 text-[10px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-800/60 px-2 py-0.5 rounded-md">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping inline-block" />
-                  <span>1080p HD</span>
+                  <span>1080p Widescreen</span>
                 </div>
               </div>
 
-              {/* Video Player Area with Click to Play/Pause */}
+              {/* 16:9 Video Canvas */}
               <div 
                 onClick={toggleDesktopPlay}
-                className="relative aspect-video bg-black overflow-hidden cursor-pointer group/player"
-                title={desktopPlaying ? "Click anywhere to pause" : "Click anywhere to play"}
+                className="relative aspect-video bg-black overflow-hidden cursor-pointer group"
+                title={desktopPlaying ? "Click in center to pause" : "Click in center to play"}
               >
                 <video
                   ref={desktopVideoRef}
@@ -161,117 +169,70 @@ export function ConciergeVideoShowcase() {
                   onPause={() => setDesktopPlaying(false)}
                 />
 
-                {/* Big Center Play/Pause Button Overlay */}
+                {/* Apple-grade Centered Play / Pause Glass Badge */}
                 <div className={`absolute inset-0 flex items-center justify-center pointer-events-none transition-all duration-300 ${
-                  desktopPlaying ? "opacity-0 group-hover/player:opacity-40" : "opacity-100 bg-black/40 backdrop-blur-[2px]"
+                  desktopPlaying ? "opacity-0 group-hover:opacity-60" : "opacity-100 bg-black/40 backdrop-blur-[2px]"
                 }`}>
-                  <div className="w-20 h-20 rounded-full bg-orange-500/90 text-white shadow-[0_0_40px_rgba(249,115,22,0.6)] flex items-center justify-center transform transition-transform group-hover/player:scale-110 active:scale-95 border-2 border-white/30">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/20 text-white backdrop-blur-xl border border-white/30 shadow-[0_8px_32px_rgba(0,0,0,0.5)] flex items-center justify-center transform transition-transform group-hover:scale-110 active:scale-95">
                     {desktopPlaying ? (
-                      <Pause className="w-9 h-9 fill-current" />
+                      <Pause className="w-7 h-7 sm:w-8 sm:h-8 fill-current" />
                     ) : (
-                      <Play className="w-9 h-9 fill-current ml-1" />
+                      <Play className="w-7 h-7 sm:w-8 sm:h-8 fill-current ml-1" />
                     )}
                   </div>
-                  {!desktopPlaying && (
-                    <span className="absolute mt-28 px-3 py-1 rounded-full bg-stone-900/90 border border-stone-700 text-xs font-medium text-stone-200 shadow-md">
-                      Click to Play Video
-                    </span>
-                  )}
                 </div>
 
-                {/* Bottom Overlay Controls Bar */}
+                {/* Sleek Floating Bottom Control Bar */}
                 <div 
                   onClick={(e) => e.stopPropagation()} 
-                  className="absolute bottom-0 inset-x-0 p-3 sm:p-4 bg-gradient-to-t from-black/95 via-black/50 to-transparent flex items-center justify-between opacity-95 transition-opacity"
+                  className="absolute bottom-0 inset-x-0 p-3 sm:p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-center justify-between"
                 >
                   <div className="flex items-center gap-2">
                     <button
                       onClick={toggleDesktopPlay}
-                      className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 text-white backdrop-blur-md flex items-center justify-center transition-all cursor-pointer"
+                      className="w-7 h-7 rounded-full bg-white/15 hover:bg-white/25 text-white backdrop-blur-md flex items-center justify-center transition-all cursor-pointer"
                       aria-label={desktopPlaying ? "Pause video" : "Play video"}
                     >
-                      {desktopPlaying ? (
-                        <Pause className="w-4 h-4 fill-current" />
-                      ) : (
-                        <Play className="w-4 h-4 fill-current ml-0.5" />
-                      )}
+                      {desktopPlaying ? <Pause className="w-3.5 h-3.5 fill-current" /> : <Play className="w-3.5 h-3.5 fill-current ml-0.5" />}
                     </button>
                     <button
                       onClick={toggleDesktopMute}
-                      className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 text-white backdrop-blur-md flex items-center justify-center transition-all cursor-pointer"
-                      aria-label={desktopMuted ? "Unmute video" : "Mute video"}
+                      className="w-7 h-7 rounded-full bg-white/15 hover:bg-white/25 text-white backdrop-blur-md flex items-center justify-center transition-all cursor-pointer"
+                      aria-label={desktopMuted ? "Unmute audio" : "Mute audio"}
                     >
-                      {desktopMuted ? (
-                        <VolumeX className="w-4 h-4" />
-                      ) : (
-                        <Volume2 className="w-4 h-4" />
-                      )}
+                      {desktopMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
                     </button>
                     <button
                       onClick={restartDesktop}
-                      className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 text-white backdrop-blur-md flex items-center justify-center transition-all cursor-pointer"
+                      className="w-7 h-7 rounded-full bg-white/15 hover:bg-white/25 text-white backdrop-blur-md flex items-center justify-center transition-all cursor-pointer"
                       aria-label="Restart video"
                     >
-                      <RotateCcw className="w-3.5 h-3.5" />
+                      <RotateCcw className="w-3 h-3" />
                     </button>
                   </div>
 
-                  <span className="text-[11px] font-mono text-stone-300 bg-stone-900/80 px-2.5 py-1 rounded-md border border-stone-800">
-                    {desktopPlaying ? "Playing" : "Paused"} • Desktop Portal
+                  <span className="text-[11px] font-mono text-stone-300 bg-black/60 px-2 py-0.5 rounded-md border border-white/10">
+                    {desktopPlaying ? "Playing" : "Tap Center to Play"} • 16:9
                   </span>
                 </div>
               </div>
-
-              {/* Video Info Card */}
-              <div className="p-5 sm:p-6 bg-stone-900/60 border-t border-stone-800/80 space-y-3">
-                <div className="flex items-center justify-between flex-wrap gap-2">
-                  <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
-                    <span>Desktop & Tablet Concierge Portal</span>
-                    <span className="text-[10px] font-mono bg-orange-500/20 text-orange-400 border border-orange-500/30 px-2 py-0.5 rounded-full">
-                      Kiosk & Web
-                    </span>
-                  </h3>
-                  <span className="text-xs font-mono text-stone-400">Resolution: 1280 × 720 (16:9)</span>
-                </div>
-
-                <p className="text-xs sm:text-sm text-stone-300 leading-relaxed">
-                  Engineered for in-room tablet kiosks and web guest intake. Guests browse amenities, schedule spa reservations, and make room requests with autonomous multi-step reasoning and instant PMS dispatch.
-                </p>
-
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-2">
-                  <div className="p-2.5 rounded-xl bg-stone-950/60 border border-stone-800 text-stone-300 flex items-center gap-2 text-xs">
-                    <Zap className="w-3.5 h-3.5 text-orange-400 shrink-0" />
-                    <span className="truncate">Instant Intake</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-stone-950/60 border border-stone-800 text-stone-300 flex items-center gap-2 text-xs">
-                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span className="truncate">PMS Live Sync</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-stone-950/60 border border-stone-800 text-stone-300 flex items-center gap-2 text-xs col-span-2 sm:col-span-1">
-                    <Globe className="w-3.5 h-3.5 text-sky-400 shrink-0" />
-                    <span className="truncate">45+ Languages</span>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* View 2: Mobile Smartphone Guest App Experience */}
-        {activeTab === "mobile" && (
-          <div className="w-full max-w-md mx-auto flex flex-col gap-4 animate-in fade-in duration-300">
-            {/* Phone Bezel Frame Container */}
-            <div className="relative rounded-[2.5rem] p-3.5 bg-stone-900 border-2 border-stone-700/80 shadow-[0_0_60px_rgba(249,115,22,0.18)] flex flex-col items-center">
-              {/* Phone Speaker & Notch */}
-              <div className="w-24 h-4 bg-stone-950 rounded-full mb-2 flex items-center justify-center">
-                <div className="w-10 h-1 bg-stone-800 rounded-full" />
+          {/* TAB 2: Mobile App View (iPhone Bezel Frame inside the exact same studio height) */}
+          {activeTab === "mobile" && (
+            <div className="h-[340px] sm:h-[420px] md:h-[450px] aspect-[9/16] rounded-[2.5rem] p-2 bg-stone-900 border-2 border-white/20 shadow-[0_20px_60px_rgba(0,0,0,0.8)] relative flex flex-col items-center justify-between transition-all duration-300">
+              
+              {/* iPhone Dynamic Island / Speaker Notch */}
+              <div className="w-20 h-3.5 bg-black rounded-full mb-1 flex items-center justify-center z-10">
+                <div className="w-8 h-1 bg-stone-800 rounded-full" />
               </div>
 
-              {/* Mobile Screen with Click to Play/Pause */}
+              {/* Mobile Screen Video Area with Center Click Play/Pause */}
               <div 
                 onClick={toggleMobilePlay}
-                className="relative w-full aspect-[9/16] bg-black rounded-[2rem] overflow-hidden border border-stone-800 cursor-pointer group/mobileplayer"
-                title={mobilePlaying ? "Click anywhere to pause" : "Click anywhere to play"}
+                className="relative w-full flex-1 bg-black rounded-[2rem] overflow-hidden cursor-pointer group"
+                title={mobilePlaying ? "Click in center to pause" : "Click in center to play"}
               >
                 <video
                   ref={mobileVideoRef}
@@ -284,104 +245,100 @@ export function ConciergeVideoShowcase() {
                   onPause={() => setMobilePlaying(false)}
                 />
 
-                {/* Big Center Play/Pause Button Overlay */}
+                {/* Centered Glass Play/Pause Badge */}
                 <div className={`absolute inset-0 flex items-center justify-center pointer-events-none transition-all duration-300 ${
-                  mobilePlaying ? "opacity-0 group-hover/mobileplayer:opacity-40" : "opacity-100 bg-black/40 backdrop-blur-[2px]"
+                  mobilePlaying ? "opacity-0 group-hover:opacity-60" : "opacity-100 bg-black/40 backdrop-blur-[2px]"
                 }`}>
-                  <div className="w-16 h-16 rounded-full bg-orange-500/90 text-white shadow-[0_0_30px_rgba(249,115,22,0.6)] flex items-center justify-center transform transition-transform group-hover/mobileplayer:scale-110 active:scale-95 border-2 border-white/30">
+                  <div className="w-14 h-14 rounded-full bg-white/20 text-white backdrop-blur-xl border border-white/30 shadow-xl flex items-center justify-center transform transition-transform group-hover:scale-110 active:scale-95">
                     {mobilePlaying ? (
-                      <Pause className="w-7 h-7 fill-current" />
+                      <Pause className="w-6 h-6 fill-current" />
                     ) : (
-                      <Play className="w-7 h-7 fill-current ml-0.5" />
+                      <Play className="w-6 h-6 fill-current ml-0.5" />
                     )}
                   </div>
-                  {!mobilePlaying && (
-                    <span className="absolute mt-24 px-2.5 py-0.5 rounded-full bg-stone-900/90 border border-stone-700 text-[11px] font-medium text-stone-200 shadow-md">
-                      Tap to Play
-                    </span>
-                  )}
                 </div>
 
-                {/* Mobile Floating Bottom Controls */}
+                {/* Floating Bottom Audio Controls */}
                 <div 
                   onClick={(e) => e.stopPropagation()} 
-                  className="absolute bottom-3 inset-x-3 p-2.5 bg-black/80 backdrop-blur-md rounded-2xl border border-white/10 flex items-center justify-between text-white"
+                  className="absolute bottom-2.5 inset-x-2.5 p-2 bg-black/80 backdrop-blur-md rounded-xl border border-white/10 flex items-center justify-between text-white"
                 >
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1.5">
                     <button
                       onClick={toggleMobilePlay}
-                      className="w-7 h-7 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-all cursor-pointer"
-                      aria-label={mobilePlaying ? "Pause mobile video" : "Play mobile video"}
+                      className="w-6 h-6 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center transition-all cursor-pointer"
+                      aria-label={mobilePlaying ? "Pause video" : "Play video"}
                     >
-                      {mobilePlaying ? (
-                        <Pause className="w-3.5 h-3.5 fill-current" />
-                      ) : (
-                        <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
-                      )}
+                      {mobilePlaying ? <Pause className="w-3 h-3 fill-current" /> : <Play className="w-3 h-3 fill-current ml-0.5" />}
                     </button>
                     <button
                       onClick={toggleMobileMute}
-                      className="w-7 h-7 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-all cursor-pointer"
-                      aria-label={mobileMuted ? "Unmute mobile video" : "Mute mobile video"}
+                      className="w-6 h-6 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center transition-all cursor-pointer"
+                      aria-label={mobileMuted ? "Unmute audio" : "Mute audio"}
                     >
-                      {mobileMuted ? (
-                        <VolumeX className="w-3.5 h-3.5" />
-                      ) : (
-                        <Volume2 className="w-3.5 h-3.5" />
-                      )}
+                      {mobileMuted ? <VolumeX className="w-3 h-3" /> : <Volume2 className="w-3 h-3" />}
                     </button>
                     <button
                       onClick={restartMobile}
-                      className="w-7 h-7 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-all cursor-pointer"
-                      aria-label="Restart mobile video"
+                      className="w-6 h-6 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center transition-all cursor-pointer"
+                      aria-label="Restart video"
                     >
-                      <RotateCcw className="w-3 h-3" />
+                      <RotateCcw className="w-2.5 h-2.5" />
                     </button>
                   </div>
                   <span className="text-[10px] font-mono text-stone-300">
-                    {mobilePlaying ? "Playing" : "Paused"} • 9:16
+                    {mobilePlaying ? "Playing" : "Tap to Play"} • 9:16
                   </span>
                 </div>
               </div>
 
-              {/* Bottom Home Indicator */}
-              <div className="w-28 h-1 bg-stone-700 rounded-full mt-3" />
+              {/* iPhone Home Bar */}
+              <div className="w-24 h-1 bg-stone-700 rounded-full mt-1.5" />
             </div>
+          )}
 
-            {/* Mobile Video Info Card */}
-            <div className="p-5 sm:p-6 rounded-2xl bg-stone-900/90 border border-stone-800 space-y-3">
-              <div className="flex items-center justify-between flex-wrap gap-2">
-                <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
-                  <span>Mobile Guest Experience</span>
-                  <span className="text-[10px] font-mono bg-sky-500/20 text-sky-400 border border-sky-500/30 px-2 py-0.5 rounded-full">
-                    iOS / Android PWA
-                  </span>
-                </h3>
-                <span className="text-xs font-mono text-stone-400">Format: 9:16 Portrait</span>
-              </div>
+        </div>
 
-              <p className="text-xs sm:text-sm text-stone-300 leading-relaxed">
-                Zero app store friction. Guests scan a room QR code or click an SMS link to instantly launch their personalized AI Concierge with room credentials pre-loaded.
-              </p>
+        {/* Unified Information Footnote: Stable height prevents any content below from shifting */}
+        <div className="p-6 bg-stone-900/70 border-t border-white/[0.08] space-y-3">
+          <div className="flex items-center justify-between flex-wrap gap-2">
+            <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+              <span>{activeTab === "desktop" ? "Desktop & Tablet Concierge Portal" : "Mobile Smartphone Guest Experience"}</span>
+              <span className="text-[10px] font-mono bg-white/[0.08] text-stone-300 border border-white/[0.12] px-2.5 py-0.5 rounded-full">
+                {activeTab === "desktop" ? "1280 × 720 (16:9 Widescreen)" : "720 × 1280 (9:16 Portrait PWA)"}
+              </span>
+            </h3>
+            <span className="text-xs font-mono text-emerald-400 flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
+              <span>Production Capture</span>
+            </span>
+          </div>
 
-              <div className="space-y-1.5 pt-1 text-xs text-stone-400">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>One-tap room service & late checkout requests</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Sub-second voice and text conversational assistant</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Zero guest account creation or downloads required</span>
-                </div>
-              </div>
+          <p className="text-xs sm:text-sm text-stone-300 leading-relaxed">
+            {activeTab === "desktop" 
+              ? "Engineered for in-room tablet kiosks and web guest intake. Guests browse amenities, schedule spa reservations, and make room requests with autonomous multi-step reasoning and instant PMS dispatch."
+              : "Zero app store friction. Guests scan a room QR code or tap an NFC tag to instantly launch their personalized AI Concierge with active room credentials pre-loaded."
+            }
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
+            <div className="p-2.5 rounded-xl bg-black/40 border border-white/[0.06] text-stone-300 flex items-center gap-2 text-xs">
+              <Zap className="w-3.5 h-3.5 text-orange-400 shrink-0" />
+              <span className="truncate">{activeTab === "desktop" ? "Instant In-Room Intake" : "One-Tap Guest Service"}</span>
+            </div>
+            <div className="p-2.5 rounded-xl bg-black/40 border border-white/[0.06] text-stone-300 flex items-center gap-2 text-xs">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+              <span className="truncate">Opera / Cloudbeds / Mews Sync</span>
+            </div>
+            <div className="p-2.5 rounded-xl bg-black/40 border border-white/[0.06] text-stone-300 flex items-center gap-2 text-xs">
+              <Globe className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+              <span className="truncate">45+ Languages Auto-Detected</span>
             </div>
           </div>
-        )}
+        </div>
+
       </div>
+
     </div>
   );
 }

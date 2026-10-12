@@ -45,7 +45,7 @@ export function ProductsSection() {
   const frontlineProducts = [
     {
       id: "voice-receptionist",
-      name: "AI Receptionist (AI Voice Agent)",
+      name: "AI Receptionist (Voice Agents)",
       category: "Voice AI",
       tagline: "Never miss a customer call again with 24/7 natural voice intake.",
       description: "Answers every incoming customer call 24/7 with a warm, natural human voice. Takes appointments directly into your calendar, answers questions, and logs customer details automatically so you never lose a client to voicemail.",
@@ -158,11 +158,21 @@ export function ProductsSection() {
 
                     {card.id === "concierge-app" && (
                       <Link
-                        href="/blogs"
+                        href="/blogs?tab=concierge"
                         className="inline-flex items-center gap-1.5 text-xs font-semibold text-orange-600 hover:text-orange-700 bg-orange-50 hover:bg-orange-100/80 px-3 py-1.5 rounded-lg border border-orange-200/60 transition-colors mb-2"
                       >
                         <Play className="w-3 h-3 fill-current text-orange-600" />
                         <span>Watch Video Demos (Desktop & Mobile)</span>
+                      </Link>
+                    )}
+
+                    {card.id === "voice-receptionist" && (
+                      <Link
+                        href="/blogs?tab=receptionist"
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-orange-600 hover:text-orange-700 bg-orange-50 hover:bg-orange-100/80 px-3 py-1.5 rounded-lg border border-orange-200/60 transition-colors mb-2"
+                      >
+                        <span>Read Enterprise Voice Briefing</span>
+                        <ArrowRight className="w-3 h-3 text-orange-600" />
                       </Link>
                     )}
                   </div>
