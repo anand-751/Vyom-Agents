@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { ArrowRight, Play, Check } from "lucide-react";
@@ -127,15 +128,15 @@ export function HeroSection() {
               </button>
 
               {/* Secondary CTA: Watch Video / View Demos */}
-              <button
-                onClick={openVoiceProduct}
+              <Link
+                href="/blogs"
                 className="inline-flex items-center justify-center gap-2.5 px-5 sm:px-6 py-3.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-white font-medium text-xs sm:text-sm border border-white/20 hover:border-white/35 backdrop-blur-md transition-all duration-200 active:scale-[0.98] shadow-[inset_0_1px_1px_rgba(255,255,255,0.08)] hover:shadow-[0_0_20px_rgba(255,255,255,0.08)]"
               >
                 <div className="w-5 h-5 rounded-full border border-white/60 bg-white/10 flex items-center justify-center">
                   <Play className="w-2.5 h-2.5 fill-current ml-0.5 text-white" />
                 </div>
                 <span>Watch Video</span>
-              </button>
+              </Link>
             </motion.div>
 
           </div>

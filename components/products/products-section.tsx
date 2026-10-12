@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { 
   ArrowRight, 
@@ -13,7 +14,8 @@ import {
   Globe, 
   Search, 
   Star, 
-  TrendingUp 
+  TrendingUp,
+  Play
 } from "lucide-react";
 import { SERVICES } from "@/lib/constants";
 
@@ -150,9 +152,19 @@ export function ProductsSection() {
                     <h3 className="text-base sm:text-lg font-bold text-slate-950 mb-1.5 group-hover:text-orange-600 transition-colors">
                       {card.name}
                     </h3>
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
                       {card.description}
                     </p>
+
+                    {card.id === "concierge-app" && (
+                      <Link
+                        href="/blogs"
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-orange-600 hover:text-orange-700 bg-orange-50 hover:bg-orange-100/80 px-3 py-1.5 rounded-lg border border-orange-200/60 transition-colors mb-2"
+                      >
+                        <Play className="w-3 h-3 fill-current text-orange-600" />
+                        <span>Watch Video Demos (Desktop & Mobile)</span>
+                      </Link>
+                    )}
                   </div>
                 </div>
 

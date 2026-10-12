@@ -62,11 +62,12 @@ export function FooterSection() {
           </Link>
 
           {/* Links */}
-          <div className="flex items-center gap-6 text-stone-400 font-medium">
-            <a href="#products" className="hover:text-white transition-colors">Products</a>
-            <a href="#use-cases" className="hover:text-white transition-colors">Use Cases</a>
-            <a href="#tech-stack" className="hover:text-white transition-colors">Developers</a>
-            <a href="#about" className="hover:text-white transition-colors">Company</a>
+          <div className="flex items-center gap-6 text-stone-400 font-medium flex-wrap">
+            <a href="/#products" className="hover:text-white transition-colors">Products</a>
+            <a href="/#use-cases" className="hover:text-white transition-colors">Use Cases</a>
+            <Link href="/blogs" className="hover:text-white transition-colors">Blog</Link>
+            <a href="/#tech-stack" className="hover:text-white transition-colors">Developers</a>
+            <a href="/#about" className="hover:text-white transition-colors">Company</a>
           </div>
 
         </div>

@@ -30,10 +30,11 @@ export function Navbar() {
   };
 
   const navLinks = [
-    { name: "Products", href: "#products" },
-    { name: "Ecosystem", href: "#ecosystem" },
-    { name: "Use Cases", href: "#use-cases" },
-    { name: "About", href: "#about" },
+    { name: "Products", href: "/#products" },
+    { name: "Ecosystem", href: "/#ecosystem" },
+    { name: "Use Cases", href: "/#use-cases" },
+    { name: "Blog", href: "/blogs" },
+    { name: "About", href: "/#about" },
   ];
 
   return (
@@ -58,19 +59,28 @@ export function Navbar() {
               ? "bg-stone-100/90 border border-stone-200/80 backdrop-blur-md shadow-xs"
               : "bg-white/[0.04] border border-white/[0.08] backdrop-blur-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.08)]"
           }`}>
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className={`relative px-3.5 py-1.5 rounded-full text-[13px] font-medium tracking-wide transition-all duration-200 border border-transparent ${
-                  isScrolled
-                    ? "text-slate-600 hover:text-slate-950 hover:bg-white hover:border-stone-200/60 hover:shadow-xs"
-                    : "text-stone-300 hover:text-white hover:bg-white/10 hover:backdrop-blur-md hover:border-white/20 hover:shadow-[0_0_15px_rgba(255,255,255,0.07)]"
-                }`}
-              >
-                <span>{link.name}</span>
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isInternal = link.href.startsWith("/") && !link.href.startsWith("/#");
+              const linkClass = `relative px-3.5 py-1.5 rounded-full text-[13px] font-medium tracking-wide transition-all duration-200 border border-transparent ${
+                isScrolled
+                  ? "text-slate-600 hover:text-slate-950 hover:bg-white hover:border-stone-200/60 hover:shadow-xs"
+                  : "text-stone-300 hover:text-white hover:bg-white/10 hover:backdrop-blur-md hover:border-white/20 hover:shadow-[0_0_15px_rgba(255,255,255,0.07)]"
+              }`;
+
+              if (isInternal) {
+                return (
+                  <Link key={link.name} href={link.href} className={linkClass}>
+                    <span>{link.name}</span>
+                  </Link>
+                );
+              }
+
+              return (
+                <a key={link.name} href={link.href} className={linkClass}>
+                  <span>{link.name}</span>
+                </a>
+              );
+            })}
           </nav>
 
           {/* Right Action CTA (Pill Button Matching Brand Theme) */}
@@ -125,16 +135,32 @@ export function Navbar() {
             exit={{ opacity: 0, y: -10 }}
             className="md:hidden bg-stone-950 text-white border-b border-stone-800 px-6 py-4 space-y-3"
           >
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-sm font-medium text-stone-300 hover:text-white"
-              >
-                {link.name}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isInternal = link.href.startsWith("/") && !link.href.startsWith("/#");
+              if (isInternal) {
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block text-sm font-medium text-stone-300 hover:text-white"
+                  >
+                    {link.name}
+                  </Link>
+                );
+              }
+
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block text-sm font-medium text-stone-300 hover:text-white"
+                >
+                  {link.name}
+                </a>
+              );
+            })}
             <div className="pt-2 border-t border-stone-800">
               <button
                 onClick={openContactModal}
