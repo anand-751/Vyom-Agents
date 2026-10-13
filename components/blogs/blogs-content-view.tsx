@@ -155,21 +155,21 @@ export function BlogsContentView() {
           
           {/* Article Header */}
           <header className="space-y-6 max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-mono font-medium">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-mono font-medium">
               <Sparkles className="w-3.5 h-3.5 text-orange-400" />
-              <span>PRODUCT DEMO &amp; TECHNICAL WHITE-PAPER</span>
+              <span>EXECUTIVE BUSINESS BRIEFING &amp; PRODUCT BLUEPRINT</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1]">
-              Inside the AI Concierge: <br />
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.12]">
+              The AI Concierge: <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-orange-500">
-                Autonomous Guest Intake
+                Turn Guest Requests Into Instant Revenue
               </span>{" "}
-              Across Web &amp; Mobile
+              — Without Adding Front-Desk Headcount
             </h1>
 
             <p className="text-base sm:text-lg text-stone-300 leading-relaxed max-w-3xl">
-              Watch real-world video walkthroughs of the Vyom AI Concierge in production. Discover how our multi-agent architecture eliminates front-desk bottlenecks, automates in-room dining and amenity requests, and synchronizes live folios into enterprise PMS with zero latency.
+              A practical briefing for hotel, resort, and boutique hospitality owners: Discover how a zero-download conversational AI concierge eliminates front-desk phone queues, automates in-room dining orders in under 1.2 seconds, and gives your human staff the freedom to deliver unforgettable 5-star guest hospitality.
             </p>
 
             {/* Author & Timestamp Bar */}
@@ -178,15 +178,15 @@ export function BlogsContentView() {
                 <div className="w-7 h-7 rounded-full bg-orange-500/20 border border-orange-500/40 flex items-center justify-center text-orange-400 font-bold text-xs">
                   V
                 </div>
-                <span className="text-stone-200 font-medium">Vyom Engineering Team</span>
+                <span className="text-stone-200 font-medium">Vyom Enterprise Solutions</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5 text-stone-400" />
-                <span>5 min read • Live Demos Included</span>
+                <span>5 min read • Live Video Walkthroughs Included</span>
               </div>
               <div className="flex items-center gap-1.5 text-emerald-400 font-mono">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Verified Production Architecture</span>
+                <span>Turnkey 14-Day PMS Integration</span>
               </div>
             </div>
           </header>
@@ -196,17 +196,17 @@ export function BlogsContentView() {
             <div className="flex items-center justify-between flex-wrap gap-4">
               <div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                  Watch the Live Video Demos
+                  Watch the Live Interactive Video Demos
                 </h2>
                 <p className="text-xs sm:text-sm text-stone-400 mt-1">
-                  Toggle between the Desktop Kiosk Experience (16:9) and the Native Mobile Smartphone View (9:16).
+                  Experience how your guests interact with the AI Concierge on Desktop Kiosks (16:9) and Smartphone Mobile Screens (9:16).
                 </p>
               </div>
               <a
-                href="#concierge-technical-deep-dive"
+                href="#concierge-business-pitch"
                 className="text-xs font-mono text-orange-400 hover:text-orange-300 underline underline-offset-4 flex items-center gap-1 transition-colors"
               >
-                <span>Skip to Technical Deep Dive</span>
+                <span>Read the Executive Pitch &amp; ROI Breakdown</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </a>
             </div>
@@ -215,31 +215,51 @@ export function BlogsContentView() {
             <ConciergeVideoShowcase />
           </section>
 
-          {/* TECHNICAL BLOG & ANALYSIS SECTION */}
-          <article id="concierge-technical-deep-dive" className="space-y-12 max-w-4xl pt-8 border-t border-stone-800/80">
+          {/* BUSINESS PITCH & LAYMAN BREAKDOWN SECTION */}
+          <article id="concierge-business-pitch" className="space-y-12 max-w-4xl pt-8 border-t border-stone-800/80">
             
-            {/* Section 01 */}
+            {/* Section 01: The Real Business Problem */}
             <section className="space-y-4">
               <h3 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2.5">
                 <span className="text-orange-500 font-mono">01.</span>
-                <span>The End of Brittle Portals and Front-Desk Queues</span>
+                <span>The Everyday Friction That Costs Hospitality Businesses Money</span>
               </h3>
               <p className="text-stone-300 leading-relaxed text-sm sm:text-base">
-                Traditional hospitality systems force guests into a painful dilemma: either dial <code className="bg-stone-900 px-2 py-0.5 rounded text-orange-300 font-mono text-xs">“0”</code> and wait on hold for an overworked receptionist, or download a clunky 150MB mobile app requiring account creation, email confirmations, and complex navigation menus.
+                If you run a hotel, resort, or serviced residence, you know the daily balancing act your front desk faces. A guest walks up to check in, and right in the middle of greeting them, the front-desk phone rings. It&apos;s Room 304 asking for extra towels. Two seconds later, line two rings with Room 512 wanting room service.
               </p>
               <p className="text-stone-300 leading-relaxed text-sm sm:text-base">
-                The result? Over <strong>82% of hotel guests never download the brand app</strong>, front-desk staff spend up to 40% of their shifts repeating basic information (Wi-Fi passwords, breakfast hours, pool timings), and ancillary revenue from in-room dining and spa services is lost due to high ordering friction.
+                Your staff is trapped between helping the guest standing right in front of them and answering a ringing phone. Meanwhile, the guest calling from their room is stuck on hold for 5 to 8 minutes. Often, they give up, hang up, and order food on UberEats or DoorDash instead of ordering from your hotel&apos;s kitchen.
+              </p>
+              <p className="text-stone-300 leading-relaxed text-sm sm:text-base">
+                Many properties tried solving this by building expensive custom mobile apps. But industry data shows that <strong>over 85% of guests refuse to download an app</strong> just for a 2-night stay. The result? High development costs, frustrated guests, overworked front-desk staff, and tens of thousands of dollars in lost in-room dining sales.
               </p>
             </section>
 
-            {/* Section 02 */}
+            {/* Section 02: How The Product Is Designed */}
             <section className="space-y-4">
               <h3 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2.5">
                 <span className="text-orange-500 font-mono">02.</span>
-                <span>Zero-Install Agentic Workflow Architecture</span>
+                <span>How the Vyom AI Concierge Is Designed (Simple, Zero-App, Instant)</span>
               </h3>
               <p className="text-stone-300 leading-relaxed text-sm sm:text-base">
-                As demonstrated in the video clips above, the <strong>Vyom AI Concierge</strong> operates on a zero-friction model. Guests either scan an in-room QR code, tap an NFC tag on their nightstand, or access the desktop/tablet portal directly.
+                We designed the <strong>Vyom AI Concierge</strong> with one guiding principle: <em>zero friction for the guest, zero complexity for your team.</em>
+              </p>
+              <p className="text-stone-300 leading-relaxed text-sm sm:text-base">
+                There is <strong>no app to download, no password to remember, and no sign-up form</strong>. When a guest enters their room, they simply scan a beautiful QR code on their desk or tap an NFC tag with their smartphone. Instantly, an elegant, branded web concierge opens in their browser. For guests in the lobby or elevator foyer, the same experience runs smoothly on touch-screen desktop kiosks.
+              </p>
+              <p className="text-stone-300 leading-relaxed text-sm sm:text-base">
+                Even better, it speaks <strong>over 45 languages with native fluency</strong>. When international travelers visit from Japan, Germany, or Brazil, they can type or speak in their native tongue, and the AI concierge responds instantly and accurately in that language while notifying your English-speaking team with translated tickets.
+              </p>
+            </section>
+
+            {/* Section 03: The 4 Steps Automated */}
+            <section className="space-y-5">
+              <h3 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2.5">
+                <span className="text-orange-500 font-mono">03.</span>
+                <span>The 4 Exact Steps of Your Business That Are Automated</span>
+              </h3>
+              <p className="text-stone-300 leading-relaxed text-sm sm:text-base">
+                Here is exactly what happens behind the scenes when a guest makes a request—in plain English, with zero technical jargon:
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
@@ -247,9 +267,9 @@ export function BlogsContentView() {
                   <div className="w-8 h-8 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 font-bold text-xs">
                     01
                   </div>
-                  <h4 className="font-semibold text-white text-sm">Natural Language Intent Intake</h4>
+                  <h4 className="font-semibold text-white text-sm">Step 1: Instant In-Room Dining &amp; Bar Orders</h4>
                   <p className="text-xs text-stone-400 leading-relaxed">
-                    Guests speak or type naturally in their native language: <em className="text-stone-300">&ldquo;Can we get two extra feather pillows and vegan breakfast at 8:30 AM?&rdquo;</em> The agent parses multi-part requests deterministically.
+                    A guest simply types or says: <em className="text-stone-300">&ldquo;Can we get two club sandwiches, an iced matcha latte, and extra napkins to Room 408?&rdquo;</em> The AI understands the room number, checks item availability, confirms dietary preferences, and sends the ticket straight to your kitchen POS printer or tablet. No phone call needed.
                   </p>
                 </div>
 
@@ -257,9 +277,9 @@ export function BlogsContentView() {
                   <div className="w-8 h-8 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 font-bold text-xs">
                     02
                   </div>
-                  <h4 className="font-semibold text-white text-sm">Direct PMS &amp; Kitchen Ticket Routing</h4>
+                  <h4 className="font-semibold text-white text-sm">Step 2: Automated Room Folio Billing</h4>
                   <p className="text-xs text-stone-400 leading-relaxed">
-                    Instead of alerting a human clerk to re-type the order, the AI Concierge issues validated API payloads directly to your Property Management System (PMS) and POS kitchen display systems.
+                    Instead of a front-desk receptionist manually typing paper receipts into the computer at checkout, every room service order, spa booking, and paid amenity charge posts directly to the guest&apos;s active room folio in your hotel software (Opera, Cloudbeds, Mews) with zero billing errors.
                   </p>
                 </div>
 
@@ -267,9 +287,9 @@ export function BlogsContentView() {
                   <div className="w-8 h-8 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 font-bold text-xs">
                     03
                   </div>
-                  <h4 className="font-semibold text-white text-sm">Automated Folio Billing</h4>
+                  <h4 className="font-semibold text-white text-sm">Step 3: Instant Answers to Routine Inquiries (24/7)</h4>
                   <p className="text-xs text-stone-400 leading-relaxed">
-                    All room service charges, spa upgrades, and paid amenities post directly to the guest’s active room folio with itemized receipts and zero clerical discrepancy.
+                    Over 70% of guest calls are for the same repetitive questions: <em className="text-stone-300">&ldquo;What is the Wi-Fi password? What time does the pool close? Can I get late checkout at 1:00 PM?&rdquo;</em> The AI concierge answers these in under 1.2 seconds, 24 hours a day, saving your team dozens of phone interruptions every single shift.
                   </p>
                 </div>
 
@@ -277,89 +297,117 @@ export function BlogsContentView() {
                   <div className="w-8 h-8 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 font-bold text-xs">
                     04
                   </div>
-                  <h4 className="font-semibold text-white text-sm">Instant Housekeeping Dispatch</h4>
+                  <h4 className="font-semibold text-white text-sm">Step 4: Smart Housekeeping &amp; Maintenance Dispatch</h4>
                   <p className="text-xs text-stone-400 leading-relaxed">
-                    Towels, toiletries, and maintenance tickets dispatch autonomously to on-duty staff devices with location tracking and service time monitoring.
+                    Requests for fresh towels, dental kits, luggage pickup, or room temperature adjustments automatically create a task on your on-duty housekeeping team&apos;s mobile device. Your staff sees the room number, priority, and request immediately, complete with status tracking when completed.
                   </p>
                 </div>
               </div>
             </section>
 
-            {/* Section 03: Comparison */}
+            {/* Section 04: Working with Human Workforce */}
             <section className="space-y-4">
               <h3 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2.5">
-                <span className="text-orange-500 font-mono">03.</span>
-                <span>Performance Benchmark Matrix</span>
+                <span className="text-orange-500 font-mono">04.</span>
+                <span>How It Works Alongside Your Human Workforce (Better Together)</span>
               </h3>
-              <p className="text-stone-300 leading-relaxed text-sm">
-                Comparative benchmark across 10,000+ simulated guest interactions across boutique hotels, luxury resorts, and enterprise properties:
+              <p className="text-stone-300 leading-relaxed text-sm sm:text-base">
+                One of the most common questions hotel owners ask us is: <em>&ldquo;Will this replace the personal human touch our brand is known for?&rdquo;</em>
+              </p>
+              <p className="text-stone-300 leading-relaxed text-sm sm:text-base">
+                The answer is an emphatic <strong>NO</strong>. In fact, it does the exact opposite: <strong>it protects and elevates the human touch</strong>.
+              </p>
+              <div className="p-5 rounded-2xl bg-stone-900/90 border border-stone-800 text-stone-300 space-y-3">
+                <p className="text-sm">
+                  Think about what burns your staff out: it isn&apos;t greeting a family or making a personalized recommendation for an anniversary dinner. It&apos;s answering the phone 80 times an afternoon to repeat the Wi-Fi password, tell someone where the ice machine is, or handwrite a room service order.
+                </p>
+                <p className="text-sm">
+                  By having the <strong>Vyom AI Concierge handle 100% of the repetitive, routine inquiries</strong>, your human staff is finally free to do what humans do best: look up, smile, greet guests by name, handle VIP arrangements, and deliver genuine, warm hospitality. When a guest has a sensitive concern or a special anniversary request, the AI smoothly routes the conversation directly to your on-duty manager with full context.
+                </p>
+              </div>
+            </section>
+
+            {/* Section 05: Speed Efficiency & ROI Benchmark */}
+            <section className="space-y-4">
+              <h3 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2.5">
+                <span className="text-orange-500 font-mono">05.</span>
+                <span>Speed Efficiency &amp; Real Business ROI</span>
+              </h3>
+              <p className="text-stone-300 leading-relaxed text-sm sm:text-base">
+                How does the AI Concierge change the operational speed and financial efficiency of your property? Here is the real-world comparison:
               </p>
 
               <div className="overflow-x-auto rounded-2xl border border-stone-800 bg-stone-950/80 shadow-xl">
                 <table className="w-full text-left text-xs sm:text-sm">
                   <thead>
                     <tr className="border-b border-stone-800 bg-stone-900/90 text-stone-300 font-mono">
-                      <th className="p-3.5 sm:p-4">Operational Parameter</th>
-                      <th className="p-3.5 sm:p-4 text-stone-400">Legacy Phone Call</th>
-                      <th className="p-3.5 sm:p-4 text-stone-400">Traditional Web Portal</th>
+                      <th className="p-3.5 sm:p-4">Operational Metric</th>
+                      <th className="p-3.5 sm:p-4 text-stone-400">Traditional Phone Call (&ldquo;0&rdquo;)</th>
+                      <th className="p-3.5 sm:p-4 text-stone-400">Custom Hotel Mobile App</th>
                       <th className="p-3.5 sm:p-4 text-orange-400 font-bold bg-orange-500/10">Vyom AI Concierge</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-stone-800 text-stone-300">
                     <tr>
-                      <td className="p-3.5 sm:p-4 font-semibold text-white">First Response Latency</td>
-                      <td className="p-3.5 sm:p-4 text-stone-400">3 - 8 minutes hold</td>
-                      <td className="p-3.5 sm:p-4 text-stone-400">10 - 20 minutes delay</td>
-                      <td className="p-3.5 sm:p-4 text-emerald-400 font-bold bg-orange-500/5">&lt; 1.2 Seconds</td>
+                      <td className="p-3.5 sm:p-4 font-semibold text-white">Guest Wait Time (Hold Time)</td>
+                      <td className="p-3.5 sm:p-4 text-rose-400">3 - 8 minutes hold time</td>
+                      <td className="p-3.5 sm:p-4 text-stone-400">10 - 20 minutes ticket delay</td>
+                      <td className="p-3.5 sm:p-4 text-emerald-400 font-bold bg-orange-500/5">&lt; 1.2 Seconds (Instant)</td>
                     </tr>
                     <tr>
-                      <td className="p-3.5 sm:p-4 font-semibold text-white">App Download Required</td>
-                      <td className="p-3.5 sm:p-4 text-stone-400">No (Phone only)</td>
-                      <td className="p-3.5 sm:p-4 text-rose-400">Yes (High drop-off)</td>
-                      <td className="p-3.5 sm:p-4 text-emerald-400 font-bold bg-orange-500/5">Zero (PWA / Instant QR)</td>
+                      <td className="p-3.5 sm:p-4 font-semibold text-white">Guest Adoption Rate</td>
+                      <td className="p-3.5 sm:p-4 text-stone-400">Requires picking up phone</td>
+                      <td className="p-3.5 sm:p-4 text-rose-400">&lt; 15% download the app</td>
+                      <td className="p-3.5 sm:p-4 text-emerald-400 font-bold bg-orange-500/5">&gt; 82% Instant QR Engagement</td>
                     </tr>
                     <tr>
-                      <td className="p-3.5 sm:p-4 font-semibold text-white">Languages Supported</td>
-                      <td className="p-3.5 sm:p-4 text-stone-400">Staff dependent</td>
-                      <td className="p-3.5 sm:p-4 text-stone-400">1 - 3 pre-translated</td>
+                      <td className="p-3.5 sm:p-4 font-semibold text-white">Languages Handled</td>
+                      <td className="p-3.5 sm:p-4 text-stone-400">Limited to on-duty staff</td>
+                      <td className="p-3.5 sm:p-4 text-stone-400">1 - 2 static translations</td>
                       <td className="p-3.5 sm:p-4 text-emerald-400 font-bold bg-orange-500/5">45+ Native Fluency</td>
                     </tr>
                     <tr>
-                      <td className="p-3.5 sm:p-4 font-semibold text-white">24/7 Night Availability</td>
-                      <td className="p-3.5 sm:p-4 text-stone-400">Constrained staff</td>
-                      <td className="p-3.5 sm:p-4 text-stone-400">Static forms</td>
-                      <td className="p-3.5 sm:p-4 text-emerald-400 font-bold bg-orange-500/5">100% Autonomous</td>
+                      <td className="p-3.5 sm:p-4 font-semibold text-white">Night-Shift (After-Hours) Coverage</td>
+                      <td className="p-3.5 sm:p-4 text-rose-400">Severe staff shortages</td>
+                      <td className="p-3.5 sm:p-4 text-stone-400">Static unresponsive forms</td>
+                      <td className="p-3.5 sm:p-4 text-emerald-400 font-bold bg-orange-500/5">100% Autonomous 24/7/365</td>
                     </tr>
                     <tr>
-                      <td className="p-3.5 sm:p-4 font-semibold text-white">PMS Direct Sync</td>
-                      <td className="p-3.5 sm:p-4 text-stone-400">Manual clerk entry</td>
-                      <td className="p-3.5 sm:p-4 text-stone-400">Batch export</td>
-                      <td className="p-3.5 sm:p-4 text-emerald-400 font-bold bg-orange-500/5">Real-time Bidirectional API</td>
+                      <td className="p-3.5 sm:p-4 font-semibold text-white">Room Service &amp; Amenity Revenue</td>
+                      <td className="p-3.5 sm:p-4 text-stone-400">High friction = lost orders</td>
+                      <td className="p-3.5 sm:p-4 text-stone-400">Unused by majority</td>
+                      <td className="p-3.5 sm:p-4 text-emerald-400 font-bold bg-orange-500/5">+34% Incremental Order Volume</td>
+                    </tr>
+                    <tr>
+                      <td className="p-3.5 sm:p-4 font-semibold text-white">Front-Desk Phone Volume</td>
+                      <td className="p-3.5 sm:p-4 text-rose-400">Constant ringing &amp; burnout</td>
+                      <td className="p-3.5 sm:p-4 text-stone-400">Minimal reduction</td>
+                      <td className="p-3.5 sm:p-4 text-emerald-400 font-bold bg-orange-500/5">Cuts Routine Phone Load by 70%</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </section>
 
-            {/* Section 04: PMS Integrations */}
+            {/* Section 06: Seamless PMS Integrations & Privacy */}
             <section className="space-y-4">
               <h3 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2.5">
-                <span className="text-orange-500 font-mono">04.</span>
-                <span>Enterprise PMS Integrations &amp; Data Privacy</span>
+                <span className="text-orange-500 font-mono">06.</span>
+                <span>Works Seamlessly with Your Existing Property Systems</span>
               </h3>
               <p className="text-stone-300 leading-relaxed text-sm sm:text-base">
-                Vyom Agents implements zero-retention ephemeral session memory. Guest conversations, room numbers, and credit information are scrubbed immediately following order settlement and never used to train public machine learning models.
+                You do not need to replace your existing hotel software or purchase expensive new hardware. The Vyom AI Concierge integrates directly into the enterprise property management systems, payment processors, and messaging tools you already use every day:
               </p>
               <div className="flex flex-wrap gap-2 pt-2">
                 {[
                   "Oracle Opera PMS",
                   "Cloudbeds",
                   "Mews",
-                  "Stripe Payments",
                   "Toast POS",
+                  "Stripe Payments",
                   "Agilysys",
-                  "Twilio SMS & Voice",
-                  "Slack / Teams Staff Channels",
+                  "Twilio SMS & WhatsApp",
+                  "Slack & Teams Staff Alerts",
                 ].map((tech) => (
                   <span
                     key={tech}
@@ -484,19 +532,19 @@ export function BlogsContentView() {
           <header className="space-y-6 max-w-4xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-mono font-medium">
               <Sparkles className="w-3.5 h-3.5 text-orange-400" />
-              <span>EXECUTIVE BRIEFING &amp; INDUSTRY PLAYBOOK</span>
+              <span>EXECUTIVE BUSINESS BRIEFING &amp; OPERATIONAL PLAYBOOK</span>
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.12]">
-              AI Receptionist (Voice Agents): <br />
+              The AI Receptionist: <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-orange-500">
-                Autonomous 24/7 Voice Intelligence
+                Stop Losing High-Paying Clients
               </span>{" "}
-              for Modern Enterprise
+              to Unanswered Phone Calls
             </h1>
 
             <p className="text-base sm:text-lg text-stone-300 leading-relaxed max-w-3xl">
-              In competitive markets, the greatest source of revenue attrition isn&apos;t marketing inefficiency—it is the unanswered incoming phone call. Explore how enterprise organizations eliminate hold times, capture high-intent after-hours demand, and replace legacy call centers with deterministic, sub-second conversational voice agents.
+              A straight-talking executive briefing for business owners, medical directors, and practice leaders: Learn how an autonomous conversational AI voice assistant answers every incoming call on Ring One, books qualified appointments into your calendar 24/7, and empowers your human staff to focus on high-touch client relationships without burnout.
             </p>
 
             {/* Author & Timestamp Bar */}
@@ -505,15 +553,15 @@ export function BlogsContentView() {
                 <div className="w-7 h-7 rounded-full bg-orange-500/20 border border-orange-500/40 flex items-center justify-center text-orange-400 font-bold text-xs">
                   V
                 </div>
-                <span className="text-stone-200 font-medium">Vyom Agents Solutions Architecture</span>
+                <span className="text-stone-200 font-medium">Vyom Enterprise Solutions</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5 text-stone-400" />
-                <span>7 min read • Enterprise Executive Brief</span>
+                <span>6 min read • Executive Practice Blueprint</span>
               </div>
               <div className="flex items-center gap-1.5 text-emerald-400 font-mono">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                <span>14-Day Production SLA</span>
+                <span>Zero Hardware Required • 14-Day Setup</span>
               </div>
             </div>
           </header>
@@ -522,20 +570,20 @@ export function BlogsContentView() {
           <div className="p-6 rounded-3xl bg-stone-900/90 border border-stone-800 shadow-2xl space-y-4">
             <div className="flex items-center gap-2 text-orange-400 font-mono text-xs uppercase tracking-wider font-semibold">
               <Zap className="w-4 h-4" />
-              <span>Executive Performance Summary</span>
+              <span>Executive Business Impact Summary</span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs sm:text-sm">
               <div className="p-3.5 rounded-xl bg-stone-950/60 border border-stone-800/80 space-y-1">
-                <span className="text-stone-400 block text-[11px] font-mono uppercase">Inbound Retention</span>
-                <p className="text-white font-semibold">85% of callers who hit voicemail hang up and contact a competitor immediately.</p>
+                <span className="text-stone-400 block text-[11px] font-mono uppercase">Immediate Client Retention</span>
+                <p className="text-white font-semibold">85% of prospective clients who hit a voicemail hang up and immediately dial your nearest competitor.</p>
               </div>
               <div className="p-3.5 rounded-xl bg-stone-950/60 border border-stone-800/80 space-y-1">
-                <span className="text-stone-400 block text-[11px] font-mono uppercase">Concurrency SLA</span>
-                <p className="text-white font-semibold">15+ simultaneous concurrent calls answered on ring one with sub-600ms streaming latency.</p>
+                <span className="text-stone-400 block text-[11px] font-mono uppercase">Zero Hold Times</span>
+                <p className="text-white font-semibold">Answers 15+ calls simultaneously on Ring One with sub-600ms conversational speed and natural human cadence.</p>
               </div>
               <div className="p-3.5 rounded-xl bg-stone-950/60 border border-stone-800/80 space-y-1">
-                <span className="text-stone-400 block text-[11px] font-mono uppercase">Operational Efficiency</span>
-                <p className="text-white font-semibold">Cuts frontline desk phone load by 70% while capturing 100% of after-hours appointment revenue.</p>
+                <span className="text-stone-400 block text-[11px] font-mono uppercase">Staff Leverage &amp; ROI</span>
+                <p className="text-white font-semibold">Cuts routine phone interruptions by 70% while capturing 100% of evening and weekend appointment revenue.</p>
               </div>
             </div>
           </div>
@@ -547,37 +595,40 @@ export function BlogsContentView() {
             <section className="space-y-4">
               <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight flex items-center gap-3">
                 <span className="text-orange-500 font-mono">01.</span>
-                <span>The Operational Cost of Missed Inbound Demand</span>
+                <span>The Silent Revenue Killer in Modern Business: The Missed Phone Call</span>
               </h2>
               <p>
-                Across frontline enterprises—from multi-provider medical clinics and legal partnerships to automotive dealerships and commercial contracting firms—the telephone remains the highest-converting customer acquisition channel. Callers represent high-intent buyers seeking immediate resolution.
+                As a business owner, you spend significant capital and effort on marketing, search rankings, website design, and building your reputation. When a customer picks up the phone to call your office, they aren&apos;t just &ldquo;browsing&rdquo;—they are a high-intent buyer with an urgent need, an open wallet, and a desire to book immediately.
               </p>
               <p>
-                Yet, traditional operations introduce severe physical bottlenecks: staff assisting in-person clients, peak-hour call surges, and after-hours operational blackouts.
+                Yet in most businesses, the phone lines face a physical bottleneck. Your front desk staff can only speak to one person at a time. If they are checking in an in-person customer, processing paperwork, or already on line one, incoming callers either hear endless ringing, get placed on hold, or land in voicemail.
               </p>
               <p>
-                Industry telemetry reveals a clear reality: <strong>over 85% of callers who encounter voicemail do not leave a message</strong>. They immediately return to search results and dial the next service provider.
+                Here is the harsh reality: <strong>over 85% of callers who reach a voicemail do not leave a message</strong>. They hang up, tap back into Google search, and call the next business down the page.
               </p>
 
               <div className="p-5 rounded-2xl bg-orange-950/30 border border-orange-500/30 text-stone-200 space-y-2">
                 <h4 className="font-bold text-orange-400 text-sm flex items-center gap-2">
                   <TrendingUp className="w-4 h-4" />
-                  <span>Quantifying Pipeline Attrition</span>
+                  <span>The Real Math of Missed Calls</span>
                 </h4>
                 <p className="text-xs sm:text-sm text-stone-300">
-                  In an enterprise where client or patient lifetime value (LTV) averages $1,500, forfeiting just <strong>two missed inquiries per business day</strong> represents over <strong>$700,000 in annualized top-line revenue lost</strong> directly to responsive market competitors.
+                  If your average client or customer is worth $1,200, missing just <strong>two prospective calls a day</strong> costs your business over <strong>$600,000 every single year in lost top-line revenue</strong>. That isn&apos;t just missed calls—that is revenue handed directly to your competitors.
                 </p>
               </div>
             </section>
 
-            {/* SECTION 2: CORE ARCHITECTURE */}
+            {/* SECTION 2: HOW THE PRODUCT IS DESIGNED */}
             <section className="space-y-4">
               <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight flex items-center gap-3">
                 <span className="text-orange-500 font-mono">02.</span>
-                <span>Core Architecture: How the Autonomous Voice Agent Operates</span>
+                <span>How the AI Receptionist Is Designed (Natural, Warm, Instant)</span>
               </h2>
               <p>
-                The Vyom AI Receptionist is not a rigid interactive voice response (IVR) phone tree, nor is it a brittle text-to-speech script. It is an autonomous, multi-tiered conversational voice intelligence engineered on real-time neural streaming pipelines:
+                The Vyom AI Receptionist is <strong>not</strong> an annoying &ldquo;Press 1 for Sales, Press 2 for Billing&rdquo; automated phone menu. Those robotic systems frustrate customers and drive them away.
+              </p>
+              <p>
+                Instead, our voice agent sounds and acts like your most articulate, courteous front-desk employee:
               </p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
@@ -585,9 +636,9 @@ export function BlogsContentView() {
                   <div className="w-8 h-8 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 font-bold text-xs">
                     01
                   </div>
-                  <h4 className="font-semibold text-white text-sm">Sub-600ms Real-Time Audio Streaming</h4>
+                  <h4 className="font-semibold text-white text-sm">Answers on Ring One (Zero Hold Time)</h4>
                   <p className="text-xs text-stone-400 leading-relaxed">
-                    Leveraging high-speed neural audio pipelines, the agent streams conversational responses in under 600 milliseconds, eliminating awkward machine pauses.
+                    Picks up incoming calls within 600 milliseconds. Even if 10 customers call at the exact same moment during a busy morning rush, every single caller is greeted immediately by their own dedicated voice agent.
                   </p>
                 </div>
 
@@ -595,9 +646,9 @@ export function BlogsContentView() {
                   <div className="w-8 h-8 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 font-bold text-xs">
                     02
                   </div>
-                  <h4 className="font-semibold text-white text-sm">Natural Interruption Handling</h4>
+                  <h4 className="font-semibold text-white text-sm">Natural Human Speech &amp; Interruption Recovery</h4>
                   <p className="text-xs text-stone-400 leading-relaxed">
-                    Callers can interrupt mid-sentence with clarifications, corrections, or new questions. The voice engine gracefully yields and recalibrates in real time.
+                    Uses natural conversational inflection, pauses thoughtfully, and handles interruptions gracefully. If a caller cuts in with a new question or corrects their date of birth, the AI listens and adapts without talking over them.
                   </p>
                 </div>
 
@@ -605,9 +656,9 @@ export function BlogsContentView() {
                   <div className="w-8 h-8 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 font-bold text-xs">
                     03
                   </div>
-                  <h4 className="font-semibold text-white text-sm">Bidirectional Calendar &amp; CRM Sync</h4>
+                  <h4 className="font-semibold text-white text-sm">Live Calendar &amp; Software Integration</h4>
                   <p className="text-xs text-stone-400 leading-relaxed">
-                    Queries real-time availability across enterprise calendars (Google Workspace, Microsoft Outlook, Dentrix, Clio, ServiceTitan) and writes verified appointment records.
+                    Directly connected to your Google Calendar, Microsoft Outlook, Calendly, or industry software (Dentrix, Clio, ServiceTitan, CDK). It checks your real-time schedule and locks in confirmed appointments during the call.
                   </p>
                 </div>
 
@@ -615,22 +666,103 @@ export function BlogsContentView() {
                   <div className="w-8 h-8 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 font-bold text-xs">
                     04
                   </div>
-                  <h4 className="font-semibold text-white text-sm">Deterministic Policy Guardrails</h4>
+                  <h4 className="font-semibold text-white text-sm">Strict Business Guardrails (Zero Guesswork)</h4>
                   <p className="text-xs text-stone-400 leading-relaxed">
-                    Operates strictly within your company&apos;s verified pricing, clinical intake rules, and escalation protocols. Zero factual hallucination.
+                    Trained strictly on your exact business policies, pricing parameters, service areas, and intake criteria. It never guesses or makes unapproved commitments.
                   </p>
                 </div>
               </div>
             </section>
 
-            {/* SECTION 3: COMPETITOR ANALYSIS */}
-            <section className="space-y-6">
+            {/* SECTION 3: THE 4 BUSINESS STEPS AUTOMATED */}
+            <section className="space-y-5">
               <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight flex items-center gap-3">
                 <span className="text-orange-500 font-mono">03.</span>
-                <span>Enterprise Competitor Analysis &amp; Operational Benchmarks</span>
+                <span>The 4 Steps of Your Business That Are Automated</span>
               </h2>
               <p>
-                A comparative evaluation against legacy answering services, outsourced BPO call centers, and first-generation DIY voice wrappers:
+                Here is the step-by-step customer journey when a caller rings your business, explained in plain terms:
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div className="p-4 sm:p-5 rounded-2xl bg-stone-900/80 border border-stone-800 space-y-2">
+                  <div className="w-8 h-8 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 font-bold text-xs">
+                    01
+                  </div>
+                  <h4 className="font-semibold text-white text-sm">Step 1: 24/7 Call Intake on Ring One</h4>
+                  <p className="text-xs text-stone-400 leading-relaxed">
+                    Greets the caller with your customized, professional greeting whether it is 2:00 PM on a Tuesday or 11:30 PM on a Saturday. No busy signals, no hold music, and no missed opportunities.
+                  </p>
+                </div>
+
+                <div className="p-4 sm:p-5 rounded-2xl bg-stone-900/80 border border-stone-800 space-y-2">
+                  <div className="w-8 h-8 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 font-bold text-xs">
+                    02
+                  </div>
+                  <h4 className="font-semibold text-white text-sm">Step 2: Smart Client Intake &amp; Lead Qualification</h4>
+                  <p className="text-xs text-stone-400 leading-relaxed">
+                    Asks the essential qualifying questions your business requires: What service are they looking for? What is their address or location? What is their timeline and urgency? It captures their full name, phone number, and email accurately.
+                  </p>
+                </div>
+
+                <div className="p-4 sm:p-5 rounded-2xl bg-stone-900/80 border border-stone-800 space-y-2">
+                  <div className="w-8 h-8 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 font-bold text-xs">
+                    03
+                  </div>
+                  <h4 className="font-semibold text-white text-sm">Step 3: Direct Appointment Scheduling &amp; SMS Confirmation</h4>
+                  <p className="text-xs text-stone-400 leading-relaxed">
+                    Reads open slots from your live calendar and confirms the time slot directly with the customer. The instant the call ends, the customer receives an automated SMS text confirmation with appointment details and calendar invite.
+                  </p>
+                </div>
+
+                <div className="p-4 sm:p-5 rounded-2xl bg-stone-900/80 border border-stone-800 space-y-2">
+                  <div className="w-8 h-8 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 font-bold text-xs">
+                    04
+                  </div>
+                  <h4 className="font-semibold text-white text-sm">Step 4: Immediate CRM Sync &amp; Priority Alerting</h4>
+                  <p className="text-xs text-stone-400 leading-relaxed">
+                    Creates or updates the customer record in your CRM with an organized call summary and audio transcript. If the caller has an acute emergency or is a high-value commercial lead, the AI sends an instant priority alert to your on-call team.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {/* SECTION 4: WORKING WITH HUMAN WORKFORCE */}
+            <section className="space-y-4">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight flex items-center gap-3">
+                <span className="text-orange-500 font-mono">04.</span>
+                <span>How It Works Alongside Your Human Workforce (Better Together)</span>
+              </h2>
+              <p>
+                Many owners wonder: <em>&ldquo;Is this meant to replace my front desk team?&rdquo;</em>
+              </p>
+              <p>
+                The answer is <strong>no</strong>. The AI Receptionist is designed to <strong>supercharge and protect your human staff</strong>, not replace them.
+              </p>
+              <div className="p-5 rounded-2xl bg-stone-900/90 border border-stone-800 text-stone-300 space-y-3">
+                <p className="text-sm">
+                  Constant phone interruptions are the #1 cause of front-desk burnout, mistakes, and turnover in service businesses. Every time your receptionist is interrupted by a ringing phone while helping a patient or client in person, quality of service suffers.
+                </p>
+                <p className="text-sm">
+                  With the AI Voice Agent acting as your <strong>first line of defense</strong>:
+                </p>
+                <ul className="text-xs sm:text-sm space-y-2 list-disc list-inside text-stone-300">
+                  <li><strong>Spam &amp; Robocalls Filtered:</strong> Your staff never has to answer another car warranty or spam call again.</li>
+                  <li><strong>Routine FAQs Handled:</strong> Questions about directions, business hours, accepted insurance, or pricing ranges are answered instantly without disturbing staff.</li>
+                  <li><strong>In-Person Focus:</strong> Your receptionists can give 100% of their attention to patients and clients standing right in front of them.</li>
+                  <li><strong>Warm Live Transfers:</strong> When an important caller specifically requests a human or has a complex clinical/legal emergency, the AI performs a seamless live transfer to your staff with full caller background.</li>
+                </ul>
+              </div>
+            </section>
+
+            {/* SECTION 5: COMPETITOR ANALYSIS */}
+            <section className="space-y-6">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight flex items-center gap-3">
+                <span className="text-orange-500 font-mono">05.</span>
+                <span>Speed Efficiency &amp; Comparison: Why Legacy Solutions Fail</span>
+              </h2>
+              <p>
+                How does Vyom compare to human answering services (like Ruby) and generic DIY voice wrappers?
               </p>
 
               <div className="overflow-x-auto rounded-2xl border border-stone-800 bg-stone-950/80 shadow-2xl">
@@ -685,25 +817,25 @@ export function BlogsContentView() {
               </div>
 
               <div className="space-y-3 pt-2">
-                <h3 className="text-lg font-bold text-white">The Engineering Flaw of Generic Voice Wrappers:</h3>
+                <h3 className="text-lg font-bold text-white">Why Off-the-Shelf AI Voice Bots Create Headaches for Business Owners:</h3>
                 <p>
-                  First-generation voice bots built on raw open-source wrappers frequently fail in commercial deployments due to three technical flaws: high round-trip latency, inability to recover gracefully when interrupted, and absence of schema-enforced output guardrails.
+                  Many business owners have tried basic AI phone tools or automated prompts and found them frustrating. When a system pauses for 3 seconds before responding, talks over your customer, or makes up inaccurate answers, it damages your business reputation.
                 </p>
                 <p>
-                  Vyom Agents deploys an isolated execution harness with deterministic policy assertions. If an ambiguous or non-standard customer edge case emerges, the agent executes a structured fallback protocol—either transferring the caller to designated on-duty personnel or compiling an emergency priority ticket.
+                  Vyom AI Receptionists are custom-calibrated for real business environments. The AI recognizes conversational pauses, stays strictly within your approved guidelines, and if a customer has a complex or delicate situation, it smoothly connects them to your designated team member in real time.
                 </p>
               </div>
             </section>
 
-            {/* SECTION 4: INDUSTRY BY INDUSTRY BREAKDOWN */}
+            {/* SECTION 6: INDUSTRY BY INDUSTRY BREAKDOWN */}
             <section className="space-y-8">
               <div className="space-y-2">
                 <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight flex items-center gap-3">
-                  <span className="text-orange-500 font-mono">04.</span>
-                  <span>Industry-Specific Customer Service Architecture at Scale</span>
+                  <span className="text-orange-500 font-mono">06.</span>
+                  <span>Tailored Solutions for Your Specific Industry</span>
                 </h2>
                 <p className="text-stone-400 text-sm">
-                  How the AI Receptionist is configured across key frontline enterprise verticals:
+                  Every business operates differently. Here is how our AI Receptionist is customized to automate front-line client communication in your sector:
                 </p>
               </div>
 
@@ -713,27 +845,27 @@ export function BlogsContentView() {
                   <div className="w-9 h-9 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400">
                     <Stethoscope className="w-5 h-5" />
                   </div>
-                  <h3 className="text-lg font-bold text-white">1. Healthcare, Dental &amp; Specialty Health Networks</h3>
+                  <h3 className="text-lg font-bold text-white">1. Healthcare, Dental &amp; Medical Practices</h3>
                 </div>
                 <p className="text-xs sm:text-sm text-stone-300">
-                  Patient intake requires empathy, precision, and compliance. The voice agent handles high-volume appointment booking, pre-procedure guidance, and emergency triage without hold queues.
+                  Patients seeking appointments need immediate attention and compassion. During morning rushes when staff are checking in patients, the AI books appointments, confirms insurance questions, and handles routine queries so patients never get sent to voicemail.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-stone-400 pt-1">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Direct schedule sync into Dentrix, Epic, and AthenaHealth</span>
+                    <span>Direct schedule booking into your existing clinical software</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Insurance carrier verification &amp; pre-appointment prep FAQ</span>
+                    <span>Instant answers for accepted insurance, clinic hours, and directions</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Automated SMS appointment confirmations and calendar invites</span>
+                    <span>Automatic SMS confirmation and calendar invites sent to patients</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Strict clinical escalation protocols for acute medical symptoms</span>
+                    <span>Immediate live transfer to on-call clinical staff for urgent symptoms</span>
                   </div>
                 </div>
               </div>
@@ -744,27 +876,27 @@ export function BlogsContentView() {
                   <div className="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
                     <Scale className="w-5 h-5" />
                   </div>
-                  <h3 className="text-lg font-bold text-white">2. Law Firms &amp; Professional Advisory</h3>
+                  <h3 className="text-lg font-bold text-white">2. Law Firms &amp; Professional Legal Practices</h3>
                 </div>
                 <p className="text-xs sm:text-sm text-stone-300">
-                  For personal injury, litigation, corporate, and family law practices, lead intake latency directly impacts case acquisition. The agent conducts confidential, structured case qualification 24/7.
+                  When someone needs an attorney, they call the first firm they find. If nobody answers, they immediately call the next firm. Our AI conducts professional intake, gathers case facts, and schedules paid consultations round-the-clock.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-stone-400 pt-1">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Structured intake gathering key facts, jurisdiction, and timelines</span>
+                    <span>Structured confidential intake gathering key facts and urgency</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Preliminary conflict-of-interest pre-screening assertions</span>
+                    <span>Immediate consultation booking directly on attorney calendars</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Discovery consultation booking directly on attorney calendars</span>
+                    <span>Filters out unqualified inquiries before they reach billing attorneys</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Bidirectional sync with Clio, MyCase, and LawPay platforms</span>
+                    <span>Syncs caller notes into your case management software (Clio, MyCase)</span>
                   </div>
                 </div>
               </div>
@@ -775,27 +907,27 @@ export function BlogsContentView() {
                   <div className="w-9 h-9 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400">
                     <Wrench className="w-5 h-5" />
                   </div>
-                  <h3 className="text-lg font-bold text-white">3. Commercial &amp; Residential Field Services (HVAC, Plumbing, Electrical)</h3>
+                  <h3 className="text-lg font-bold text-white">3. Home &amp; Field Services (HVAC, Plumbing, Roofing, Electrical)</h3>
                 </div>
                 <p className="text-xs sm:text-sm text-stone-300">
-                  In emergency field trades, speed to response determines job win rates. When systems fail during extreme weather, the agent dispatches technicians and books repair jobs instantly.
+                  When a furnace breaks in winter or a pipe bursts at night, homeowners call until a human or responsive agent answers. The first contractor to answer gets the job. Our voice agent answers on ring one, books the service window, and dispatches your technicians.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-stone-400 pt-1">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Zero missed emergency service calls during peak dispatch hours</span>
+                    <span>Zero missed emergency dispatch calls during storm and peak surges</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Captures caller location, equipment make/model, and issue urgency</span>
+                    <span>Captures caller address, equipment issue, and preferred time window</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Native integration into ServiceTitan, Housecall Pro, and Jobber</span>
+                    <span>Connects into ServiceTitan, Housecall Pro, and Jobber schedules</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Dispatches high-priority notifications to on-call field technicians</span>
+                    <span>Instantly alerts on-duty techs with full job and customer details</span>
                   </div>
                 </div>
               </div>
@@ -806,27 +938,27 @@ export function BlogsContentView() {
                   <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
                     <Home className="w-5 h-5" />
                   </div>
-                  <h3 className="text-lg font-bold text-white">4. Real Estate Brokerages, Asset Management &amp; Leasing</h3>
+                  <h3 className="text-lg font-bold text-white">4. Real Estate Brokerages &amp; Property Management</h3>
                 </div>
                 <p className="text-xs sm:text-sm text-stone-300">
-                  Prospective buyers and corporate tenants calling from sign riders or digital portals require instantaneous scheduling. The agent qualifies intent and books property tours.
+                  Prospective buyers calling from yard signs or listings want answers right now. The AI qualifies buyer readiness, pre-screens rental applicants, and books property walkthroughs while transferring high-value buyers directly to your top agents.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-stone-400 pt-1">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Pre-qualifies buyers by financing verification, budget, and move date</span>
+                    <span>Pre-qualifies buyers by budget, pre-approval status, and move timeline</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Schedules agent-accompanied or automated self-guided walkthroughs</span>
+                    <span>Books viewing appointments directly onto agent calendars</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Tenant maintenance intake routing directly to property managers</span>
+                    <span>Handles routine tenant maintenance requests and routes work orders</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Live warm transfer of high-value investors directly to listing brokers</span>
+                    <span>Live warm transfer of high-intent cash buyers and investors</span>
                   </div>
                 </div>
               </div>
@@ -837,27 +969,27 @@ export function BlogsContentView() {
                   <div className="w-9 h-9 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400">
                     <UtensilsCrossed className="w-5 h-5" />
                   </div>
-                  <h3 className="text-lg font-bold text-white">5. Hospitality, Luxury Resorts &amp; Fine Dining</h3>
+                  <h3 className="text-lg font-bold text-white">5. Restaurants, Hospitality &amp; Event Venues</h3>
                 </div>
                 <p className="text-xs sm:text-sm text-stone-300">
-                  During dinner service or guest check-in rushes, front-desk staff cannot balance phone lines with in-person VIP service. The voice agent handles reservations and property inquiries seamlessly.
+                  During peak dinner rush or hotel check-in, staff cannot stand by the phone. The AI takes table reservations, answers parking and dress-code questions, and captures event inquiries without interrupting your front-of-house staff.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-stone-400 pt-1">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Direct table reservation booking through OpenTable and Resy</span>
+                    <span>Books table reservations directly through OpenTable or Resy</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Answers property policies, valet parking, and private event packages</span>
+                    <span>Answers questions about parking, private rooms, dietary options, and hours</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Captures banquet inquiries and routes RFPs to event directors</span>
+                    <span>Collects party size and dates for private banquet inquiries</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Integrates with the Vyom AI Concierge for guest self-service</span>
+                    <span>Works alongside the Vyom AI Concierge for guest self-service</span>
                   </div>
                 </div>
               </div>
@@ -868,95 +1000,95 @@ export function BlogsContentView() {
                   <div className="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400">
                     <Car className="w-5 h-5" />
                   </div>
-                  <h3 className="text-lg font-bold text-white">6. Automotive Dealership Groups &amp; Service Centers</h3>
+                  <h3 className="text-lg font-bold text-white">6. Dealerships &amp; Automotive Service Centers</h3>
                 </div>
                 <p className="text-xs sm:text-sm text-stone-300">
-                  Fixed operations and service lanes generate significant high-margin revenue but suffer from dropped customer calls. The agent handles service scheduling and test-drive inquiries.
+                  Service bays generate significant high-margin revenue, but service advisors are often too busy with in-person customers to answer calls. The AI books routine maintenance, captures vehicle details, and schedules test drives.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-stone-400 pt-1">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Schedules routine maintenance, warranty work, and recall service</span>
+                    <span>Schedules routine oil changes, tire rotations, and warranty repairs</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Ingests vehicle VIN, mileage, and reported customer symptoms</span>
+                    <span>Records customer vehicle year, model, mileage, and reported symptoms</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Schedules showroom appointments and test drives for active inventory</span>
+                    <span>Books showroom appointments and test drives for vehicle shoppers</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Syncs directly with CDK Global, Reynolds &amp; Reynolds, and DealerSocket</span>
+                    <span>Syncs directly with your dealership management calendar</span>
                   </div>
                 </div>
               </div>
 
-              {/* Industry 7: Wealth Management */}
+              {/* Industry 7: Wealth & Financial */}
               <div className="p-6 rounded-2xl bg-stone-900/70 border border-stone-800 space-y-3">
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
                     <Landmark className="w-5 h-5" />
                   </div>
-                  <h3 className="text-lg font-bold text-white">7. Wealth Management, CPA &amp; Insurance Underwriting</h3>
+                  <h3 className="text-lg font-bold text-white">7. Financial Advisors, Accounting &amp; Insurance Firms</h3>
                 </div>
                 <p className="text-xs sm:text-sm text-stone-300">
-                  During cyclical surges—such as annual tax deadlines or benefits enrollment—advisors cannot spend hours answering repetitive procedural questions.
+                  During peak tax season or open enrollment, advisory teams are swamped. The AI screens prospective clients, collects their paperwork requirements, and schedules discovery calls with the right advisor.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-stone-400 pt-1">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Dispatches pre-meeting documentation checklists automatically</span>
+                    <span>Automatically sends pre-consultation document checklists to clients</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Pre-qualifies asset size, entity structure, and advisory scope</span>
+                    <span>Qualifies prospective clients based on their specific advisory needs</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Enterprise data governance: zero training on sensitive financial numbers</span>
+                    <span>Highest security standards with zero exposure of sensitive client finances</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Direct synchronization with Wealthbox, Redtail, and Salesforce Financial</span>
+                    <span>Direct calendar synchronization with Microsoft 365, Google, and CRM</span>
                   </div>
                 </div>
               </div>
             </section>
 
-            {/* SECTION 5: ENTERPRISE DEPLOYMENT METHODOLOGY */}
+            {/* SECTION 7: EASY ROLLOUT */}
             <section className="space-y-4">
               <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight flex items-center gap-3">
-                <span className="text-orange-500 font-mono">05.</span>
-                <span>Enterprise Implementation Methodology (14-Day Production Rollout)</span>
+                <span className="text-orange-500 font-mono">07.</span>
+                <span>Effortless 14-Day Rollout (Zero Technical Burden on You)</span>
               </h2>
               <p>
-                Deploying voice automation requires zero internal engineering overhead from your team. Vyom Agents manages the rollout via our turnkey 3-phase framework:
+                You do not need an IT department or software engineers. Our team handles the entire setup, testing, and connection for you in three straightforward steps:
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
                 <div className="p-4 sm:p-5 rounded-2xl bg-stone-900 border border-stone-800 space-y-2">
-                  <span className="text-xs font-mono text-orange-400 font-bold block">PHASE 1: DAYS 1 - 4</span>
-                  <h4 className="font-bold text-white text-sm">Knowledge Ingestion &amp; Schema Mapping</h4>
+                  <span className="text-xs font-mono text-orange-400 font-bold block">STEP 1: DAYS 1 - 4</span>
+                  <h4 className="font-bold text-white text-sm">Business Knowledge &amp; Calendar Setup</h4>
                   <p className="text-xs text-stone-400 leading-relaxed">
-                    Ingestion of corporate knowledge bases, scheduling constraints, CRM schemas, and escalation parameters into secure vector structures.
+                    We learn your exact services, pricing guidelines, office hours, and scheduling rules, and connect the agent to your calendar and CRM.
                   </p>
                 </div>
 
                 <div className="p-4 sm:p-5 rounded-2xl bg-stone-900 border border-stone-800 space-y-2">
-                  <span className="text-xs font-mono text-orange-400 font-bold block">PHASE 2: DAYS 5 - 10</span>
-                  <h4 className="font-bold text-white text-sm">Telephony Sandbox &amp; Boundary Testing</h4>
+                  <span className="text-xs font-mono text-orange-400 font-bold block">STEP 2: DAYS 5 - 10</span>
+                  <h4 className="font-bold text-white text-sm">Voice Testing &amp; Practice Calls</h4>
                   <p className="text-xs text-stone-400 leading-relaxed">
-                    Calibration of voice latency, interruption recovery, and boundary cases on private sandbox telephone numbers prior to production cutover.
+                    We provide you with a private phone number so you and your team can test call the AI, listen to its voice, and fine-tune its responses until you are completely satisfied.
                   </p>
                 </div>
 
                 <div className="p-4 sm:p-5 rounded-2xl bg-stone-900 border border-stone-800 space-y-2">
-                  <span className="text-xs font-mono text-orange-400 font-bold block">PHASE 3: DAYS 11 - 14</span>
-                  <h4 className="font-bold text-white text-sm">Zero-Downtime SIP / PBX Cutover</h4>
+                  <span className="text-xs font-mono text-orange-400 font-bold block">STEP 3: DAYS 11 - 14</span>
+                  <h4 className="font-bold text-white text-sm">One-Click Phone Forwarding Go-Live</h4>
                   <p className="text-xs text-stone-400 leading-relaxed">
-                    Seamless SIP trunking or conditional carrier call-forwarding. Immediate 24/7 autonomous reception with zero hardware requirements.
+                    Simply forward your phone number to the agent whenever you want coverage (after hours, when lines are busy, or 24/7). Zero equipment to buy or install.
                   </p>
                 </div>
               </div>

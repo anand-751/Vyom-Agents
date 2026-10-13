@@ -2,18 +2,18 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  PhoneCall, 
-  Database, 
-  Star, 
-  Search, 
-  Sparkles, 
-  ArrowRight, 
-  RotateCw, 
-  TrendingUp, 
-  Zap, 
-  CheckCircle2, 
-  Cpu, 
+import {
+  PhoneCall,
+  Database,
+  Star,
+  Search,
+  Sparkles,
+  ArrowRight,
+  RotateCw,
+  TrendingUp,
+  Zap,
+  CheckCircle2,
+  Cpu,
   Activity
 } from "lucide-react";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
@@ -23,8 +23,12 @@ export interface EcosystemNode {
   step: string;
   title: string;
   subtitle: string;
+  chipTitle: string;
+  chipDesc: string;
   positionLabel: string;
-  positionClasses: string;
+  xPercent: number;
+  yPercent: number;
+  transformStyle: string;
   icon: React.ComponentType<{ className?: string }>;
   color: string;
   lightBg: string;
@@ -41,8 +45,12 @@ export const ECOSYSTEM_NODES: EcosystemNode[] = [
     step: "01",
     title: "AI Voice Agent",
     subtitle: "Inbound & Outbound Voice Intelligence",
+    chipTitle: "AI Voice Agent",
+    chipDesc: "24/7 Voice Intake",
     positionLabel: "Top Node",
-    positionClasses: "top-1 left-1/2 -translate-x-1/2",
+    xPercent: 50,
+    yPercent: 15,
+    transformStyle: "translate(-50%, -100%) translateY(-6px)",
     icon: PhoneCall,
     color: "from-orange-500 to-amber-600",
     lightBg: "bg-orange-50 border-orange-200 text-orange-700",
@@ -58,8 +66,12 @@ export const ECOSYSTEM_NODES: EcosystemNode[] = [
     step: "02",
     title: "Custom CRM / Web Apps",
     subtitle: "Custom CRM / Web / Desktop Apps",
+    chipTitle: "Custom CRM / Web Apps",
+    chipDesc: "Web & Desktop Portals",
     positionLabel: "Right Node",
-    positionClasses: "right-1 top-1/2 -translate-y-1/2",
+    xPercent: 85,
+    yPercent: 50,
+    transformStyle: "translate(0%, -50%) translateX(6px)",
     icon: Database,
     color: "from-zinc-700 to-slate-900",
     lightBg: "bg-stone-100 border-stone-200 text-slate-800",
@@ -75,8 +87,12 @@ export const ECOSYSTEM_NODES: EcosystemNode[] = [
     step: "03",
     title: "Google Review AI Agent",
     subtitle: "Compelling WhatsApp & SMS 5-Star Follow-ups",
+    chipTitle: "Google Review AI Agent",
+    chipDesc: "5-Star Reputation",
     positionLabel: "Bottom Node",
-    positionClasses: "bottom-1 left-1/2 -translate-x-1/2",
+    xPercent: 50,
+    yPercent: 85,
+    transformStyle: "translate(-50%, 0%) translateY(6px)",
     icon: Star,
     color: "from-emerald-500 to-teal-600",
     lightBg: "bg-emerald-50 border-emerald-200 text-emerald-700",
@@ -92,8 +108,12 @@ export const ECOSYSTEM_NODES: EcosystemNode[] = [
     step: "04",
     title: "AIEO (AI Engine Optimization)",
     subtitle: "#1 LLM Search & Inbound Growth",
+    chipTitle: "AIEO",
+    chipDesc: "AI Engine Optimization",
     positionLabel: "Left Node",
-    positionClasses: "left-1 top-1/2 -translate-y-1/2",
+    xPercent: 15,
+    yPercent: 50,
+    transformStyle: "translate(-100%, -50%) translateX(-6px)",
     icon: Search,
     color: "from-sky-500 to-blue-600",
     lightBg: "bg-sky-50 border-sky-200 text-sky-700",
@@ -131,7 +151,7 @@ export function AiEcosystemSection() {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-orange-100/30 blur-[130px] rounded-full pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-10 sm:mb-12">
           <span className="text-[11px] font-mono font-bold tracking-widest text-orange-600 uppercase block mb-2">
@@ -148,267 +168,284 @@ export function AiEcosystemSection() {
         </div>
 
         {/* Circular Interconnected Ecosystem Visual & Interactive Detail Grid */}
-        <div 
+        <div
           className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-7 items-center max-w-5xl mx-auto"
           onMouseEnter={() => setAutoRotate(false)}
           onMouseLeave={() => setAutoRotate(true)}
         >
           {/* Left Column: Animated Cardinal Circular Node Ecosystem (Lg: 6 cols) */}
-          <div className="lg:col-span-6 relative flex flex-col items-center justify-center min-h-[300px] sm:min-h-[370px] p-2 overflow-hidden sm:overflow-visible">
-            
-            {/* Center Core Pulsing Hub */}
-            <div 
-              onClick={() => {
-                const idx = ECOSYSTEM_NODES.findIndex((n) => n.id === activeNodeId);
-                const nextIdx = (idx + 1) % ECOSYSTEM_NODES.length;
-                setActiveNodeId(ECOSYSTEM_NODES[nextIdx].id);
-              }}
-              className="absolute z-20 w-22 h-22 sm:w-28 sm:h-28 rounded-full flex items-center justify-center cursor-pointer group"
-            >
-              {/* Pulsing Luminous Halo */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-sky-500/25 via-indigo-500/25 to-purple-500/25 blur-xl group-hover:scale-110 transition-transform duration-500" />
+          <div className="lg:col-span-6 relative flex flex-col items-center justify-center min-h-[300px] sm:min-h-[370px] p-2 overflow-visible">
 
-              {/* Outer Rotating Dashed Orbital Ring */}
-              <div className="absolute inset-1 rounded-full border-2 border-dashed border-sky-400/50 animate-spin-slow pointer-events-none" />
+            {/* Unified Symmetrical Orbit Stage Wrapper */}
+            <div className="relative w-[310px] h-[310px] sm:w-[370px] sm:h-[370px] flex items-center justify-center shrink-0">
 
-              {/* Counter-Rotating Inner Dotted Ring */}
-              <div className="absolute inset-2.5 rounded-full border border-dotted border-indigo-400/40 animate-spin-reverse-slow pointer-events-none" />
+              {/* Center Core Pulsing Hub */}
+              <div
+                onClick={() => {
+                  const idx = ECOSYSTEM_NODES.findIndex((n) => n.id === activeNodeId);
+                  const nextIdx = (idx + 1) % ECOSYSTEM_NODES.length;
+                  setActiveNodeId(ECOSYSTEM_NODES[nextIdx].id);
+                }}
+                className="absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center cursor-pointer group"
+              >
+                {/* Pulsing Luminous Halo */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-sky-500/25 via-indigo-500/25 to-purple-500/25 blur-xl group-hover:scale-110 transition-transform duration-500" />
 
-              {/* Center Core Sphere */}
-              <div className="relative z-10 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-slate-950 text-white flex flex-col items-center justify-center p-1.5 sm:p-2 text-center shadow-2xl border border-indigo-500/40 group-hover:border-sky-400/70 transition-all duration-300">
-                <div className="absolute inset-0 rounded-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/60 via-slate-950 to-slate-950 pointer-events-none" />
+                {/* Outer Rotating Dashed Orbital Ring */}
+                <div className="absolute inset-1 rounded-full border-2 border-dashed border-sky-400/50 animate-spin-slow pointer-events-none" />
 
-                <div className="relative z-10 flex flex-col items-center">
-                  <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-lg bg-sky-500/20 border border-sky-400/40 flex items-center justify-center mb-0.5 text-sky-400 group-hover:scale-110 group-hover:bg-sky-500 group-hover:text-white transition-all shadow-glow">
-                    <Cpu className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
+                {/* Counter-Rotating Inner Dotted Ring */}
+                <div className="absolute inset-2.5 rounded-full border border-dotted border-indigo-400/40 animate-spin-reverse-slow pointer-events-none" />
+
+                {/* Center Core Sphere */}
+                <div className="relative z-10 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-slate-950 text-white flex flex-col items-center justify-center p-1.5 sm:p-2 text-center shadow-2xl border border-indigo-500/40 group-hover:border-sky-400/70 transition-all duration-300">
+                  <div className="absolute inset-0 rounded-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/60 via-slate-950 to-slate-950 pointer-events-none" />
+
+                  <div className="relative z-10 flex flex-col items-center">
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-lg bg-sky-500/20 border border-sky-400/40 flex items-center justify-center mb-0.5 text-sky-400 group-hover:scale-110 group-hover:bg-sky-500 group-hover:text-white transition-all shadow-glow">
+                      <Cpu className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
+                    </div>
+                    <span className="text-[7.5px] sm:text-[8.5px] font-mono font-extrabold uppercase tracking-wider text-sky-300 leading-tight">
+                      Vyom Engine
+                    </span>
+                    <span className="text-[6px] sm:text-[7px] text-slate-400 font-mono mt-0.5 flex items-center gap-1">
+                      <span className="w-1 h-1 rounded-full bg-emerald-400 animate-ping" />
+                      Infinite Loop
+                    </span>
                   </div>
-                  <span className="text-[7.5px] sm:text-[8.5px] font-mono font-extrabold uppercase tracking-wider text-sky-300 leading-tight">
-                    Vyom Engine
-                  </span>
-                  <span className="text-[6px] sm:text-[7px] text-slate-400 font-mono mt-0.5 flex items-center gap-1">
-                    <span className="w-1 h-1 rounded-full bg-emerald-400 animate-ping" />
-                    Infinite Loop
-                  </span>
                 </div>
               </div>
-            </div>
 
-            {/* High-Quality Animated SVG Orbital System */}
-            <svg 
-              className="absolute w-[250px] h-[250px] sm:w-[310px] sm:h-[310px] pointer-events-none z-0" 
-              viewBox="0 0 400 400"
-            >
-              <defs>
-                <linearGradient id="flywheel-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#ea580c" />
-                  <stop offset="33%" stopColor="#71717a" />
-                  <stop offset="66%" stopColor="#10b981" />
-                  <stop offset="100%" stopColor="#0284c7" />
-                </linearGradient>
-
-                {/* Glow Filter for Particles */}
-                <filter id="particle-glow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-              </defs>
-
-              {/* Sonar Radar Pulse Waves expanding from Center Hub */}
-              <motion.circle
-                cx="200"
-                cy="200"
-                r="50"
-                fill="none"
-                stroke="#ea580c"
-                strokeWidth="1.5"
-                animate={{
-                  r: [48, 150],
-                  opacity: [0.65, 0],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeOut",
-                }}
-              />
-              <motion.circle
-                cx="200"
-                cy="200"
-                r="50"
-                fill="none"
-                stroke="#0284c7"
-                strokeWidth="1.5"
-                animate={{
-                  r: [48, 150],
-                  opacity: [0.65, 0],
-                }}
-                transition={{
-                  duration: 3,
-                  delay: 1.5,
-                  repeat: Infinity,
-                  ease: "easeOut",
-                }}
-              />
-
-              {/* Cardinal Radial Laser Beams to each Node */}
-              {/* Core to Node 01 (Top) */}
-              <line
-                x1="200" y1="200" x2="200" y2="55"
-                stroke={activeNodeId === "voice-agent" ? "#ea580c" : "#e2e8f0"}
-                strokeWidth={activeNodeId === "voice-agent" ? "2" : "1"}
-                strokeDasharray="4 4"
-                className={activeNodeId === "voice-agent" ? "animate-dash-flow opacity-90" : "opacity-30"}
-              />
-              {/* Core to Node 02 (Right) */}
-              <line
-                x1="200" y1="200" x2="345" y2="200"
-                stroke={activeNodeId === "enterprise-software" ? "#71717a" : "#e2e8f0"}
-                strokeWidth={activeNodeId === "enterprise-software" ? "2" : "1"}
-                strokeDasharray="4 4"
-                className={activeNodeId === "enterprise-software" ? "animate-dash-flow opacity-90" : "opacity-30"}
-              />
-              {/* Core to Node 03 (Bottom) */}
-              <line
-                x1="200" y1="200" x2="200" y2="345"
-                stroke={activeNodeId === "review-agent" ? "#10b981" : "#e2e8f0"}
-                strokeWidth={activeNodeId === "review-agent" ? "2" : "1"}
-                strokeDasharray="4 4"
-                className={activeNodeId === "review-agent" ? "animate-dash-flow opacity-90" : "opacity-30"}
-              />
-              {/* Core to Node 04 (Left) */}
-              <line
-                x1="200" y1="200" x2="55" y2="200"
-                stroke={activeNodeId === "aieo" ? "#0284c7" : "#e2e8f0"}
-                strokeWidth={activeNodeId === "aieo" ? "2" : "1"}
-                strokeDasharray="4 4"
-                className={activeNodeId === "aieo" ? "animate-dash-flow opacity-90" : "opacity-30"}
-              />
-
-              {/* Main Connecting SVG Orbit Line with Flowing Dash Animation */}
-              <circle
-                cx="200"
-                cy="200"
-                r="150"
-                fill="none"
-                stroke="url(#flywheel-gradient)"
-                strokeWidth="2.5"
-                strokeDasharray="8 8"
-                className="animate-dash-flow opacity-70"
-              />
-
-              {/* Secondary Concentric Orbital Track with Reverse Dash Flow */}
-              <circle
-                cx="200"
-                cy="200"
-                r="115"
-                fill="none"
-                stroke="url(#flywheel-gradient)"
-                strokeWidth="1.5"
-                strokeDasharray="4 6"
-                className="animate-dash-flow-reverse opacity-40"
-              />
-
-              {/* 4 Continuous Orbiting Data Photons traveling around perimeter */}
-              <motion.g
-                animate={{ rotate: 360 }}
-                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                style={{ transformOrigin: "200px 200px" }}
+              {/* High-Quality Animated SVG Orbital System: Exactly Sized 100% to Container */}
+              <svg
+                className="absolute inset-0 w-full h-full pointer-events-none z-0"
+                viewBox="0 0 400 400"
               >
-                {/* Photon 1: Orange */}
-                <circle cx="200" cy="50" r="5" fill="#ea580c" filter="url(#particle-glow)" />
-                <circle cx="200" cy="50" r="2" fill="#ffffff" />
+                <defs>
+                  <linearGradient id="flywheel-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#ea580c" />
+                    <stop offset="33%" stopColor="#71717a" />
+                    <stop offset="66%" stopColor="#10b981" />
+                    <stop offset="100%" stopColor="#0284c7" />
+                  </linearGradient>
 
-                {/* Photon 2: Zinc */}
-                <circle cx="350" cy="200" r="5" fill="#71717a" filter="url(#particle-glow)" />
-                <circle cx="350" cy="200" r="2" fill="#ffffff" />
+                  {/* Glow Filter for Particles */}
+                  <filter id="particle-glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
 
-                {/* Photon 3: Emerald */}
-                <circle cx="200" cy="350" r="5" fill="#10b981" filter="url(#particle-glow)" />
-                <circle cx="200" cy="350" r="2" fill="#ffffff" />
+                {/* Sonar Radar Pulse Waves expanding from Center Hub */}
+                <motion.circle
+                  cx="200"
+                  cy="200"
+                  r="50"
+                  fill="none"
+                  stroke="#ea580c"
+                  strokeWidth="1.5"
+                  animate={{
+                    r: [48, 140],
+                    opacity: [0.65, 0],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeOut",
+                  }}
+                />
+                <motion.circle
+                  cx="200"
+                  cy="200"
+                  r="50"
+                  fill="none"
+                  stroke="#0284c7"
+                  strokeWidth="1.5"
+                  animate={{
+                    r: [48, 140],
+                    opacity: [0.65, 0],
+                  }}
+                  transition={{
+                    duration: 3,
+                    delay: 1.5,
+                    repeat: Infinity,
+                    ease: "easeOut",
+                  }}
+                />
 
-                {/* Photon 4: Sky */}
-                <circle cx="50" cy="200" r="5" fill="#0284c7" filter="url(#particle-glow)" />
-                <circle cx="50" cy="200" r="2" fill="#ffffff" />
-              </motion.g>
+                {/* Cardinal Radial Laser Beams to each Node */}
+                {/* Core to Node 01 (Top: 200, 60) */}
+                <line
+                  x1="200" y1="200" x2="200" y2="60"
+                  stroke={activeNodeId === "voice-agent" ? "#ea580c" : "#e2e8f0"}
+                  strokeWidth={activeNodeId === "voice-agent" ? "2" : "1"}
+                  strokeDasharray="4 4"
+                  className={activeNodeId === "voice-agent" ? "animate-dash-flow opacity-90" : "opacity-30"}
+                />
+                {/* Core to Node 02 (Right: 340, 200) */}
+                <line
+                  x1="200" y1="200" x2="340" y2="200"
+                  stroke={activeNodeId === "enterprise-software" ? "#71717a" : "#e2e8f0"}
+                  strokeWidth={activeNodeId === "enterprise-software" ? "2" : "1"}
+                  strokeDasharray="4 4"
+                  className={activeNodeId === "enterprise-software" ? "animate-dash-flow opacity-90" : "opacity-30"}
+                />
+                {/* Core to Node 03 (Bottom: 200, 340) */}
+                <line
+                  x1="200" y1="200" x2="200" y2="340"
+                  stroke={activeNodeId === "review-agent" ? "#10b981" : "#e2e8f0"}
+                  strokeWidth={activeNodeId === "review-agent" ? "2" : "1"}
+                  strokeDasharray="4 4"
+                  className={activeNodeId === "review-agent" ? "animate-dash-flow opacity-90" : "opacity-30"}
+                />
+                {/* Core to Node 04 (Left: 60, 200) */}
+                <line
+                  x1="200" y1="200" x2="60" y2="200"
+                  stroke={activeNodeId === "aieo" ? "#0284c7" : "#e2e8f0"}
+                  strokeWidth={activeNodeId === "aieo" ? "2" : "1"}
+                  strokeDasharray="4 4"
+                  className={activeNodeId === "aieo" ? "animate-dash-flow opacity-90" : "opacity-30"}
+                />
 
-              {/* Secondary Counter-Orbiting Micro-Particles */}
-              <motion.g
-                animate={{ rotate: -360 }}
-                transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
-                style={{ transformOrigin: "200px 200px" }}
-              >
-                <circle cx="200" cy="85" r="3" fill="#ea580c" opacity="0.7" filter="url(#particle-glow)" />
-                <circle cx="315" cy="200" r="3" fill="#a1a1aa" opacity="0.7" filter="url(#particle-glow)" />
-                <circle cx="200" cy="315" r="3" fill="#34d399" opacity="0.7" filter="url(#particle-glow)" />
-                <circle cx="85" cy="200" r="3" fill="#38bdf8" opacity="0.7" filter="url(#particle-glow)" />
-              </motion.g>
-            </svg>
+                {/* Main Connecting SVG Orbit Line with Flowing Dash Animation (r=140) */}
+                <circle
+                  cx="200"
+                  cy="200"
+                  r="140"
+                  fill="none"
+                  stroke="url(#flywheel-gradient)"
+                  strokeWidth="2.5"
+                  strokeDasharray="8 8"
+                  className="animate-dash-flow opacity-70"
+                />
 
-            {/* 4 Perfectly Symmetrical Cardinal Nodes */}
-            <div className="relative w-full max-w-[280px] sm:max-w-[420px] h-[270px] sm:h-[330px] flex items-center justify-center">
-              {ECOSYSTEM_NODES.map((node) => {
-                const IconComp = node.icon;
-                const isActive = node.id === activeNodeId;
+                {/* Secondary Concentric Orbital Track with Reverse Dash Flow (r=105) */}
+                <circle
+                  cx="200"
+                  cy="200"
+                  r="105"
+                  fill="none"
+                  stroke="url(#flywheel-gradient)"
+                  strokeWidth="1.5"
+                  strokeDasharray="4 6"
+                  className="animate-dash-flow-reverse opacity-40"
+                />
 
-                return (
-                  <motion.div
-                    key={node.id}
-                    onClick={() => setActiveNodeId(node.id)}
-                    whileHover={{ scale: 1.08 }}
-                    whileTap={{ scale: 0.96 }}
-                    animate={{
-                      y: isActive ? [0, -4, 0] : [0, -2, 0],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className={`absolute ${node.positionClasses} z-30 cursor-pointer transition-all duration-300`}
-                  >
-                    {/* Active Pulsing Halo Ring */}
-                    {isActive && (
-                      <span className="absolute -inset-1.5 rounded-2xl bg-orange-500 opacity-40 blur-sm animate-pulse pointer-events-none" />
-                    )}
+                {/* 4 Continuous Orbiting Data Photons traveling around perimeter */}
+                <motion.g
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                  style={{ transformOrigin: "200px 200px" }}
+                >
+                  {/* Photon 1: Orange (Top: 200, 60) */}
+                  <circle cx="200" cy="60" r="5" fill="#ea580c" filter="url(#particle-glow)" />
+                  <circle cx="200" cy="60" r="2" fill="#ffffff" />
 
+                  {/* Photon 2: Zinc (Right: 340, 200) */}
+                  <circle cx="340" cy="200" r="5" fill="#71717a" filter="url(#particle-glow)" />
+                  <circle cx="340" cy="200" r="2" fill="#ffffff" />
+
+                  {/* Photon 3: Emerald (Bottom: 200, 340) */}
+                  <circle cx="200" cy="340" r="5" fill="#10b981" filter="url(#particle-glow)" />
+                  <circle cx="200" cy="340" r="2" fill="#ffffff" />
+
+                  {/* Photon 4: Sky (Left: 60, 200) */}
+                  <circle cx="60" cy="200" r="5" fill="#0284c7" filter="url(#particle-glow)" />
+                  <circle cx="60" cy="200" r="2" fill="#ffffff" />
+                </motion.g>
+
+                {/* Secondary Counter-Orbiting Micro-Particles */}
+                <motion.g
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
+                  style={{ transformOrigin: "200px 200px" }}
+                >
+                  <circle cx="200" cy="95" r="3" fill="#ea580c" opacity="0.7" filter="url(#particle-glow)" />
+                  <circle cx="305" cy="200" r="3" fill="#a1a1aa" opacity="0.7" filter="url(#particle-glow)" />
+                  <circle cx="200" cy="305" r="3" fill="#34d399" opacity="0.7" filter="url(#particle-glow)" />
+                  <circle cx="95" cy="200" r="3" fill="#38bdf8" opacity="0.7" filter="url(#particle-glow)" />
+                </motion.g>
+              </svg>
+
+              {/* 4 Perfectly Symmetrical Cardinal Nodes - Placed on the Outer Edges */}
+              <div className="absolute inset-0 w-full h-full pointer-events-none">
+                {ECOSYSTEM_NODES.map((node) => {
+                  const IconComp = node.icon;
+                  const isActive = node.id === activeNodeId;
+
+                  return (
                     <div
-                      className={`relative flex items-center gap-1.5 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-xl border shadow-xs backdrop-blur-md transition-all duration-300 ${
-                        isActive
-                          ? "bg-slate-950 text-white border-orange-500 shadow-md ring-2 ring-orange-500/20 scale-105"
-                          : "bg-white/95 text-slate-900 border-stone-200/90 hover:border-stone-300 hover:shadow-xs"
-                      }`}
+                      key={node.id}
+                      style={{
+                        position: "absolute",
+                        left: `${node.xPercent}%`,
+                        top: `${node.yPercent}%`,
+                        transform: node.transformStyle,
+                      }}
+                      className="z-30 pointer-events-auto"
                     >
-                      <div
-                        className={`w-5 h-5 sm:w-6 sm:h-6 rounded-lg flex items-center justify-center shrink-0 bg-gradient-to-r ${node.color} text-white shadow-2xs`}
+                      <motion.div
+                        onClick={() => setActiveNodeId(node.id)}
+                        whileHover={{ scale: 1.08 }}
+                        whileTap={{ scale: 0.96 }}
+                        animate={{
+                          y: isActive ? [0, -3, 0] : [0, -1.5, 0],
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }}
+                        className="relative cursor-pointer transition-all duration-300"
                       >
-                        <IconComp className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
-                      </div>
-                      <div className="text-left pr-0.5">
-                        <span className="text-[7px] sm:text-[8px] font-mono font-bold block text-orange-500 leading-none mb-0.5">
-                          NODE {node.step}
-                        </span>
-                        <span className="text-[9px] sm:text-[10.5px] font-bold block leading-tight truncate max-w-[65px] sm:max-w-[110px]">
-                          {node.title}
-                        </span>
-                      </div>
-                    </div>
+                        {/* Active Pulsing Halo Ring */}
+                        {isActive && (
+                          <span className="absolute -inset-1.5 rounded-2xl bg-orange-500 opacity-40 blur-sm animate-pulse pointer-events-none" />
+                        )}
 
-                    {/* Step Pill Badge */}
-                    <span
-                      className={`absolute -top-1.5 -right-1.5 px-1.5 py-0.2 rounded-full text-[7.5px] sm:text-[8px] font-mono font-extrabold shadow-2xs ${
-                        isActive
-                          ? "bg-orange-500 text-white font-bold"
-                          : "bg-stone-100 text-slate-700 border border-stone-300"
-                      }`}
-                    >
-                      {node.step}
-                    </span>
-                  </motion.div>
-                );
-              })}
+                        <div
+                          className={`relative flex items-center gap-1.5 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-xl border shadow-xs backdrop-blur-md transition-all duration-300 ${
+                            isActive
+                              ? "bg-slate-950 text-white border-orange-500 shadow-md ring-2 ring-orange-500/20 scale-105"
+                              : "bg-white/95 text-slate-900 border-stone-200/90 hover:border-stone-300 hover:shadow-xs"
+                          }`}
+                        >
+                          <div
+                            className={`w-5 h-5 sm:w-6 sm:h-6 rounded-lg flex items-center justify-center shrink-0 bg-gradient-to-r ${node.color} text-white shadow-2xs`}
+                          >
+                            <IconComp className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
+                          </div>
+                          <div className="text-left pr-0.5 whitespace-nowrap">
+                            <span className="text-[7px] sm:text-[8px] font-mono font-bold block text-orange-500 leading-none mb-0.5">
+                              NODE {node.step}
+                            </span>
+                            <span className="text-[9px] sm:text-[10px] font-bold block leading-tight">
+                              {node.chipTitle}
+                            </span>
+                            <span className="text-[7px] sm:text-[7.5px] font-medium block leading-none text-slate-500 dark:text-slate-400 mt-0.5">
+                              {node.chipDesc}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Step Pill Badge */}
+                        <span
+                          className={`absolute -top-1.5 -right-1.5 px-1.5 py-0.2 rounded-full text-[7.5px] sm:text-[8px] font-mono font-extrabold shadow-2xs ${
+                            isActive
+                              ? "bg-orange-500 text-white font-bold"
+                              : "bg-stone-100 text-slate-700 border border-stone-300"
+                          }`}
+                        >
+                          {node.step}
+                        </span>
+                      </motion.div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
 
@@ -484,9 +521,8 @@ export function AiEcosystemSection() {
                         <button
                           key={n.id}
                           onClick={() => setActiveNodeId(n.id)}
-                          className={`h-2 rounded-full transition-all duration-300 ${
-                            n.id === activeNodeId ? "bg-orange-600 w-5" : "bg-stone-300 hover:bg-stone-400 w-2"
-                          }`}
+                          className={`h-2 rounded-full transition-all duration-300 ${n.id === activeNodeId ? "bg-orange-600 w-5" : "bg-stone-300 hover:bg-stone-400 w-2"
+                            }`}
                           aria-label={`Select node ${n.step}`}
                         />
                       ))}
