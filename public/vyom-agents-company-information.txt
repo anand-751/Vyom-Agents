@@ -29,12 +29,12 @@ Target Verticals:
 Healthcare and Dental Clinics, Legal Firms, Multi-location Service Businesses, Logistics & Supply Chain, Financial Services, and High-growth SaaS Enterprises.
 
 --------------------------------------------------------------------------------
-2. LIVE FLAGSHIP PRODUCT: AI VOICE RECEPTIONIST
+2. LIVE FLAGSHIP PRODUCTS
 --------------------------------------------------------------------------------
-The AI Receptionist is Vyom Agents' flagship live enterprise product for 24/7 inbound reception, multi-provider triage, and intelligent outbound patient/client campaigns.
-
+PRODUCT 1: AI RECEPTIONIST (VOICE AGENTS)
+The AI Receptionist is Vyom Agents' flagship live enterprise voice product for 24/7 inbound reception, multi-provider triage, and intelligent outbound patient/client campaigns.
 Technical Specifications & Capabilities:
-• Real-Time Audio: Operates with fluid real-time response. Callers experience natural, immediate human cadence with zero conversational dead-air.
+• Real-Time Audio: Operates with fluid real-time response (<600ms streaming). Callers experience natural, immediate human cadence with zero conversational dead-air.
 • Interruption Tolerance: Callers can interrupt mid-sentence naturally; the agent ceases speech instantly and adjusts context dynamically without stuttering.
 • Deep Calendar & EHR Integration: Bidirectional synchronization with Google Calendar, Microsoft Outlook, Cal.com, Dentrix, Epic, AthenaHealth, Salesforce, HubSpot, and custom SQL databases.
 • Multilingual Fluency: Native conversational fluency in 45+ languages including English, Hindi, Hinglish, Spanish, French, German, and Mandarin with localized regional phonetics.
@@ -42,11 +42,73 @@ Technical Specifications & Capabilities:
 • Security & Compliance: SOC-2 Type II infrastructure, HIPAA compliant for protected health information (PHI), and end-to-end TLS 1.3 audio encryption.
 • Business ROI: Eliminates 100% of missed after-hours calls, boosts appointment booking conversions by +42%, and replaces up to 3 receptionist phone desk shifts (~120+ manual phone hours per month).
 
+PRODUCT 2: AI CONCIERGE APP
+A mobile and desktop guest self-service assistant engineered for hospitality, luxury resorts, boutique hotels, and client services.
+• Zero-Install Guest Onboarding: Guests scan an in-room QR code or tap an NFC tag to immediately launch their personalized concierge with active room credentials.
+• Autonomous Intake & Service Dispatch: Automates in-room dining orders, spa appointments, housekeeping requests, and amenity bookings.
+• Two-Way PMS Integration: Direct validated API synchronization with Oracle Opera PMS, Cloudbeds, and Mews with instant folio billing and zero clerical errors.
+• Business ROI: Cuts front-desk phone volume by 70%, accelerates guest intake response to <1.2 seconds, and boosts ancillary property revenue by 25%+.
+
+PRODUCT 3: ACCOUNTING OPERATIONS & RECONCILIATION AGENT
+An autonomous financial operations engine automating bookkeeping, reconciliations, invoice verification, and month-end close for accounting firms, CPAs, and high-volume enterprises.
+Capabilities & 8 Operational Pillars:
+A. Document Intelligence:
+   - Reads invoices, receipts, bank statements, bills, and credit notes.
+   - Extracts vendor, amount, currency, invoice number, date, tax rates, and payment terms.
+   - Detects missing fields, unreadable scans, and duplicate invoices.
+   - Links documents to correct client accounts and accounting periods; automatically requests missing documents from clients.
+   - Automation Type: Optical character recognition (OCR) / document extraction + deterministic validation rules + AI-assisted interpretation.
+
+B. Reconciliation Engine:
+   - Matches bank transactions to ledger entries, incoming payments to customer invoices, and outgoing payments to vendor bills.
+   - Supports exact, partial, grouped, and date-tolerant matches.
+   - Detects duplicate transactions, missing postings, bank fees, and timing differences.
+   - Generates an unmatched-transactions queue and reconciliation summary report.
+   - Automation Type: Deterministic matching engine with AI triage for ambiguous edge cases.
+
+C. Bookkeeping & Accounting Classification:
+   - Suggests general-ledger (GL) accounts for transactions based on approved historical classifications.
+   - Flags inconsistent treatment of recurring expenses; identifies potentially personal, unusual, or misclassified transactions.
+   - Prepares journal-entry drafts with supporting source evidence.
+   - Factual Guardrail: Tax treatment and accounting policy strictly follow approved firm rules, never an LLM's unsupported guess.
+
+D. Accounts Payable (AP):
+   - Captures and validates supplier bills.
+   - Performs 3-way matching between purchase orders (POs), invoices, and goods-received records (GRNs) where available.
+   - Flags duplicate invoices, pricing variances, and discrepancies; tracks due dates and approval status.
+   - Prepares payment batches for authorized human sign-off.
+   - Control Policy: Never initiates a payment merely because an invoice appears valid; enforces approval limits and multi-tier payment controls.
+
+E. Accounts Receivable (AR) & Collections:
+   - Matches incoming receipts to invoices and customer accounts; identifies overdue and partially paid balances.
+   - Prepares customer statements, invoice-aging schedules, and scheduled payment reminders.
+   - Drafts contextual follow-ups based on invoice age and client communication history; tracks promised payment dates and escalates disputes.
+   - Automation Type: Invoice-aging rules + scheduled event workflows + AI-generated communications.
+
+F. Month-End Close:
+   - Creates a closing checklist for every client across the firm's portfolio; monitors reconciliation completion.
+   - Identifies missing statements, bills, receipts, and approvals; audits suspense accounts and unreconciled balances.
+   - Prepares accrual, prepayment, depreciation, and recurring journal drafts under approved policies.
+   - Generates a close-readiness report and highlights blockers.
+   - Outcome: A unified, consistent closing workflow across the firm's entire client portfolio.
+
+G. Audit, Controls & Exception Management:
+   - Flags transactions exceeding client-defined risk thresholds; detects unusual vendors, amounts, dates, and duplicate disbursements.
+   - Identifies missing supporting evidence or sign-offs; records immutable audit trails of who reviewed, approved, changed, or posted each item.
+   - Generates evidence-linked exception reports for the accountant.
+   - Policy: AI flags suspicious patterns; it never declares fraud based on an anomaly alone.
+
+H. Reporting & Client Service:
+   - Prepares monthly P&L, balance-sheet, and cash-flow summaries; explains material variances against previous periods or budgets.
+   - Tracks outstanding client documents and unresolved queries; drafts management summaries and client-ready reports.
+   - Provides firm partners an overview of work completed, blocked, and awaiting sign-off.
+   - Policy: Reports are strictly compiled from verified accounting records, with AI explaining variances rather than inventing figures.
+Business ROI: Saves 80%+ of manual bookkeeping and reconciliation hours, eliminates manual data entry errors, shortens month-end close by 5-7 business days, and cuts finance back-office costs by 50%+.
+
 --------------------------------------------------------------------------------
 3. PROPRIETARY PRODUCT: AUTONOMOUS WORKFLOW ORCHESTRATOR (SELF-HEALING RPA)
 --------------------------------------------------------------------------------
 Vyom's Autonomous Workflow Orchestrator is a next-generation self-healing RPA engine that completely replaces brittle legacy RPA bots (UiPath, Automation Anywhere, Selenium).
-
 Technical Architecture:
 • Visual Neural Embeddings & Playwright: Instead of fragile CSS or XPath selectors, the engine inspects visual DOM hierarchies and executes browser & desktop automation via neural state embeddings.
 • 99.8% Auto-Healed Recovery Uptime: When an ERP, CRM, or external portal shifts UI elements or changes layouts, the engine calculates semantic vector likeness and auto-remediates the target selector in real time without downtime.
@@ -54,15 +116,12 @@ Technical Architecture:
 • ROI & Labor Savings: Eliminates 180+ hours of manual data entry per team each month, providing 300% more resilience and zero maintenance overhead compared to legacy automation scripts.
 
 --------------------------------------------------------------------------------
-4. STEALTH R&D PIPELINE (UPCOMING AUTONOMOUS PRODUCTS)
+4. CUSTOM AI AGENTS & ENTERPRISE AUTOMATION SERVICES
 --------------------------------------------------------------------------------
-Vyom Agents maintains an active R&D lab with 5 specialized autonomous AI products currently in stealth development:
-1. Vyom Finance Agent: Accounts payable automation, 3-way purchase order matching, invoice reconciliation, and autonomous ledger verification.
-2. Vyom Finance Workforce: Complete multi-agent financial swarm handling payroll validation, invoice matching, cash flow forecasting, and anomaly detection.
-3. Vyom Lawsuit: Legal AI system for contract analysis, discovery audit, clause risk scoring, and regulatory compliance verification across jurisdictions.
-4. Vyom PolicyLens: Browser intelligence agent that analyzes terms of service, privacy policies, and compliance shifts across third-party SaaS vendors in real time.
-5. Vyom SafeBrowse: Autonomous secure browsing agent that enforces enterprise data leak prevention (DLP), sandboxes DOM execution, and blocks malicious payload injections.
-Status: Waitlist-only, undergoing SOC-2 compliance sealing.
+Beyond our ready flagship products, Vyom Agents builds custom-tailored AI agents and automations for any business domain or industry:
+• Industry-Specific Operational Analysis: We identify the repetitive manual steps in your specific field (intake, document extraction, scheduling, reconciliations, client follow-ups, and manual data entry).
+• Custom Agent Architecture: We build deterministic, multi-agent workflows that automate these manual steps end-to-end.
+• Quantified Operational Metrics: Typically delivers 70% to 85% time savings on manual processing, 40% to 60% operational overhead cost reduction, and enables handling 10x-15x transaction volume at scale without hiring bottlenecks.
 
 --------------------------------------------------------------------------------
 5. THE VYOM AI ECOSYSTEM FLYWHEEL

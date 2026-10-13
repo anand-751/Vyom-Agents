@@ -189,11 +189,20 @@ const DOMAIN_KEYWORDS: Record<string, string> = {
   tenant: "Property Management & Leasing",
   finance: "Finance & Accounting",
   accounting: "Accounting & Tax Practices",
+  bookkeeping: "Accounting & Bookkeeping Services",
+  reconciliation: "Accounting & Financial Reconciliation",
+  reconcile: "Accounting & Financial Reconciliation",
+  audit: "Accounting & Audit Services",
+  "accounts payable": "Finance & Accounts Payable (AP)",
+  "accounts receivable": "Finance & Accounts Receivable (AR)",
+  "month end": "Accounting & Financial Close",
+  "month-end": "Accounting & Financial Close",
   cpa: "Accounting & CPA Firms",
   ledger: "Finance & Ledger Operations",
   payroll: "Finance & Payroll Operations",
   tax: "Tax & Accounting Firms",
   logistics: "Logistics & Supply Chain",
+  "supply chain": "Logistics & Supply Chain",
   trucking: "Freight & Trucking Operations",
   freight: "Freight & Cargo Logistics",
   warehouse: "Warehouse & Inventory Operations",
@@ -526,12 +535,12 @@ export function evaluateOutputHarness(
   const groundingConfidenceScore =
     replyWords.length > 0 ? Math.min(1, Math.max(0.6, matchedTokens / (replyWords.length * 0.7))) : 0.9;
 
-  // 5. Hard Word Count Enforcement (Max 150 words limit)
+  // 5. Word Count Enforcement (Max 320 words limit to comfortably support overview + metrics + 2-3 lines product note)
   const rawWords = reply.trim().split(/\s+/).filter(Boolean);
-  if (rawWords.length > 150) {
+  if (rawWords.length > 320) {
     hallucinationRepaired = true;
-    detectedFlags.push("word_limit_truncated_to_150");
-    const clippedWords = rawWords.slice(0, 150);
+    detectedFlags.push("word_limit_truncated_to_320");
+    const clippedWords = rawWords.slice(0, 320);
     let clippedText = clippedWords.join(" ");
 
     // Find the last clean punctuation mark within the clipped text (at least 60% into string)
