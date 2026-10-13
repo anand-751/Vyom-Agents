@@ -169,15 +169,15 @@ export function AiEcosystemSection() {
 
         {/* Circular Interconnected Ecosystem Visual & Interactive Detail Grid */}
         <div
-          className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-7 items-center max-w-5xl mx-auto"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center max-w-6xl mx-auto"
           onMouseEnter={() => setAutoRotate(false)}
           onMouseLeave={() => setAutoRotate(true)}
         >
-          {/* Left Column: Animated Cardinal Circular Node Ecosystem (Lg: 6 cols) */}
-          <div className="lg:col-span-6 relative flex flex-col items-center justify-center min-h-[300px] sm:min-h-[370px] p-2 overflow-visible">
+          {/* Left Column: Animated Cardinal Circular Node Ecosystem (Lg: 7 cols) */}
+          <div className="lg:col-span-7 relative flex flex-col items-center justify-center min-h-[320px] sm:min-h-[380px] p-2 overflow-visible">
 
             {/* Unified Symmetrical Orbit Stage Wrapper */}
-            <div className="relative w-[310px] h-[310px] sm:w-[370px] sm:h-[370px] flex items-center justify-center shrink-0">
+            <div className="relative w-[280px] h-[280px] sm:w-[330px] sm:h-[330px] flex items-center justify-center shrink-0">
 
               {/* Center Core Pulsing Hub */}
               <div
@@ -449,8 +449,8 @@ export function AiEcosystemSection() {
             </div>
           </div>
 
-          {/* Right Column: Active Node Details & Interconnected Story (Lg: 6 cols) */}
-          <div className="lg:col-span-6">
+          {/* Right Column: Active Node Details & Interconnected Story (Lg: 5 cols) */}
+          <div className="lg:col-span-5">
             <SpotlightCard
               spotlightColor={activeNode.accentGlow}
               className="rounded-2xl p-4 sm:p-5 border border-stone-200/90 bg-white shadow-2xs relative overflow-hidden"
