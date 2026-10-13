@@ -24,6 +24,7 @@ export interface EcosystemNode {
   title: string;
   subtitle: string;
   chipTitle: string;
+  chipTitleMobile?: string;
   chipDesc: string;
   positionLabel: string;
   xPercent: number;
@@ -46,6 +47,7 @@ export const ECOSYSTEM_NODES: EcosystemNode[] = [
     title: "AI Voice Agent",
     subtitle: "Inbound & Outbound Voice Intelligence",
     chipTitle: "AI Voice Agent",
+    chipTitleMobile: "AI Voice",
     chipDesc: "24/7 Voice Intake",
     positionLabel: "Top Node",
     xPercent: 50,
@@ -67,6 +69,7 @@ export const ECOSYSTEM_NODES: EcosystemNode[] = [
     title: "Custom CRM / Web Apps",
     subtitle: "Custom CRM / Web / Desktop Apps",
     chipTitle: "Custom CRM / Web Apps",
+    chipTitleMobile: "Custom CRM",
     chipDesc: "Web & Desktop Portals",
     positionLabel: "Right Node",
     xPercent: 85,
@@ -88,6 +91,7 @@ export const ECOSYSTEM_NODES: EcosystemNode[] = [
     title: "Google Review AI Agent",
     subtitle: "Compelling WhatsApp & SMS 5-Star Follow-ups",
     chipTitle: "Google Review AI Agent",
+    chipTitleMobile: "Review AI",
     chipDesc: "5-Star Reputation",
     positionLabel: "Bottom Node",
     xPercent: 50,
@@ -109,6 +113,7 @@ export const ECOSYSTEM_NODES: EcosystemNode[] = [
     title: "AIEO (AI Engine Optimization)",
     subtitle: "#1 LLM Search & Inbound Growth",
     chipTitle: "AIEO",
+    chipTitleMobile: "AIEO",
     chipDesc: "AI Engine Optimization",
     positionLabel: "Left Node",
     xPercent: 15,
@@ -174,10 +179,10 @@ export function AiEcosystemSection() {
           onMouseLeave={() => setAutoRotate(true)}
         >
           {/* Left Column: Animated Cardinal Circular Node Ecosystem (Lg: 7 cols) */}
-          <div className="lg:col-span-7 relative flex flex-col items-center justify-center min-h-[320px] sm:min-h-[380px] p-2 overflow-visible">
+          <div className="lg:col-span-7 relative flex flex-col items-center justify-center min-h-[290px] sm:min-h-[380px] p-2 overflow-visible">
 
             {/* Unified Symmetrical Orbit Stage Wrapper */}
-            <div className="relative w-[280px] h-[280px] sm:w-[330px] sm:h-[330px] flex items-center justify-center shrink-0">
+            <div className="relative w-[220px] h-[220px] sm:w-[330px] sm:h-[330px] flex items-center justify-center shrink-0">
 
               {/* Center Core Pulsing Hub */}
               <div
@@ -186,7 +191,7 @@ export function AiEcosystemSection() {
                   const nextIdx = (idx + 1) % ECOSYSTEM_NODES.length;
                   setActiveNodeId(ECOSYSTEM_NODES[nextIdx].id);
                 }}
-                className="absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center cursor-pointer group"
+                className="absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 sm:w-24 sm:h-24 rounded-full flex items-center justify-center cursor-pointer group"
               >
                 {/* Pulsing Luminous Halo */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-sky-500/25 via-indigo-500/25 to-purple-500/25 blur-xl group-hover:scale-110 transition-transform duration-500" />
@@ -195,20 +200,20 @@ export function AiEcosystemSection() {
                 <div className="absolute inset-1 rounded-full border-2 border-dashed border-sky-400/50 animate-spin-slow pointer-events-none" />
 
                 {/* Counter-Rotating Inner Dotted Ring */}
-                <div className="absolute inset-2.5 rounded-full border border-dotted border-indigo-400/40 animate-spin-reverse-slow pointer-events-none" />
+                <div className="absolute inset-2 sm:inset-2.5 rounded-full border border-dotted border-indigo-400/40 animate-spin-reverse-slow pointer-events-none" />
 
                 {/* Center Core Sphere */}
-                <div className="relative z-10 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-slate-950 text-white flex flex-col items-center justify-center p-1.5 sm:p-2 text-center shadow-2xl border border-indigo-500/40 group-hover:border-sky-400/70 transition-all duration-300">
+                <div className="relative z-10 w-12 h-12 sm:w-20 sm:h-20 rounded-full bg-slate-950 text-white flex flex-col items-center justify-center p-1 sm:p-2 text-center shadow-2xl border border-indigo-500/40 group-hover:border-sky-400/70 transition-all duration-300">
                   <div className="absolute inset-0 rounded-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/60 via-slate-950 to-slate-950 pointer-events-none" />
 
                   <div className="relative z-10 flex flex-col items-center">
-                    <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-lg bg-sky-500/20 border border-sky-400/40 flex items-center justify-center mb-0.5 text-sky-400 group-hover:scale-110 group-hover:bg-sky-500 group-hover:text-white transition-all shadow-glow">
-                      <Cpu className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
+                    <div className="w-3.5 h-3.5 sm:w-5 sm:h-5 rounded-md sm:rounded-lg bg-sky-500/20 border border-sky-400/40 flex items-center justify-center mb-0.5 text-sky-400 group-hover:scale-110 group-hover:bg-sky-500 group-hover:text-white transition-all shadow-glow">
+                      <Cpu className="w-2 h-2 sm:w-3 sm:h-3" />
                     </div>
-                    <span className="text-[7.5px] sm:text-[8.5px] font-mono font-extrabold uppercase tracking-wider text-sky-300 leading-tight">
+                    <span className="text-[6.5px] sm:text-[8.5px] font-mono font-extrabold uppercase tracking-wider text-sky-300 leading-tight">
                       Vyom Engine
                     </span>
-                    <span className="text-[6px] sm:text-[7px] text-slate-400 font-mono mt-0.5 flex items-center gap-1">
+                    <span className="text-[5px] sm:text-[7px] text-slate-400 font-mono mt-0.5 flex items-center gap-1">
                       <span className="w-1 h-1 rounded-full bg-emerald-400 animate-ping" />
                       Infinite Loop
                     </span>
@@ -407,25 +412,26 @@ export function AiEcosystemSection() {
                         )}
 
                         <div
-                          className={`relative flex items-center gap-1.5 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-xl border shadow-xs backdrop-blur-md transition-all duration-300 ${
+                          className={`relative flex items-center gap-1 sm:gap-1.5 px-1.5 sm:px-2.5 py-0.5 sm:py-1.5 rounded-lg sm:rounded-xl border shadow-xs backdrop-blur-md transition-all duration-300 ${
                             isActive
                               ? "bg-slate-950 text-white border-orange-500 shadow-md ring-2 ring-orange-500/20 scale-105"
                               : "bg-white/95 text-slate-900 border-stone-200/90 hover:border-stone-300 hover:shadow-xs"
                           }`}
                         >
                           <div
-                            className={`w-5 h-5 sm:w-6 sm:h-6 rounded-lg flex items-center justify-center shrink-0 bg-gradient-to-r ${node.color} text-white shadow-2xs`}
+                            className={`w-4 h-4 sm:w-6 sm:h-6 rounded-md sm:rounded-lg flex items-center justify-center shrink-0 bg-gradient-to-r ${node.color} text-white shadow-2xs`}
                           >
-                            <IconComp className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
+                            <IconComp className="w-2 h-2 sm:w-3 sm:h-3" />
                           </div>
                           <div className="text-left pr-0.5 whitespace-nowrap">
-                            <span className="text-[7px] sm:text-[8px] font-mono font-bold block text-orange-500 leading-none mb-0.5">
+                            <span className="text-[6px] sm:text-[8px] font-mono font-bold block text-orange-500 leading-none mb-0.5">
                               NODE {node.step}
                             </span>
-                            <span className="text-[9px] sm:text-[10px] font-bold block leading-tight">
-                              {node.chipTitle}
+                            <span className="text-[7.5px] sm:text-[10px] font-bold block leading-tight">
+                              <span className="sm:hidden">{node.chipTitleMobile || node.chipTitle}</span>
+                              <span className="hidden sm:inline">{node.chipTitle}</span>
                             </span>
-                            <span className="text-[7px] sm:text-[7.5px] font-medium block leading-none text-slate-500 dark:text-slate-400 mt-0.5">
+                            <span className="hidden sm:block text-[7px] sm:text-[7.5px] font-medium leading-none text-slate-500 dark:text-slate-400 mt-0.5">
                               {node.chipDesc}
                             </span>
                           </div>
@@ -433,7 +439,7 @@ export function AiEcosystemSection() {
 
                         {/* Step Pill Badge */}
                         <span
-                          className={`absolute -top-1.5 -right-1.5 px-1.5 py-0.2 rounded-full text-[7.5px] sm:text-[8px] font-mono font-extrabold shadow-2xs ${
+                          className={`absolute -top-1 -right-1 sm:-top-1.5 sm:-right-1.5 px-1 sm:px-1.5 py-0.2 rounded-full text-[6px] sm:text-[8px] font-mono font-extrabold shadow-2xs ${
                             isActive
                               ? "bg-orange-500 text-white font-bold"
                               : "bg-stone-100 text-slate-700 border border-stone-300"
